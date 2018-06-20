@@ -22,6 +22,29 @@
   font-size: large;
 }
 
+.Table {
+  padding: 20px;
+   text-align: center;
+   border-style: solid;
+   border-color: black;
+   ;
+   height:  50px;
+   width:800px;
+   border-width: 0.5px;
+ }
+
+ .Data {
+  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+ 
+  border-width: 1px;
+  height: 400px;
+  width:800px;
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
