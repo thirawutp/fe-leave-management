@@ -28,19 +28,18 @@
     text-align: center;
     border-style: solid;
     border-color:#525252;
-    background-color:#525252;
-    color : white;
+    background-color: #525252;
     height:  1px;
     width:800px;
     border-width: 2px;
+    color : white;
+    
   }
   
   .Data {
     padding: 20px;
     text-align: center;
     border-style: solid;
-    border-color:#0099ff;
-    background-color:#e6f5ff;
     border-width: 1px;
     height: 1px;
     width:800px;
@@ -60,17 +59,12 @@
   
   }
   
-  .approve{
-    color : #27AE60;
+  .root {
+    padding-right: 10px;
+    padding-left: 50px;
   }
   
-  .pending{
-    color : #F2C94C;
-  }
   
-  .reject{
-    color : red;
-  }
   
   @keyframes App-logo-spin {
     from { transform: rotate(0deg); }

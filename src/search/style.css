@@ -2,6 +2,10 @@
     text-align: center;
   }
   
+  .img {
+    width: 5px;
+    height: 5px;
+  }
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
@@ -20,31 +24,6 @@
   
   .App-intro {
     font-size: large;
-  }
-  .Table {
-    
-    
-    padding: 20px;
-    text-align: center;
-    border-style: solid;
-    border-color:#525252;
-    background-color:#525252;
-    color : white;
-    height:  1px;
-    width:800px;
-    border-width: 2px;
-  }
-  
-  .Data {
-    padding: 20px;
-    text-align: center;
-    border-style: solid;
-    border-color:#0099ff;
-    background-color:#e6f5ff;
-    border-width: 1px;
-    height: 1px;
-    width:800px;
-  
   }
   
   .Dataodd{
@@ -71,6 +50,30 @@
   .reject{
     color : red;
   }
+
+  .Table {
+    padding: 20px;
+     text-align: center;
+     border-style: solid;
+     border-color:black;
+     background-color:#525252;
+     color : white;
+     height:  56px;
+     width:804px;
+     border-width: 2px;
+   }
+   
+   .Data {
+     padding: 20px;
+     text-align: center;
+     border-style: solid;
+     border-color:black;
+     background-color:#C4C4C4;
+     border-width: 1px;
+     height: 56px;
+     width:804px;
+   
+   }
   
   @keyframes App-logo-spin {
     from { transform: rotate(0deg); }
