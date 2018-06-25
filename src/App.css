@@ -1,6 +1,6 @@
 .Table {
-  
-  
+
+
   padding: 20px;
   text-align: center;
   border-style: solid;
@@ -12,7 +12,7 @@
   color : white;
   margin-top: 20px;
   font-size : 16px;
-  
+
 }
 
 .Data {
@@ -23,7 +23,7 @@
   width: 800px;
   height: 33px;
   font-size : 16px;
-  
+
 
 }
 
@@ -31,11 +31,11 @@
   border-color:#FFFFFF;
   background-color:#FFFFFF;
   font-size : 16px;
- 
+
 }
 
 .Dataeven{
- 
+
   border-color:#C4C4C4;
   background-color:#C4C4C4;
   font-size : 16px;
@@ -162,7 +162,11 @@
 .sidebar {
   background-color: #F2F2F2;
   width: 241px;
+<<<<<<< HEAD
   height: 100vh;
+=======
+  height: 100%;
+>>>>>>> 6fc764268a0a5ea9caa17db6578dcb1502e2e4c5
   float: left;
 }
 
@@ -197,11 +201,13 @@
   font-weight: bold;
   border: 2px solid #404040;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.24);
+<<<<<<< HEAD
 }
 
 .tableheader {
   font-size: 24px;
   margin-left: 304px;
   margin-top: 40px;
+=======
+>>>>>>> 6fc764268a0a5ea9caa17db6578dcb1502e2e4c5
 }
-

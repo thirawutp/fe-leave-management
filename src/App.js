@@ -24,9 +24,9 @@ class App extends Component {
             </div>
             <Table/>
           </div>
-          
+
         </div>
-        
+
 
     );
   }
