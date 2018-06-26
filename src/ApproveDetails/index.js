@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sidebar from './sidebar.js';
-import Header from './header.js';
+import { Header, Sidebar } from './components/Main/'
 
 import Search from './search.js';
 
 
 
-class Set_approve_1 extends Component {
+class Set_approve_2 extends Component {
   render() {
     return (
 
@@ -37,4 +36,4 @@ class Set_approve_1 extends Component {
   }
 }
 
-export default Set_approve_1;
+export default Set_approve_2;
