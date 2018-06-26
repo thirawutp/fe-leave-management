@@ -1,11 +1,24 @@
-import React from 'react';
-export default class Header extends React.Component {
+import React, { Component } from 'react';
+import './App.css';
+import appmanheader from './images/appmanheader.png';
 
+
+class Header extends Component {
   render() {
     return (
-      <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Appman</a>
-      </nav>
-    )
+        
+         <div className='header'>
+            <div className='logonew'>
+                <img src={appmanheader} width="139" height ="25" />
+            </div>
+          </div>
+       
+
+     
+
+
+    );
   }
 }
+
+export default Header;
