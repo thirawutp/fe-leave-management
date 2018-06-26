@@ -107,11 +107,8 @@
 .sidebar {
   background-color: #F2F2F2;
   width: 241px;
-<<<<<<< HEAD
   height: 100vh;
-=======
   height: 100%;
->>>>>>> 6fc764268a0a5ea9caa17db6578dcb1502e2e4c5
   float: left;
 }
 
