@@ -1,0 +1,82 @@
+.App {
+    text-align: center;
+  }
+  
+  .img {
+    width: 5px;
+    height: 5px;
+  }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .App-header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .App-title {
+    font-size: 1.5em;
+  }
+  
+  .App-intro {
+    font-size: large;
+  }
+  
+  .Dataodd{
+    border-color:#FFFFFF;
+    background-color:#FFFFFF;
+   
+  }
+  
+  .Dataeven{
+   
+    border-color:#C4C4C4;
+    background-color:#C4C4C4;
+  
+  }
+  
+  .approve{
+    color : #27AE60;
+  }
+  
+  .pending{
+    color : #F2C94C;
+  }
+  
+  .reject{
+    color : red;
+  }
+
+  .Table {
+    padding: 20px;
+     text-align: center;
+     border-style: solid;
+     border-color:black;
+     background-color:#525252;
+     color : white;
+     height:  56px;
+     width:804px;
+     border-width: 2px;
+   }
+   
+   .Data {
+     padding: 20px;
+     text-align: center;
+     border-style: solid;
+     border-color:black;
+     background-color:#C4C4C4;
+     border-width: 1px;
+     height: 56px;
+     width:804px;
+   
+   }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  

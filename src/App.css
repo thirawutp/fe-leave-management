@@ -1,45 +1,51 @@
 .App {
-  height: 100vh;
-}
-
-.header {
-  border: 2px solid #AEAEAE;
-}
-
-.sidebar {
-  background-color: #F2F2F2;
-  width: 345px;
-  height: 100%;
-  float: left;
-}
-
-.sidebar-header{
   text-align: center;
-  height: 30%;
 }
 
-.sidebar-list {
-  padding: 0px;
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
 }
 
-.sidebar-item {
-  background-color: #AEAEAE;
-  color: black;
-  font-size: 36px;
-  height: 76px;
-  text-align: center;
-  margin: 10px 0px ;
-  padding: 0px;
-  border: 2px solid #AEAEAE;
-  transition-duration: 0.4s;
-  position: relative;
-  list-style: none;
-}
-
-.sidebar-item:hover{
-  background-color: #3D3D3D;
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
   color: white;
-  font-size: 40px;
-  border: 2px solid #404040;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24);
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Table {
+  padding: 20px;
+   text-align: center;
+   border-style: solid;
+   border-color: black;
+   ;
+   height:  50px;
+   width:800px;
+   border-width: 0.5px;
+ }
+
+ .Data {
+  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-color: black;
+ 
+  border-width: 1px;
+  height: 400px;
+  width:800px;
+
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
