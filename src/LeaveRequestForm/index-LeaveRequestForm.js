@@ -7,8 +7,8 @@ import TimeSelectStart from './TimeSelect.js';
 import DateComponent from './DateComponent.js';
 import TimeSelect from './SelectTimeOneDay.js';
 import TimeSelectEnd from './TimeSelectEnd.js';
-import Header from './Header.j';
-import Sidebar from './Sidebar.js';
+import Header from './components/Main/Header.js'
+import Sidebar from './components/Main/Sidebar.js'
 class LeaveRequestForm extends Component {
 
     constructor(props) {
