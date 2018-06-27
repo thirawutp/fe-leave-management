@@ -27,7 +27,7 @@ const people = [{
 
 }]
 
-class Search extends Component {
+class SearchLeaveStatisticsDetails extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -126,7 +126,7 @@ class Search extends Component {
 
 
 
-export default Search
+export default SearchLeaveStatisticsDetails
 // this.handleFilterItem(term)
 
 

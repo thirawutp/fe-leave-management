@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
-class Csreact extends Component {
+class SearchLeaveStatisticsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -110,13 +110,22 @@ class Csreact extends Component {
 
     return (
       <div className = "root">
-        <div>
+        
+        <div className = "row">
+      <div className = "col-md-1"></div>
+      <div className  = "col-md-11">
+      <div className = "gun">
           <h2><b>Leave Statistics</b></h2>
+          </div>
+         
+          
+          
 
           <div className = "row">
          
           
-          <p><b>Position : </b></p><select onChange={this.handleSetValue} >
+         <div className = "tk"><p><b>Position : </b></p>
+         <select onChange={this.handleSetValue} >
 
             <option value="All">All</option>
             <option value="Frontend">Frontend</option>
@@ -125,9 +134,9 @@ class Csreact extends Component {
             <option value="Graphic">Graphic</option>
             <option value="QA">QA</option>
           </select>
-          
           </div>
-        </div>
+         </div>
+        
 
         <div className="Table">
           <div className="row">
@@ -189,9 +198,11 @@ class Csreact extends Component {
         }
 
       </div>
+      </div>
+      </div>
 
     );
   }
 }
 
-export default Csreact;
+export default SearchLeaveStatisticsList;

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Header, Sidebar } from './components/Main/'
 
-import Search from './search.js';
+import LeaveRequestReport from './components/Main/LeaveRequestReport.js';
 
-class Set_approve_2 extends Component {
+class ApproveDetails extends Component {
   render() {
     return (
 
@@ -21,7 +21,7 @@ class Set_approve_2 extends Component {
           </div>
           <div>
 
-            <Search />
+            <LeaveRequestReport/>
           </div>
         </div>
 
@@ -33,4 +33,4 @@ class Set_approve_2 extends Component {
   }
 }
 
-export default Set_approve_2;
+export default ApproveDetails;

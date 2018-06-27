@@ -4,7 +4,7 @@ import './App.css';
 
 
 
-class Table_t extends Component {
+class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -127,6 +127,6 @@ class Table_t extends Component {
   }
 }
 
-export default Table_t;
+export default TableSearchLeaveStatisticsDetails;
 
 
