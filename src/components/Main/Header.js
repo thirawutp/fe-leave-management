@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import './App.css';
-import appmanheader from './images/appmanheader.png';
+// import appmanheader from './images/appmanheader.png';
+import appmanheader from '../../asset/images/appmanheader.png';
 
 
 class Header extends Component {
   render() {
     return (
-        
-         <div className='header'>
-            <div className='logonew'>
-                <img src={appmanheader} width="139" height ="25" />
-            </div>
-          </div>
-       
 
-     
+      <div className='header'>
+        <div className='logonew'>
+          <img src={appmanheader} width="139" height="25" />
+        </div>
+      </div>
+
+
+
 
 
     );
