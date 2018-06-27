@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
+import SearchLeaveStatisticsList from './components/Main/SearchLeaveStatisticsList.js';
 
-import Search from './search.js';
 import { Header, Sidebar } from './components/Main/'
 
-
-
-class Set_approve_1 extends Component {
+class LeaveStatisticsList extends Component {
   render() {
     return (
 
@@ -19,14 +17,11 @@ class Set_approve_1 extends Component {
           </div>
 
           <div className='content'>
-            <div className='tableheader'>
-             
-            </div>
-            <div>
            
-           <Search/>
-           </div>
+            
           </div>
+
+          <div><SearchLeaveStatisticsList/></div>
           
         </div>
      
@@ -36,4 +31,4 @@ class Set_approve_1 extends Component {
   }
 }
 
-export default Set_approve_1;
+export default LeaveStatisticsList;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import pic from './searchh.png';
+import pic from './asset/images/searchh.png';
+
 
 import './App.css';
 const people = [{
@@ -8,7 +9,7 @@ const people = [{
     staffID : "001",
     Leave: "Sick Leave",
   start: "18/06/2018",
-  end: "05/07/2018"
+  end: "05/07/2018-05/07/2018"
    },
 {
     status: "reject",
@@ -43,7 +44,7 @@ const people = [{
   end: "05/07/2018"
    }
 ]
-class AppSearch extends Component {
+class SearchApproveList extends Component {
  
     constructor(props){
         super(props);
@@ -64,12 +65,19 @@ class AppSearch extends Component {
     
     return (
       <div>
+          <div className = "row">
+          <div className = "col-md-2"></div>
+          <div className = "col-md-11"><div>
        <div>
-           <h2><b>Approve or Reject Leave Form</b></h2>
+           <div className = "gun">
+           <h3><b>Approve or Reject Leave Form</b></h3>
+           </div>
+           <div className = "tk">
        <form>
           <input type = "text" onChange = {this.searchHandle} value = {term}/><img src={pic}/>
           
         </form>
+        </div>
         </div>
 
           <div className = "Table">
@@ -78,19 +86,19 @@ class AppSearch extends Component {
                         <th>Status</th>
                     </div>
                     <div className = "col-md-2">
-                        <th>เลขที่ใบลา</th>
+                        <th>Leave ID</th>
                     </div>    
                     <div className = "col-md-2">
-                        <th>StaffID</th>
+                        <th>Staff ID</th>
+                    </div> 
+                    <div className = "col-md-2">
+                        <th>Leave Type</th>
+                    </div> 
+                    <div className = "col-md-2">
+                        <th>วันที่ส่งคำขอ</th>
                     </div> 
                     <div className = "col-md-3">
-                        <th>ประเภทการลา</th>
-                    </div> 
-                    <div className = "col-md-2">
-                        <th>วันที่ร้องขอ</th>
-                    </div> 
-                    <div className = "col-md-2">
-                        <th>วันที่เริ่มลา</th>
+                        <th>วันที่ลา</th>
                     </div> 
                    </div> 
         </div>  
@@ -117,13 +125,13 @@ class AppSearch extends Component {
           <div className = "col-md-2">
               <td>{people.staffID}</td>
           </div> 
-          <div className = "col-md-3">
+          <div className = "col-md-2">
               <td>{people.Leave}</td>
           </div> 
           <div className = "col-md-2">
               <td>{people.start}</td>
           </div> 
-          <div className = "col-md-2">
+          <div className = "col-md-3">
               <td>{people.end}</td>
           </div> 
           
@@ -132,10 +140,12 @@ class AppSearch extends Component {
           )
         }
             
-    </div>
+    </div></div>
+          </div>
+      </div>
       
     );
   }
 }
 
-export default AppSearch;
+export default SearchApproveList;

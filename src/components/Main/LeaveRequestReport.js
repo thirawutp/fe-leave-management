@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Search extends Component {
+class LeaveRequestReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -147,4 +147,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default LeaveRequestReport;
