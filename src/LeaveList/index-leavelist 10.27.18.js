@@ -3,9 +3,14 @@ import './App.css';
 import sun from './images/sun.png';
 import human from './images/human.png';
 import pig from './images/pig.png';
+import Header from './components/Main/Header.js'
+import Sidebar from './components/Main/Sidebar.js'
 class LeaveList extends Component {
   render() {
     return (
+
+      <div><Header /></div>
+      <div><Sidebar /></div>
 
       <div className="container-fluid">
         <div className="App">
