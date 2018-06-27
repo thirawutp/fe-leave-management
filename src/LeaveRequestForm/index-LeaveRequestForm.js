@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Calendar2 from './Calendar2.js';
 import StartDate from './StartDate';
 import EndDate from './EndDate';
@@ -7,8 +6,6 @@ import TimeSelectStart from './TimeSelect.js';
 import DateComponent from './DateComponent.js';
 import TimeSelect from './SelectTimeOneDay.js';
 import TimeSelectEnd from './TimeSelectEnd.js';
-import Header from './components/Main/Header.js'
-import Sidebar from './components/Main/Sidebar.js'
 class LeaveRequestForm extends Component {
 
     constructor(props) {
@@ -82,12 +79,6 @@ class LeaveRequestForm extends Component {
     render() {
         console.log('state', this.state)
         return (
-            <div>
-                <Header />
-            </div>
-            <div>
-                <Sidebar />
-            </div>
             <form className="leave-form" onSubmit={this.handleSubmit}>
                 <div className="leave-form">
                     <div className='header'>
