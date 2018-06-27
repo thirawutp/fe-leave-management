@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 
-import Searchh from './searchh.png';
+import pic from './asset/images/searchh.png';
 
 const people = [{
   No: '1',
@@ -54,7 +54,7 @@ class Search extends Component {
       
         <div className =  "tk">
         <form>
-          <input type = "text" onChange = {this.searchHandle} value = {term}/><img src={Searchh}/>
+          <input type = "text" onChange = {this.searchHandle} value = {term}/><img src={pic}/>
           
         </form>
         </div>

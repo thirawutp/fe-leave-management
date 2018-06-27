@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sidebar from './sidebar.js';
-import Header from './header.js';
-
+import Table_t from './table_t';
 import Search from './search.js';
+import { Header, Sidebar } from './components/Main/'
 
 
 
-class Set_approve_2 extends Component {
+class LeaveStatisticsDetails extends Component {
   render() {
     return (
 
@@ -24,7 +23,7 @@ class Set_approve_2 extends Component {
              
             </div>
             <div>
-           
+           <Table_t/>
            <Search/>
            </div>
           </div>
@@ -37,4 +36,4 @@ class Set_approve_2 extends Component {
   }
 }
 
-export default Set_approve_2;
+export default LeaveStatisticsDetails;

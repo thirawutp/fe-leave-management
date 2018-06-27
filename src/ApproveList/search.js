@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import pic from './searchh.png';
+import pic from './asset/images/searchh.png';
+
 
 import './App.css';
 const people = [{

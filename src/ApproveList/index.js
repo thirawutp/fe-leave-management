@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import Sidebar from './sidebar.js';
-import Header from './header.js';
-import Table_t from './table_t';
+
 import Search from './search.js';
+import { Header, Sidebar } from './components/Main/'
 
 
 
-class App extends Component {
+class Set_approve_1 extends Component {
   render() {
     return (
 
@@ -24,7 +23,7 @@ class App extends Component {
              
             </div>
             <div>
-           <Table_t/>
+           
            <Search/>
            </div>
           </div>
@@ -37,4 +36,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Set_approve_1;
