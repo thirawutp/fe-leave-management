@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import '../../App.css';
 class SearchLeaveStatisticsList extends Component {
   constructor(props) {
     super(props);
@@ -109,96 +109,96 @@ class SearchLeaveStatisticsList extends Component {
     ]
 
     return (
-      <div className = "root">
-        
-        <div className = "row">
-      <div className = "col-md-1"></div>
-      <div className  = "col-md-11">
-      <div className = "gun">
-          <h2><b>Leave Statistics</b></h2>
-          </div>
-         
-          
-          
+      <div className="root">
 
-          <div className = "row">
-         
-          
-         <div className = "tk"><p><b>Position : </b></p>
-         <select onChange={this.handleSetValue} >
-
-            <option value="All">All</option>
-            <option value="Frontend">Frontend</option>
-            <option value="Backend">Backend</option>
-            <option value="BA">BA</option>
-            <option value="Graphic">Graphic</option>
-            <option value="QA">QA</option>
-          </select>
-          </div>
-         </div>
-        
-
-        <div className="Table">
-          <div className="row">
-            <div className="col-md-2">
-              <th>StaffID</th>
+        <div className="row">
+          <div className="col-md-1"></div>
+          <div className="col-md-11">
+            <div className="gun">
+              <h2><b>Leave Statistics</b></h2>
             </div>
-            <div className="col-md-2">
-              <th>Name</th>
-            </div>
-            <div className="col-md-2">
-              <th>Position</th>
-            </div>
-            <div className="col-md-2">
-              <th>Pending</th>
-            </div>
-            <div className="col-md-2">
-              <th>Approve</th>
-            </div>
-            <div className="col-md-2">
-              <th>Reject</th>
-            </div>
-          </div>
-        </div>
-        {
-
-          people.filter((people) => {
-            if (this.state.Save === 'All') {
-              return true
-            }
-            return people.position === this.state.Save
-          }).map((people, index) =>
-
-            <div className={`Data ${index % 2 === 0 ? 'Dataeven' : 'Dataodd'}`}>
-              <div className="row">
-                <div className="col-md-2">
-                  <td>{people.ID}</td>
-                </div>
-                <div className="col-md-2">
-                  <td>{people.name}</td>
-                </div>
-                <div className="col-md-2">
-                  <td>{people.position}</td>
-                </div>
-
-                <div className="col-md-2">
-                  <td>{people.pending}</td>
-                </div>
-                <div className="col-md-2">
-                  <td>{people.approve}</td>
-                </div>
-                <div className="col-md-2">
-                  <td>{people.reject}</td>
-                </div>
 
 
+
+
+            <div className="row">
+
+
+              <div className="tk"><p><b>Position : </b></p>
+                <select onChange={this.handleSetValue} >
+
+                  <option value="All">All</option>
+                  <option value="Frontend">Frontend</option>
+                  <option value="Backend">Backend</option>
+                  <option value="BA">BA</option>
+                  <option value="Graphic">Graphic</option>
+                  <option value="QA">QA</option>
+                </select>
               </div>
             </div>
-          )
-        }
 
-      </div>
-      </div>
+
+            <div className="Table">
+              <div className="row">
+                <div className="col-md-2">
+                  <th>StaffID</th>
+                </div>
+                <div className="col-md-2">
+                  <th>Name</th>
+                </div>
+                <div className="col-md-2">
+                  <th>Position</th>
+                </div>
+                <div className="col-md-2">
+                  <th>Pending</th>
+                </div>
+                <div className="col-md-2">
+                  <th>Approve</th>
+                </div>
+                <div className="col-md-2">
+                  <th>Reject</th>
+                </div>
+              </div>
+            </div>
+            {
+
+              people.filter((people) => {
+                if (this.state.Save === 'All') {
+                  return true
+                }
+                return people.position === this.state.Save
+              }).map((people, index) =>
+
+                <div className={`Data ${index % 2 === 0 ? 'Dataeven' : 'Dataodd'}`}>
+                  <div className="row">
+                    <div className="col-md-2">
+                      <td>{people.ID}</td>
+                    </div>
+                    <div className="col-md-2">
+                      <td>{people.name}</td>
+                    </div>
+                    <div className="col-md-2">
+                      <td>{people.position}</td>
+                    </div>
+
+                    <div className="col-md-2">
+                      <td>{people.pending}</td>
+                    </div>
+                    <div className="col-md-2">
+                      <td>{people.approve}</td>
+                    </div>
+                    <div className="col-md-2">
+                      <td>{people.reject}</td>
+                    </div>
+
+
+                  </div>
+                </div>
+              )
+            }
+
+          </div>
+        </div>
       </div>
 
     );

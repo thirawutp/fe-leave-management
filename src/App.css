@@ -91,7 +91,7 @@
   padding-top: 47px;
   padding-left: 68px;
   padding-right: 68px;
-  border-radius: 50%
+  border-radius: 50%;
 }
 
 .Name {
@@ -148,14 +148,18 @@
 
 .tableheader {
   font-size: 24px;
-  margin-left: 304px;
   margin-top: 40px;
+  text-align: center;
+  
 }
 
 .leave-form {
   margin-left: 46px;
   max-height: 718px;
-    max-width: 783px;
+  max-width: 820px;
+  margin: auto;
+  margin-top: 53px;
+  margin-left: 145px;
 }
 
 .show-header{
@@ -165,6 +169,7 @@
  max-height: 25px;
  text-align: left;
  padding-top: 11px;
+ font-weight: bold;
 }
 .show-DayRequested{
   font-family: Tahoma;
@@ -335,7 +340,7 @@
 }
 
 .cover-button {
-    text-align: center;
+  text-align: center;
 }
 
 .date {
@@ -347,7 +352,7 @@
   font-size: 24px;
   font-family: Tahoma;
 }
-.header {
+.header1 {
   display: inline-flex;
 }
 
@@ -418,10 +423,9 @@ font-size : 16px;
   border-style: solid;
   border-width: 1px;
   width: 800px;
-height: 33px;
-font-size : 16px;
+  height: 33px;
+  font-size : 16px;
   
-
 }
 
 .Dataodds{
@@ -461,9 +465,9 @@ font-size : 16px;
 }
 
 .gun {
-margin-top : 50px;
-margin-bottom: 20px;
-margin-left: 20px;
+  margin-top : 50px;
+  margin-bottom: 20px;
+  margin-left: 20px;
 
 }
 
