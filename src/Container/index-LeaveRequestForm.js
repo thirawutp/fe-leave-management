@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Calendar2 from './Calendar2.js';
-import StartDate from './StartDate';
-import EndDate from './EndDate';
-import TimeSelectStart from './TimeSelect.js';
-import DateComponent from './DateComponent.js';
-import TimeSelect from './SelectTimeOneDay.js';
-import TimeSelectEnd from './TimeSelectEnd.js';
+import Calendar2 from '../components/Main/Calendar2';
+import StartDate from '../components/Main/StartDate';
+import EndDate from '../components/Main/EndDate';
+import TimeSelectStart from '../components/Main/TimeSelect';
+import DateComponent from '../components/Main/DateComponent';
+import TimeSelect from '../components/Main/SelectTimeOneDay.js';
+import TimeSelectEnd from '../components/MainTimeSelectEnd.js';
+import '../App.css';
 class LeaveRequestForm extends Component {
 
     constructor(props) {
