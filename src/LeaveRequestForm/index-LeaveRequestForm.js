@@ -7,7 +7,9 @@ import TimeSelectStart from './TimeSelect.js';
 import DateComponent from './DateComponent.js';
 import TimeSelect from './SelectTimeOneDay.js';
 import TimeSelectEnd from './TimeSelectEnd.js';
-class App extends Component {
+import Header from './Header.j';
+import Sidebar from './Sidebar.js';
+class LeaveRequestForm extends Component {
 
     constructor(props) {
         super(props);
@@ -80,6 +82,12 @@ class App extends Component {
     render() {
         console.log('state', this.state)
         return (
+            <div>
+                <Header />
+            </div>
+            <div>
+                <Sidebar />
+            </div>
             <form className="leave-form" onSubmit={this.handleSubmit}>
                 <div className="leave-form">
                     <div className='header'>
@@ -235,4 +243,4 @@ class App extends Component {
         );
     }
 }
-export default App;
+export default LeaveRequestForm;
