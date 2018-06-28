@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import TableSearchLeaveStatisticsDetails from './TableSearchLeaveStatisticsDetails.js';
-import SearchLeaveStatisticsDetails from './SearchLeaveStatisticsDetails.js';
+import TableSearchLeaveStatisticsDetails from './components/Main/TableSearchLeaveStatisticsDetails.js';
+import SearchLeaveStatisticsDetails from './components/Main/SearchLeaveStatisticsDetails.js';
 import { Header, Sidebar } from './components/Main/'
 
 
