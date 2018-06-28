@@ -7,233 +7,234 @@ import DateComponent from '../components/Main/DateComponent';
 import TimeSelect from '../components/Main/SelectTimeOneDay.js';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import '../App.css';
+const FormHeader = props => {
+  return (
+    <React.Fragment>
+      <div className='header1'>
+        <div className='date-header'>
+          Date :
+          </div>
+        <div className="current-date">
+          <DateComponent />
+        </div>
+      </div>
+      <div className="show-header">
+        Leave Request Form
+      </div>
+    </React.Fragment>
+  )
+}
+
+const IsOneDayQuestion = props => {
+  const { onChange, value } = props
+  return (
+    <div className="show-check-form">
+      <div className="show-DayRequested">
+        Day Requested :
+      </div>
+      <div className="checkform">
+        <input type="radio" onChange={() => onChange(true)} checked={value} />
+        <label className="form-check-label">
+          One day
+            </label>
+        <input className="form-check-input" type="radio" onChange={() => onChange(false)} checked={value === false} />
+        <label className="form-check-label">
+          More than one day
+        </label>
+      </div>
+    </div>
+  )
+}
+
+const OnedayForm = props => {
+  const { onChange, value } = props
+  return (
+    <div className="row-select-onedate">
+      <div className="text-Date">
+        Date :
+    </div>
+      <div className="select-onedate">
+        <React.Fragment>
+          <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} />
+          <div className="timeselect-oneday">
+            <div className="text-time">
+              Time :
+          </div>
+            <TimeSelect />
+            <div className="text-time">
+              Time :
+          </div>
+            <div className="dropdown-oneday">
+              <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value)}>
+                <option value={2}>2 hour</option>
+                <option value={4} >4 hour</option>
+                <option value={6} >6 hour</option>
+                <option value={8}>8 hour</option>
+              </select>
+
+            </div>
+          </div>
+        </React.Fragment>
+      </div>
+    </div>
+  )
+}
+
+const ManyDayForm = props => {
+  return (
+    <div className="row-moreday">
+      <div className="start-date">
+        <div className="text-Date">
+          Date Start :
+          </div>
+        <div className="select-startdate">
+          <StartDate />
+        </div>
+        <div className="text-time2">
+          Time :
+            </div>
+        <div className="selecttime">
+          <TimeSelectStart />
+        </div>
+        <div className="text-time2">
+          Time :
+            </div>
+
+        <div className="dropdown-custom">
+          <select className="option-time" onChange={this.StartHourhandler}>
+            <option value={2}>2 hour</option>
+            <option value={4}>4 hour</option>
+            <option value={6}>6 hour</option>
+            <option value={8}>8 hour</option>
+          </select>
+
+        </div>
+      </div>
+
+      <div className="row-moreday-end">
+        < div className="text-Date">
+          Date End :
+            </div>
+        <p className="space"> </p>
+        <div className="select-startdate">
+          <EndDate />
+        </div>
+        <div className="text-time2">
+          Time :
+            </div>
+        <div className="selecttime">
+          <TimeSelectEnd />
+        </div>
+        <div className="text-time2">
+          Time :
+            </div>
+
+        <div className="dropdown-custom">
+          <select className="option-time" onChange={this.EndHourhandler}>
+            <option value={2}>2 hour</option>
+            <option value={4}>4 hour</option>
+            <option value={6}>6 hour</option>
+            <option value={8}>8 hour</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const NoteQuestion = props => {
+  return (
+    <div className="row-comment">
+      <div className="text-note">
+        Note/comments :
+   </div>
+      <div className="text-area">
+        <textarea className="textarea" maxLength="255" type="text" value={''} onChange={f => f} />
+      </div>
+    </div>
+  )
+}
+
+const FileForm = props => {
+  return (
+    <div className="row-file">
+      <div className="text-file">
+        File :
+          </div>
+      <div className="input-file">
+        <input type="file" name="pic" onChange={this.handlefile} />
+      </div>
+    </div>
+  )
+}
+
+const ControlBar = props => {
+  return <div className="cover-button">
+    <div className="row-button">
+      <div className="submit-button">
+        <input className="custom-button" type="submit" value="submit" />
+      </div>
+      <div className="cancel-button">
+        <button className="custom-button">cancel</button>
+      </div>
+    </div>
+  </div>
+}
+
+
 class LeaveRequestForm extends Component {
 
-    constructor(props) {
-        console.log(props)
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            check: false,
-            check2: false,
-            picture: null,
-            comment: '',
-            StartHour: 0,
-            EndHour: 0,
-            OnlyOnedayHour: 0,
-            file: null,
-        };
-    }
-    handleText = (event) => {
-        this.setState({
-            text: event.target.value
-        })
-    }
-
-    handleChangeShow = (event) => {
-        this.setState({ check2: false })
-        if (this.state.check == false) {
-            this.setState({ check: true })
-        } else {
-            this.vsetState({ check: false })
-        }
-    }
-
-    handleChangeShow2 = (event) => {
-        this.setState({ check: false })
-        if (this.state.check2 == false) {
-            this.setState({ check2: true })
-        } else {
-            this.vsetState({ check2: false })
-        }
-    }
-
-    StartHourhandler = (event) => {
-        this.setState({ StartHour: event.target.value });
-    }
-
-    EndHourhandler = (event) => {
-        this.setState({ EndHour: event.target.value });
-    }
-
-    OnlyOnedayHourhandler = (event) => {
-        this.setState({ OnlyOnedayHour: event.target.value })
-    }
-
-    commenthandler = (event) => {
-        this.setState({ comment: event.target.value })
-    }
-
-    handleSubmit = () => {
-        window.confirm(
-            "คุณแน่ใจที่จะส่งใบลา ?"
-        )
-    }
-
-    handlefile = (event) => {
-        console.log(this.state.file)
-        this.setState({ file: event.target.files[0] })
-    }
+    this.state = {
+      type: undefined, // get form props :type
+      isOneday: undefined,
+      leaveDate: undefined,
+      leaveTime: undefined,
+      leaveAmount: 0,
+      note: '',
+      file: {},
+    };
+  }
 
 
+  handleOneDayQuestion = (isOneday) => {
+    this.setState({ isOneday })
+  }
+
+  handleChangeOnedayForm = (id, value) => {
+    this.setState({ [id]: value })
+  }
 
 
-    render() {
-        console.log('state', this.state)
-        return (
-            <form className="leave-form" onSubmit={this.handleSubmit}>
-                <div className="leave-form">
-                    <div className='header1'>
-                        <div className='date-header'>
-                            Date :
-          </div>
-                        <div className="current-date">
-                            <DateComponent />
-                        </div>
-                    </div>
-                    <div className="show-header">
-                        Leave Request Form
+  handleSubmit = () => {
+    console.log({
+
+    })
+  }
+
+  render() {
+    return (
+      <form className="leave-form" onSubmit={this.handleSubmit}>
+        <div className="leave-form">
+          <FormHeader />
+          <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
+          {this.state.isOneday && <OnedayForm
+            value={{
+              leaveDate: undefined,
+              leaveTime: undefined,
+              leaveAmount: 0,
+            }}
+            onChange={this.handleChangeOnedayForm}
+          />}
+          {this.state.isOneday === false && <ManyDayForm />}
+          <NoteQuestion />
+          <FileForm />
+          <ControlBar />
         </div>
-                    <div className="show-check-form">
-                        <div className="show-DayRequested">
-                            Day Requested :
-          </div>
-                        <div className="checkform">
-                            <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onChange={this.handleChangeShow} />
-                            <label className="form-check-label" for="exampleRadios1">
-                                One day
-            </label>
-                            <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" onChange={this.handleChangeShow2} />
-                            <label className="form-check-label" for="exampleRadios2">
-                                More than one day
-            </label>
-                        </div>
-                    </div>
-
-                    <div className="row-select-onedate">
-                        {this.state.check && <div className="text-Date">
-                            Date :
-          </div>}
-                        <div className="select-onedate">
-                            {this.state.check &&
-                                <React.Fragment>
-                                    <Calendar2 />
-                                    <div className="timeselect-oneday">
-                                        <div className="text-time">
-                                            Time :
-                  </div>
-                                        <TimeSelect />
-                                        <div className="text-time">
-                                            Time :
-                  </div>
-                                        <div className="dropdown-oneday">
-                                            <select className="option-time" onChange={this.OnlyOnedayHourhandler}>
-                                                <option value={2}>2 hour</option>
-                                                <option value={4} >4 hour</option>
-                                                <option value={6} >6 hour</option>
-                                                <option value={8}>8 hour</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                </React.Fragment>
-                            }
-                        </div>
-                    </div>
-
-                    {this.state.check2 && <div className="row-moreday">
-                        <div className="start-date">
-                            <div className="text-Date">
-                                Date Start :
-          </div>
-                            <div className="select-startdate">
-                                <StartDate />
-                            </div>
-                            <div className="text-time2">
-                                Time :
-            </div>
-                            <div className="selecttime">
-                                <TimeSelectStart />
-                            </div>
-                            <div className="text-time2">
-                                Time :
-            </div>
-
-                            <div className="dropdown-custom">
-                                <select className="option-time" onChange={this.StartHourhandler}>
-                                    <option value={2}>2 hour</option>
-                                    <option value={4}>4 hour</option>
-                                    <option value={6}>6 hour</option>
-                                    <option value={8}>8 hour</option>
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div className="row-moreday-end">
-                            < div className="text-Date">
-                                Date End :
-            </div>
-                            <p className="space"> </p>
-                            <div className="select-startdate">
-                                <EndDate />
-                            </div>
-                            <div className="text-time2">
-                                Time :
-            </div>
-                            <div className="selecttime">
-                                <TimeSelectEnd />
-                            </div>
-                            <div className="text-time2">
-                                Time :
-            </div>
-
-                            <div className="dropdown-custom">
-                                <select className="option-time" onChange={this.EndHourhandler}>
-                                    <option value={2}>2 hour</option>
-                                    <option value={4}>4 hour</option>
-                                    <option value={6}>6 hour</option>
-                                    <option value={8}>8 hour</option>
-                                </select>
-
-                            </div>
-                        </div>
-
-
-
-
-                    </div>}
-
-                    <div className="row-comment">
-                        <div className="text-note">
-                            Note/comments :
-           </div>
-                        <div className="text-area">
-                            <textarea className="textarea" maxLength="255" type="text" value={this.state.comment} onChange={this.commenthandler} />
-                        </div>
-                    </div>
-
-                    <div className="row-file">
-                        <div className="text-file">
-                            File :
-          </div>
-                        <div className="input-file">
-                            <input type="file" name="pic" onChange={this.handlefile} />
-                        </div>
-                    </div>
-                    <div className="cover-button">
-                        <div className="row-button">
-                            <div className="submit-button">
-                                <input className="custom-button" type="submit" value="submit" />
-                            </div>
-                            <div className="cancel-button">
-                                <button className="custom-button">cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        );
-    }
+      </form>
+    );
+  }
 }
 export default LeaveRequestForm;

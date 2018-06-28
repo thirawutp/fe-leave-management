@@ -4,31 +4,15 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class Calendar2 extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            DatePick: moment()
-        };
-    }
-    handleChange = (date) => {
-        console.log(date)
-        this.setState({
-            DatePick: date
-        });
-    }
-    render() {
-        return (
-            <div>
-                <DatePicker
-                    selected={this.state.DatePick}
-                    onChange={this.handleChange}
-
-                />
-            </div>
-
-        );
-    }
+  render() {
+    const { value = moment(), onChange = f => f, id } = this.props
+    return (
+      <DatePicker
+        selected={value}
+        onChange={(value) => onChange(id, value)}
+      />
+    );
+  }
 }
 
 export default Calendar2;
