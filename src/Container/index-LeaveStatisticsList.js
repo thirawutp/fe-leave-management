@@ -8,23 +8,24 @@ class LeaveStatisticsList extends Component {
   render() {
     return (
 
-        <div className="App">
-         <div>
-            <Header/>
-          </div>
-          <div className='sidebar'>
-            <Sidebar/>
-          </div>
-
-          <div className='content'>
-           
-            
-          </div>
-
-          <div><SearchLeaveStatisticsList/></div>
-          
+      <div className="App">
+        <div>
+          <Header />
         </div>
-     
+        <div className='sidebar'>
+          <Sidebar />
+        </div>
+
+        <div className='content'>
+
+
+        </div>
+        <div><h3>Select Staff ID</h3></div>
+
+        <div><SearchLeaveStatisticsList /></div>
+
+      </div>
+
 
 
     );
