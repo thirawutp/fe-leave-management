@@ -209,7 +209,7 @@ class LeaveRequestForm extends Component {
                             Note/comments :
            </div>
                         <div className="text-area">
-                            <textarea className="textarea" type="text" value={this.state.comment} onChange={this.commenthandler} />
+                            <textarea className="textarea" maxLength="255" type="text" value={this.state.comment} onChange={this.commenthandler} />
                         </div>
                     </div>
 
