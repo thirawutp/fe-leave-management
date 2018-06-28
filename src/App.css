@@ -1002,7 +1002,7 @@ font-size : 16px;
 }
 
 .tk {
-  margin-left : 580px;
+  margin-left : 800px;
   margin-top : 20px;
 }
 
@@ -1038,3 +1038,88 @@ margin-left: 20px;
   margin-right: 48px;
    
 }
+
+
+
+.SApprove{
+  color : #27AE60;
+}
+
+.SPending{
+  color : #F2C94C;
+}
+
+.SReject{
+  color : red;
+}
+
+.STable {
+  
+  
+  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-color:#525252;
+  background-color: #525252;
+  width: 1000px;
+  height: 33px;
+  border-width: 2px;
+  color : white;
+  margin-top: 20px;
+  text-align: center;
+  
+  
+}
+
+.SData {
+  padding: 20px;
+  text-align: center;
+  border-color : #f2f2f2;
+  border-style: solid;
+  border-width: 1px;
+  width: 1000px;
+height: 80px;
+font-size : 16px;
+}
+.br{
+  margin-left: 750px;
+  margin-top: 50px;
+ 
+}
+
+.PTable {
+  
+  
+  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-color:#525252;
+  background-color: #525252;
+  width: 1000px;
+  height: 33px;
+  border-width: 2px;
+  color : white;
+  margin-top: 20px;
+  font-size : 16px;
+  margin-left: 30px;
+  
+}
+
+.PData {
+  padding: 20px;
+  text-align: center;
+  border-color : #f2f2f2;
+  border-style: solid;
+  border-width: 1px;
+  width: 1000px;
+height: 80px;
+font-size : 16px;
+margin-left: 30px;
+}
+
+.uu{
+  
+}
+
+
+
