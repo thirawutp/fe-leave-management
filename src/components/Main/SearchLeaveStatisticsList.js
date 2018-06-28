@@ -66,7 +66,7 @@ class SearchLeaveStatisticsList extends Component {
           <div className="col-md-1"></div>
           <div className="col-md-11">
             <div className="gun">
-              <h2><b>Select Staff ID</b></h2>
+
             </div>
 
 
