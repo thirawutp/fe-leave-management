@@ -5,11 +5,12 @@ import EndDate from '../components/Main/EndDate';
 import TimeSelectStart from '../components/Main/TimeSelect';
 import DateComponent from '../components/Main/DateComponent';
 import TimeSelect from '../components/Main/SelectTimeOneDay.js';
-import TimeSelectEnd from '../components/MainTimeSelectEnd.js';
+import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import '../App.css';
 class LeaveRequestForm extends Component {
 
     constructor(props) {
+        console.log(props)
         super(props);
 
         this.state = {
@@ -82,7 +83,7 @@ class LeaveRequestForm extends Component {
         return (
             <form className="leave-form" onSubmit={this.handleSubmit}>
                 <div className="leave-form">
-                    <div className='header'>
+                    <div className='header1'>
                         <div className='date-header'>
                             Date :
           </div>
@@ -104,7 +105,7 @@ class LeaveRequestForm extends Component {
             </label>
                             <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" onChange={this.handleChangeShow2} />
                             <label className="form-check-label" for="exampleRadios2">
-                                More than one they
+                                More than one day
             </label>
                         </div>
                     </div>

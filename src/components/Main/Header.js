@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import appmanheader from '../../asset/images/appmanheader.png';
+import '../../App.css';
 
 
 class Header extends Component {
