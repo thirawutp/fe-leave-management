@@ -5,9 +5,12 @@ class LeaveRequestReport extends Component {
     super(props);
     this.state = {
       staffID: '12345',
-      emName: 'พุทธชาด ศรีสุวรรณกุล',
-      department: 'frontend',
+      name: 'พุทธชาด',
+      surn: 'ศรีสุวรรณกุล',
+      section: 'BA',
+      position: 'frontend',
       leaveNo: 'leave333',
+      createDateForm: '26/06/2560',
       reason: 'ป่วยเป็นไข้ใจต้องการคนดูแลสักสองสามคนแงงงงงงงงงงงงงงงงงงงงงงงงง',
       dayReq: 'one day',
       date: '15/5/2560',
@@ -15,7 +18,8 @@ class LeaveRequestReport extends Component {
       hours: '4',
       note: 'ไม่ได้เป็นหมอนะจ้ะเป็นห่วงอิ้อิ้อิ้อิ้อิ้แตงกวี๋วี่วีคนดีที่หนึ่ง',
       Doc: '',
-      check: ''
+      check: '',
+      leaveType: 'Sick Leave'
     }
 
 
@@ -37,95 +41,117 @@ class LeaveRequestReport extends Component {
   }
   render() {
     return (
+      <div>
+        <div className="row Dory">
+          <div className="col-md-2"></div>
 
-      <div className="row">
-        <div className="col-md-2"><p></p>
-        </div>
-        <div className="col-md-11">
-          <div className="gun">
-            <h3><b>Aprove or Reject Leave Form </b></h3>
-          </div>
-          <div className="row">
-            <div className="col-md-4">
-              <p>Date :</p>
+          <div className="col-md-8">
+
+            <div className="row">
+              <div className="col-md-2">
+                <h4>Leave Static</h4>
+              </div>
+
             </div>
-            <div className="col-md-7">
-              <p>Staff ID : {this.state.staffID}</p>
+            <div className="row Dory">
+              <div className="col-md-2">
+                <th><b>Name : </b></th>
+              </div>
+              <div className="col-md-2">
+                <td>{this.state.name}</td>
+              </div>
+              <div className="col-md-2">
+                <th><b>Surnname : </b></th>
+              </div>
+              <div className="col-md-2">
+                <td>{this.state.surn}</td>
+              </div>
+
+            </div>
+            <div className="row Dory">
+              <div className="col-md-2">
+                <th><b>Staff ID : </b></th>
+              </div>
+              <div className="col-md-2">
+                <td>{this.state.staffID}</td>
+              </div>
+              <div className="col-md-2">
+                <th><b>Section : </b></th>
+              </div>
+              <div className="col-md-2">
+                <td>{this.state.section}</td>
+              </div>
+              <div className="col-md-2">
+                <th><b>Position : </b></th>
+              </div>
+              <div className="col-md-2">
+                <td>{this.state.position}</td>
+              </div>
+            </div>
+            <div className="shark Dory"></div>
+
+            <div className="row Dory">
+              <div className="col-md-12">
+                <td>สร้างใบลาเมื่อ : {this.state.createDateForm}</td>
+              </div>
+
+
             </div>
 
-          </div>
-          <div >
-            <div className="row">
+            <div className="row Dory">
               <div className="col-md-2">
-                <th>Name : </th>
-              </div>
-              <div className="col-md-4"><p>{this.state.emName}</p></div>
-              <div className="col-md-2">
-                <th>Department : </th>
+                <th><b>Day Requested: </b></th>
               </div>
               <div className="col-md-2">
-                <p>{this.state.department}</p>
+                <td>{this.state.dayReq}</td>
               </div>
+              <div className="col-md-2">
+                <th><b>Leave Type: </b></th>
+              </div>
+              <div className="col-md-2">
+                <td>{this.state.leaveType}</td>
+              </div>
+
             </div>
-          </div>
-          <div>
-            <div className="row">
+            <div className="row Dory">
               <div className="col-md-2">
-                <th>Leave No :</th>
-              </div>
-              <div className="col-md-1">
-                <p>{this.state.leaveNo}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-4">
-                <th>Reason for requested leave :</th>
-              </div>
-              <div className="col-md-8">
-                <p>{this.state.reason}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <th>Day Requested:</th>
-              </div>
-              <div className="col-md-3">
-                <p>{this.state.dayReq}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-1">
-                <th>Date:</th>
+                <th><b>Date: </b></th>
               </div>
               <div className="col-md-2">
-                <p>{this.state.date}</p>
-              </div>
-              <div className="col-md-1">
-                <th>Time:</th>
+                <td>{this.state.date}</td>
               </div>
               <div className="col-md-2">
-                <p>{this.state.time}</p>
-              </div>
-              <div className="col-md-1">
-                <th>Time:</th>
+                <th><b>Time : </b></th>
               </div>
               <div className="col-md-2">
-                <p>{this.state.hours} hours</p>
+                <td>{this.state.time}</td>
               </div>
-            </div>
-            <div className="row">
               <div className="col-md-2">
-                <th>Note/Comment:</th>
+                <th><b>Time : </b></th>
               </div>
-              <div className="col-md-8">
-                <p>{this.state.note}</p>
+              <div className="col-md-2">
+                <td>{this.state.hours} Hrs.</td>
               </div>
+
+
             </div>
-            <div className="row">
-              <div className="col-md-4">
-                <th>Document:</th>
+            <div className="row Dory">
+              <div className="col-md-12">
+                <th><b>Note/comment:{this.state.note} </b></th>
               </div>
+
+
+
             </div>
+            <div className="row Dory">
+              <div className="col-md-12">
+                <th><b>File: </b></th>
+              </div>
+
+
+
+            </div>
+
             <div className="row">
               <div className="col-md-4">
                 <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
@@ -139,10 +165,14 @@ class LeaveRequestReport extends Component {
 
             </div>
 
-          </div>
-        </div>
-      </div>
 
+
+
+          </div>
+          <div className="col-md-2"></div>
+        </div>
+
+      </div>
     );
   }
 }
