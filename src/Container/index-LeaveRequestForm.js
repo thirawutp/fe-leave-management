@@ -60,7 +60,7 @@ const OnedayForm = props => {
             <div className="text-time">
               Time :
           </div>
-            <TimeSelect />
+            <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} />
             <div className="text-time">
               Time :
           </div>
@@ -81,6 +81,7 @@ const OnedayForm = props => {
 }
 
 const ManyDayForm = props => {
+  const { value, onChange } = props
   return (
     <div className="row-moreday">
       <div className="start-date">
@@ -88,20 +89,20 @@ const ManyDayForm = props => {
           Date Start :
           </div>
         <div className="select-startdate">
-          <StartDate />
+          <StartDate onChange={onChange} id='leaveDateStart' />
         </div>
         <div className="text-time2">
           Time :
             </div>
         <div className="selecttime">
-          <TimeSelectStart />
+          <TimeSelectStart onChange={onChange} id='leaveTimeStart' />
         </div>
         <div className="text-time2">
           Time :
             </div>
 
         <div className="dropdown-custom">
-          <select className="option-time" onChange={this.StartHourhandler}>
+          <select className="option-time" onChange={(event) => onChange('leaveAmountStart', event.target.value)}>
             <option value={2}>2 hour</option>
             <option value={4}>4 hour</option>
             <option value={6}>6 hour</option>
@@ -117,20 +118,20 @@ const ManyDayForm = props => {
             </div>
         <p className="space"> </p>
         <div className="select-startdate">
-          <EndDate />
+          <EndDate onChange={onChange} id={'leaveDateStop'} />
         </div>
         <div className="text-time2">
           Time :
             </div>
         <div className="selecttime">
-          <TimeSelectEnd />
+          <TimeSelectEnd onChange={onChange} id={'leaveTimeStop'} />
         </div>
         <div className="text-time2">
           Time :
             </div>
 
         <div className="dropdown-custom">
-          <select className="option-time" onChange={this.EndHourhandler}>
+          <select className="option-time" onChange={(e) => onChange('leaveAmountStop', e.target.value)}>
             <option value={2}>2 hour</option>
             <option value={4}>4 hour</option>
             <option value={6}>6 hour</option>
@@ -143,13 +144,19 @@ const ManyDayForm = props => {
 }
 
 const NoteQuestion = props => {
+  const { onChange, textlimit } = props
   return (
     <div className="row-comment">
-      <div className="text-note">
-        Note/comments :
+      <div className="inline">
+        <div className="text-note">
+          Note/comments :
    </div>
-      <div className="text-area">
-        <textarea className="textarea" maxLength="255" type="text" value={''} onChange={f => f} />
+        <div className="text-area">
+          <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
+        </div>
+      </div>
+      <div className="limit-check">
+        <span>{textlimit}/255</span>
       </div>
     </div>
   )
@@ -193,6 +200,13 @@ class LeaveRequestForm extends Component {
       leaveDate: undefined,
       leaveTime: undefined,
       leaveAmount: 0,
+      leaveDateStart: undefined,
+      leaveDateStop: undefined,
+      leaveTimeStart: undefined,
+      leaveTimeStop: undefined,
+      leaveAmountStart: 0,
+      leaveAmountStop: 0,
+      len: 0,
       note: '',
       file: {},
     };
@@ -204,7 +218,20 @@ class LeaveRequestForm extends Component {
   }
 
   handleChangeOnedayForm = (id, value) => {
+    console.log(this.state)
     this.setState({ [id]: value })
+  }
+
+  handleChangeMoreOneDay = (id, value) => {
+    console.log(this.state)
+    this.setState({ [id]: value })
+  }
+
+  handleChangeComment = (id, value, count) => {
+    console.log(this.state.note)
+    this.setState({ [id]: value })
+    this.setState({ len: count })
+
   }
 
 
@@ -228,8 +255,20 @@ class LeaveRequestForm extends Component {
             }}
             onChange={this.handleChangeOnedayForm}
           />}
-          {this.state.isOneday === false && <ManyDayForm />}
-          <NoteQuestion />
+          {this.state.isOneday === false && <ManyDayForm
+            value={
+              {
+                leaveDateStart: undefined,
+                leaveDateStop: undefined,
+                leaveTimeStart: undefined,
+                leaveTimeStop: undefined,
+                leaveAmountStart: 0,
+                leaveAmountStop: 0,
+              }
+            }
+            onChange={this.handleChangeMoreOneDay}
+          />}
+          <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
           <FileForm />
           <ControlBar />
         </div>
