@@ -18,11 +18,13 @@ class EndDate extends React.Component {
         });
     }
     render() {
+        const { onChange, id } = this.props
+        const value = this.state.EndDate
         return (
             <div>
                 <DatePicker
-                    selected={this.state.EndDate}
-                    onChange={this.handleChange}
+                    selected={value}
+                    onChange={(value) => onChange(id, value)}
 
                 />
             </div>

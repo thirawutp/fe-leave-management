@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TimeField from 'react-simple-timefield';
+import { validateTimeAndCursor } from 'react-simple-timefield/dist';
 
 
 class TimeSelectEnd extends React.Component {
@@ -18,11 +19,12 @@ class TimeSelectEnd extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        const { onChange, id } = this.props
         const { timeEnd } = this.state;
+        const value = ''
 
         return (
-            <TimeField value={timeEnd} onChange={this.onTimeChange}
+            <TimeField value={value} onChange={(value) => onChange(id, value)}
                 input={<input className='custom-input' />}
             />
         );

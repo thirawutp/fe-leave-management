@@ -18,11 +18,13 @@ class TimeSelect extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        const { value = '00:00', onChange = f => f, id } = this.props
         const { time } = this.state;
 
         return (
-            <TimeField value={time} onChange={this.onTimeChange}
+            <TimeField
+                value={time}
+                onChange={(time) => onChange(id, time)}
                 input={<input className='custom-input' />}
             />
         );
