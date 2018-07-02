@@ -229,7 +229,7 @@
   text-align: center;
   margin-left: 80px;
   margin-left: 10px;
-  background-color: #D8D8D8;
+  background-color:white;
     border-radius: 3px;
 }
 .timeselect-oneday {
@@ -277,7 +277,7 @@
 .option-time {
   height: 26px;
   margin-left: 15px;
-  background-color: #D8D8D8;
+  background-color: white;
 }
 .dropdown-custom {
   margin-left: 13px;
@@ -307,7 +307,7 @@
 .textarea {
   width: 480px;
   height: 106px;
-  background-color: #D8D8D8;
+  background-color:white;
 }
 
 .text-area {
@@ -339,7 +339,9 @@
   height: 30px;
   border-radius: 15.5px;
   margin-left: 56px;
-  background-color: #D8D8D8;
+  background-color: red;
+  color: white;
+  font-weight: bold;
 }
 
 .cover-button {

@@ -7,9 +7,9 @@ import LeaveRequestForm from './Container/index-LeaveRequestForm';
 import SearchLeaveStatisticsDetails from './components/Main/SearchLeaveStatisticsDetails';
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
-import alLeaveForm from '../src/Container/al-leaveRequestForm';
-import slLeaveForm from '../src/Container/al-leaveRequestForm';
-import lopLeaveForm from '../src/Container/al-leaveRequestForm';
+import alRequestForm from '../src/Container/al-leaveRequestForm';
+import slRequestForm from '../src/Container/al-leaveRequestForm';
+import lopRequestForm from '../src/Container/al-leaveRequestForm';
 
 import './App.css';
 
