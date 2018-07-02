@@ -153,10 +153,8 @@ const NoteQuestion = props => {
    </div>
         <div className="text-area">
           <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
+          <p className="text-limit">{textlimit}/255</p>
         </div>
-      </div>
-      <div className="limit-check">
-        <span>{textlimit}/255</span>
       </div>
     </div>
   )

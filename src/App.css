@@ -302,6 +302,7 @@
 .row-comment {
   padding-top: 41px;
   width: 100%;
+  max-width: 89%;
 }
 .textarea {
   width: 480px;
@@ -1154,6 +1155,10 @@ margin-left: 30px;
 
 .limit-check{
   width: 79%;
+  text-align: right;
+}
+
+.text-limit {
   text-align: right;
 }
 
