@@ -7,15 +7,15 @@ import LeaveRequestForm from './Container/index-LeaveRequestForm';
 import SearchLeaveStatisticsDetails from './components/Main/SearchLeaveStatisticsDetails';
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
-<<<<<<< HEAD
+
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
-=======
+
 import alLeaveForm from '../src/Container/al-leaveRequestForm';
 import slLeaveForm from '../src/Container/al-leaveRequestForm';
 import lopLeaveForm from '../src/Container/al-leaveRequestForm';
 
->>>>>>> cb242eb825c8a5ab827491bbc269346f93c9855a
+
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
@@ -49,7 +49,6 @@ class App extends Component {
           <Route path='home' component={LeaveList} />
           <Route path='static' component={SearchLeaveStatisticsList} />
           <Route path='approve' component={SearchApproveList} />
-<<<<<<< HEAD
           <Route path='form/:formType' component={LeaveRequestForm} />
           <Route path='form/:formType' component={LeaveRequestForm} />
           <Route path='form/:formType' component={LeaveRequestForm} />
@@ -57,11 +56,11 @@ class App extends Component {
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
           <Route path='aaa' component={SeeApproveDetails} />
-=======
+
           <Route path='form/:formType' component={alRequestForm} />
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
->>>>>>> cb242eb825c8a5ab827491bbc269346f93c9855a
+
 
 
         </Route>
