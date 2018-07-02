@@ -7,6 +7,10 @@ import LeaveRequestForm from './Container/index-LeaveRequestForm';
 import SearchLeaveStatisticsDetails from './components/Main/SearchLeaveStatisticsDetails';
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
+import alLeaveForm from '../src/Container/al-leaveRequestForm';
+import slLeaveForm from '../src/Container/al-leaveRequestForm';
+import lopLeaveForm from '../src/Container/al-leaveRequestForm';
+
 import './App.css';
 
 class MainLayout extends Component {
@@ -38,9 +42,9 @@ class App extends Component {
           <Route path='home' component={LeaveList} />
           <Route path='static' component={SearchLeaveStatisticsList} />
           <Route path='approve' component={SearchApproveList} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
+          <Route path='form/:formType' component={alRequestForm} />
+          <Route path='form/:formType' component={slRequestForm} />
+          <Route path='form/:formType' component={lopRequestForm} />
 
 
         </Route>
