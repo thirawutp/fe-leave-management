@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
 import '../../App.css';
-
+import { Link } from 'react-router'
 class SearchLeaveStatisticsList extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +19,8 @@ class SearchLeaveStatisticsList extends Component {
     const people = [
       {
         staffID: '12345',
-        name: 'พุทธชาด',
-        sure: 'ศรีสุวรรณกุล',
+        name: 'Sirapob',
+        sure: 'Meechoovet',
         position: 'Backend',
         pending: '2',
         approve: '11',
@@ -124,13 +123,13 @@ class SearchLeaveStatisticsList extends Component {
                     <td><p>รูป</p></td>
                   </div>
                   <div className="col-md-3">
-                    <div><td>{people.staffID}</td></div>
+                    <Link to='/staticlist'>  <div><td>{people.staffID}</td></div></Link>
                     <div><td>{people.name} {people.sure}</td></div>
                   </div>
 
 
                   <div className="col-md-2">
-                    <div uu><p>Developer</p></div>
+
                     <div uu><td>{people.position}</td></div>
                   </div>
                   <div className="col-md-2">

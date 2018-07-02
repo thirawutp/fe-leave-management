@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
+import pic from '../../asset/images/Doctorr.jpg';
+import { Link } from 'react-router';
+
 
 class LeaveRequestReport extends Component {
   constructor(props) {
     super(props);
     this.state = {
       staffID: '12345',
-      name: 'พุทธชาด',
-      surn: 'ศรีสุวรรณกุล',
+      name: 'ฐิตินันท์',
+      surn: 'ปราชญ์วัฒนกิจ',
       section: 'BA',
       position: 'frontend',
-      leaveNo: 'leave333',
+      leaveNo: 'leave672',
       createDateForm: '26/06/2560',
       reason: 'ป่วยเป็นไข้ใจต้องการคนดูแลสักสองสามคนแงงงงงงงงงงงงงงงงงงงงงงงงง',
       dayReq: 'one day',
       date: '15/5/2560',
       time: '13:30',
       hours: '4',
-      note: 'ไม่ได้เป็นหมอนะจ้ะเป็นห่วงอิ้อิ้อิ้อิ้อิ้แตงกวี๋วี่วีคนดีที่หนึ่ง',
+      note: 'เป็นไข้หวัดต้องพักดูอาการที่โรงพยาบาลสักพัก จริงๆพิมพ์ยาวๆได้นะคะพิมพ์ได้255ตัวแต่เราต้องให้เกียรติดีไซเนอร์เลยต้องพิมพ์แค่นิดเดียว ',
       Doc: '',
       check: '',
       leaveType: 'Sick Leave'
@@ -48,7 +51,7 @@ class LeaveRequestReport extends Component {
           <div className="col-md-8">
 
             <div className="row">
-              <div className="col-md-2">
+              <div className="col-md-3">
                 <h4>Leave Static</h4>
               </div>
 
@@ -91,7 +94,7 @@ class LeaveRequestReport extends Component {
             <div className="shark Dory"></div>
 
             <div className="row Dory">
-              <div className="col-md-12">
+              <div className="col-md-12 ppp">
                 <td>สร้างใบลาเมื่อ : {this.state.createDateForm}</td>
               </div>
 
@@ -137,29 +140,32 @@ class LeaveRequestReport extends Component {
             </div>
             <div className="row Dory">
               <div className="col-md-12">
-                <th><b>Note/comment:{this.state.note} </b></th>
+                <th><b>Note/comment: {this.state.note} </b></th>
               </div>
 
 
 
             </div>
             <div className="row Dory">
-              <div className="col-md-12">
+              <div className="col-md-2">
                 <th><b>File: </b></th>
+
+
               </div>
+              <Link to='/pic'> <div className="col-md-2"> <img src={pic} width="75" height="52" /></div></Link>
 
 
 
             </div>
 
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4 qqq">
                 <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 qqq">
                 <button value="Reject" onClick={this.handleSetFalse}>Reject</button>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 qqq">
                 <button value="Cancel" onClick={this.handleSet} >Cancel</button>
               </div>
 

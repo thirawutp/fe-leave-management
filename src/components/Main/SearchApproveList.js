@@ -1,49 +1,62 @@
 import React, { Component } from 'react';
-import pic from '../../asset/images/searchh.png'
-import '../../App.css';
-const people = [{
-    status: "approve",
-    No: "1",
-    staffID: "001",
-    Leave: "Sick Leave",
-    start: "18/06/2018",
-    end: "05/07/2018-05/07/2018"
-},
-{
-    status: "reject",
-    No: "2",
-    staffID: "002",
-    Leave: "Sick Leave",
-    start: "18/06/2018",
-    end: "05/07/2018"
-},
-{
-    status: "pending",
-    No: "13",
-    staffID: "003",
-    Leave: "Annual Leave",
-    start: "18/06/2018",
-    end: "05/07/2018"
-},
-{
-    status: "pending",
-    No: "12",
-    staffID: "004",
-    Leave: "Annual Leave",
-    start: "18/06/2018",
-    end: "05/07/2018"
-},
-{
-    status: "pending",
-    No: "1",
-    staffID: "001",
-    Leave: "Leave With Out Pay",
-    start: "18/06/2018",
-    end: "05/07/2018"
-}
-]
-class SearchApproveList extends Component {
+import { Link } from 'react-router';
 
+
+import '../../App.css';
+
+import pic from '../../asset/images/searchh.png';
+
+const people = [
+    {
+        status: 'Pending',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: '-'
+    },
+    {
+        status: 'Pending',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '03/07/2018',
+        approver: '-'
+    },
+    {
+        status: 'Approve',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: 'ข้าวโอ๊ต'
+    },
+    {
+        status: 'Approve',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: 'พี่นิว'
+    },
+    {
+        status: 'Reject',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: 'พี่เก่ง'
+    },
+]
+
+
+
+class SearchApproveList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -57,93 +70,111 @@ class SearchApproveList extends Component {
     searchHandle(event) {
         this.setState({ term: event.target.value })
     }
+
+
+
     render() {
+
         const { term, people } = this.state;
-
-
         return (
-            <div>
-                <div className="row">
-                    <div className="col-md-2"></div>
-                    <div className="col-md-11"><div>
-                        <div>
-                            <div className="gun">
-                                <h3><b>Approve or Reject Leave Form</b></h3>
-                            </div>
-                            <div className="tk">
-                                <form>
-                                    <input type="text" onChange={this.searchHandle} value={term} /><img src={pic} />
+            <div className="row">
 
-                                </form>
-                            </div>
-                        </div>
 
-                        <div className="Table">
-                            <div className="row">
-                                <div className="col-md-1">
-                                    <th>Status</th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>Leave ID</th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>Staff ID</th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>Leave Type</th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>วันที่ส่งคำขอ</th>
-                                </div>
-                                <div className="col-md-3">
-                                    <th>วันที่ลา</th>
-                                </div>
+
+                <form>
+                    <div className="br">
+                        <input type="text" onChange={this.searchHandle} value={term} /><img src={pic} />
+                    </div>
+                </form>
+
+
+                <div className="App">
+                    <div className="STable">
+                        <div className="row">
+                            <div className="col-md-2">
+                                <th>Status</th>
+                            </div>
+                            <div className="col-md-2">
+                                <th>Leave ID</th>
+                            </div>
+                            <div className="col-md-1">
+                                <th>Staff ID</th>
+                            </div>
+                            <div className="col-md-2">
+                                <th>สร้างใบลาเมื่อ</th>
+                            </div>
+                            <div className="col-md-3">
+                                <th>Leaving Date</th>
+                            </div>
+                            <div className="col-md-2">
+                                <th>Manage by</th>
                             </div>
                         </div>
-                        {
-                            people.filter((curr) => {
-                                return curr.status.toLowerCase().includes(term)
-                                    || curr.No.toLowerCase().includes(term)
-                                    || curr.staffID.toLowerCase().includes(term)
-                                    || curr.Leave.toLowerCase().includes(term)
-                                    || curr.start.toLowerCase().includes(term)
-                                    || curr.end.toLowerCase().includes(term)
-                            }).map((people, index) =>
-
-                                <div className={`Data ${index % 2 === 0 ? 'Dataeven' : 'Dataodd'}`}>
-                                    <div className="row">
-                                        <div className="col-md-1">
-                                            <div className={` ${people.status == 'approve' ? 'approve' : people.status == 'pending' ? 'pending' : 'reject'}`}>
-                                                <td>{people.status}</td>
+                    </div>
+                </div>
+                <div>
+                    {
+                        people.filter((curr) => {
+                            return curr.status.toLowerCase().includes(term)
+                                || curr.leaveID.toLowerCase().includes(term)
+                                || curr.leaveType.toLowerCase().includes(term)
+                                || curr.staffID.toLowerCase().includes(term)
+                                || curr.reqDate.toLowerCase().includes(term)
+                                || curr.leaveDate.toLowerCase().includes(term)
+                                || curr.approver.toLowerCase().includes(term)
+                        }).map((people, index) =>
+                            <div>
+                                <div className="SData">
+                                    <div className="row ">
+                                        <div className="col-md-2">
+                                            <div className={` ${people.status == 'Approve' ? 'SApprove' : people.status == 'Pending' ? 'SPending' : 'SReject'}`}>
+                                                <td><b>{people.status}</b></td>
                                             </div>
                                         </div>
                                         <div className="col-md-2">
-                                            <td><b>{people.No}</b></td>
+                                            <div>
+                                                <Link to='/leaveReport'><td><b>{people.leaveID}</b></td></Link>
+                                            </div>
+                                            <div>
+                                                <td>    {people.leaveType}</td>
+                                            </div>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-1">
                                             <td>{people.staffID}</td>
                                         </div>
                                         <div className="col-md-2">
-                                            <td>{people.Leave}</td>
-                                        </div>
-                                        <div className="col-md-2">
-                                            <td>{people.start}</td>
+
+                                            <td>{people.reqDate}</td>
+
                                         </div>
                                         <div className="col-md-3">
-                                            <td>{people.end}</td>
+                                            <td>{people.leaveDate}</td>
                                         </div>
-
+                                        <div className="col-md-2">
+                                            <td>{people.approver}</td>
+                                        </div>
                                     </div>
                                 </div>
-                            )
-                        }
+                            </div>
+                        )
+                    }
 
-                    </div></div>
+
                 </div>
+
             </div>
 
         );
     }
 }
 
+
+
+
 export default SearchApproveList;
+// this.handleFilterItem(term)
+
+
+
+
+

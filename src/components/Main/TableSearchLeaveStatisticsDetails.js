@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import '../../App.css';
 
 
 
@@ -8,8 +8,8 @@ class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'putthachart',
-      surn: 'srisuwankun',
+      name: 'Sirapob',
+      surn: 'Meechoovet',
       staffID: '12345',
       section: 'Developer',
       position: 'frontend',
@@ -30,9 +30,9 @@ class TableSearchLeaveStatisticsDetails extends Component {
           <div className="col-md-1"></div>
           <div className="col-md-9">
             <div className="row">
-            <div className = "gun">
-              <h3><b>Leave Statistic</b></h3>
-            </div>
+              <div className="gun">
+                <h3><b>Leave Statistic</b></h3>
+              </div>
             </div>
             <div className="row">
               <div className="col-md-3">
