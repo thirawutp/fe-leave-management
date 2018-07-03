@@ -7,13 +7,16 @@ import LeaveRequestForm from './Container/index-LeaveRequestForm';
 import SearchLeaveStatisticsDetails from './components/Main/SearchLeaveStatisticsDetails';
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
-
+import alRequestForm from '../src/Container/al-leaveRequestForm';
+import slRequestForm from '../src/Container/al-leaveRequestForm';
+import lopRequestForm from '../src/Container/al-leaveRequestForm';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
 
 import alRequestForm from '../src/Container/al-leaveRequestForm';
 import slRequestForm from '../src/Container/al-leaveRequestForm';
 import lopRequestForm from '../src/Container/al-leaveRequestForm';
+
 
 
 import './App.css';
