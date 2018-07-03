@@ -11,9 +11,9 @@ import SearchApproveList from '../src/components/Main/SearchApproveList';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
 
-import alLeaveForm from '../src/Container/al-leaveRequestForm';
-import slLeaveForm from '../src/Container/al-leaveRequestForm';
-import lopLeaveForm from '../src/Container/al-leaveRequestForm';
+import alRequestForm from '../src/Container/al-leaveRequestForm';
+import slRequestForm from '../src/Container/al-leaveRequestForm';
+import lopRequestForm from '../src/Container/al-leaveRequestForm';
 
 
 import './App.css';
