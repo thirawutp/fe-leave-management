@@ -150,7 +150,12 @@
   font-size: 24px;
   margin-top: 40px;
   text-align: center;
-  
+
+}
+@media (max-width: 767px) { 
+  .tableheader {
+    color: red;
+  }
 }
 
 .leave-form {
@@ -1174,6 +1179,9 @@ margin-left: 30px;
   cursor: pointer;
 }
 
-
+.main-container {
+  min-width: 1024px;
+  min-height: 768px
+}
 
 
