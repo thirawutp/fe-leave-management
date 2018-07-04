@@ -16,6 +16,7 @@ import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 
+
 class MainLayout extends Component {
   render() {
     return (
@@ -27,6 +28,7 @@ class MainLayout extends Component {
           <NavigationBar />
         </div>
         <div className="box">
+
       </div>
     </div>
     )
@@ -39,6 +41,19 @@ class App extends Component {
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
           
+          <Route path='home' component={LeaveList} />
+          <Route path='static' component={SearchLeaveStatisticsList} />
+          <Route path='approve' component={SearchApproveList} />
+          <Route path='form/:formType' component={LeaveRequestForm} />
+          <Route path='form/:formType' component={LeaveRequestForm} />
+          <Route path='form/:formType' component={LeaveRequestForm} />
+          <Route path='leaveReport' component={LeaveRequestReport} />
+          <Route path='pic' component={Doctors} />
+          <Route path='staticlist' component={LeaveStatisticsDetails} />
+          <Route path='aaa' component={SeeApproveDetails} />
+          <Route path='form/:formType' component={alRequestForm} />
+          <Route path='form/:formType' component={slRequestForm} />
+          <Route path='form/:formType' component={lopRequestForm} />
 
 
 
