@@ -59,7 +59,6 @@ class App extends Component {
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
           <Route path='aaa' component={SeeApproveDetails} />
-
           <Route path='form/:formType' component={alRequestForm} />
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
