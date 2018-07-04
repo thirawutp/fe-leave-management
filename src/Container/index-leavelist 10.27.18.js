@@ -4,13 +4,15 @@ import '../App.css';
 import sun from '../asset/images/sun.png';
 import human from '../asset/images/human.png';
 import pig from '../asset/images/pig.png';
+import money from '../asset/images/money.png';
+import bandage from '../asset/images/bandage.png';
 import SearchLeaveStatisticsDetails from '../components/Main/SearchLeaveStatisticsDetails'
 
 class LeaveList extends Component {
   render() {
     return (
 
-      <div className="container-fluid">
+      <div className="">
 
         <div className="App">
 
@@ -22,8 +24,8 @@ class LeaveList extends Component {
             <div className="button-popup" >
               <div className="block">
                 <div className="cover-popup">
-                  <Link to='/form/annaulLeave'><div className="popup">
-                    <div className="popup:hover popup2:hover">
+                  <div className="popup">
+                    <div className="">
                       <div className="picture">
                         <img src={sun} />
                       </div>
@@ -41,16 +43,15 @@ class LeaveList extends Component {
                       </div>
                     </div>
                   </div>
-                  </Link>
                   <div className="text-annualleave">
-                    Annual Leave
-                </div>
+                    <Link to='/form/annaulLeave'><button className="button"> Annual Leave</button>  </Link>
+                  </div>
                 </div>
                 <div className="cover-popup">
-                  <Link to='/form/sickLeave'><div className="popup">
-                    <div className="popup:hover popup2:hover">
+                  <div className="popup">
+                    <div className="">
                       <div className="picture">
-                        <img src={human} />
+                        <img src={bandage} />
                       </div>
 
                       <div className="text-cover1 row">
@@ -66,15 +67,15 @@ class LeaveList extends Component {
                       </div>
                     </div>
                   </div>
-                  </Link>
+
                   <div className="text-sickleave">
-                    Sick Leave
-                </div>
+                    <Link to='/form/sickLeave'><button className="button">Sick Leave</button></Link>
+                  </div>
                 </div>
                 <div className="cover-popup">
-                  <Link to='/form/LeaveWithOutPay'><div className="popup">
+                  <div className="popup">
                     <div className="picture">
-                      <img src={pig} />
+                      <img src={money} />
                     </div>
                     <div className="text-cover1 row">
                       <div className="col-md-6">
@@ -88,10 +89,10 @@ class LeaveList extends Component {
                       <p className="text-bottom">0 Hours</p>
                     </div>
                   </div>
-                  </Link>
+
                   <div className="text-sickleave">
-                    Leave with out pay
-                </div>
+                    <Link to='/form/LeaveWithOutPay'><button className="button">Leave with out pay</button></Link>
+                  </div>
                 </div>
               </div>
             </div>

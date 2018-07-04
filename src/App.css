@@ -339,7 +339,7 @@
   height: 30px;
   border-radius: 15.5px;
   margin-left: 56px;
-  background-color: red;
+  background-color: #C84342;
   color: white;
   font-weight: bold;
 }
@@ -506,29 +506,18 @@ font-size : 14px;
   text-align: left;
 }
 .popup{
-  cursor: pointer;
+ 
   border-style: solid;
   border-color: black;
   border-width: 2px;
   border-radius: 15px;
   margin-right: 60px;
+  width: 176px;
+  height: 176px;
 
 }
 
-.popup:hover {
-  cursor: pointer;
-  border-style: solid;
-  border-color: black;
-  border-width: 2px;
-  border-radius: 15px;
-  margin-right: 60px;
-  background-color:black;
-  color: white;
-}
 
-.popup:hover p {
-  color: white;
-}
 
 .img-icon{
   height: 64px;
@@ -548,9 +537,15 @@ font-size : 14px;
   
 }
 
-.picture {
+.picture img {
 text-align: center;
 margin-top: 12px;
+width: 50px;
+height: 50px;
+
+}
+.picture {
+ text-align: center;  
 }
 
 .text-fill{
@@ -561,14 +556,14 @@ position: relative;
 padding-top: 0 10px;
 margin-top: 0px;
 margin-bottom: 0px;
-font-size: 74px;
+font-size: 40px;
 color: #333333;
 
 }
 .text-under{
   /* 0 */
   padding-right: 5px;
-  padding-top: 40px;
+  padding-top: 9px;
   margin-top: 0;
   margin-bottom: 0;
 position: relative;
@@ -585,7 +580,7 @@ color: #333333;
 .text-fill-small {
   margin-top: -25px;
   margin-left: 150px;
-font-size: 18px;
+font-size: 16px;
 color: #333333;
 }
 
@@ -610,11 +605,12 @@ color: #333333;
   text-align: right;
   position: relative;
   font-family: Tahoma;
-  font-size: 30px;
+  font-size: 26px;
   color: #333333;
-  padding-right: 20px;
+  
   margin: 0;
-  padding-right: 29px;
+  padding-left: 29px;
+  padding-right: 40px;
 }
 
 .fff{
@@ -1050,21 +1046,21 @@ margin-left: 20px;
 .text-annualleave{
   text-align: center;
     padding-top: 23px;
-    font-size: 20px;
-    margin-right: 48px;
+    font-size: 16px;
+    margin-right: 64px;
 }
 
 .text-sickleave{
   padding-top: 23px;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
-  margin-right: 48px;
+  margin-right: 57px;
 }
 
 .text-leavepay {
   text-align: center;
   padding-top: 23px;
-  font-size: 20px;
+  font-size: 16px;
   margin-right: 48px;
    
 }
@@ -1165,6 +1161,18 @@ margin-left: 30px;
 }
 
 
+.row-moreday {
+  padding-top: 39px;
+}
+
+.button {
+  width: 176px;
+  height: 35px;
+  border-radius: 15px;
+  background-color: #C84342;
+  color: #F3F0E2;
+  cursor: pointer;
+}
 
 
 
