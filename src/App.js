@@ -13,10 +13,6 @@ import lopRequestForm from '../src/Container/al-leaveRequestForm';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
 
-import alRequestForm from '../src/Container/al-leaveRequestForm';
-import slRequestForm from '../src/Container/al-leaveRequestForm';
-import lopRequestForm from '../src/Container/al-leaveRequestForm';
-
 
 
 import './App.css';
