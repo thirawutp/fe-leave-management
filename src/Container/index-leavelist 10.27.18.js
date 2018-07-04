@@ -12,8 +12,7 @@ class LeaveList extends Component {
   render() {
     return (
 
-
-      <div className="App">
+        <div className="leavelistbox">
 
 
         <div className='tableheader'>
@@ -96,8 +95,6 @@ class LeaveList extends Component {
             </div>
           </div>
         </div>
-
-        {this.props.children}
       </div>
 
 
