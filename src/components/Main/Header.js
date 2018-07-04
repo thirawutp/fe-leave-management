@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import kendall from '../../asset/images/kendall.jpg';
 
+
 class Header extends Component {
 
 constructor(props) {

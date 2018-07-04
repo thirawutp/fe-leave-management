@@ -271,9 +271,6 @@ p {
   display: inline-flex;
 
 }
-.select-startdate  {
-
-}
 
 .react-datepicker__input-container {
   margin-left: 67px;
@@ -373,8 +370,6 @@ p {
 }
 
 .Table {
-  
-  
   padding: 20px;
   text-align: center;
   border-style: solid;

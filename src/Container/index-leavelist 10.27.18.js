@@ -12,7 +12,7 @@ class LeaveList extends Component {
 
       <div className="container-fluid">
 
-        <div className="App">
+        <div className="leavelistbox">
 
           <div className='content'>
             <div className='tableheader'>
@@ -101,8 +101,6 @@ class LeaveList extends Component {
 
 
         </div>
-        <div><SearchLeaveStatisticsDetails /></div>
-        {this.props.children}
       </div>
 
 

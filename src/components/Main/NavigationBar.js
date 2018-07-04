@@ -3,6 +3,7 @@ import '../../App.css';
 import Header from './Header.js';
 import { Link } from 'react-router';
 
+
 class NavigationBar extends Component {
   render() {
     return (
