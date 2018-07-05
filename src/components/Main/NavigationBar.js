@@ -16,6 +16,9 @@ class NavigationBar extends Component {
                 <Link to='/History'>history</Link>
             </li>
             <li className='navigationbar-item'>
+                <Link to='/Approve'>Statistic</Link>
+            </li>
+            <li className='navigationbar-item'>
                 <Link to='/Approve'>Approve</Link>
             </li>
           </ul>
