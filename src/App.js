@@ -28,9 +28,9 @@ class MainLayout extends Component {
           <NavigationBar />
         </div>
         <div className="box">
-
+          <LeaveList />
+        </div>
       </div>
-    </div>
     )
   }
 }
@@ -40,7 +40,7 @@ class App extends Component {
       <Router history={browserHistory}>
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
-          
+
           <Route path='home' component={LeaveList} />
           <Route path='static' component={SearchLeaveStatisticsList} />
           <Route path='approve' component={SearchApproveList} />
