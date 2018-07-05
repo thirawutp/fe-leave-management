@@ -12,19 +12,18 @@ class StartDate extends React.Component {
         };
     }
     handleChange = (date) => {
-        console.log(date)
+        const { onChange, id } = this.props
         this.setState({
             startDate: date
         });
+        onChange(id, date)
     }
     render() {
-        const { onChange = f => f, id } = this.props
-        const value = this.state.startDate
         return (
             <div>
                 <DatePicker
-                    selected={value}
-                    onChange={(value) => onChange(id, value)}
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
                 />
             </div>
 
