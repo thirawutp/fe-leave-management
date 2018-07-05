@@ -502,14 +502,14 @@ font-size : 16px;
 
 .button-popup {
     width: 100%;
-    margin-left: 390px;
-    margin-top: 40px;
+    padding-top: 139px;
+
 }
 .block {
   text-align: center;
   display: flex;
-  margin-left: -42px;
-  text-align: left;
+  margin: 5%;
+
 }
 .popup{
  
@@ -517,7 +517,6 @@ font-size : 16px;
   border-color: black;
   border-width: 2px;
   border-radius: 15px;
-  margin-right: 60px;
   width: 176px;
   height: 176px;
 
@@ -612,6 +611,13 @@ color: #333333;
   text-align: center;
   font-style: bold;
   margin-top: 80px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.tableheader h2 {
+  font-family: 'SukhumvitSet-Bold';
+
 }
 
 .Table {
@@ -733,6 +739,9 @@ font-size : 16px;
 
 .tableheader {
   font-size: 24px;
+  float: left;
+  margin-left: 88px;
+  margin-top: 41px;
 }
 
 .gun {
@@ -806,6 +815,7 @@ margin-left: 20px;
   height: 80px;
   font-size : 16px;
 }
+
 .br{
   margin-left: 750px;
   margin-top: 50px;
@@ -853,6 +863,7 @@ margin-left: 20px;
   background-color: #C84342;
   color: #F3F0E2;
   cursor: pointer;
+  font-family: 'SukhumvitSet-Bold'
 }
 
 .main-container {
@@ -860,5 +871,8 @@ margin-left: 20px;
   min-height: 768px
 }
 
+.textpopup {
+  text-align: center;
+}
 
 
