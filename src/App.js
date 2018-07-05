@@ -62,7 +62,9 @@ class App extends Component {
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
           <Route path='history' component={SearchHistory} />
+
           <Route path='leaveDetail' component={LeaveFormDetail} />
+
 
 
 
