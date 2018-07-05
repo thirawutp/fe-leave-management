@@ -11,7 +11,13 @@ import alRequestForm from '../src/Container/al-leaveRequestForm';
 import slRequestForm from '../src/Container/al-leaveRequestForm';
 import lopRequestForm from '../src/Container/al-leaveRequestForm';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
-import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails';
+import SearchHistory from '../src/components/Main/SearchHistory'
+import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
+
+
+
+
+
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
@@ -28,7 +34,11 @@ class MainLayout extends Component {
           <NavigationBar />
         </div>
         <div className="box">
+<<<<<<< HEAD
           <LeaveList />
+=======
+          {this.props.children}
+>>>>>>> f5c3b059c12b10539a4087285b0852b8aefbff56
         </div>
       </div>
     )
@@ -54,6 +64,7 @@ class App extends Component {
           <Route path='form/:formType' component={alRequestForm} />
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
+          <Route path='history' component={SearchHistory} />
 
 
 
@@ -65,3 +76,5 @@ class App extends Component {
 }
 
 export default App;
+
+
