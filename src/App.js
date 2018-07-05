@@ -4,7 +4,7 @@ import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
 import LeaveRequestForm from './Container/index-LeaveRequestForm';
-import SearchLeaveStatisticsDetails from './components/Main/SearchLeaveStatisticsDetails';
+
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
 import alRequestForm from '../src/Container/al-leaveRequestForm';
