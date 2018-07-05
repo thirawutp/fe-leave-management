@@ -216,28 +216,24 @@ class slRequestForm extends Component {
     }
 
     handleChangeOnedayForm = (id, value) => {
-        console.log(this.state)
+
         this.setState({ [id]: value })
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        console.log(this.state)
+
         this.setState({ [id]: value })
     }
 
     handleChangeComment = (id, value, count) => {
-        console.log(this.state.note)
+
         this.setState({ [id]: value })
         this.setState({ len: count })
 
     }
 
 
-    handleSubmit = () => {
-        console.log({
 
-        })
-    }
 
     render() {
         return (

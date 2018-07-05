@@ -1,36 +1,37 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+
 import 'react-datepicker/dist/react-datepicker.css';
 
-class EndDate extends React.Component {
+// CSS Modules, react-datepicker-cssmodules.css
+// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+class Calendar2 extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            EndDate: moment()
+            startDate: moment()
         };
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleChange = (date) => {
-        console.log(date)
+
+    handleChange(date) {
+        const { id, onChange } = this.props
+
         this.setState({
-            EndDate: date
+            startDate: date
         });
+
+        onChange(id, date);
     }
+
     render() {
-        const { onChange, id } = this.props
-        const value = this.state.EndDate
-        return (
-            <div>
-                <DatePicker
-                    selected={value}
-                    onChange={(value) => onChange(id, value)}
-
-                />
-            </div>
-
-        );
+        return <DatePicker
+            selected={this.state.startDate}
+            onChange={this.handleChange}
+        />;
     }
 }
 
-export default EndDate;
+export default Calendar2
