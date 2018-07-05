@@ -13,7 +13,7 @@ export class TimeSelectStart extends React.Component {
         this.setState({ timeStart });
     }
     render() {
-        console.log(this.state);
+
         const { timeStart } = this.state;
         return (<TimeField value={timeStart} onChange={this.onTimeChange} input={<input className='custom-input' />} />);
     }

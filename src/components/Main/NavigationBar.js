@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 
 
 class NavigationBar extends Component {
+
     render() {
         return (
             <div>
@@ -26,6 +27,7 @@ class NavigationBar extends Component {
             </div>
         );
     }
+
 }
 
 

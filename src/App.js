@@ -3,7 +3,9 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
+
 import LeaveRequestForm from './Container/index-LeaveRequestForm';
+
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
 import alRequestForm from '../src/Container/al-leaveRequestForm';
@@ -55,10 +57,12 @@ class App extends Component {
 
           <Route path='home' component={LeaveList} />
           <Route path='static' component={SearchLeaveStatisticsList} />
+
           <Route path='Approve' component={IndexSearchApprove} />
           <Route path='form/:formType' component={LeaveRequestForm} />
           <Route path='form/:formType' component={LeaveRequestForm} />
           <Route path='form/:formType' component={LeaveRequestForm} />
+
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
@@ -66,11 +70,14 @@ class App extends Component {
           <Route path='form/:formType' component={alRequestForm} />
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
+
           <Route path='history' component={IndexSearchHistory} />
+
           <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='setApprove' component={SetApproveLeaveForm} />
+
 
 
 
