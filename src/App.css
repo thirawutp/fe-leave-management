@@ -484,12 +484,7 @@ font-size : 16px;
   font-size: 24px;
 }
 
-.gun {
-  margin-top : 50px;
-  margin-bottom: 20px;
-  margin-left: 20px;
 
-}
 
 .ft{
   margin-top: 20px;
@@ -766,6 +761,17 @@ margin-left: 20px;
 }
 
 
+.qqq {
+  margin-left: 300px;
+  margin-top: 50px;
+}
+
+.bird{
+  font-size: 18px;
+}
+
+
+
 
 
 .br{
@@ -873,7 +879,8 @@ margin-left: 20px;
 .SData {
   padding: 20px;
   text-align: center;
-  border-color : #f2f2f2;
+  border-color:#D8D8D8;
+  background-color: white;
   border-style: solid;
   border-width: 1px;
   width: 1000px;
@@ -910,18 +917,67 @@ font-size : 16px;
   border-style: solid;
   border-width: 1px;
   width: 1000px;
-height: 80px;
-font-size : 16px;
-margin-left: 30px;
+  height: 80px;
+  font-size : 16px;
+  margin-left: 30px;
 }
+
 
 .shark{
-  border-style: solid;
-  border-color : #f2f2f2;
-
+    border-style: solid;
+    border-color : #f2f2f2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
 }
+
+
 
 .DDory{
   margin-top: 20px;
 }
   
+
+
+.tk {
+  margin-left : 1000px;
+ margin-top: 50px;
+ font-size: 16px;
+}
+
+.tk b{
+  padding-left: 750px;
+}
+
+.select {
+  padding-left: 800px;
+}
+
+
+.PPData {
+  padding: 20px;
+  text-align: center;
+  border-color:#D8D8D8;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  width: 1000px;
+height: 80px;
+font-size : 16px;
+margin-left: 30px;
+}
+
+.bubble{
+  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-color:#C84342;
+  background-color: #C84342;
+  width: 1000px;
+  height: 33px;
+  border-width: 2px;
+  color : white;
+  margin-top: 4px;
+  font-size : 16px;
+  margin-left: 30px;
+}
