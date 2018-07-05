@@ -34,47 +34,43 @@ class MainLayout extends Component {
           <NavigationBar />
         </div>
         <div className="box">
-<<<<<<< HEAD
-          <LeaveList />
-=======
           {this.props.children}
->>>>>>> f5c3b059c12b10539a4087285b0852b8aefbff56
+          {/* </div>dsfdfdd */}
         </div>
-      </div>
-    )
-  }
-}
+        )
+      }
+    }
 class App extends Component {
-  render() {
-    return (
+          render() {
+        return (
       <Router history={browserHistory}>
-        <Route path='/' component={MainLayout}>
-          <Route path='leave' component={LeaveList} />
+          <Route path='/' component={MainLayout}>
+            <Route path='leave' component={LeaveList} />
 
-          <Route path='home' component={LeaveList} />
-          <Route path='static' component={SearchLeaveStatisticsList} />
-          <Route path='approve' component={SearchApproveList} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='leaveReport' component={LeaveRequestReport} />
-          <Route path='pic' component={Doctors} />
-          <Route path='staticlist' component={LeaveStatisticsDetails} />
-          <Route path='aaa' component={SeeApproveDetails} />
-          <Route path='form/:formType' component={alRequestForm} />
-          <Route path='form/:formType' component={slRequestForm} />
-          <Route path='form/:formType' component={lopRequestForm} />
-          <Route path='history' component={SearchHistory} />
-
-
-
-        </Route>
-
-      </Router>
-    )
-  }
-}
-
-export default App;
+            <Route path='home' component={LeaveList} />
+            <Route path='static' component={SearchLeaveStatisticsList} />
+            <Route path='approve' component={SearchApproveList} />
+            <Route path='form/:formType' component={LeaveRequestForm} />
+            <Route path='form/:formType' component={LeaveRequestForm} />
+            <Route path='form/:formType' component={LeaveRequestForm} />
+            <Route path='leaveReport' component={LeaveRequestReport} />
+            <Route path='pic' component={Doctors} />
+            <Route path='staticlist' component={LeaveStatisticsDetails} />
+            <Route path='aaa' component={SeeApproveDetails} />
+            <Route path='form/:formType' component={alRequestForm} />
+            <Route path='form/:formType' component={slRequestForm} />
+            <Route path='form/:formType' component={lopRequestForm} />
+            <Route path='history' component={SearchHistory} />
 
 
+
+          </Route>
+
+        </Router>
+        )
+      }
+    }
+    
+    export default App;
+    
+    
