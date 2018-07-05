@@ -12,6 +12,7 @@ import lopRequestForm from '../src/Container/al-leaveRequestForm';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import SearchHistory from '../src/components/Main/SearchHistory'
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
+import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
 
 
 
@@ -34,7 +35,6 @@ class MainLayout extends Component {
         </div>
         <div className="box">
           {this.props.children}
-          {/* </div>dsfdfdd */}
         </div>
       </div>
     )
@@ -43,8 +43,6 @@ class MainLayout extends Component {
 class App extends Component {
   render() {
     return (
-
-      // Router
       <Router history={browserHistory}>
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
@@ -60,6 +58,9 @@ class App extends Component {
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
           <Route path='history' component={SearchHistory} />
+
+          <Route path='leaveDetail' component={LeaveFormDetail} />
+
 
 
 

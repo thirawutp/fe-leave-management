@@ -4,6 +4,7 @@ import SickLeave from '../../asset/images/SickLeave.png';
 import AnnualLeave from '../../asset/images/AnnualLeave.png';
 import LeaveWithOutPay from '../../asset/images/LeaveWithOutPay.png';
 import pic from '../../asset/images/searchh.png';
+import { Link } from "react-router";
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -115,7 +116,7 @@ class SearchHistory extends Component {
                         </form>
 
 
-                        <div className="App">
+                        <div>
                             <div className="STable">
                                 <div className="row">
                                     <div className="col-md-2">
@@ -166,7 +167,7 @@ class SearchHistory extends Component {
                                                 </div>
                                                 <div className="col-md-2">
                                                     <div>
-                                                        <td><b>{people.leaveID}</b></td>
+                                                        <Link to="/leaveDetail"> <td><b>{people.leaveID}</b></td></Link>
                                                     </div>
                                                     <div>
 
