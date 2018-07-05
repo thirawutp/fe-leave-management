@@ -501,15 +501,11 @@ font-size : 16px;
 }
 
 .button-popup {
-    width: 100%;
-    margin-left: 390px;
-    margin-top: 40px;
+   
 }
 .block {
   text-align: center;
-  display: flex;
-  margin-left: -42px;
-  text-align: left;
+  display: inline-flex;
 }
 .popup{
  

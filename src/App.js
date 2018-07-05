@@ -34,7 +34,11 @@ class MainLayout extends Component {
           <NavigationBar />
         </div>
         <div className="box">
+<<<<<<< HEAD
+          <LeaveList />
+=======
           {this.props.children}
+>>>>>>> f5c3b059c12b10539a4087285b0852b8aefbff56
         </div>
       </div>
     )
