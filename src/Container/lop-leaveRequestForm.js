@@ -6,6 +6,7 @@ import TimeSelectStart from '../components/Main/TimeSelect';
 import DateComponent from '../components/Main/DateComponent';
 import TimeSelect from '../components/Main/SelectTimeOneDay.js';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
+import moment from 'moment';
 import '../App.css';
 const FormHeader = props => {
     return (
@@ -89,20 +90,20 @@ const ManyDayForm = props => {
                     Date Start :
           </div>
                 <div className="select-startdate">
-                    <StartDate onChange={onChange} id='leaveDateStart' />
+                    <StartDate onChange={onChange} id='leaveDate' />
                 </div>
                 <div className="text-time2">
                     Time :
             </div>
                 <div className="selecttime">
-                    <TimeSelectStart onChange={onChange} id='leaveTimeStart' />
+                    <TimeSelectStart onChange={onChange} id='leaveTime' />
                 </div>
                 <div className="text-time2">
                     Time :
             </div>
 
                 <div className="dropdown-custom">
-                    <select className="option-time" onChange={(event) => onChange('leaveAmountStart', event.target.value)}>
+                    <select className="option-time" onChange={(event) => onChange('leaveAmount', event.target.value)}>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -150,12 +151,15 @@ const NoteQuestion = props => {
             <div className="inline">
                 <div className="text-note">
                     Note/comments :
-   </div>
-                <div className="text-area">
-                    <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
-                    <p className="text-limit">{textlimit}/255</p>
                 </div>
+                <div className="text-area">
+
+                    <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
+                </div>
+
             </div>
+            <p className="text-limit">{textlimit}/255</p>
+
         </div>
     )
 }
@@ -193,16 +197,13 @@ class lopRequestForm extends Component {
         super(props);
 
         this.state = {
-            type: undefined, // get form props :type
+            type: "Anual leave", // get form props :type
             isOneday: undefined,
             leaveDate: undefined,
             leaveTime: undefined,
-            leaveAmount: 0,
-            leaveDateStart: undefined,
             leaveDateStop: undefined,
-            leaveTimeStart: undefined,
             leaveTimeStop: undefined,
-            leaveAmountStart: 0,
+            leaveAmount: 0,
             leaveAmountStop: 0,
             len: 0,
             note: '',
@@ -216,7 +217,7 @@ class lopRequestForm extends Component {
     }
 
     handleChangeOnedayForm = (id, value) => {
-        console.log(this.state.leaveDate)
+        console.log(value)
         this.setState({ [id]: value })
     }
 
@@ -232,12 +233,20 @@ class lopRequestForm extends Component {
 
     }
 
-
+    // handleSubmit = event => {
+    //     axios.post('/user', {
+    //         firstName: 'Fred',
+    //         lastName: 'Flintstone'
+    //       })
+    //       .then(function (response) {
+    //         console.log(response);
+    //       })
+    // }
 
 
     render() {
         return (
-            <form className="leave-form" onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 <div className="leave-form">
                     <FormHeader />
                     <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
@@ -252,11 +261,11 @@ class lopRequestForm extends Component {
                     {this.state.isOneday === false && <ManyDayForm
                         value={
                             {
-                                leaveDateStart: undefined,
+                                leaveDate: undefined,
                                 leaveDateStop: undefined,
-                                leaveTimeStart: undefined,
+                                leaveTime: undefined,
                                 leaveTimeStop: undefined,
-                                leaveAmountStart: 0,
+                                leaveAmount: 0,
                                 leaveAmountStop: 0,
                             }
                         }
