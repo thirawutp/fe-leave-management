@@ -22,6 +22,7 @@ class NavigationBar extends Component {
                 <Link to='/Approve'>Approve</Link>
             </li>
           </ul>
+
       </div>
     );
   }

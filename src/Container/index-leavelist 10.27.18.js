@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import '../App.css';
 import sun from '../asset/images/sun.png';
-import human from '../asset/images/human.png';
-import pig from '../asset/images/pig.png';
 import money from '../asset/images/money.png';
 import bandage from '../asset/images/bandage.png';
-import SearchLeaveStatisticsDetails from '../components/Main/SearchLeaveStatisticsDetails'
+
 
 class LeaveList extends Component {
   render() {
     return (
 
-        <div className="leavelistbox">
+      <div className="leavelistbox">
 
 
         <div className='tableheader'>
