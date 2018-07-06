@@ -109,14 +109,15 @@ class SearchHistory extends Component {
                     <div className="row ">
 
 
-
+                    <div className="tksearch">
                         <form>
                             <div className="bbr">
                                 <input type="text" onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
                             </div>
                         </form>
+                    </div>
 
-
+                        <div className='tkboth'>
                         <div className='TangKwatable'>
                             <div className="STable">
                                 <div className="row">
@@ -142,6 +143,7 @@ class SearchHistory extends Component {
                             </div>
                         </div>
                         
+
                         <div>
                             {
                                 people.filter((curr) => {
@@ -197,6 +199,7 @@ class SearchHistory extends Component {
                             }
 
 
+                        </div>
                         </div>
 
                     </div>
