@@ -19,6 +19,7 @@ class LoginPage extends Component {
 
     handleLoginSuccess = (data) => {
         data = mockResponse
+        console.log('data-->', data)
         this.props.router.push({
             pathname: '/home',
             state: data,
@@ -27,7 +28,7 @@ class LoginPage extends Component {
 
     handleLoginFailure = () => {
         if (this.state.isLogedIn) {
-            this.handleLoginSuccess()
+            this.handleLoginSuccess(mockResponse)
         }
         this.setState({ isLogedIn: true })
         // TODO : handle fail case
