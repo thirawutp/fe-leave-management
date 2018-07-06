@@ -13,8 +13,8 @@ class LeaveList extends Component {
       <div className="leavelistbox">
 
 
-        <div className='tableheader'>
-          <h2>Select Leave Type</h2>
+        <div className='selectLeave'>
+          <p>Select Leave Type</p>
         </div>
 
         <div className="button-popup" >
