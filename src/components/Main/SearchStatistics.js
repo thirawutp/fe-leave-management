@@ -60,20 +60,18 @@ class SearchStatistics extends Component {
             }
         ]
         return (
-            <div className="root">
+            <div className="tkroot">
+            <div className="tkbubble">
                 <div className='tkstatistic'>
                 <div className="row">
-                    <div className="col-md-1"></div>
-                    <div className="col-md-11">
 
 
 
                     
-                        <div className="tkrow ">
-                            <div className="col-md-1">
+                        <div className="tkrow">
                                 <p><b>Position:</b></p>
-                            </div>
-                            <div className="col-md-1">
+                            
+                           
                                 <select onChange={this.handleSetValue} >
 
                                     <option value="All">All</option>
@@ -83,12 +81,10 @@ class SearchStatistics extends Component {
                                     <option value="Graphic">Graphic</option>
                                     <option value="QA">QA</option>
                                 </select>
-                            </div>
-
-
+                            
                         </div>
 
-
+                    <div className="tktablestatic">
                         <div className="row bubble">
 
                             <div className="col-md-1">
@@ -112,6 +108,7 @@ class SearchStatistics extends Component {
                             </div>
 
                         </div>
+
                         {
 
                             people.filter((people) => {
@@ -151,10 +148,12 @@ class SearchStatistics extends Component {
                             )
                         }
                     </div>
+                    
 
                     </div>
                 </div>
-            </div >
+            </div>
+            </div>
 
         );
     }
