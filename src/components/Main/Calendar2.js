@@ -17,13 +17,14 @@ class Calendar2 extends React.Component {
   }
 
   handleChange(date) {
-    const { id, onChange } = this.props
+    const { id, onChange, id2 } = this.props
 
     this.setState({
       startDate: date
     });
 
-    onChange(id, moment(date).format());
+    onChange(id, moment(date).format().toString());
+    onChange(id2, moment(date).format().toString())
   }
 
   render() {

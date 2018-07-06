@@ -57,17 +57,17 @@ const OnedayForm = props => {
     </div>
             <div className="select-onedate">
                 <React.Fragment>
-                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} />
+                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
                     <div className="timeselect-oneday">
                         <div className="text-time">
                             Time :
           </div>
-                        <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} />
+                        <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} id2={'leaveTimeStop'} />
                         <div className="text-time">
                             Time :
           </div>
                         <div className="dropdown-oneday">
-                            <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value)}>
+                            <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -217,16 +217,14 @@ class alRequestForm extends Component {
         this.setState({ isOneday })
     }
 
-    handleChangeOnedayForm = (id, value) => {
-        console.log(this.state.leaveDate)
-        console.log(this.state.leaveTime)
-        console.log(this.state.leaveAmount)
+    handleChangeOnedayForm = (id, value, id2) => {
+        console.log("statesum", this.state.leaveDate + '  ' + this.state.leaveTime)
         this.setState({ [id]: value })
+        this.setState({ [id2]: value })
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        console.log(this.state.leaveDate)
-        console.log(this.state.leaveDateStop)
+        console.log("statesumMore", this.state)
         this.setState({ [id]: value })
     }
 
@@ -242,11 +240,11 @@ class alRequestForm extends Component {
         console.log(this.state)
         event.preventDefault()
         axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-            "LeaveId": 10,
-            "LeaveGuid": "21b4a22d-1cc9-4efd-bfbf-9ccaf11d87b8",
-            "Type": "sick",
+            // "LeaveId": 9,
+            // "LeaveGuid": "21b4a22d-1cc9-4efd-bfbf-9ccaf11d87b8",
+            "Type": "anual",
             "StaffId": "00001",
-            "StartDateTime": "2018-07-06T03:14:04.064",
+            "StartDateTime": this.state.leaveDate + this.state.leaveDateStop,
             "EndDateTime": "2018-07-08T03:14:04.064",
             "HoursStartDate": 2,
             "HoursEndDate": 2,
@@ -272,8 +270,11 @@ class alRequestForm extends Component {
                     {this.state.isOneday && <OnedayForm
                         value={{
                             leaveDate: undefined,
+                            leaveDateStop: undefined,
                             leaveTime: undefined,
+                            leaveTimeStop: undefined,
                             leaveAmount: 0,
+                            leaveAmountStop: 0,
                         }}
                         onChange={this.handleChangeOnedayForm}
                     />}
