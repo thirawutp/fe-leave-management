@@ -23,7 +23,7 @@ class Calendar2 extends React.Component {
             startDate: date
         });
 
-        onChange(id, date);
+        onChange(id, moment(date).format());
     }
 
     render() {

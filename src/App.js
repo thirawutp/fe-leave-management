@@ -52,7 +52,6 @@ class App extends Component {
           <Route path='static' component={SearchLeaveStatisticsList} />
 
           <Route path='Approve' component={IndexSearchApprove} />
-
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />

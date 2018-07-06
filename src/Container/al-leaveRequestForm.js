@@ -6,6 +6,7 @@ import TimeSelectStart from '../components/Main/TimeSelect';
 import DateComponent from '../components/Main/DateComponent';
 import TimeSelect from '../components/Main/SelectTimeOneDay.js';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
+import axios from 'axios';
 import moment from 'moment';
 import '../App.css';
 const FormHeader = props => {
@@ -218,11 +219,15 @@ class alRequestForm extends Component {
 
     handleChangeOnedayForm = (id, value) => {
         console.log(value)
+        console.log(this.state.leaveDate)
+        console.log(this.state.leaveTime)
+        console.log(this.state.leaveAmount)
         this.setState({ [id]: value })
     }
 
     handleChangeMoreOneDay = (id, value) => {
-
+        console.log(this.state.leaveDate)
+        console.log(this.state.leaveDateStop)
         this.setState({ [id]: value })
     }
 
@@ -243,6 +248,27 @@ class alRequestForm extends Component {
     //       })
     // }
 
+    //     console.log(this.state)
+    //     event.preventDefault()
+    //     axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+    //         leaveId: "L00075",
+    //         type: "lwp",
+    //         staffId: "00006",
+    //         startDateTime: "2018-07-05T09:34:20.756Z",
+    //         endDateTime: "2018-07-05T09:34:20.756Z",
+    //         hoursStartDate: 4,
+    //         hoursEndDate: 0,
+    //         approvalStatus: "Pending",
+    //         comment: "string",
+    //         approvedTime: "2018-07-05T09:34:20.756Z",
+    //         approvedBy: "null",
+    //         attachedFile: "null",
+    //         requestedDateTime: "2018-07-05T09:34:20.756Z"
+    //     })
+    //         .then(function (response) {
+    //             console.log(response);
+    //         })
+    // }
 
     render() {
         return (
@@ -263,7 +289,7 @@ class alRequestForm extends Component {
                             {
                                 leaveDate: undefined,
                                 leaveDateStop: undefined,
-                                leaveTimeStart: undefined,
+                                leaveTime: undefined,
                                 leaveTimeStop: undefined,
                                 leaveAmount: 0,
                                 leaveAmountStop: 0,
@@ -280,3 +306,4 @@ class alRequestForm extends Component {
     }
 }
 export default alRequestForm;
+// asdfghjkl

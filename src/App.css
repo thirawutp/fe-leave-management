@@ -950,6 +950,7 @@ margin-left: 20px;
   margin-left: 30px;
 }
 
+<<<<<<< HEAD
 .shark{
   border-style: solid;
   border-color : #f2f2f2;
@@ -972,6 +973,17 @@ margin-left: 20px;
     margin-bottom: 20px;
 }
 
+=======
+
+.shark{
+    border-style: solid;
+    border-color : #f2f2f2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+}
+
+>>>>>>> 9baded48165e3a1b32bb1f969a430ebe17b601e8
 
 
 .DDory{
