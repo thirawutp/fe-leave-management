@@ -174,12 +174,10 @@ p {
 }
 
 .leave-form {
-  margin-left: 46px;
   min-width: 783px;
   min-height: 768px;
-  margin: auto;
-  margin-top: 53px;
-  margin-left: 145px;
+  padding-left: 85px;
+    padding-top: 35px;
   max-height: 768px;
   max-width: 1024px;
 }
@@ -249,7 +247,7 @@ p {
   text-align: center;
   margin-left: 80px;
   margin-left: 10px;
-  background-color: #D8D8D8;
+  background-color: #FFFFFF;
     border-radius: 3px;
 }
 .timeselect-oneday {
@@ -294,7 +292,7 @@ p {
 .option-time {
   height: 26px;
   margin-left: 15px;
-  background-color: #D8D8D8;
+  background-color: #FFFFFF
 }
 .dropdown-custom {
   margin-left: 13px;
@@ -324,7 +322,7 @@ p {
 .textarea {
   width: 480px;
   height: 106px;
-  background-color: #D8D8D8;
+  background-color: #FFFFFF;
 }
 
 .text-area {
@@ -332,7 +330,7 @@ p {
 }
 
 .row-file {
-  padding-top: 125px;
+  padding-top: 20px;
   display: inline-flex;
 }
 .input-file {
@@ -347,7 +345,7 @@ p {
 
 .row-button {
   text-align: center;
-  padding-top: 86px;
+  padding-top: 35px;
   display: inline-flex;
 }
 
@@ -484,12 +482,7 @@ font-size : 16px;
   font-size: 24px;
 }
 
-.gun {
-  margin-top : 50px;
-  margin-bottom: 20px;
-  margin-left: 20px;
 
-}
 
 .ft{
   margin-top: 20px;
@@ -784,6 +777,22 @@ margin-left: 20px;
   margin-bottom: 12px;
 }
 
+.text-limit{
+  text-align: right;
+  margin-top: 85px;
+    margin-left: 5px;
+}
+
+.qqq {
+  margin-left: 300px;
+  margin-top: 50px;
+}
+
+.bird{
+  font-size: 18px;
+}
+
+
 
 
 
@@ -845,14 +854,12 @@ margin-left: 20px;
   font-family: 'Sukhumvit-Bold';
 }
 .STable {
-  
-  
-  padding: 20px;
+  margin: auto;
   text-align: center;
   border-style: solid;
   border-color:#C84342;
   background-color: #C84342;
-  width: 1000px;
+  width: 763px;
   height: 33px;
   border-width: 2px;
   color : white;
@@ -892,11 +899,11 @@ margin-left: 20px;
 .SData {
   padding: 20px;
   text-align: center;
-  border-color : #f2f2f2;
+  border-color:#D8D8D8;
+  background-color: white;
   border-style: solid;
   border-width: 1px;
-  width: 1000px;
-<<<<<<< HEAD
+  width: 763px;
   height: 80px;
   font-size : 16px;
 }
@@ -904,9 +911,13 @@ margin-left: 20px;
 .br{
   margin-left: 750px;
   margin-top: 50px;
-height: 80px;
-font-size : 16px;
+  height: 80px;
+  font-size : 16px;
 
+}
+
+.TangKwatable {
+  margin-left: 300px;
 }
 
 .PTable {
@@ -934,9 +945,9 @@ font-size : 16px;
   border-style: solid;
   border-width: 1px;
   width: 1000px;
-height: 80px;
-font-size : 16px;
-margin-left: 30px;
+  height: 80px;
+  font-size : 16px;
+  margin-left: 30px;
 }
 
 .shark{
@@ -954,6 +965,15 @@ margin-left: 30px;
   font-family: 'SukhumvitSet-Bold'
 }
 
+.shark{
+    border-style: solid;
+    border-color : #f2f2f2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
 .DDory{
   margin-top: 20px;
 }
@@ -963,3 +983,51 @@ margin-left: 30px;
 }
 
 
+  
+
+
+
+.tk {
+  margin-left : 1000px;
+ margin-top: 50px;
+ font-size: 16px;
+}
+
+.tk b{
+  padding-left: 750px;
+}
+
+.select {
+  padding-left: 800px;
+}
+
+
+.PPData {
+  padding: 20px;
+  text-align: center;
+  border-color:#D8D8D8;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  width: 1000px;
+height: 80px;
+font-size : 16px;
+margin-left: 30px;
+}
+
+.bubble{
+  padding: 20px;
+  text-align: center;
+  border-style: solid;
+  border-color:#C84342;
+  background-color: #C84342;
+  width: 1000px;
+  height: 33px;
+  border-width: 2px;
+  color : white;
+  margin-top: 4px;
+  font-size : 16px;
+  margin-left: 30px;
+
+
+}

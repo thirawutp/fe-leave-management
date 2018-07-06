@@ -70,7 +70,7 @@ const people = [
 
 
 
-class SearchHistory extends Component {
+class SearchApprove extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -116,7 +116,7 @@ class SearchHistory extends Component {
                         </form>
 
 
-                        <div className='TangKwatable'>
+                        <div>
                             <div className="STable">
                                 <div className="row">
                                     <div className="col-md-2">
@@ -140,7 +140,6 @@ class SearchHistory extends Component {
                                 </div>
                             </div>
                         </div>
-                        
                         <div>
                             {
                                 people.filter((curr) => {
@@ -168,7 +167,7 @@ class SearchHistory extends Component {
                                                 </div>
                                                 <div className="col-md-2">
                                                     <div>
-                                                        <Link to="/leaveDetail"> <td><b>{people.leaveID}</b></td></Link>
+                                                        <Link to="/setApprove"> <td><b>{people.leaveID}</b></td></Link>
                                                     </div>
                                                     <div>
 
@@ -209,7 +208,7 @@ class SearchHistory extends Component {
 
 
 
-export default SearchHistory;
+export default SearchApprove;
 // this.handleFilterItem(term)
 
 

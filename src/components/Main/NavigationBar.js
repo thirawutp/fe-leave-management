@@ -26,6 +26,7 @@ class NavigationBar extends Component {
       </div>
     );
   }
+
 }
 
 

@@ -3,17 +3,19 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
-import LeaveRequestForm from './Container/index-LeaveRequestForm';
-
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
 import alRequestForm from '../src/Container/al-leaveRequestForm';
 import slRequestForm from '../src/Container/al-leaveRequestForm';
 import lopRequestForm from '../src/Container/al-leaveRequestForm';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
-import SearchHistory from '../src/components/Main/SearchHistory'
-import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails'
+import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails';
 import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
+import IndexSearchStatistics from '../src/Container/index-SearchStatistics.js';
+import IndexSearchHistory from '../src/Container/index-SearchHistory.js';
+import leaveDetail from '../src/components/Main/LeaveFormDetail.js';
+import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
+import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
@@ -41,16 +43,16 @@ class MainLayout extends Component {
 class App extends Component {
   render() {
     return (
+
       <Router history={browserHistory}>
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
 
           <Route path='home' component={LeaveList} />
           <Route path='static' component={SearchLeaveStatisticsList} />
-          <Route path='approve' component={SearchApproveList} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
+
+          <Route path='Approve' component={IndexSearchApprove} />
+
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
@@ -58,9 +60,15 @@ class App extends Component {
           <Route path='form/:formType' component={alRequestForm} />
           <Route path='form/:formType' component={slRequestForm} />
           <Route path='form/:formType' component={lopRequestForm} />
-          <Route path='history' component={SearchHistory} />
+
+          <Route path='history' component={IndexSearchHistory} />
 
           <Route path='leaveDetail' component={LeaveFormDetail} />
+          <Route path='SearchStatic' component={IndexSearchStatistics} />
+          <Route path='leaveDetail' component={LeaveFormDetail} />
+          <Route path='setApprove' component={SetApproveLeaveForm} />
+
+
 
 
         </Route>
