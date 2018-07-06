@@ -98,6 +98,14 @@ class SearchHistory extends Component {
         }
     }
 
+    componentDidMount() {
+        axios.get(`http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002`)
+          .then(res => {
+            const persons = res.data;
+            this.setState({ persons });
+          })
+      }
+
 
 
     render() {
