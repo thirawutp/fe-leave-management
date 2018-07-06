@@ -237,29 +237,30 @@ class alRequestForm extends Component {
 
     }
 
-    // handleSubmit = event => {
+    handleSubmit = event => {
 
-    //     console.log(this.state)
-    //     event.preventDefault()
-    //     axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-    //         leaveId: "L00075",
-    //         type: "lwp",
-    //         staffId: "00006",
-    //         startDateTime: "2018-07-05T09:34:20.756Z",
-    //         endDateTime: "2018-07-05T09:34:20.756Z",
-    //         hoursStartDate: 4,
-    //         hoursEndDate: 0,
-    //         approvalStatus: "Pending",
-    //         comment: "string",
-    //         approvedTime: "2018-07-05T09:34:20.756Z",
-    //         approvedBy: "null",
-    //         attachedFile: "null",
-    //         requestedDateTime: "2018-07-05T09:34:20.756Z"
-    //     })
-    //         .then(function (response) {
-    //             console.log(response);
-    //         })
-    // }
+        console.log(this.state)
+        event.preventDefault()
+        axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+            "LeaveId": 10,
+            "LeaveGuid": "21b4a22d-1cc9-4efd-bfbf-9ccaf11d87b8",
+            "Type": "sick",
+            "StaffId": "00001",
+            "StartDateTime": "2018-07-06T03:14:04.064",
+            "EndDateTime": "2018-07-08T03:14:04.064",
+            "HoursStartDate": 2,
+            "HoursEndDate": 2,
+            "ApprovalStatus": "Pending",
+            "Comment": "string",
+            "ApprovedTime": "2018-07-06T03:15:46.2124245",
+            "ApprovedBy": "null",
+            "AttachedFile": "null",
+            "RequestedDateTime": "2018-07-06T03:14:04.064"
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+    }
 
 
     render() {
