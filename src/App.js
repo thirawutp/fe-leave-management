@@ -4,7 +4,7 @@ import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
 
-import LeaveRequestForm from './Container/index-LeaveRequestForm';
+
 
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
@@ -59,9 +59,7 @@ class App extends Component {
           <Route path='static' component={SearchLeaveStatisticsList} />
 
           <Route path='Approve' component={IndexSearchApprove} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
+
 
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />

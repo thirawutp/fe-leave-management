@@ -10,7 +10,7 @@ class LeaveFormDetail extends Component {
         this.state = {
             leaveID: 'LEAVE672',
             leaveType: 'Sick Leave',
-            dayType: 'More than one day',
+            dayType: 'One day',
             dayStart: '01/07/2018',
             dayEnd: '02/07/2018',
             timeStart: '9.00 AM',
@@ -28,10 +28,10 @@ class LeaveFormDetail extends Component {
     getDayType = (param) => {
 
         if (param == 'One day') {
-            return true
+            return false
         }
         else {
-            return false
+            return true
         }
 
     }
