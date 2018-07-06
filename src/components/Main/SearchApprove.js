@@ -116,6 +116,7 @@ class SearchApprove extends Component {
                         </form>
 
 
+                        <div className="tkboth">
                         <div>
                             <div className="STable">
                                 <div className="row">
@@ -140,6 +141,7 @@ class SearchApprove extends Component {
                                 </div>
                             </div>
                         </div>
+
                         <div>
                             {
                                 people.filter((curr) => {
@@ -196,7 +198,7 @@ class SearchApprove extends Component {
 
 
                         </div>
-
+                        </div>
                     </div>
                 </div>
             </div>
