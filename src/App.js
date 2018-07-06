@@ -3,9 +3,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
-
-
-
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
 import alRequestForm from '../src/Container/al-leaveRequestForm';
@@ -20,12 +17,6 @@ import leaveDetail from '../src/components/Main/LeaveFormDetail.js';
 import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
 import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
 import LoginPage from '../src/Container/LoginPage';
-
-
-
-
-
-
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
@@ -44,12 +35,14 @@ class MainLayout extends Component {
           <NavigationBar />
         </div>
         <div className="box">
+
           {this.props.children}
         </div>
       </div>
     )
   }
 }
+
 class App extends Component {
   render() {
     return (
@@ -62,8 +55,6 @@ class App extends Component {
           <Route path='static' component={SearchLeaveStatisticsList} />
 
           <Route path='Approve' component={IndexSearchApprove} />
-
-
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
@@ -82,10 +73,7 @@ class App extends Component {
 
 
 
-
-
         </Route>
-
       </Router>
     )
   }

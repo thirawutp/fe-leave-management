@@ -217,7 +217,11 @@ class slRequestForm extends Component {
     }
 
     handleChangeOnedayForm = (id, value) => {
+<<<<<<< HEAD
+
+=======
         console.log(value)
+>>>>>>> 9baded48165e3a1b32bb1f969a430ebe17b601e8
         this.setState({ [id]: value })
     }
 
@@ -243,6 +247,10 @@ class slRequestForm extends Component {
     //       })
     // }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9baded48165e3a1b32bb1f969a430ebe17b601e8
 
     render() {
         return (

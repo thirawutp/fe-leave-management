@@ -19,10 +19,13 @@ class LeaveList extends Component {
         </div>
 
         <div className="button-popup" >
+        
           <div className="block">
             <div className="cover-popup">
-              <div className="popup">
-
+            <div className="textpopup">
+            <p>วันลาคงเหลือ</p>
+            </div>
+              <div className="popup">              
                 <div className="picture">
                   <img src={sun} />
                 </div>
@@ -45,7 +48,11 @@ class LeaveList extends Component {
                 <Link to='/form/annaulLeave'><button className="button"> Annual Leave</button>  </Link>
               </div>
             </div>
+
             <div className="cover-popup">
+            <div className="textpopup">
+            <p>วันลาคงเหลือ</p>
+            </div>
               <div className="popup">
                 <div className="">
                   <div className="picture">
@@ -71,6 +78,9 @@ class LeaveList extends Component {
               </div>
             </div>
             <div className="cover-popup">
+            <div className="textpopup">
+            <p>วันลาที่ใช้ไป</p>
+            </div>
               <div className="popup">
                 <div className="picture">
                   <img src={money} />
