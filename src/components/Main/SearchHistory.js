@@ -5,6 +5,7 @@ import AnnualLeave from '../../asset/images/AnnualLeave.png';
 import LeaveWithOutPay from '../../asset/images/LeaveWithOutPay.png';
 import pic from '../../asset/images/searchh.png';
 import { Link } from "react-router";
+import axios from 'axios';
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
