@@ -4,7 +4,7 @@ import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
 
-import LeaveRequestForm from './Container/index-LeaveRequestForm';
+
 
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
@@ -19,6 +19,7 @@ import IndexSearchHistory from '../src/Container/index-SearchHistory.js';
 import leaveDetail from '../src/components/Main/LeaveFormDetail.js';
 import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
 import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
+import LoginPage from '../src/Container/LoginPage';
 
 
 
@@ -31,7 +32,9 @@ import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 
 
 class MainLayout extends Component {
+
   render() {
+    console.log('props in main layout', this.props)
     return (
       <div className='App'>
         <div>
@@ -50,8 +53,8 @@ class MainLayout extends Component {
 class App extends Component {
   render() {
     return (
-
       <Router history={browserHistory}>
+        <Route path='/login' component={LoginPage} />
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
 
@@ -59,9 +62,7 @@ class App extends Component {
           <Route path='static' component={SearchLeaveStatisticsList} />
 
           <Route path='Approve' component={IndexSearchApprove} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
-          <Route path='form/:formType' component={LeaveRequestForm} />
+
 
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />

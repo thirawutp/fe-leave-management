@@ -8,6 +8,7 @@ import bandage from '../asset/images/bandage.png';
 
 class LeaveList extends Component {
   render() {
+    console.log(this.props)
     return (
 
       <div className="leavelistbox">
