@@ -478,10 +478,12 @@ font-size : 16px;
   margin-top : 20px;
 }
 
-.tableheader {
-  font-size: 24px;
-}
+.selectLeave p {
+  font-size: 20px;
+  font-family: "SukhumvitSet-Bold";
+  margin-left: 88px;
 
+}
 
 
 .ft{
@@ -495,13 +497,20 @@ font-size : 16px;
 
 .button-popup {
     width: 100%;
-    padding-top: 139px;
+    margin-left: 139px;
 
 }
+
+.cover-popup {
+    margin: 139px auto;
+    margin-right: 85px;
+
+}
+
 .block {
   text-align: center;
   display: flex;
-  margin: 5%;
+  margin-left: 139px;
 
    
 }
@@ -790,11 +799,8 @@ margin-left: 20px;
 
 .bird{
   font-size: 18px;
+
 }
-
-
-
-
 
 .br{
   margin-left: 750px;
@@ -802,12 +808,9 @@ margin-left: 20px;
  
 }
 
-
-
-
-
 .row-moreday {
   padding-top: 39px;
+
 }
 
 .button {
@@ -822,39 +825,43 @@ margin-left: 20px;
 .main-container {
   min-width: 1024px;
   min-height: 768px
+
 }
-
-
-
-
-
-
 
 .ooo{
   margin-right: 70px;
+
 }
+
 .rabbit{
   font-size: 14px;
+
 }
 
 .horse{
   font-size: 20px;
   margin-top: 50px;
+
 }
+
 .headtable{
   font-size: 16px;
+
 }
 
 .All{
   margin-left: 50px;
   font-family: 'Sukhumvit-Bold';
+
 }
+
 .All  p{
   margin-left: 50px;
   font-family: 'Sukhumvit-Bold';
+
 }
+
 .STable {
-  margin: auto;
   text-align: center;
   border-style: solid;
   border-color:#C84342;
@@ -865,18 +872,34 @@ margin-left: 20px;
   color : white;
   margin-top: 20px;
   text-align: center;
- 
-  
+
+}
+
+.tkboth {
+  margin: auto;
+
+}
+
+.tkstatistic {
+  margin: auto;
+
+}
+
+.select {
+  margin-left: 750px;
+
 }
 
 .SApprove{
   color : #27AE60;
   font-size: 14px;
+
 }
 
 .SPending{
   color : #F2C94C;
   font-size: 14px;
+
 }
 
 .SReject{
@@ -916,10 +939,6 @@ margin-left: 20px;
 
 }
 
-.TangKwatable {
-  margin-left: 300px;
-}
-
 .PTable {
   
   
@@ -950,11 +969,6 @@ margin-left: 20px;
   margin-left: 30px;
 }
 
-<<<<<<< HEAD
-.shark{
-  border-style: solid;
-  border-color : #f2f2f2;
-}
 
 .button {
   width: 176px;
@@ -973,17 +987,13 @@ margin-left: 20px;
     margin-bottom: 20px;
 }
 
-=======
 
 .shark{
     border-style: solid;
     border-color : #f2f2f2;
     margin-top: 20px;
     margin-bottom: 20px;
-  
-}
-
->>>>>>> 9baded48165e3a1b32bb1f969a430ebe17b601e8
+  }
 
 
 .DDory{
@@ -1043,3 +1053,5 @@ margin-left: 30px;
 
 
 }
+
+

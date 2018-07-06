@@ -18,7 +18,6 @@ class StartDate extends React.Component {
         });
 
         onChange(id, moment(date).format())
-
     }
     render() {
         return (
