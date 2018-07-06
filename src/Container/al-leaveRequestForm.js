@@ -218,7 +218,7 @@ class alRequestForm extends Component {
     }
 
     handleChangeOnedayForm = (id, value, id2) => {
-        console.log("statesum", this.state.leaveDate + '  ' + this.state.leaveTime)
+        console.log("statesum", this.state.leaveDate + this.state.leaveTime)
         this.setState({ [id]: value })
         this.setState({ [id2]: value })
     }
@@ -236,6 +236,7 @@ class alRequestForm extends Component {
     }
 
     handleSubmit = event => {
+
 
         console.log(this.state)
         event.preventDefault()
@@ -259,7 +260,6 @@ class alRequestForm extends Component {
                 console.log(response);
             })
     }
-
 
     render() {
         return (

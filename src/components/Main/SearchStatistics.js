@@ -61,15 +61,15 @@ class SearchStatistics extends Component {
         ]
         return (
             <div className="root">
-
+                <div className='tkstatistic'>
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-11">
 
 
 
-
-                        <div className="row tk">
+                    
+                        <div className="tkrow ">
                             <div className="col-md-1">
                                 <p><b>Position:</b></p>
                             </div>
@@ -150,6 +150,7 @@ class SearchStatistics extends Component {
                                 </div>
                             )
                         }
+                    </div>
 
                     </div>
                 </div>

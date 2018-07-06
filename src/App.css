@@ -478,10 +478,12 @@ font-size : 16px;
   margin-top : 20px;
 }
 
-.tableheader {
-  font-size: 24px;
-}
+.selectLeave p {
+  font-size: 20px;
+  font-family: "SukhumvitSet-Bold";
+  margin-left: 88px;
 
+}
 
 
 .ft{
@@ -494,11 +496,28 @@ font-size : 16px;
 }
 
 .button-popup {
+    width: 100%;
+    margin-left: 139px;
+
+}
+
+.cover-popup {
+    margin: 139px auto;
+    margin-right: 85px;
+
+}
+
+.block {
+  text-align: center;
+  display: flex;
+  margin-left: 139px;
+
    
 }
 .block {
   text-align: center;
   display: inline-flex;
+
 }
 .popup{
  
@@ -506,7 +525,6 @@ font-size : 16px;
   border-color: black;
   border-width: 2px;
   border-radius: 15px;
-  margin-right: 60px;
   width: 176px;
   height: 176px;
 
@@ -601,6 +619,13 @@ color: #333333;
   text-align: center;
   font-style: bold;
   margin-top: 80px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.tableheader h2 {
+  font-family: 'SukhumvitSet-Bold';
+
 }
 
 .Table {
@@ -722,6 +747,9 @@ font-size : 16px;
 
 .tableheader {
   font-size: 24px;
+  float: left;
+  margin-left: 88px;
+  margin-top: 41px;
 }
 
 .gun {
@@ -771,11 +799,8 @@ margin-left: 20px;
 
 .bird{
   font-size: 18px;
+
 }
-
-
-
-
 
 .br{
   margin-left: 750px;
@@ -783,12 +808,9 @@ margin-left: 20px;
  
 }
 
-
-
-
-
 .row-moreday {
   padding-top: 39px;
+
 }
 
 .button {
@@ -803,63 +825,81 @@ margin-left: 20px;
 .main-container {
   min-width: 1024px;
   min-height: 768px
+
 }
-
-
-
-
-
-
 
 .ooo{
   margin-right: 70px;
+
 }
+
 .rabbit{
   font-size: 14px;
+
 }
 
 .horse{
   font-size: 20px;
   margin-top: 50px;
+
 }
+
 .headtable{
   font-size: 16px;
+
 }
 
 .All{
   margin-left: 50px;
   font-family: 'Sukhumvit-Bold';
+
 }
+
 .All  p{
   margin-left: 50px;
   font-family: 'Sukhumvit-Bold';
+
 }
+
 .STable {
-  
-  
-  padding: 20px;
   text-align: center;
   border-style: solid;
   border-color:#C84342;
   background-color: #C84342;
-  width: 1000px;
+  width: 763px;
   height: 33px;
   border-width: 2px;
   color : white;
   margin-top: 20px;
   text-align: center;
- 
-  
+
+}
+
+.tkboth {
+  margin: auto;
+
+}
+
+.tkstatistic {
+  margin: auto;
+
+}
+
+.select {
+  margin-left: 750px;
+
 }
 
 .SApprove{
   color : #27AE60;
   font-size: 14px;
+
 }
 
 .SPending{
   color : #F2C94C;
   font-size: 14px;
+
 }
 
 .SReject{
@@ -886,14 +926,18 @@ margin-left: 20px;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  width: 1000px;
-height: 80px;
-font-size : 16px;
-
+  width: 763px;
+  height: 80px;
+  font-size : 16px;
 }
 
+.br{
+  margin-left: 750px;
+  margin-top: 50px;
+  height: 80px;
+  font-size : 16px;
 
-
+}
 
 .PTable {
   
@@ -926,19 +970,41 @@ font-size : 16px;
 }
 
 
+.button {
+  width: 176px;
+  height: 35px;
+  border-radius: 15px;
+  background-color: #C84342;
+  color: #F3F0E2;
+  cursor: pointer;
+  font-family: 'SukhumvitSet-Bold'
+}
+
 .shark{
     border-style: solid;
     border-color : #f2f2f2;
     margin-top: 20px;
     margin-bottom: 20px;
-  
 }
 
+
+.shark{
+    border-style: solid;
+    border-color : #f2f2f2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
 
 .DDory{
   margin-top: 20px;
 }
+
+.textpopup {
+  text-align: center;
+}
+
+
   
 
 
@@ -987,3 +1053,5 @@ margin-left: 30px;
 
 
 }
+
+
