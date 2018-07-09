@@ -4,7 +4,6 @@ import '../App.css';
 import sun from '../asset/images/sun.png';
 import money from '../asset/images/money.png';
 import bandage from '../asset/images/bandage.png';
-import Header from '../components/Main/Header';
 import axios from 'axios';
 
 
@@ -16,17 +15,17 @@ class LeaveList extends Component {
   };
 
 
-  // componentDidMount() {
-  //   axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00005&year=2018")
-  //     .then(res => {
-  //       this.setState({ timeleftal: res.data.AnnualHours })
-  //       this.setState({ timeleftsl: res.data.SickHours })
-  //       this.setState({ timeleftlwp: res.data.LWPHours })
-  //       console.log(res)
-  //     })
-  // }
+  componentDidMount() {
+    axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00005&year=2018")
+      .then(res => {
+        this.setState({ timeleftal: res.data.AnnualHours })
+        this.setState({ timeleftsl: res.data.SickHours })
+        this.setState({ timeleftlwp: res.data.LWPHours })
+      })
+  }
+
+
   render() {
-    console.log('Home', this.props.location.state, this.props.location.state.profileObj.email)
     return (
 
       <div className="leavelistbox">
