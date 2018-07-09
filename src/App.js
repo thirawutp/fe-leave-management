@@ -20,18 +20,18 @@ import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 import leaveForm from '../src/components/Main/LeaveFormDetail.js';
+import _ from 'lodash'
 
 
 
 class MainLayout extends Component {
 
   render() {
-    // console.log('props in main layout', this.props.location.state.profileObj.name)
-    // let name = this.props.location.state.profileObj.name
+    const name = _.get(this.props, 'location.state.profileObj.name', '')
     return (
       <div className='App'>
         <div>
-          <Header />
+          <Header name={name} />
         </div>
         <div>
           <NavigationBar />
