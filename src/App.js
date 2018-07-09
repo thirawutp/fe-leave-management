@@ -20,17 +20,20 @@ import LoginPage from '../src/Container/LoginPage';
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
+import axios from 'axios';
+
+
 
 
 class MainLayout extends Component {
 
   render() {
-    console.log('props in main layout', this.props.location.state.profileObj.name)
-    let name = this.props.location.state.profileObj.name
+    // console.log('props in main layout', this.props.location.state.profileObj.name)
+    // let name = this.props.location.state.profileObj.name
     return (
       <div className='App'>
         <div>
-          <Header name={name} />
+          <Header />
         </div>
         <div>
           <NavigationBar />
