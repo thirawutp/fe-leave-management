@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { GoogleLogin } from 'react-google-login';
-
+import axios from 'axios';
 
 
 const mockResponse = {
@@ -23,7 +23,7 @@ class LoginPage extends Component {
         data = mockResponse
         console.log('data-->', data)
         this.props.router.push({
-            pathname: '/',
+            pathname: '/home',
             state: data,
         })
     }

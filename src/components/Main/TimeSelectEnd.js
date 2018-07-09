@@ -15,8 +15,12 @@ class TimeSelectEnd extends React.Component {
     }
 
     onTimeChange(timeEnd) {
+        const { onChange, id } = this.props
         this.setState({ timeEnd });
+        onChange(id, timeEnd)
+
     }
+
 
     render() {
         const { onChange, id } = this.props

@@ -22,9 +22,9 @@ class Calendar2 extends React.Component {
     this.setState({
       startDate: date
     });
-    
-    onChange(id, moment(date).format().toString());
-    onChange(id2, moment(date).format().toString())
+
+    onChange(id, moment(date).format().toString().substring(0, 11));
+    onChange(id2, moment(date).format().toString().substring(0, 11));
   }
 
   render() {

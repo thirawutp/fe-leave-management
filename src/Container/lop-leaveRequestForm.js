@@ -6,12 +6,16 @@ import TimeSelectStart from '../components/Main/TimeSelect';
 import DateComponent from '../components/Main/DateComponent';
 import TimeSelect from '../components/Main/SelectTimeOneDay.js';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
+import axios from 'axios';
 import moment from 'moment';
 import '../App.css';
+
+
 const FormHeader = props => {
     return (
         <React.Fragment>
             <div className='header1'>
+
                 <div className='date-header'>
                     Date :
           </div>
@@ -56,17 +60,17 @@ const OnedayForm = props => {
     </div>
             <div className="select-onedate">
                 <React.Fragment>
-                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} />
+                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
                     <div className="timeselect-oneday">
                         <div className="text-time">
                             Time :
           </div>
-                        <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} />
+                        <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} id2={'leaveTimeStop'} />
                         <div className="text-time">
                             Time :
           </div>
                         <div className="dropdown-oneday">
-                            <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value)}>
+                            <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -197,7 +201,7 @@ class lopRequestForm extends Component {
         super(props);
 
         this.state = {
-            type: "Anual leave", // get form props :type
+            type: "Leave with out pay", // get form props :type
             isOneday: undefined,
             leaveDate: undefined,
             leaveTime: undefined,
@@ -216,17 +220,14 @@ class lopRequestForm extends Component {
         this.setState({ isOneday })
     }
 
-    handleChangeOnedayForm = (id, value) => {
-<<<<<<< HEAD
-        console.log(this.state.leaveDate)
-=======
-        console.log(value)
->>>>>>> 9baded48165e3a1b32bb1f969a430ebe17b601e8
+    handleChangeOnedayForm = (id, value, id2) => {
+        console.log("statesum", this.state.leaveDate + this.state.leaveTime)
         this.setState({ [id]: value })
+        this.setState({ [id2]: value })
     }
 
     handleChangeMoreOneDay = (id, value) => {
-
+        console.log("statesumMore", this.state)
         this.setState({ [id]: value })
     }
 
@@ -237,20 +238,31 @@ class lopRequestForm extends Component {
 
     }
 
-    // handleSubmit = event => {
-    //     axios.post('/user', {
-    //         firstName: 'Fred',
-    //         lastName: 'Flintstone'
-    //       })
-    //       .then(function (response) {
-    //         console.log(response);
-    //       })
-    // }
+    handleSubmit = event => {
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 9baded48165e3a1b32bb1f969a430ebe17b601e8
+        console.log(this.state)
+        event.preventDefault()
+        axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+            // "LeaveId": 9,
+            // "LeaveGuid": "21b4a22d-1cc9-4efd-bfbf-9ccaf11d87b8",
+            "Type": "anual",
+            "StaffId": "00001",
+            "StartDateTime": this.state.leaveDate + this.state.leaveDateStop,
+            "EndDateTime": "2018-07-08T03:14:04.064",
+            "HoursStartDate": 2,
+            "HoursEndDate": 2,
+            "ApprovalStatus": "Pending",
+            "Comment": "string",
+            "ApprovedTime": "2018-07-06T03:15:46.2124245",
+            "ApprovedBy": "null",
+            "AttachedFile": "null",
+            "RequestedDateTime": "2018-07-06T03:14:04.064"
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+    }
 
     render() {
         return (
@@ -261,8 +273,11 @@ class lopRequestForm extends Component {
                     {this.state.isOneday && <OnedayForm
                         value={{
                             leaveDate: undefined,
+                            leaveDateStop: undefined,
                             leaveTime: undefined,
+                            leaveTimeStop: undefined,
                             leaveAmount: 0,
+                            leaveAmountStop: 0,
                         }}
                         onChange={this.handleChangeOnedayForm}
                     />}
@@ -288,3 +303,4 @@ class lopRequestForm extends Component {
     }
 }
 export default lopRequestForm;
+// asdfghjkl
