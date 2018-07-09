@@ -13,13 +13,13 @@ import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetail
 import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
 import IndexSearchStatistics from '../src/Container/index-SearchStatistics.js';
 import IndexSearchHistory from '../src/Container/index-SearchHistory.js';
-import leaveDetail from '../src/components/Main/LeaveFormDetail.js';
 import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
 import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
 import LoginPage from '../src/Container/LoginPage';
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
+import leaveForm from '../src/components/Main/LeaveFormDetail.js';
 
 
 class MainLayout extends Component {
@@ -70,6 +70,7 @@ class App extends Component {
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='setApprove' component={SetApproveLeaveForm} />
+          <Route path='leaveForm' component={LeaveFormDetail} />
 
 
 
