@@ -23,7 +23,7 @@ class LoginPage extends Component {
         data = mockResponse
         console.log('data-->', data)
         this.props.router.push({
-            pathname: '/home',
+            pathname: '/',
             state: data,
         })
     }
