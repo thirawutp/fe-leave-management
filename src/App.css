@@ -57,7 +57,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
   font-family: 'SukhumvitSet-Bold';
   list-style: none;
   color: #F3F0E2;
-  height: 57px;
+  height: 57px;ne
   width: 216px;
   text-align: center;
   background-color: #C84342;
@@ -1099,4 +1099,7 @@ margin-left: 20px;
 
 }
 
+.inline {
+  display: inline-flex;
+}
 
