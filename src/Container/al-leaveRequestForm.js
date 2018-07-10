@@ -175,7 +175,10 @@ const FileForm = props => {
                 File :
           </div>
             <div className="input-file">
-                <input type="file" name="pic" onChange={this.handlefile} />
+                <input
+                    onChange={e => console.log(e.target.files[0])}
+                    type="file"
+                />
             </div>
         </div>
     )
@@ -211,7 +214,7 @@ class alRequestForm extends Component {
             leaveAmountStop: 0,
             len: 0,
             note: '',
-            file: {},
+            file: undefined,
         };
     }
 
@@ -238,10 +241,14 @@ class alRequestForm extends Component {
 
     }
 
+    handlefile(selectorFiles: FileList) {
+        console.log(selectorFiles);
+    }
+
+
     handleSubmit = event => {
-
-
         console.log(this.state)
+        window.confirm("Confirm ?")
         event.preventDefault()
         axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
 
@@ -265,7 +272,7 @@ class alRequestForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} >
                 <div className="leave-form">
                     <FormHeader />
                     <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
