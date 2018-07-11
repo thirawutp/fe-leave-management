@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
+import { login, addHistory } from '../action'
+import _ from 'lodash'
+import moment from 'moment'
 
 const mockResponse = {
     profileObj: {
@@ -19,15 +24,45 @@ class LoginPage extends Component {
 
     handleLoginSuccess = (data) => {
         data = mockResponse
-        this.props.router.push({
-            pathname: '/home',
-            state: data,
-        })
+        this.props.handleLogin(data)
+        //TODO login to server
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002')
+            .then(res => {
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+                        if (key === 'ApprovedBy') {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: val || '-'
+                            }
+                        }
+                        if (key === 'LeaveId') {
+                            return {
+                                ...result,
+                                rawLeaveId: val,
+                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                            }
+                        }
+                        if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                            }
+                        }
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.props.addHistory(data)
+            })
+        this.props.router.push('/home')
     }
 
     handleLoginFailure = () => {
         if (this.state.isLogedIn) {
-            this.handleLoginSuccess()
+            this.handleLoginSuccess(mockResponse)
         }
         this.setState({ isLogedIn: true })
         // TODO : handle fail case
@@ -49,4 +84,14 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+const mapStateToProps = null
+
+const mapDispatchToProps = dispatch => ({
+    handleLogin: (profile) => dispatch(login(profile)),
+    addHistory: (history) => dispatch(addHistory(history))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(LoginPage)

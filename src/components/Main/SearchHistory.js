@@ -8,7 +8,8 @@ import { Link } from "react-router";
 import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
-
+import { connect } from 'react-redux'
+import { addHistory } from '../../action'
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -92,47 +93,15 @@ class SearchHistory extends Component {
 
 
     componentDidMount() {
-        console.log('Didmount')
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002')
-            .then(res => {
-                console.log('------', res.data)
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-                        if (key === 'ApprovedBy') {
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: val || '-'
-                            }
-                        }
-                        if (key === 'LeaveId') {
-                            return {
-                                ...result,
-                                rawLeaveId: val,
-                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
-                            }
-                        }
-                        if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
-                            console.log('do this sus', moment(val).format('DD-MM-YYYY'))
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                            }
-                        }
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.setState({ people: data })
-            })
+
     }
 
 
 
     render() {
-        console.log('state', this.state)
-        const { term, people } = this.state;
+        const { term } = this.state;
+        const { people } = this.props
+        console.log('--------people', people)
         const filtered = people.filter((curr) => {
             const test1 = curr.requestedDateTime.toLowerCase().includes(term)
             const test2 = curr.approvalStatus.toLowerCase().includes(term)
@@ -147,7 +116,6 @@ class SearchHistory extends Component {
             const test11 = curr.leaveId.toString().includes(term)
             return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11
         })
-        console.log(filtered)
         return (
             <div className="All">
                 <div className="headtable">
@@ -248,13 +216,8 @@ class SearchHistory extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    people: state.history || []
+})
 
-
-
-export default SearchHistory;
-// this.handleFilterItem(term)
-
-
-
-
-
+export default connect(mapStateToProps, {})(SearchHistory)

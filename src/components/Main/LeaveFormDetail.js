@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
-
+import { connect } from 'react-redux'
 
 
 class LeaveFormDetail extends Component {
@@ -69,7 +69,7 @@ class LeaveFormDetail extends Component {
 
 
     render() {
-        console.log(this.props)
+        console.log(this.props.leaveForm)
         return (
             <div>
                 <div className="row">
@@ -159,5 +159,12 @@ class LeaveFormDetail extends Component {
     }
 }
 
-export default LeaveFormDetail;
+const mapStateToProps = (state, props) => ({
+    leaveForm: _.find(state.history, { rawLeaveId: Number(props.params.formId) }) || {}
+})
+
+export default connect(
+    mapStateToProps,
+    {},
+)(LeaveFormDetail);
 

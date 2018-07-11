@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import _ from 'lodash'
 import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
@@ -20,16 +21,18 @@ import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 import leaveForm from '../src/components/Main/LeaveFormDetail.js';
+
 import setApprove from '../src/components/Main/SearchApprove.js';
+
 
 class MainLayout extends Component {
 
   render() {
-    console.log('props in main layout', this.props)
+    const name = _.get(this.props, 'location.state.profileObj.name', '')
     return (
       <div className='App'>
         <div>
-          <Header />
+          <Header name={name} />
         </div>
         <div>
           <NavigationBar />

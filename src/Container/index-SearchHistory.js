@@ -8,8 +8,8 @@ class IndexSearchHistory extends Component {
     render() {
         return (
 
-            <div>
-                <h5>Leave History</h5>
+            <div className='searchhistory'>
+                <p>Leave History</p>
                 <SearchHistory />
 
 

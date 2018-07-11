@@ -4,15 +4,18 @@ import StartDate from '../components/Main/StartDate';
 import EndDate from '../components/Main/EndDate';
 import TimeSelectStart from '../components/Main/TimeSelect';
 import DateComponent from '../components/Main/DateComponent';
-import TimeSelect from '../components/Main/SelectTimeOneDay.js';
+import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
 import '../App.css';
+
+
 const FormHeader = props => {
     return (
         <React.Fragment>
             <div className='header1'>
+
                 <div className='date-header'>
                     Date :
           </div>
@@ -57,17 +60,17 @@ const OnedayForm = props => {
     </div>
             <div className="select-onedate">
                 <React.Fragment>
-                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} />
+                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
                     <div className="timeselect-oneday">
                         <div className="text-time">
                             Time :
           </div>
-                        <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} />
+                        <TimeSelect value={value.leaveTime} onChange={onChange} id={'leaveTime'} id2={'leaveTimeStop'} />
                         <div className="text-time">
                             Time :
           </div>
                         <div className="dropdown-oneday">
-                            <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value)}>
+                            <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -172,7 +175,10 @@ const FileForm = props => {
                 File :
           </div>
             <div className="input-file">
-                <input type="file" name="pic" onChange={this.handlefile} />
+                <input
+                    onChange={e => console.log(e.target.files[0])}
+                    type="file"
+                />
             </div>
         </div>
     )
@@ -198,7 +204,7 @@ class alRequestForm extends Component {
         super(props);
 
         this.state = {
-            type: "Anual leave", // get form props :type
+            type: "Annual leave", // get form props :type
             isOneday: undefined,
             leaveDate: undefined,
             leaveTime: undefined,
@@ -208,7 +214,7 @@ class alRequestForm extends Component {
             leaveAmountStop: 0,
             len: 0,
             note: '',
-            file: {},
+            file: undefined,
         };
     }
 
@@ -217,17 +223,14 @@ class alRequestForm extends Component {
         this.setState({ isOneday })
     }
 
-    handleChangeOnedayForm = (id, value) => {
-        console.log(value)
-        console.log(this.state.leaveDate)
-        console.log(this.state.leaveTime)
-        console.log(this.state.leaveAmount)
+    handleChangeOnedayForm = (id, value, id2) => {
+        console.log(this.state.leaveDate + this.state.leaveTime)
         this.setState({ [id]: value })
+        this.setState({ [id2]: value })
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        console.log(this.state.leaveDate)
-        console.log(this.state.leaveDateStop)
+        console.log(this.state.leaveDate + this.state.leaveTime)
         this.setState({ [id]: value })
     }
 
@@ -238,26 +241,29 @@ class alRequestForm extends Component {
 
     }
 
+    handlefile(selectorFiles: FileList) {
+        console.log(selectorFiles);
+    }
+
+
     handleSubmit = event => {
-
-
         console.log(this.state)
+        window.confirm("Confirm ?")
         event.preventDefault()
         axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-            "LeaveId": 10,
-            "LeaveGuid": "21b4a22d-1cc9-4efd-bfbf-9ccaf11d87b8",
-            "Type": "sick",
-            "StaffId": "00001",
-            "StartDateTime": "2018-07-06T03:14:04.064",
-            "EndDateTime": "2018-07-08T03:14:04.064",
-            "HoursStartDate": 2,
-            "HoursEndDate": 2,
-            "ApprovalStatus": "Pending",
-            "Comment": "string",
-            "ApprovedTime": "2018-07-06T03:15:46.2124245",
-            "ApprovedBy": "null",
-            "AttachedFile": "null",
-            "RequestedDateTime": "2018-07-06T03:14:04.064"
+
+            "type": this.state.type,
+            "staffId": "00002",
+            "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+            "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+            "hoursStartDate": this.state.leaveAmount,
+            "hoursEndDate": this.state.leaveAmountStop,
+            "approvalStatus": "string",
+            "comment": this.state.note,
+            "approvedTime": "2018-07-09T08:42:39.014Z",
+            "approvedBy": "null",
+            "attachedFile": "null",
+            "requestedDateTime": moment().format().toString()
         })
             .then(function (response) {
                 console.log(response);
@@ -266,15 +272,18 @@ class alRequestForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} >
                 <div className="leave-form">
                     <FormHeader />
                     <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
                     {this.state.isOneday && <OnedayForm
                         value={{
                             leaveDate: undefined,
+                            leaveDateStop: undefined,
                             leaveTime: undefined,
+                            leaveTimeStop: undefined,
                             leaveAmount: 0,
+                            leaveAmountStop: 0,
                         }}
                         onChange={this.handleChangeOnedayForm}
                     />}

@@ -205,6 +205,7 @@ class SearchApprove extends Component {
 
                                                             <td><b>{people.approvalStatus}</b></td>
                                                         </div>
+
                                                     </div>
                                                     <div className="col-md-2">
                                                         <div>
@@ -239,10 +240,9 @@ class SearchApprove extends Component {
 
                             </div>
                         </div>
-
+                        </div>
                     </div>
                 </div>
-            </div>
 
         );
     }
