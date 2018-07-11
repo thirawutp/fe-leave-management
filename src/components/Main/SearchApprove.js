@@ -5,6 +5,10 @@ import AnnualLeave from '../../asset/images/AnnualLeave.png';
 import LeaveWithOutPay from '../../asset/images/LeaveWithOutPay.png';
 import pic from '../../asset/images/searchh.png';
 import { Link } from "react-router";
+import axios from 'axios';
+import _ from 'lodash'
+import moment from 'moment'
+
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -13,7 +17,7 @@ const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Annual Leave') {
         return AnnualLeave
     }
-    if (leaveType === 'Leave with out pay') {
+    if (leaveType === 'Leave without Pay') {
         return LeaveWithOutPay
     }
     return ''
@@ -74,7 +78,7 @@ class SearchApprove extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            people: people,
+            people: [],
             term: '',
             SetImg: ''
 
@@ -85,23 +89,65 @@ class SearchApprove extends Component {
     searchHandle(event) {
         this.setState({ term: event.target.value })
     }
-    SetPic() {
-        if (people.leaveType == 'Annual Leave') {
-            this.setState({ SetImg: AnnualLeave })
-        }
-        else if (people.leaveType == 'Sick Leave') {
-            this.setState({ SetImg: SickLeave })
-        }
-        if (people.leaveType == 'Leave with out pay') {
-            this.setState({ SetImg: LeaveWithOutPay })
-        }
+
+
+    componentDidMount() {
+        console.log('Didmount')
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves')
+            .then(res => {
+                console.log('------', res.data)
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+                        if (key === 'ApprovedBy') {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: val || '-'
+                            }
+                        }
+                        if (key === 'LeaveId') {
+                            return {
+                                ...result,
+                                rawLeaveId: val,
+                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                            }
+                        }
+                        if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
+                            console.log('do this sus', moment(val).format('DD-MM-YYYY'))
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                            }
+                        }
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.setState({ people: data })
+            })
     }
 
 
 
     render() {
-
+        console.log('state', this.state)
         const { term, people } = this.state;
+        const filtered = people.filter((curr) => {
+            const test1 = curr.requestedDateTime.toLowerCase().includes(term)
+            const test2 = curr.approvalStatus.toLowerCase().includes(term)
+            const test3 = curr.leaveId.toString().toLowerCase().includes(term)
+            const test4 = curr.type.toLowerCase().includes(term)
+            const test5 = curr.staffId.toLowerCase().includes(term)
+            const test6 = curr.startDateTime.toLowerCase().includes(term)
+            const test7 = curr.approvedBy.toLowerCase().includes(term)
+            const test8 = curr.approvalStatus.includes(term)
+            const test9 = curr.type.includes(term)
+            const test10 = curr.approvedBy.includes(term)
+            const test11 = curr.leaveId.toString().includes(term)
+            return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11
+        })
+        console.log(filtered)
         return (
             <div className="All">
                 <div className="headtable">
@@ -116,92 +162,87 @@ class SearchApprove extends Component {
                         </form>
 
 
-                        <div className="tkboth">
-                        <div>
-                            <div className="STable">
-                                <div className="row">
-                                    <div className="col-md-2">
-                                        <th>Status</th>
-                                    </div>
-                                    <div className="col-md-2">
-                                        <th>Leave ID</th>
-                                    </div>
-                                    <div className="col-md-2">
-                                        <th>Staff ID</th>
-                                    </div>
-                                    <div className="col-md-2">
-                                        <th>สร้างใบลาเมื่อ</th>
-                                    </div>
-                                    <div className="col-md-2">
-                                        <th>Leaving Date</th>
-                                    </div>
-                                    <div className="col-md-2">
-                                        <th>Manage by</th>
+
+                        <div className='tkboth'>
+                            <div className='TangKwatable'>
+                                <div className="STable">
+                                    <div className="row">
+                                        <div className="col-md-2">
+                                            <th>Status</th>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <th>Leave ID</th>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <th>Staff ID</th>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <th>สร้างใบลาเมื่อ</th>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <th>Leaving Date</th>
+                                        </div>
+                                        <div className="col-md-2">
+                                            <th>Manage by</th>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div>
-                            {
-                                people.filter((curr) => {
-                                    return curr.status.toLowerCase().includes(term)
-                                        || curr.leaveID.toLowerCase().includes(term)
-                                        || curr.leaveType.toLowerCase().includes(term)
-                                        || curr.staffID.toLowerCase().includes(term)
-                                        || curr.reqDate.toLowerCase().includes(term)
-                                        || curr.leaveDate.toLowerCase().includes(term)
-                                        || curr.approver.toLowerCase().includes(term)
-                                }).map((people, index) =>
-                                    <div>
-                                        {console.log(people)}
-                                        <div className="SData">
-                                            <div className="row ">
-                                                <div className="col-md-2">
-                                                    <div className="ooo">
 
 
-                                                        <img src={getLeaveTypePicture(people.leaveType)} height="25" width="25" /></div>
-                                                    <div className={` ${people.status == 'Approve' ? 'SApprove' : people.status == 'Pending' ? 'SPending' : 'SReject'}`}>
+                            <div>
+                                {
 
-                                                        <td><b>{people.status}</b></td>
+                                    filtered.map((people, index) =>
+                                        <div>
+
+                                            <div className="SData">
+                                                <div className="row ">
+                                                    <div className="col-md-2">
+                                                        <div className="ooo">
+                                                            <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
+                                                        <div className={`${people.approvalStatus == 'Approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
+
+                                                            <td><b>{people.approvalStatus}</b></td>
+                                                        </div>
+
                                                     </div>
-                                                </div>
-                                                <div className="col-md-2">
-                                                    <div>
-                                                        <Link to="/setApprove"> <td><b>{people.leaveID}</b></td></Link>
+                                                    <div className="col-md-2">
+                                                        <div>
+                                                            <Link to='/setApprove' ><td><b>{people.leaveId}</b></td></Link>
+                                                        </div>
+                                                        <div>
+
+                                                            <td>{people.type}</td>
+                                                        </div>
                                                     </div>
-                                                    <div>
-
-                                                        <td>{people.leaveType}</td>
+                                                    <div className="col-md-2">
+                                                        <td>{people.staffId}</td>
                                                     </div>
-                                                </div>
-                                                <div className="col-md-2">
-                                                    <td>{people.staffID}</td>
-                                                </div>
-                                                <div className="col-md-2">
+                                                    <div className="col-md-2">
 
-                                                    <td>{people.reqDate}</td>
+                                                        <td>{people.requestedDateTime}</td>
 
-                                                </div>
-                                                <div className="col-md-2">
-                                                    <td>{people.leaveDate}</td>
-                                                </div>
-                                                <div className="col-md-2">
-                                                    <td>{people.approver}</td>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <td>{people.startDateTime}</td>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <td>{people.approvedBy}</td>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                    </div>
-                                )
-                            }
+                                    )
+                                }
 
 
+                            </div>
                         </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
         );
     }

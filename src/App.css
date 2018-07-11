@@ -1101,8 +1101,12 @@ margin-left: 20px;
 
 }
 
-.inline {
-  display: inline-flex;
+
+.tkpicture {
+  width: 75px;
+  height: 50px;
+  
+
 }
 
 .rowpopup {
