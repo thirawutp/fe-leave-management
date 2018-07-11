@@ -214,7 +214,8 @@ p {
 }
 
 .row-select-onedate{
- padding-top: 49px;
+  padding-top: 90px;
+
  display: -webkit-box;
 }
 
@@ -374,6 +375,7 @@ p {
 }
 .header1 {
   display: inline-flex;
+  padding-top: 38px;
 }
 
 .Table {
@@ -810,7 +812,7 @@ margin-left: 20px;
 }
 
 .row-moreday {
-  padding-top: 39px;
+  padding-top: 74px;
 
 }
 
@@ -1103,3 +1105,12 @@ margin-left: 20px;
   display: inline-flex;
 }
 
+.rowpopup {
+  text-align: right;
+}
+
+
+.cover-popup-al{
+  float: right;
+  width: 20%;
+}

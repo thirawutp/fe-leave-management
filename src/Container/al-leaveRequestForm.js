@@ -8,27 +8,32 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
+import sun from '../asset/images/sun.png'
 import '../App.css';
 
 
 const FormHeader = props => {
     return (
+
         <React.Fragment>
+
+
+            <div className="show-header">
+                Leave Request Form
+            </div>
             <div className='header1'>
 
                 <div className='date-header'>
                     Date :
-          </div>
+</div>
                 <div className="current-date">
                     <DateComponent />
                 </div>
             </div>
-            <div className="show-header">
-                Leave Request Form
-      </div>
         </React.Fragment>
     )
 }
+
 
 const IsOneDayQuestion = props => {
     const { onChange, value } = props
@@ -86,7 +91,7 @@ const OnedayForm = props => {
 }
 
 const ManyDayForm = props => {
-    const { value, onChange } = props
+    const { onChange, value, handleMoment } = props
     return (
         <div className="row-moreday">
             <div className="start-date">
@@ -94,7 +99,7 @@ const ManyDayForm = props => {
                     Date Start :
           </div>
                 <div className="select-startdate">
-                    <StartDate onChange={onChange} id='leaveDate' />
+                    <StartDate onChange={onChange} id='leaveDate' id2='leaveDateBegin' handleMoment={handleMoment} />
                 </div>
                 <div className="text-time2">
                     Time :
@@ -123,7 +128,7 @@ const ManyDayForm = props => {
             </div>
                 <p className="space"> </p>
                 <div className="select-startdate">
-                    <EndDate onChange={onChange} id={'leaveDateStop'} />
+                    <EndDate onChange={onChange} id={'leaveDateStop'} id2='leaveDateEnd' value={value} handleMoment={handleMoment} />
                 </div>
                 <div className="text-time2">
                     Time :
@@ -143,6 +148,7 @@ const ManyDayForm = props => {
                         <option value={8}>8 hour</option>
                     </select>
                 </div>
+
             </div>
         </div>
     )
@@ -214,8 +220,22 @@ class alRequestForm extends Component {
             leaveAmountStop: 0,
             len: 0,
             note: '',
+            timeleftal: undefined,
             file: undefined,
+            leaveDateBegin: undefined,
+            leaveDateEnd: undefined,
+            amountLeft: undefined,
+            status: true,
+
         };
+    }
+    componentDidMount() {
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00004&year=2018")
+            .then(res => {
+                this.setState({ timeleftal: res.data.AnnualHours })
+                this.setState({ timeleftsl: res.data.SickHours })
+                this.setState({ timeleftlwp: res.data.LWPHours })
+            })
     }
 
 
@@ -230,8 +250,9 @@ class alRequestForm extends Component {
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        console.log(this.state.leaveDate + this.state.leaveTime)
         this.setState({ [id]: value })
+
+
     }
 
     handleChangeComment = (id, value, count) => {
@@ -244,6 +265,20 @@ class alRequestForm extends Component {
     handlefile(selectorFiles: FileList) {
         console.log(selectorFiles);
     }
+
+    handleMoment = () => {
+        const diff = moment(this.state.leaveDateBegin).diff(moment(this.state.leaveDateEnd), 'hours')
+        this.setState({ amountLeft: diff * (-1) })
+        console.log(this.state.amountLeft)
+    }
+
+    CheckStatus = (id, value) => {
+        this.setState({ [id]: value })
+
+
+    }
+
+
 
 
     handleSubmit = event => {
@@ -274,7 +309,34 @@ class alRequestForm extends Component {
         return (
             <form onSubmit={this.handleSubmit} >
                 <div className="leave-form">
-                    <FormHeader />
+                    <div className="cover-popup-al">
+                        <div className="textpopup">
+                            <p>วันลาคงเหลือ</p>
+                            <div>{this.state.amountLeft}</div>
+                        </div>
+                        <div className="popup">
+                            <div className="picture">
+                                <img src={sun} />
+                            </div>
+                            <div className="object">
+                                <div className="text-cover1 row">
+                                    <div className="col-md-6">
+                                        <p className="text-fill" >{parseInt(this.state.timeleftal / 8)}</p>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <p className="text-under">Days</p>
+                                    </div>
+                                </div>
+                                <div className="">
+                                    <p className="text-bottom">{this.state.timeleftal % 8} Hours</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <FormHeader />
+                    </div>
                     <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
                     {this.state.isOneday && <OnedayForm
                         value={{
@@ -288,17 +350,11 @@ class alRequestForm extends Component {
                         onChange={this.handleChangeOnedayForm}
                     />}
                     {this.state.isOneday === false && <ManyDayForm
-                        value={
-                            {
-                                leaveDate: undefined,
-                                leaveDateStop: undefined,
-                                leaveTime: undefined,
-                                leaveTimeStop: undefined,
-                                leaveAmount: 0,
-                                leaveAmountStop: 0,
-                            }
-                        }
+
+                        value={this.state.status}
                         onChange={this.handleChangeMoreOneDay}
+                        handleMoment={this.handleMoment}
+
                     />}
                     <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
                     <FileForm />
