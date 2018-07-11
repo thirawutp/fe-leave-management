@@ -102,7 +102,7 @@ class SearchStatistics extends Component {
                                     if (this.state.Save === 'All') {
                                         return true
                                     }
-                                    return people.Position === this.state.Save
+                                    return this.state.people.Position === this.state.Save
                                 }).map((people) =>
                                     <div className="row PPData">
                                         <div className="col-md-1">
@@ -110,26 +110,26 @@ class SearchStatistics extends Component {
                                         </div>
                                         <div className="col-md-3">
                                             <div>
-                                                <td>{people.StaffId}</td>
+                                                <td>{this.state.people.StaffId}</td>
                                             </div>
-                                            <div><td>{people.FirstName} {people.LastName}</td></div>
+                                            <div><td>{this.state.people.FirstName} {this.state.people.LastName}</td></div>
                                         </div>
 
 
                                         <div className="col-md-2">
 
-                                            <div><td>{people.Position}</td></div>
-                                            <div><td>{people.Section}</td></div>
+                                            <div><td>{this.state.people.Position}</td></div>
+                                            <div><td>{this.state.people.Section}</td></div>
 
                                         </div>
                                         <div className="col-md-2">
-                                            <td>{people.Pending}</td>
+                                            <td>{this.state.people.Pending}</td>
                                         </div>
                                         <div className="col-md-2">
-                                            <td>{people.Approve}</td>
+                                            <td>{this.state.people.Approve}</td>
                                         </div>
                                         <div className="col-md-2">
-                                            <td>{people.Reject}</td>
+                                            <td>{this.state.people.Reject}</td>
                                         </div>
 
 
