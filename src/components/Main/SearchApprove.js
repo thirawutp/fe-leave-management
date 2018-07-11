@@ -243,7 +243,6 @@ class SearchApprove extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
 
         );
     }
