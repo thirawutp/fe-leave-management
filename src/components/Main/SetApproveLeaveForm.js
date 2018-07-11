@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
 import pic from '../../asset/images/Doctorr.jpg';
-
+import axios from 'axios';
+import _ from 'lodash'
+import moment from 'moment'
 
 
 class SetApproveLeaveForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            staffID: '12345',
-            name: 'ฐิตินันท์',
-            surn: 'ปราชญ์วัฒนกิจ',
-            section: 'BA',
-            position: 'frontend',
-            leaveID: 'LEAVE672',
-            leaveType: 'Sick Leave',
-            dayType: 'more than One day',
-            dayStart: '01/07/2018',
-            dayEnd: '02/07/2018',
-            timeStart: '9.00 AM',
-            timeEnd: '9.00 AM',
-            hourStart: '8',
-            hourEnd: '8',
-            note: 'ป่วยกายยังพอทน แต่ป่วยเพราะไม่มีใครสักคน มันจะทนยังไง',
-            check: ''
+            person: [],
         }
 
 
@@ -52,6 +39,17 @@ class SetApproveLeaveForm extends Component {
         else {
             return true
         }
+
+    }
+
+    componentDidMount() {
+        console.log('Didmount')
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Info?leaveId=2')
+            .then(res => {
+                console.log('-------', res.data)
+                this.setState({ person: res.data })
+
+            })
 
     }
     render() {

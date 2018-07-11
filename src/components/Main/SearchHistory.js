@@ -89,21 +89,11 @@ class SearchHistory extends Component {
     searchHandle(event) {
         this.setState({ term: event.target.value })
     }
-    SetPic() {
-        if (people.leaveType == 'Annual Leave') {
-            this.setState({ SetImg: AnnualLeave })
-        }
-        else if (people.leaveType == 'Sick Leave') {
-            this.setState({ SetImg: SickLeave })
-        }
-        if (people.leaveType == 'Leave without Pay') {
-            this.setState({ SetImg: LeaveWithOutPay })
-        }
-    }
+
 
     componentDidMount() {
         console.log('Didmount')
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00006')
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002')
             .then(res => {
                 console.log('------', res.data)
                 const data = res.data.map(p => {
@@ -117,6 +107,7 @@ class SearchHistory extends Component {
                         if (key === 'LeaveId') {
                             return {
                                 ...result,
+                                rawLeaveId: val,
                                 [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
                             }
                         }
@@ -204,6 +195,7 @@ class SearchHistory extends Component {
 
                                     filtered.map((people, index) =>
                                         <div>
+
                                             <div className="SData">
                                                 <div className="row ">
                                                     <div className="col-md-2">
@@ -216,7 +208,7 @@ class SearchHistory extends Component {
                                                     </div>
                                                     <div className="col-md-2">
                                                         <div>
-                                                            <Link to='/leaveForm'><td><b>{people.leaveId}</b></td></Link>
+                                                            <Link to={`/leaveForm/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         </div>
                                                         <div>
 
@@ -239,6 +231,7 @@ class SearchHistory extends Component {
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     )
                                 }

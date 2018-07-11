@@ -20,7 +20,7 @@ import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 import leaveForm from '../src/components/Main/LeaveFormDetail.js';
-
+import setApprove from '../src/components/Main/SearchApprove.js';
 
 class MainLayout extends Component {
 
@@ -69,8 +69,8 @@ class App extends Component {
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='setApprove' component={SetApproveLeaveForm} />
-          <Route path='leaveForm' component={LeaveFormDetail} />
-
+          <Route path='leaveForm/:formId' component={LeaveFormDetail} />
+          <Route path='setApprove' component={SetApproveLeaveForm} />
 
 
 
