@@ -8,8 +8,8 @@ class IndexSearchStatistics extends Component {
     render() {
         return (
 
-            <div>
-                <h5>Select Staff ID</h5>
+            <div className="selectstaff">
+                <p>Select Staff ID</p>
                 <SearchStatistics />
 
 

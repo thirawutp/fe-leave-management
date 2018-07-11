@@ -44,8 +44,10 @@ class SearchStatistics extends Component {
     render() {
         const people = []
         return (
-            <div className="root">
+            <div className="tkroot">
+            <div className="tkbubble">
                 <div className='tkstatistic'>
+
                     <div className="row">
                         <div className="col-md-1"></div>
                         <div className="col-md-11">
@@ -73,11 +75,13 @@ class SearchStatistics extends Component {
                             </div>
 
 
+
                             <div className="row bubble">
 
                                 <div className="col-md-1">
                                     <th></th>
                                 </div>
+
 
                                 <div className="col-md-3">
                                     <th></th>
@@ -113,6 +117,7 @@ class SearchStatistics extends Component {
                                                 <td>{people.StaffId}</td>
                                             </div>
                                             <div><td>{people.FirstName} {people.LastName}</td></div>
+
                                         </div>
 
 
@@ -133,14 +138,17 @@ class SearchStatistics extends Component {
                                         </div>
 
 
+
                                     </div>
                                 )
                             }
                         </div>
 
+
                     </div>
                 </div>
-            </div >
+            </div>
+            </div>
 
         );
     }

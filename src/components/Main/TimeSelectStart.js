@@ -10,7 +10,9 @@ export class TimeSelectStart extends React.Component {
         this.onTimeChange = this.onTimeChange.bind(this);
     }
     onTimeChange(timeStart) {
-        this.setState({ timeStart });
+        const { id, onChange } = this.props
+        onChange(id, timeStart)
+
     }
     render() {
 

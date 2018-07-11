@@ -9,8 +9,8 @@ class IndexSearchApprove extends Component {
     render() {
         return (
 
-            <div>
-                <h5>Select Leave ID for approve or reject leave form</h5>
+            <div className='selectleaveid'>
+                <p>Select Leave ID for approve or reject leave form</p>
                 <SearchApprove />
 
 
