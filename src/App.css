@@ -83,6 +83,8 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
  
 }
 
+
+
 .navigationbar-item a:focus-within {
   color: #C84342;
  
@@ -130,7 +132,7 @@ a {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  padding-left: 60px;
+  margin-left: 150px;
   display:inline-flex;
 }
 
@@ -138,7 +140,7 @@ a {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  padding-left: 80px;
+  margin-left: 250px;
   display:inline-flex;
 }
 
@@ -146,7 +148,7 @@ a {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  padding-left: 80px;
+  margin-left: 350px;
   display:inline-flex;
 }
 
@@ -177,7 +179,7 @@ p {
   min-width: 783px;
   min-height: 768px;
   padding-left: 85px;
-    padding-top: 35px;
+  padding-top: 35px;
   max-height: 768px;
   max-width: 1024px;
 }
@@ -478,6 +480,11 @@ font-size : 16px;
   margin-top : 20px;
 }
 
+.selectLeave  {
+  margin-top: 41px;
+
+}
+
 .selectLeave p {
   font-size: 20px;
   font-family: "SukhumvitSet-Bold";
@@ -496,30 +503,16 @@ font-size : 16px;
   padding-left: 50px;
 }
 
-.button-popup {
-    width: 100%;
-    margin-left: 139px;
-
-}
-
-.cover-popup {
-    margin: 139px auto;
-    margin-right: 85px;
-
-}
 
 .block {
   text-align: center;
   display: flex;
-  margin-left: 139px;
+  margin: 66px auto;
+  width: 698px;
 
-   
-}
-.block {
-  text-align: center;
-  display: inline-flex;
 
 }
+
 .popup{
  
   border-style: solid;
@@ -528,6 +521,7 @@ font-size : 16px;
   border-radius: 15px;
   width: 176px;
   height: 176px;
+  margin: 22px;
 
 }
 
@@ -601,11 +595,10 @@ color: #333333;
 .text-bottom {
   text-align: right;
   position: relative;
-  font-family: Tahoma;
+  font-family: 'SukhumvitSet-Text';
   font-size: 26px;
   color: #333333;
-  
-  margin: 0;
+  margin: auto;
   padding-left: 29px;
   padding-right: 40px;
 }
@@ -821,6 +814,7 @@ margin-left: 20px;
   background-color: #C84342;
   color: #F3F0E2;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .main-container {
@@ -922,6 +916,7 @@ margin-left: 20px;
 .selectLeave p {
   margin-left: 85px;
   margin-top: 41px;
+  width: 100%;
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
 
@@ -1050,14 +1045,14 @@ margin-left: 20px;
 }
 
 .textpopup {
-  text-align: center;
-  
+  padding: auto;
+
 }
 
 .tk {
   margin-left : 1000px;
- margin-top: 50px;
- font-size: 16px;
+  margin-top: 50px;
+  font-size: 16px;
 }
 
 .tk b{

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import '../../App.css'
 import kendall from '../../asset/images/kendall.jpg';
+import axios from 'axios';
 
 
 class Header extends Component {
   render() {
     const {
-      name = 'Kendall Jenner',
-      section = 'Developer',
-      position = 'frontend',
-      staffID = '12345'
+      name,
+      section = '',
+      position = '',
+      staffID = ''
     } = this.props
     return (
       <div className="Header">
