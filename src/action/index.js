@@ -8,7 +8,15 @@ export const addHistory = history => ({
   payload: { history }
 })
 
+
+
+export const addpudding = data => ({
+  type: 'ADD_PUDDING',
+  payload: { data }
+})
+
 export const addStatistics = statistics => ({
   type: 'ADD_STATISTICS',
   payload: { statistics }
 })
+

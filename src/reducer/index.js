@@ -12,6 +12,12 @@ export default (state = inttialState, action) => {
         ...state,
         history: action.payload.history
       }
+    case 'ADD_PUDDING':
+      return {
+        ...state,
+        data: action.payload.data
+      }
+
     case 'ADD_STATISTICS':
       return {
         ...state,
