@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import _ from 'lodash'
+import { connect } from 'react-redux'
 
 class SearchStatistics extends Component {
     constructor(props) {
@@ -21,141 +22,130 @@ class SearchStatistics extends Component {
 
 
 
-    componentDidMount() {
-        console.log('Didmount')
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/Statistic/GetStatistics')
-            .then(res => {
-                console.log('------', res.data)
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
 
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.setState({ people: data })
-            })
-    }
+
 
 
 
     render() {
-        const people = []
+        const { people } = this.props
+        console.log(people)
         return (
             <div className="tkroot">
-            <div className="tkbubble">
-                <div className='tkstatistic'>
+                <div className="tkbubble">
+                    <div className='tkstatistic'>
 
-                    <div className="row">
-                        <div className="col-md-1"></div>
-                        <div className="col-md-11">
-
-
-
-
-                            <div className="tkrow ">
-                                <div className="col-md-1">
-                                    <p><b>Position:</b></p>
-                                </div>
-                                <div className="col-md-1">
-                                    <select onChange={this.handleSetValue} >
-
-                                        <option value="All">All</option>
-                                        <option value="Frontend">Frontend</option>
-                                        <option value="Backend">Backend</option>
-                                        <option value="BA">BA</option>
-                                        <option value="Graphic">Graphic</option>
-                                        <option value="QA">QA</option>
-                                    </select>
-                                </div>
-
-
-                            </div>
+                        <div className="row">
+                            <div className="col-md-1"></div>
+                            <div className="col-md-11">
 
 
 
-                            <div className="row bubble">
 
-                                <div className="col-md-1">
-                                    <th></th>
-                                </div>
-
-
-                                <div className="col-md-3">
-                                    <th></th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th></th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>Pending</th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>Approve</th>
-                                </div>
-                                <div className="col-md-2">
-                                    <th>Reject</th>
-                                </div>
-
-                            </div>
-                            {
-
-                                people.filter((people) => {
-                                    if (this.state.Save === 'All') {
-                                        return true
-                                    }
-                                    return this.state.people.Position === this.state.Save
-                                }).map((people) =>
-                                    <div className="row PPData">
-                                        <div className="col-md-1">
-                                            <td><p>รูป</p></td>
-                                        </div>
-                                        <div className="col-md-3">
-                                            <div>
-                                                <td>{this.state.people.StaffId}</td>
-                                            </div>
-<<<<<<< HEAD
-                                            <div><td>{this.state.people.FirstName} {this.state.people.LastName}</td></div>
-=======
-                                            <div><td>{people.FirstName} {people.LastName}</td></div>
-
->>>>>>> 40312477a1fbd57f53272cfaac9ef855ce6e4d95
-                                        </div>
-
-
-                                        <div className="col-md-2">
-
-                                            <div><td>{this.state.people.Position}</td></div>
-                                            <div><td>{this.state.people.Section}</td></div>
-
-                                        </div>
-                                        <div className="col-md-2">
-                                            <td>{this.state.people.Pending}</td>
-                                        </div>
-                                        <div className="col-md-2">
-                                            <td>{this.state.people.Approve}</td>
-                                        </div>
-                                        <div className="col-md-2">
-                                            <td>{this.state.people.Reject}</td>
-                                        </div>
-
-
-
+                                <div className="tkrow ">
+                                    <div className="col-md-1">
+                                        <p><b>Position:</b></p>
                                     </div>
-                                )
-                            }
+                                    <div className="col-md-1">
+                                        <select onChange={this.handleSetValue} >
+
+                                            <option value="All">All</option>
+                                            <option value="Frontend">Frontend</option>
+                                            <option value="Backend">Backend</option>
+                                            <option value="BA">BA</option>
+                                            <option value="Graphic">Graphic</option>
+                                            <option value="QA">QA</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div className="row bubble">
+
+                                    <div className="col-md-1">
+                                        <th></th>
+                                    </div>
+
+
+                                    <div className="col-md-3">
+                                        <th></th>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <th></th>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <th>Pending</th>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <th>Approve</th>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <th>Reject</th>
+                                    </div>
+
+                                </div>
+                                {
+
+                                    people.filter((people) => {
+                                        if (this.state.Save === 'All') {
+                                            return true
+                                        }
+                                        return people.Position === this.state.Save
+                                    }).map((people) =>
+                                        <div className="row PPData">
+                                            <div className="col-md-1">
+                                                <td><p>รูป</p></td>
+                                            </div>
+                                            <div className="col-md-3">
+                                                <div>
+                                                    <td>{people.staffId}</td>
+                                                </div>
+
+                                                <div><td>{people.firstName} {people.lastName}</td></div>
+
+                                            </div>
+
+
+                                            <div className="col-md-2">
+
+                                                <div><td>{people.position}</td></div>
+                                                <div><td>{people.section}</td></div>
+
+                                            </div>
+                                            <div className="col-md-2">
+                                                <td>{people.pending}</td>
+                                            </div>
+                                            <div className="col-md-2">
+                                                <td>{people.approve}</td>
+                                            </div>
+                                            <div className="col-md-2">
+                                                <td>{people.reject}</td>
+                                            </div>
+
+
+
+                                        </div>
+                                    )
+                                }
+                            </div>
+
+
                         </div>
-
-
                     </div>
                 </div>
-            </div>
             </div>
 
         );
     }
 }
 
-export default SearchStatistics;
+
+
+const mapStateToProps = state => ({
+    people: state.statistics || []
+})
+
+export default connect(mapStateToProps, {})(SearchStatistics)
