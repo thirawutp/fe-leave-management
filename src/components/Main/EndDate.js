@@ -11,8 +11,7 @@ class EndDate extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            startDate: moment(),
-            statusPick: true
+            startDate: '',
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -26,7 +25,6 @@ class EndDate extends React.Component {
 
         onChange(id, moment(date).format().toString().substring(0, 11));
         onChange(id2, date)
-        handleMoment()
     }
 
     render() {

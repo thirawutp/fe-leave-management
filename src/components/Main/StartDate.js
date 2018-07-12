@@ -9,7 +9,7 @@ class StartDate extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            startDate: moment()
+            startDate: ''
         };
     }
     handleChange = (date) => {
@@ -20,7 +20,6 @@ class StartDate extends React.Component {
 
         onChange(id, moment(date).format().toString().substring(0, 11))
         onChange(id2, date)
-        handleMoment()
 
     }
     render() {

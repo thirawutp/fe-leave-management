@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
-import { login, addHistory } from '../action'
+import { login, addHistory, addpudding } from '../action'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -56,7 +56,14 @@ class LoginPage extends Component {
                     }, {})
                 })
                 this.props.addHistory(data)
+
             })
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00002&year=2018")
+            .then(res => {
+                this.props.addpudding(res)
+            })
+
+
         this.props.router.push('/home')
     }
 
@@ -88,7 +95,8 @@ const mapStateToProps = null
 
 const mapDispatchToProps = dispatch => ({
     handleLogin: (profile) => dispatch(login(profile)),
-    addHistory: (history) => dispatch(addHistory(history))
+    addHistory: (history) => dispatch(addHistory(history)),
+    addpudding: (data) => dispatch(addpudding(data))
 })
 
 export default connect(

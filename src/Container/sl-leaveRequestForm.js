@@ -8,27 +8,34 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
+import sun from '../asset/images/sun.png'
 import '../App.css';
+import { connect } from 'react-redux';
+import { addpudding } from '../action'
 
 
 const FormHeader = props => {
     return (
+
         <React.Fragment>
+
+
+            <div className="show-header">
+                Leave Request Form
+            </div>
             <div className='header1'>
 
                 <div className='date-header'>
                     Date :
-          </div>
+</div>
                 <div className="current-date">
                     <DateComponent />
                 </div>
             </div>
-            <div className="show-header">
-                Leave Request Form
-      </div>
         </React.Fragment>
     )
 }
+
 
 const IsOneDayQuestion = props => {
     const { onChange, value } = props
@@ -71,6 +78,7 @@ const OnedayForm = props => {
           </div>
                         <div className="dropdown-oneday">
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
+                                <option> 0 hour</option>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -86,7 +94,7 @@ const OnedayForm = props => {
 }
 
 const ManyDayForm = props => {
-    const { value, onChange } = props
+    const { onChange, value, handleMoment } = props
     return (
         <div className="row-moreday">
             <div className="start-date">
@@ -94,7 +102,7 @@ const ManyDayForm = props => {
                     Date Start :
           </div>
                 <div className="select-startdate">
-                    <StartDate onChange={onChange} id='leaveDate' />
+                    <StartDate onChange={onChange} id='leaveDate' id2='leaveDateBegin' handleMoment={handleMoment} />
                 </div>
                 <div className="text-time2">
                     Time :
@@ -108,6 +116,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(event) => onChange('leaveAmount', event.target.value)}>
+                        <option> 0 hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -123,7 +132,7 @@ const ManyDayForm = props => {
             </div>
                 <p className="space"> </p>
                 <div className="select-startdate">
-                    <EndDate onChange={onChange} id={'leaveDateStop'} />
+                    <EndDate onChange={onChange} id={'leaveDateStop'} id2='leaveDateEnd' value={value} handleMoment={handleMoment} />
                 </div>
                 <div className="text-time2">
                     Time :
@@ -137,12 +146,14 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(e) => onChange('leaveAmountStop', e.target.value)}>
+                        <option> 0 hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
                         <option value={8}>8 hour</option>
                     </select>
                 </div>
+
             </div>
         </div>
     )
@@ -175,34 +186,26 @@ const FileForm = props => {
                 File :
           </div>
             <div className="input-file">
-                <input type="file" name="pic" onChange={this.handlefile} />
+                <input
+                    onChange={e => console.log(e.target.files[0])}
+                    type="file"
+                />
             </div>
         </div>
     )
 }
 
-const ControlBar = props => {
-    return <div className="cover-button">
-        <div className="row-button">
-            <div className="submit-button">
-                <input className="custom-button" type="submit" value="submit" />
-            </div>
-            <div className="cancel-button">
-                <button className="custom-button">cancel</button>
-            </div>
-        </div>
-    </div>
-}
 
 
-class alRequestForm extends Component {
+
+class slRequestForm extends Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            type: "Sick leave", // get form props :type
-            isOneday: undefined,
+            type: "Sick Leave", // get form props :type
+            isOneday: true,
             leaveDate: undefined,
             leaveTime: undefined,
             leaveDateStop: undefined,
@@ -211,24 +214,29 @@ class alRequestForm extends Component {
             leaveAmountStop: 0,
             len: 0,
             note: '',
-            file: {},
+            timeleftal: undefined,
+            file: undefined,
+            leaveDateBegin: undefined,
+            leaveDateEnd: undefined,
+            amountLeft: undefined,
+            status: true,
+
         };
     }
-
-
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
     }
 
     handleChangeOnedayForm = (id, value, id2) => {
-        console.log(this.state.leaveDate + this.state.leaveTime)
+
         this.setState({ [id]: value })
         this.setState({ [id2]: value })
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        console.log(this.state.leaveDate + this.state.leaveTime)
         this.setState({ [id]: value })
+
+
     }
 
     handleChangeComment = (id, value, count) => {
@@ -237,69 +245,142 @@ class alRequestForm extends Component {
         this.setState({ len: count })
 
     }
+    handleMoment = () => {
+        const diff = moment(this.state.leaveDateBegin).diff(moment(this.state.leaveDateEnd), 'hours')
+        this.setState({ amountLeft: diff * (-1) })
+    }
+
+    CheckStatus = (id, value) => {
+        this.setState({ [id]: value })
+
+
+    }
+
+
+
 
     handleSubmit = event => {
+        console.log('klklklkkl')
+        if (!this.state.leaveDate) {
 
+        }
+        else {
+            window.confirm("Confirm ?")
+            axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
 
-        console.log(this.state)
-        event.preventDefault()
-        axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-
-            "type": this.state.type,
-            "staffId": "00002",
-            "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-            "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
-            "hoursStartDate": this.state.leaveAmount,
-            "hoursEndDate": this.state.leaveAmountStop,
-            "approvalStatus": "string",
-            "comment": this.state.note,
-            "approvedTime": "2018-07-09T08:42:39.014Z",
-            "approvedBy": "null",
-            "attachedFile": "null",
-            "requestedDateTime": moment().format().toString()
-        })
-            .then(function (response) {
-                console.log(response);
+                "type": "Annual Leave",
+                "staffId": "00002",
+                "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                "hoursStartDate": this.state.leaveAmount,
+                "hoursEndDate": this.state.leaveAmountStop,
+                "approvalStatus": "string",
+                "comment": this.state.note,
+                "approvedTime": "2018-07-09T08:42:39.014Z",
+                "approvedBy": "null",
+                "attachedFile": "null",
+                "requestedDateTime": moment().format().toString()
             })
+                .then(function (response) {
+                    console.log(response);
+                })
+        }
+    }
+
+    handleCheckSubmit = () => {
+        console.log('test check sub mit')
+        if (this.state.isOneday == true) {
+            if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+            }
+            else {
+                console.log("success")
+                this.handleSubmit()
+            }
+        }
+        else if (this.state.isOneday == false) {
+            if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime || !this.state.leaveDateEnd || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0) {
+                alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+            }
+            else {
+                this.handleSubmit
+            }
+        }
     }
 
     render() {
+        const { leaveData = {} } = this.props;
+        console.log('test', moment().format().toString().substring(0, 11))
+
         return (
-            <form onSubmit={this.handleSubmit}>
-                <div className="leave-form">
-                    <FormHeader />
-                    <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
-                    {this.state.isOneday && <OnedayForm
-                        value={{
-                            leaveDate: undefined,
-                            leaveDateStop: undefined,
-                            leaveTime: undefined,
-                            leaveTimeStop: undefined,
-                            leaveAmount: 0,
-                            leaveAmountStop: 0,
-                        }}
-                        onChange={this.handleChangeOnedayForm}
-                    />}
-                    {this.state.isOneday === false && <ManyDayForm
-                        value={
-                            {
-                                leaveDate: undefined,
-                                leaveDateStop: undefined,
-                                leaveTime: undefined,
-                                leaveTimeStop: undefined,
-                                leaveAmount: 0,
-                                leaveAmountStop: 0,
-                            }
-                        }
-                        onChange={this.handleChangeMoreOneDay}
-                    />}
-                    <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
-                    <FileForm />
-                    <ControlBar />
+            <div className="leave-form">
+                <div className="cover-popup-al">
+                    <div className="textpopup">
+                        <p>วันลาคงเหลือ</p>
+                    </div>
+                    <div className="popup">
+                        <div className="picture">
+                            <img src={sun} />
+                        </div>
+                        <div className="object">
+                            <div className="text-cover1 row">
+                                <div className="col-md-6">
+                                    <p className="text-fill" ></p>
+                                </div>
+                                <div className="col-md-6">
+                                    <p className="text-under">Days</p>
+                                </div>
+                            </div>
+                            <div className="">
+                                <p className="text-bottom">{this.state.timeleftal % 8} Hours</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </form>
+                <div>
+                    <FormHeader />
+                </div>
+                <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
+                {this.state.isOneday && <OnedayForm
+                    value={{
+                        leaveDate: undefined,
+                        leaveDateStop: undefined,
+                        leaveTime: undefined,
+                        leaveTimeStop: undefined,
+                        leaveAmount: 0,
+                        leaveAmountStop: 0,
+                    }}
+                    onChange={this.handleChangeOnedayForm}
+                />}
+                {this.state.isOneday === false && <ManyDayForm
+
+                    value={this.state.status}
+                    onChange={this.handleChangeMoreOneDay}
+                    handleMoment={this.handleMoment}
+
+                />}
+                <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
+                <FileForm />
+                <div className="cover-button">
+                    <div className="row-button">
+                        <div className="submit-button">
+                            <button className="custom-button" onClick={this.handleCheckSubmit}>submit</button>
+                        </div>
+                        <div className="cancel-button">
+                            <button className="custom-button">cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
-export default alRequestForm;
-// asdfghjkl
+
+const mapStateToProps = state => ({
+    leaveData: state.data
+})
+
+export default connect(
+    mapStateToProps
+)(slRequestForm);

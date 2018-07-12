@@ -7,8 +7,8 @@ import LeaveList from './Container/index-leavelist 10.27.18.js';
 import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
 import alRequestForm from '../src/Container/al-leaveRequestForm';
-import slRequestForm from '../src/Container/al-leaveRequestForm';
-import lopRequestForm from '../src/Container/al-leaveRequestForm';
+import slRequestForm from '../src/Container/sl-leaveRequestForm';
+import lwpRequestForm from '../src/Container/lop-leaveRequestForm';
 import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails';
 import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
@@ -62,9 +62,9 @@ class App extends Component {
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
           <Route path='aaa' component={SeeApproveDetails} />
-          <Route path='form/:formType' component={alRequestForm} />
-          <Route path='form/:formType' component={slRequestForm} />
-          <Route path='form/:formType' component={lopRequestForm} />
+          <Route path='form/AnnualLeave' component={alRequestForm} />
+          <Route path='form/SickLeave' component={slRequestForm} />
+          <Route path='form/LwpLeave' component={lwpRequestForm} />
 
           <Route path='history' component={IndexSearchHistory} />
 
