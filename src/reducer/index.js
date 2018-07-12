@@ -1,6 +1,6 @@
-const inttialState = { }
+const inttialState = {}
 
-export default (state = inttialState , action) => {
+export default (state = inttialState, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
@@ -11,6 +11,11 @@ export default (state = inttialState , action) => {
       return {
         ...state,
         history: action.payload.history
+      }
+    case 'ADD_STATISTICS':
+      return {
+        ...state,
+        statistics: action.payload.statistics
       }
     default:
       return state
