@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import _ from 'lodash'
 import kendall from '../../asset/images/kendall.jpg';
+import axios from 'axios';
 
 
 class Header extends Component {
   render() {
     const {
       name,
-      section = 'Developer',
-      position = 'frontend',
-      staffID = '12345'
+      section = '',
+      position = '',
+      staffID = ''
     } = this.props
     return (
       <div className="Header">

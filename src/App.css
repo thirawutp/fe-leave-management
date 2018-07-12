@@ -28,6 +28,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 
 .App {
   background-color: #3D3D3D;
+  height: 100%;
 }
 
 .AppBar {
@@ -35,9 +36,10 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 .box {
   width: 92%;
-  height: 637px;
+  height: 100%;
   margin: 57px auto;
   background-color: #F3F0E2;
+  background-size: cover;
 }
 
 .navigationbar-list {
@@ -48,15 +50,13 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
   table-layout: fixed;
   float: left;
   margin-left: 4%;
-
- 
+  
 }
 
 .navigationbar-item {
   text-transform: uppercase;
   font-family: 'SukhumvitSet-Bold';
   list-style: none;
-  color: #F3F0E2;
   height: 57px;
   width: 216px;
   text-align: center;
@@ -71,23 +71,28 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 
 .navigationbar-item a {
   color: #F3F0E2;
+
 }
 
 .navigationbar-item a:hover {
-  color: #F3F0E2;
   list-style: none;
+  text-decoration: none;
+  color: #F3F0E2;
+
 }
 
-.navigationbar-item:focus-within {
-  background: #F3F0E2;
- 
+.buttonchange {
+  background-color: #F3F0E2;
 }
 
-.navigationbar-item a:focus-within {
+.buttonchange a{
   color: #C84342;
- 
 }
 
+.buttonchange a:hover{
+  color: #C84342;
+
+}
 
 a {
   margin: auto;
@@ -130,7 +135,7 @@ a {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  padding-left: 60px;
+  margin-left: 150px;
   display:inline-flex;
 }
 
@@ -138,7 +143,7 @@ a {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  padding-left: 80px;
+  margin-left: 250px;
   display:inline-flex;
 }
 
@@ -146,7 +151,7 @@ a {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  padding-left: 80px;
+  margin-left: 350px;
   display:inline-flex;
 }
 
@@ -177,7 +182,7 @@ p {
   min-width: 783px;
   min-height: 768px;
   padding-left: 85px;
-    padding-top: 35px;
+  padding-top: 35px;
   max-height: 768px;
   max-width: 1024px;
 }
@@ -364,6 +369,10 @@ p {
   text-align: center;
 }
 
+.cover-popup {
+  margin-right: 85px;
+}
+
 .date {
   font-size: 24px;
   margin-left: 15px;
@@ -480,6 +489,11 @@ font-size : 16px;
   margin-top : 20px;
 }
 
+.selectLeave  {
+  margin-top: 41px;
+
+}
+
 .selectLeave p {
   font-size: 20px;
   font-family: "SukhumvitSet-Bold";
@@ -498,30 +512,16 @@ font-size : 16px;
   padding-left: 50px;
 }
 
-.button-popup {
-    width: 100%;
-    margin-left: 139px;
-
-}
-
-.cover-popup {
-    margin: 139px auto;
-    margin-right: 85px;
-
-}
 
 .block {
   text-align: center;
   display: flex;
-  margin-left: 139px;
+  margin: 139px auto;
+  width: 698px;
 
-   
-}
-.block {
-  text-align: center;
-  display: inline-flex;
 
 }
+
 .popup{
  
   border-style: solid;
@@ -530,10 +530,9 @@ font-size : 16px;
   border-radius: 15px;
   width: 176px;
   height: 176px;
+  margin: auto;
 
 }
-
-
 
 .img-icon{
   height: 64px;
@@ -565,37 +564,38 @@ height: 50px;
 }
 
 .text-fill{
-  /* 20 */
-  padding-left: 20px;
-  padding-bottom: 1px;
+padding-left: 41px;
+padding-bottom: 1px;
 position: relative;
 padding-top: 0 10px;
-margin-top: 0px;
+margin-top: 6px;
 margin-bottom: 0px;
 font-size: 40px;
 color: #333333;
 
 }
+
 .text-under{
-  /* 0 */
-  padding-right: 5px;
-  padding-top: 9px;
-  margin-top: 0;
-  margin-bottom: 0;
+padding-right: 5px;
+padding-top: 9px;
+margin-top: 27px;
+margin-bottom: 0;
 position: relative;
-font-family: Tahoma;
-font-size: 30px;
+font-family: 'SukhumvitSet-Text';
+font-size: 16px;
 color: #333333;
 
 }
+
 .text-cover1 {
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
 }
+
 .text-fill-small {
-  margin-top: -25px;
-  margin-left: 150px;
+margin-top: -25px;
+margin-left: 150px;
 font-size: 16px;
 color: #333333;
 }
@@ -603,11 +603,10 @@ color: #333333;
 .text-bottom {
   text-align: right;
   position: relative;
-  font-family: Tahoma;
+  font-family: 'SukhumvitSet-Text';
   font-size: 26px;
   color: #333333;
-  
-  margin: 0;
+  margin: auto;
   padding-left: 29px;
   padding-right: 40px;
 }
@@ -763,24 +762,21 @@ margin-left: 20px;
 }
 
 .text-annualleave{
-  text-align: center;
-    padding-top: 23px;
-    font-size: 16px;
-    margin-right: 64px;
+text-align: center;
+padding-top: 23px;
+font-size: 16px;
 }
 
 .text-sickleave{
   padding-top: 23px;
   font-size: 16px;
   text-align: center;
-  margin-right: 57px;
 }
 
 .text-leavepay {
   text-align: center;
   padding-top: 23px;
   font-size: 16px;
-  margin-right: 48px;
    
 }
 
@@ -816,13 +812,15 @@ margin-left: 20px;
 
 }
 
-.button {
+.gunbutton {
   width: 176px;
   height: 35px;
   border-radius: 15px;
   background-color: #C84342;
   color: #F3F0E2;
   cursor: pointer;
+  margin: auto;
+
 }
 
 .main-container {
@@ -879,7 +877,7 @@ margin-left: 20px;
 }
 
 .tkboth {
-  margin: auto;
+  margin: 102px auto 34px auto;
 
 }
 
@@ -896,11 +894,21 @@ margin-left: 20px;
 
 .tkrow {
 
-  display: flex;
-  width: 100%;
+  display: block;
+  width: 763px;
   margin-top: 58px;
   justify-content: flex-end;
-  margin-right: 23%;
+  margin: auto;
+
+}
+
+.tktablerow {
+
+  display: inline-flex;
+  width: 763px;
+  margin-top: 58px;
+  justify-content: flex-end;
+  margin: auto;
 
 }
 
@@ -924,6 +932,16 @@ margin-left: 20px;
 .selectLeave p {
   margin-left: 85px;
   margin-top: 41px;
+  width: 100%;
+  font-family: 'SukhumvitSet-Bold';
+  font-size: 20px;
+
+}
+
+.selectleaveid p {
+  margin-left: 85px;
+  margin-top: 41px;
+  width: 100%;
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
 
@@ -959,17 +977,35 @@ margin-left: 20px;
 }
 
 .bbr{
-  margin-left: 820px;
-  margin-top: 50px;
   border-radius: 12px;
- 
+  display: flex;
+  width: 763px;
+  margin: auto;
+  justify-content: flex-end;
+
 }
 
 .bbr input{
- 
   border-radius: 12px;
+  border: none;
+  width: 160px;
+  height: 30px;
  
 }
+
+::placeholder{
+  font-family: 'SukhumvitSet-Text';
+  color: rgba(51, 51, 51, 0.28);
+ 
+}
+
+.bbr img{
+ 
+  margin: 5px;
+
+ 
+}
+
 .SData {
   padding: 20px;
   text-align: center;
@@ -1025,10 +1061,17 @@ margin-left: 20px;
   width: 176px;
   height: 35px;
   border-radius: 15px;
+  border: none;
   background-color: #C84342;
   color: #F3F0E2;
   cursor: pointer;
   font-family: 'SukhumvitSet-Bold'
+
+}
+
+.button:hover {
+  box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+
 }
 
 .shark{
@@ -1052,14 +1095,15 @@ margin-left: 20px;
 }
 
 .textpopup {
-  text-align: center;
-  
+  font-family: 'SukhumvitSet-Text';
+  font-size: 16px;
+
 }
 
 .tk {
   margin-left : 1000px;
- margin-top: 50px;
- font-size: 16px;
+  margin-top: 50px;
+  font-size: 16px;
 }
 
 .tk b{

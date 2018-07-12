@@ -14,31 +14,25 @@ import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetail
 import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
 import IndexSearchStatistics from '../src/Container/index-SearchStatistics.js';
 import IndexSearchHistory from '../src/Container/index-SearchHistory.js';
+import leaveDetail from '../src/components/Main/LeaveFormDetail.js';
 import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
 import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
-import LoginPage from '../src/Container/LoginPage';
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
-import leaveForm from '../src/components/Main/LeaveFormDetail.js';
-
-import setApprove from '../src/components/Main/SearchApprove.js';
-
+import LoginPage from '../src/Container/LoginPage';
 
 class MainLayout extends Component {
-
   render() {
-    const name = _.get(this.props, 'location.state.profileObj.name', '')
     return (
       <div className='App'>
         <div>
-          <Header name={name} />
+          <Header  />
         </div>
         <div>
-          <NavigationBar />
+          <NavigationBar {...this.props} />
         </div>
         <div className="box">
-
           {this.props.children}
         </div>
       </div>
@@ -49,14 +43,13 @@ class MainLayout extends Component {
 class App extends Component {
   render() {
     return (
+
       <Router history={browserHistory}>
-        <Route path='/login' component={LoginPage} />
+      <Route path='login' component={LoginPage} />
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
-
           <Route path='home' component={LeaveList} />
           <Route path='static' component={SearchLeaveStatisticsList} />
-
           <Route path='Approve' component={IndexSearchApprove} />
           <Route path='leaveReport' component={LeaveRequestReport} />
           <Route path='pic' component={Doctors} />
@@ -65,15 +58,12 @@ class App extends Component {
           <Route path='form/AnnualLeave' component={alRequestForm} />
           <Route path='form/SickLeave' component={slRequestForm} />
           <Route path='form/LwpLeave' component={lwpRequestForm} />
-
           <Route path='history' component={IndexSearchHistory} />
-
           <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='setApprove' component={SetApproveLeaveForm} />
-          <Route path='leaveForm/:formId' component={LeaveFormDetail} />
-          <Route path='setApprove' component={SetApproveLeaveForm} />
+
 
 
 

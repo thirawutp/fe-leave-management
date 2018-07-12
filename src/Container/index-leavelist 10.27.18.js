@@ -29,14 +29,10 @@ class LeaveList extends Component {
     return (
 
       <div className="leavelistbox">
-
-
         <div className='selectLeave'>
           <p>Select Leave Type</p>
         </div>
-
         <div className="button-popup" >
-
           <div className="block">
             <div className="cover-popup">
               <div className="textpopup">

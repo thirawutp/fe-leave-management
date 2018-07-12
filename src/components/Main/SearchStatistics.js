@@ -41,23 +41,23 @@ class SearchStatistics extends Component {
 
 
 
+                            <div className="tktablerow ">
+                                <div className="col-md-1">
+                                    <p><b>Position:</b></p>
+                                </div>
+                                <div className="col-md-1">
+                                    <select onChange={this.handleSetValue} >
 
-                                <div className="tkrow ">
-                                    <div className="col-md-1">
-                                        <p><b>Position:</b></p>
-                                    </div>
-                                    <div className="col-md-1">
-                                        <select onChange={this.handleSetValue} >
+                                        <option value="All">All</option>
+                                        <option value="Frontend">Frontend</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="BA">BA</option>
+                                        <option value="Graphic">Graphic</option>
+                                        <option value="QA">QA</option>
+                                    </select>
+                                </div>
 
-                                            <option value="All">All</option>
-                                            <option value="Frontend">Frontend</option>
-                                            <option value="Backend">Backend</option>
-                                            <option value="BA">BA</option>
-                                            <option value="Graphic">Graphic</option>
-                                            <option value="QA">QA</option>
-                                        </select>
-                                    </div>
-
+                        
 
                                 </div>
 
