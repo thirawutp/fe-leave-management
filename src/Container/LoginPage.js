@@ -43,12 +43,7 @@ class LoginPage extends Component {
                                 [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
                             }
                         }
-                        if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                            }
-                        }
+
                         return {
                             ...result,
                             [_.camelCase(key)]: val
