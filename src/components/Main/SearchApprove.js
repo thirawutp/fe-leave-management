@@ -152,13 +152,13 @@ class SearchApprove extends Component {
             <div className="All">
                 <div className="headtable">
                     <div className="tkrow">
-                        
-                    <div className='tkboth'>
-                    <form>
-                            <div className="bbr">
-                                <input type="text" placeholder="   Search ..."  onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
-                            </div>
-                        </form>
+
+                        <div className='tkboth'>
+                            <form>
+                                <div className="bbr">
+                                    <input type="text" placeholder="   Search ..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
+                                </div>
+                            </form>
                             <div className='TangKwatable'>
                                 <div className="STable">
                                     <div className="row">
@@ -183,7 +183,7 @@ class SearchApprove extends Component {
                                     </div>
                                 </div>
                             </div>
-                        
+
 
                             <div>
                                 {
@@ -230,11 +230,12 @@ class SearchApprove extends Component {
 
                                         </div>
                                     )
-                                    }
-                                </div>
+                                }
                             </div>
+                        </div>
                     </div>
                 </div>
+            </div>
 
         );
     }
