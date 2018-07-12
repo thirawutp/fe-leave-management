@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../../App.css'
+import { connect } from 'react-redux'
+import _ from 'lodash'
 import kendall from '../../asset/images/kendall.jpg';
 import axios from 'axios';
 
@@ -37,4 +38,13 @@ class Header extends Component {
 }
 
 
-export default Header;
+const mapStateToProps = state => ({
+  name: _.get(state, 'profile.profileObj.name', ''),
+  section: 'Developer',
+  position: 'Frontend',
+  staffID: '12345',
+})
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

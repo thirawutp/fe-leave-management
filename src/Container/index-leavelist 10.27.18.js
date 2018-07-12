@@ -58,7 +58,7 @@ class LeaveList extends Component {
 
               </div>
               <div className="text-annualleave">
-                <Link to='/form/annaulLeave'><button className="button"> Annual Leave</button>  </Link>
+                <Link to='/form/AnnualLeave'><button className="button"> Annual Leave</button>  </Link>
               </div>
             </div>
 
@@ -87,7 +87,7 @@ class LeaveList extends Component {
               </div>
 
               <div className="text-sickleave">
-                <Link to='/form/sickLeave'><button className="button">Sick Leave</button></Link>
+                <Link to='/form/SickLeave'><button className="button">Sick Leave</button></Link>
               </div>
             </div>
             <div className="cover-popup">
@@ -112,7 +112,7 @@ class LeaveList extends Component {
               </div>
 
               <div className="text-sickleave">
-                <Link to='/form/LeaveWithOutPay'><button className="button">Leave with out pay</button></Link>
+                <Link to='/form/LwpLeave'><button className="button">Leave with out pay</button></Link>
               </div>
             </div>
           </div>
