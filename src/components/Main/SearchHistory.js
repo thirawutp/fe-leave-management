@@ -217,7 +217,20 @@ class SearchHistory extends Component {
 }
 
 const mapStateToProps = state => ({
-    people: state.history || []
+    people: state.history.map(row => {
+        return _.reduce(row, (result, val, key) => {
+            if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                return {
+                    ...result,
+                    [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                }
+            }
+            return {
+                ...result,
+                [_.camelCase(key)]: val
+            }
+        }, {})
+    })
 })
 
 export default connect(mapStateToProps, {})(SearchHistory)
