@@ -29,10 +29,9 @@ class MainLayout extends Component {
           <Header  />
         </div>
         <div>
-          <NavigationBar />
+          <NavigationBar {...this.props} />
         </div>
         <div className="box">
-
           {this.props.children}
         </div>
       </div>

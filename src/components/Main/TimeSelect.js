@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TimeField from 'react-simple-timefield';
 
 
-class TimeSelectStart extends React.Component {
+class TimeSelect extends React.Component {
     constructor(props) {
         super(props);
 
@@ -35,4 +35,4 @@ class TimeSelectStart extends React.Component {
     }
 }
 
-export default TimeSelectStart;
+export default TimeSelect;

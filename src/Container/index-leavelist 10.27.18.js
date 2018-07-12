@@ -13,17 +13,19 @@ class LeaveList extends Component {
     timeleftal: 0, timeleftsl: 0, timeleftlwp: 0
 
   };
+
+
   componentDidMount() {
     axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00005&year=2018")
       .then(res => {
         this.setState({ timeleftal: res.data.AnnualHours })
         this.setState({ timeleftsl: res.data.SickHours })
         this.setState({ timeleftlwp: res.data.LWPHours })
-        console.log(res)
       })
   }
+
+
   render() {
-    console.log(this.props)
     return (
 
       <div className="leavelistbox">

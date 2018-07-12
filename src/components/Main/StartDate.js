@@ -17,7 +17,7 @@ class StartDate extends React.Component {
             startDate: date
         });
 
-        onChange(id, moment(date).format())
+        onChange(id, moment(date).format().toString().substring(0, 11))
     }
     render() {
         return (

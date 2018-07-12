@@ -7,7 +7,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-class Calendar2 extends React.Component {
+class EndDate extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,7 +23,7 @@ class Calendar2 extends React.Component {
             startDate: date
         });
 
-        onChange(id, moment(date).format());
+        onChange(id, moment(date).format().toString().substring(0, 11));
     }
 
     render() {
@@ -34,4 +34,4 @@ class Calendar2 extends React.Component {
     }
 }
 
-export default Calendar2
+export default EndDate
