@@ -93,7 +93,7 @@ class SearchStatistics extends Component {
                                         if (this.state.Save === 'All') {
                                             return true
                                         }
-                                        return people.Position === this.state.Save
+                                        return people.position === this.state.Save
                                     }).map((people) =>
                                         <div className="row PPData">
                                             <div className="col-md-1">

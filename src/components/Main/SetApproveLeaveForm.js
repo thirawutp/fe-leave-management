@@ -55,7 +55,7 @@ class SetApproveLeaveForm extends Component {
     render() {
         return (
             <div>
-                <div className="row Dory">
+                <div className="Dory">
 
                     <div className="row">
                         <div className="col-md-3">
