@@ -23,10 +23,10 @@ class LeaveFormDetail extends Component {
     getDayType = (start, end) => {
 
         if (moment(start).isSame(end, 'days')) {
-            return false
+            return true
         }
         else {
-            return true
+            return
         }
 
     }
@@ -40,6 +40,7 @@ class LeaveFormDetail extends Component {
         else {
             return 'More than one day'
         }
+
     }
 
     handleShow = (roles) => {
@@ -60,7 +61,7 @@ class LeaveFormDetail extends Component {
         console.log('Didmount')
         axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Info?leaveId=33')
             .then(res => {
-                console.log('-------', res.data)
+                console.log('--jjj-----', res.data)
                 this.setState({ person: res.data })
 
             })
@@ -69,7 +70,7 @@ class LeaveFormDetail extends Component {
 
 
     render() {
-        console.log(this.props.leaveForm)
+        console.log('5555555555', this.props.leaveForm)
         return (
             <div>
                 <div className="row">
@@ -91,51 +92,51 @@ class LeaveFormDetail extends Component {
                                 <p><b>Leave Type : </b></p>
                             </div>
                             <div className="col-md-2">
-                                <p>{this.state.person.Type}</p>
+                                <p>{this.props.leaveForm.type}</p>
                             </div>
                             <div className="col-md-2">
                                 <p><b>Day Requested : </b></p>
                             </div>
                             <div className="col-md-2">
-                                <p>{this.getType(this.state.person.StartDateTime, this.state.person.EndDateTime)}</p>
+                                <p>{this.getType(this.props.leaveForm.startDateTime, this.props.leaveForm.endDateTime)}</p>
                             </div>
                         </div>
 
 
 
-                        {this.getDayType(this.state.person.StartDateTime, this.state.person.EndDateTime) && <div> <div className="row">
+                        {!this.getDayType(this.props.leaveForm.startDateTime, this.props.leaveForm.endDateTime) && <div> <div className="row">
 
                             <div className="col-md-2"><p><b>Day Start : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.state.person.StartDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('DD-MM-YYYY')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.state.person.StartDateTime).format('HH:mm')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('HH:mm')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.state.person.HoursStartDate} Hrs.</p></div>
+                            <div className="col-md-2"><p>{this.props.leaveForm.hoursStartDate} Hrs.</p></div>
                         </div>
                             <div className="row">
                                 <div className="col-md-2"><p><b>Day End : </b></p></div>
-                                <div className="col-md-2"><p>{moment(this.state.person.EndDateTime).format('DD-MM-YYYY')}</p></div>
+                                <div className="col-md-2"><p>{moment(this.props.leaveForm.endDateTime).format('DD-MM-YYYY')}</p></div>
                                 <div className="col-md-2"><p><b>Time : </b></p></div>
-                                <div className="col-md-2"><p>{moment(this.state.person.EndDateTime).format('HH:mm')}</p></div>
+                                <div className="col-md-2"><p>{moment(this.props.leaveForm.endDateTime).format('HH:mm')}</p></div>
                                 <div className="col-md-2"><p><b>Time : </b></p></div>
-                                <div className="col-md-2"><p>{this.state.person.HoursEndDate} Hrs.</p></div></div>
+                                <div className="col-md-2"><p>{this.props.leaveForm.hoursEndDate} Hrs.</p></div></div>
 
 
                         </div>}
-                        {!this.getDayType(this.state.person.StartDateTime, this.state.person.EndDateTime) && <div className="row">
+                        {this.getDayType(this.props.leaveForm.startDateTime, this.props.leaveForm.endDateTime) && <div className="row">
                             <div className="col-md-2"><p><b>Date : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.state.person.StartDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('DD-MM-YYYY')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.state.person.StartDateTime).format('HH:mm')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('HH:mm')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.state.person.HoursStartDate} Hrs.</p></div></div>}
+                            <div className="col-md-2"><p>{this.props.leaveForm.hoursStartDate} Hrs.</p></div></div>}
 
                         <div className="row">
                             <div className="col-md-2">
                                 <p><b>Note/comments : </b></p>
                             </div>
                             <div className="col-md-9">
-                                <p>{this.state.person.Comment}</p>
+                                <p>{this.props.leaveForm.comment}</p>
                             </div>
                         </div>
                         <div className="row">

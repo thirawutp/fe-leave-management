@@ -18,6 +18,11 @@ export default (state = inttialState, action) => {
         data: action.payload.data
       }
 
+    case 'ADD_STATISTICS':
+      return {
+        ...state,
+        statistics: action.payload.statistics
+      }
     default:
       return state
   }
