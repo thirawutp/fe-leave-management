@@ -55,7 +55,7 @@ class LoginPage extends Component {
             })
         axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00002&year=2018")
             .then(res => {
-                this.props.addpudding(res)
+                this.props.addpudding(res.data)
             })
 
 

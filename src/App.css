@@ -1179,6 +1179,8 @@ font-size: 16px;
   width: 20%;
 }
 
+.inline {
+  display: inline-flex;
 .logoutbutton {
   list-style: none;
   background-color: #C84342;

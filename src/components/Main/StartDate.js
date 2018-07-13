@@ -13,14 +13,12 @@ class StartDate extends React.Component {
         };
     }
     handleChange = (date) => {
-        const { onChange, id, id2, handleMoment } = this.props
+        let { onChange, id, id2, Calculate, begin } = this.props
         this.setState({
             startDate: date
         });
-
-        onChange(id, moment(date).format().toString().substring(0, 11))
-        onChange(id2, date)
-
+        onChange(id, moment(date).format().toString().substring(0, 11));
+        // Calculate(date, '');
     }
     render() {
         return (
