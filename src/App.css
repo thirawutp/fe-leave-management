@@ -1162,3 +1162,7 @@ font-size: 16px;
   float: right;
   width: 20%;
 }
+
+.inline {
+  display: inline-flex;
+}

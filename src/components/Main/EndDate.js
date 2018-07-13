@@ -17,18 +17,17 @@ class EndDate extends React.Component {
     }
 
     handleChange(date) {
-        const { id, onChange, id2, handleMoment } = this.props
+        let { id, onChange, id2, Calculate, end } = this.props
 
         this.setState({
             startDate: date
         });
-
+        end = this.startDate;
         onChange(id, moment(date).format().toString().substring(0, 11));
-        onChange(id2, date)
+        // Calculate('', date)
     }
 
     render() {
-        console.log(this.props.value)
         return <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChange}

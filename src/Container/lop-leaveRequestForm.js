@@ -94,7 +94,7 @@ const OnedayForm = props => {
 }
 
 const ManyDayForm = props => {
-    const { onChange, value, handleMoment } = props
+    const { onChange, value, Calculate, begin, end } = props
     return (
         <div className="row-moreday">
             <div className="start-date">
@@ -102,7 +102,7 @@ const ManyDayForm = props => {
                     Date Start :
           </div>
                 <div className="select-startdate">
-                    <StartDate onChange={onChange} id='leaveDate' id2='leaveDateBegin' handleMoment={handleMoment} />
+                    <StartDate onChange={onChange} id='leaveDate' Calculate={Calculate} begin={begin} />
                 </div>
                 <div className="text-time2">
                     Time :
@@ -132,7 +132,7 @@ const ManyDayForm = props => {
             </div>
                 <p className="space"> </p>
                 <div className="select-startdate">
-                    <EndDate onChange={onChange} id={'leaveDateStop'} id2='leaveDateEnd' value={value} handleMoment={handleMoment} />
+                    <EndDate onChange={onChange} id={'leaveDateStop'} value={value} Calculate={Calculate} end={end} />
                 </div>
                 <div className="text-time2">
                     Time :
@@ -198,13 +198,13 @@ const FileForm = props => {
 
 
 
-class lopRequestForm extends Component {
+class lwpRequestForm extends Component {
 
     constructor(props) {
         super(props);
-
+        const { leaveData = {} } = this.props
         this.state = {
-            type: "Leave without Pay", // get form props :type
+            type: "Annual Leave", // get form props :type
             isOneday: true,
             leaveDate: undefined,
             leaveTime: undefined,
@@ -216,34 +216,33 @@ class lopRequestForm extends Component {
             note: '',
             timeleftal: undefined,
             file: undefined,
-            leaveDateBegin: undefined,
-            leaveDateEnd: undefined,
-            amountLeft: undefined,
-            status: true,
-
+            leaveDateBegin: '',
+            leaveDateEnd: '',
+            amountLeft: '',
+            timeSum: leaveData.AnnualHours,
+            showSum: leaveData.AnnualHours,
         };
     }
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
+        this.setState({ showSum: this.state.timeSum })
     }
 
     handleChangeOnedayForm = (id, value, id2) => {
 
         this.setState({ [id]: value })
-        this.setState({ [id2]: value })
+        this.setState({ [id2]: value }, this.CalHours1day)
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        this.setState({ [id]: value })
-
-
+        console.log('DO did na', id, value)
+        this.setState({ [id]: value }, this.CalHours)
     }
 
     handleChangeComment = (id, value, count) => {
 
         this.setState({ [id]: value })
         this.setState({ len: count })
-
     }
     handleMoment = () => {
         const diff = moment(this.state.leaveDateBegin).diff(moment(this.state.leaveDateEnd), 'hours')
@@ -252,43 +251,79 @@ class lopRequestForm extends Component {
 
     CheckStatus = (id, value) => {
         this.setState({ [id]: value })
+    }
+    Calculate = (day1, day2) => {
+        if (day1 && !day2) {
+            this.setState({ leaveDateBegin: day1 })
+        }
+        else if (!day1 && day2) {
+            this.setState({ leaveDateEnd: day2 })
+            this.CalHours()
+        }
 
+    }
+    CalHours = () => {
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
+            const start = this.state.leaveDate.replace('T', '')
+            const end = this.state.leaveDateStop.replace('T', '')
+            const momentStart = moment(start, 'YYYY-MM-DD')
+            const momentEnd = moment(end, 'YYYY-MM-DD')
+            var hours = momentEnd.diff(momentStart, 'hours')
+            this.setState({ amountLeft: hours }, this.CalDayLeft)
+        }
+    }
+
+    CalHours1day = () => {
+
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount) {
+            let day = this.state.timeSum - this.state.leaveAmount
+            this.setState({
+                showSum: day
+            })
+
+        }
 
     }
 
 
+    CalDayLeft = () => {
+        console.log('Do cal Day na')
+        let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
+        this.setState({ showSum: sum }, this.CalHoursLeft)
+    }
 
+
+
+    CalHoursLeft = () => {
+        console.log('Do cal Hours na')
+        if (this.state.leaveAmount && this.state.leaveAmountStop) {
+            let sum2 = this.state.timeSum - (this.state.leaveAmount + this.state.leaveAmountStop)
+        }
+
+    }
 
     handleSubmit = event => {
-        console.log('klklklkkl')
-        if (!this.state.leaveDate) {
+        window.confirm("Confirm ?")
+        axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
 
-        }
-        else {
-            window.confirm("Confirm ?")
-            axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-
-                "type": "Annual Leave",
-                "staffId": "00002",
-                "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
-                "hoursStartDate": this.state.leaveAmount,
-                "hoursEndDate": this.state.leaveAmountStop,
-                "approvalStatus": "string",
-                "comment": this.state.note,
-                "approvedTime": "2018-07-09T08:42:39.014Z",
-                "approvedBy": "null",
-                "attachedFile": "null",
-                "requestedDateTime": moment().format().toString()
+            "type": "Annual Leave",
+            "staffId": "00002",
+            "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+            "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+            "hoursStartDate": this.state.leaveAmount,
+            "hoursEndDate": this.state.leaveAmountStop,
+            "approvalStatus": "string",
+            "comment": this.state.note,
+            "approvedTime": "2018-07-09T08:42:39.014Z",
+            "approvedBy": "null",
+            "attachedFile": "null",
+            "requestedDateTime": moment().format().toString()
+        })
+            .then(function (response) {
+                console.log(response);
             })
-                .then(function (response) {
-                    console.log(response);
-                })
-        }
     }
-
     handleCheckSubmit = () => {
-        console.log('test check sub mit')
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
                 alert('กรุณากรอกข้อมูลให้ครบถ้วน')
@@ -309,14 +344,11 @@ class lopRequestForm extends Component {
     }
 
     render() {
-        const { leaveData = {} } = this.props;
-        console.log('test', moment().format().toString().substring(0, 11))
-
         return (
             <div className="leave-form">
                 <div className="cover-popup-al">
                     <div className="textpopup">
-                        <p>วันลาคงเหลือ</p>
+                        <p>{this.state.amountLeft}</p>
                     </div>
                     <div className="popup">
                         <div className="picture">
@@ -325,14 +357,14 @@ class lopRequestForm extends Component {
                         <div className="object">
                             <div className="text-cover1 row">
                                 <div className="col-md-6">
-                                    <p className="text-fill" ></p>
+                                    <p className="text-fill" >{parseInt(this.state.showSum / 8)}</p>
                                 </div>
                                 <div className="col-md-6">
                                     <p className="text-under">Days</p>
                                 </div>
                             </div>
                             <div className="">
-                                <p className="text-bottom">{this.state.timeleftal % 8} Hours</p>
+                                <p className="text-bottom">{this.state.showSum % 8} Hours</p>
                             </div>
                         </div>
 
@@ -354,11 +386,10 @@ class lopRequestForm extends Component {
                     onChange={this.handleChangeOnedayForm}
                 />}
                 {this.state.isOneday === false && <ManyDayForm
-
-                    value={this.state.status}
                     onChange={this.handleChangeMoreOneDay}
-                    handleMoment={this.handleMoment}
-
+                    Calculate={this.Calculate}
+                    begin={this.state.leaveDateBegin}
+                    end={this.state.leaveDateEnd}
                 />}
                 <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
                 <FileForm />
@@ -383,4 +414,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps
-)(lopRequestForm);
+)(lwpRequestForm);
