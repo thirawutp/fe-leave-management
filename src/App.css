@@ -36,10 +36,9 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 .box {
   width: 92%;
-  height: 100%;
+  min-height: 500px;
   margin: 57px auto;
   background-color: #F3F0E2;
-  background-size: cover;
 }
 
 .navigationbar-list {
@@ -54,11 +53,12 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 
 .navigationbar-item {
+  float: left;
   text-transform: uppercase;
   font-family: 'SukhumvitSet-Bold';
   list-style: none;
   height: 57px;
-  width: 216px;
+  width: 15%;
   text-align: center;
   background-color: #C84342;
   font-size: 20px;
@@ -100,8 +100,8 @@ a {
 }
 
 .userpicture {
-  margin-left: 90px;
-  margin-top: 24px;
+margin-left: 4%;
+margin-top: 24px;
 
 }
 
@@ -109,6 +109,7 @@ a {
   width: 100%;
   display: inline-flex;
   font-family: 'SukhumvitSet-Bold';
+  margin: auto;
 
 }
 
@@ -124,34 +125,35 @@ a {
 
 }
 
-.username {
+.username  p {
   font-size: 36px;
-  font-weight: bold;
-  color: white;
+  color: #F3F0E2;
+  font-family: 'SukhumvitSet-Bold';
+  width: 25%;
+  display: inline-flex;
 
 }
 
-.section {
+.section p {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  margin-left: 150px;
+  display: inline-flex;
+  width: 25%;
+  margin: a
+}
+
+.position p {
+  font-size: 18px;
+  margin-top: 19px;
+  color: white;
   display:inline-flex;
 }
 
-.position {
+.staffID p {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  margin-left: 250px;
-  display:inline-flex;
-}
-
-.staffID {
-  font-size: 18px;
-  margin-top: 19px;
-  color: white;
-  margin-left: 350px;
   display:inline-flex;
 }
 
@@ -884,6 +886,33 @@ font-size: 16px;
 .tkstatistic {
   margin: auto;
   padding: 0px;
+  width: 763px;
+
+}
+
+.tkselecttype {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2%;
+
+}
+
+.positiontext b {
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.selecttype {
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+  margin-left: 10px;
+  border-radius: 12px;
+
+}
+
+.col-md-11{
+  margin-bottom: 34px;
 
 }
 
@@ -903,20 +932,8 @@ font-size: 16px;
 }
 
 .tktablerow {
-
-  display: inline-flex;
   width: 763px;
   margin-top: 58px;
-  justify-content: flex-end;
-  margin: auto;
-
-}
-
-.selectstaff p {
-  margin-left: 85px;
-  margin-top: 41px;
-  font-family: 'SukhumvitSet-Bold';
-  font-size: 20px;
 
 }
 
@@ -977,7 +994,6 @@ font-size: 16px;
 }
 
 .bbr{
-  border-radius: 12px;
   display: flex;
   width: 763px;
   margin: auto;
@@ -986,7 +1002,7 @@ font-size: 16px;
 }
 
 .bbr input{
-  border-radius: 12px;
+  border-radius: 20px;
   border: none;
   width: 160px;
   height: 30px;
@@ -1133,7 +1149,7 @@ font-size: 16px;
   text-align: center;
   border-style: solid;
   border-color:#C84342;
-  background-color: #C84342;
+  background-color: rgb(248, 60, 60);
   width: 763px;
   height: 33px;
   border-width: 2px;
@@ -1165,4 +1181,29 @@ font-size: 16px;
 
 .inline {
   display: inline-flex;
+.logoutbutton {
+  list-style: none;
+  background-color: #C84342;
+  width: 123px;
+  height: 40px;
+  display: inline-flex;
+  border-radius: 12px;
+  float: right;
+  margin-right: 8%;
+  text-transform: uppercase;
+  font-family: 'SukhumvitSet-Bold';
+  margin-top: 5px;
+}
+
+.logoutbutton a{
+  list-style: none;
+  color: #F3F0E2;
+
+}
+
+.logoutbutton a:hover{
+  list-style: none;
+  color: #F3F0E2;
+  text-decoration: none;
+
 }
