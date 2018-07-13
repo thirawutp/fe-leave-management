@@ -77,10 +77,12 @@ class SearchApproveList extends Component {
 
         const { term, people } = this.state;
         return (
+            <div className="All">
+                <div className="headtable">
             <div className="row">
 
 
-
+            <div className="tkboth">
                 <form>
                     <div className="br">
                         <input type="text" onChange={this.searchHandle} value={term} /><img src={pic} />
@@ -158,11 +160,11 @@ class SearchApproveList extends Component {
                             </div>
                         )
                     }
-
-
-                </div>
-
+                    </div>
+                 </div>
             </div>
+            </div>
+        </div>
 
         );
     }

@@ -29,6 +29,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 .App {
   background-color: #3D3D3D;
   height: 100%;
+  width: 100%;
 }
 
 .AppBar {
@@ -36,7 +37,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 .box {
   width: 92%;
-  min-height: 500px;
+  min-height: 600px;
   margin: 57px auto;
   background-color: #F3F0E2;
 }
@@ -94,6 +95,12 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 
 }
 
+.tkboth {
+  margin: 139px auto 50px auto;
+  width: 1000px;
+
+}
+
 a {
   margin: auto;
 
@@ -129,8 +136,8 @@ margin-top: 24px;
   font-size: 36px;
   color: #F3F0E2;
   font-family: 'SukhumvitSet-Bold';
-  width: 25%;
-  display: inline-flex;
+  width: 40%;
+  display: inline;
 
 }
 
@@ -140,7 +147,7 @@ margin-top: 24px;
   color: white;
   display: inline-flex;
   width: 25%;
-  margin: a
+
 }
 
 .position p {
@@ -244,6 +251,7 @@ p {
   border-bottom: 2px solid transparent;
   border-left: 0;
   border-radius: 0
+
 }
 .select-onedate{
   display: inline-flex;
@@ -267,7 +275,10 @@ p {
   font-family: Tahoma;
   margin-left: 24px;
 }
-.dropdown-oneday{
+.selectstaff p{
+  margin-left: 88px;
+  font-family: 'SukhumvitSet-Bold';
+  font-size: 20px;
 
 }
 .DateInput {
@@ -847,29 +858,13 @@ font-size: 16px;
 
 }
 
-.headtable{
-  font-size: 16px;
-
-}
-
-.All{
-  margin-left: 50px;
-  font-family: 'Sukhumvit-Bold';
-
-}
-
-.All  p{
-  margin-left: 50px;
-  font-family: 'Sukhumvit-Bold';
-
-}
 
 .STable {
   text-align: center;
   border-style: solid;
   border-color:#C84342;
   background-color: #C84342;
-  width: 763px;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
@@ -878,22 +873,19 @@ font-size: 16px;
 
 }
 
-.tkboth {
-  margin: 102px auto 34px auto;
 
-}
 
 .tkstatistic {
   margin: auto;
-  padding: 0px;
-  width: 763px;
+  width: 1000px;
 
 }
 
 .tkselecttype {
   display: flex;
   justify-content: flex-end;
-  margin: 2%;
+  margin-: 2%;
+  width: 1000px;
 
 }
 
@@ -908,6 +900,7 @@ font-size: 16px;
   font-family: 'SukhumvitSet-Text';
   margin-left: 10px;
   border-radius: 12px;
+  margin-top: 5px;
 
 }
 
@@ -916,15 +909,17 @@ font-size: 16px;
 
 }
 
+
 .tkbubble {
   margin: auto;
+  width: 1000px;
 
 }
 
 .tkrow {
 
   display: block;
-  width: 763px;
+  width: 1000px;
   margin-top: 58px;
   justify-content: flex-end;
   margin: auto;
@@ -995,7 +990,7 @@ font-size: 16px;
 
 .bbr{
   display: flex;
-  width: 763px;
+  width: 1000px;
   margin: auto;
   justify-content: flex-end;
 
@@ -1029,7 +1024,7 @@ font-size: 16px;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  width: 763px;
+  width: 1000px;
   height: 80px;
   font-size : 16px;
 }
@@ -1138,7 +1133,7 @@ font-size: 16px;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  width: 763px;
+  width: 1000px;
   height: 80px;
   font-size : 16px;
 
@@ -1149,14 +1144,13 @@ font-size: 16px;
   text-align: center;
   border-style: solid;
   border-color:#C84342;
-  background-color: rgb(248, 60, 60);
-  width: 763px;
+  background-color: #C84342;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
   margin-top: 4px;
   font-size : 16px;
-  margin-left: 30px;
 
 
 }
@@ -1184,7 +1178,7 @@ font-size: 16px;
 .logoutbutton {
   list-style: none;
   background-color: #C84342;
-  width: 123px;
+  width: 10%;
   height: 40px;
   display: inline-flex;
   border-radius: 12px;
