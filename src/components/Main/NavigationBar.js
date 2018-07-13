@@ -28,6 +28,9 @@ class NavigationBar extends Component {
                     <li className={'navigationbar-item'+ this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
                     </li>
+                    <li className='logoutbutton'>
+                        <Link to='/Logout'>Logout</Link>
+                    </li>
                 </ul>
 
             </div>
