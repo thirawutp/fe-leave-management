@@ -105,7 +105,7 @@ class SearchApprove extends Component {
         return (
             <div className="All">
                 <div className="headtable">
-                    <div className="tkrow">
+                    <div className="row">
 
                         <div className='tkboth'>
                             <form>

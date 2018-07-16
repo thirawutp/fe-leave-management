@@ -29,6 +29,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 .App {
   background-color: #3D3D3D;
   height: 100%;
+  width: 100%;
 }
 
 .AppBar {
@@ -36,10 +37,9 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 .box {
   width: 92%;
-  height: 100%;
+  min-height: 600px;
   margin: 57px auto;
   background-color: #F3F0E2;
-  background-size: cover;
 }
 
 .navigationbar-list {
@@ -54,11 +54,12 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 
 .navigationbar-item {
+  float: left;
   text-transform: uppercase;
   font-family: 'SukhumvitSet-Bold';
   list-style: none;
   height: 57px;
-  width: 216px;
+  width: 15%;
   text-align: center;
   background-color: #C84342;
   font-size: 20px;
@@ -94,14 +95,20 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 
 }
 
+.tkboth {
+  margin: 139px auto 50px auto;
+  width: 1000px;
+
+}
+
 a {
   margin: auto;
 
 }
 
 .userpicture {
-  margin-left: 90px;
-  margin-top: 24px;
+margin-left: 4%;
+margin-top: 24px;
 
 }
 
@@ -109,6 +116,7 @@ a {
   width: 100%;
   display: inline-flex;
   font-family: 'SukhumvitSet-Bold';
+  margin: auto;
 
 }
 
@@ -124,34 +132,35 @@ a {
 
 }
 
-.username {
+.username  p {
   font-size: 36px;
-  font-weight: bold;
-  color: white;
+  color: #F3F0E2;
+  font-family: 'SukhumvitSet-Bold';
+  width: 40%;
+  display: inline;
 
 }
 
-.section {
+.section p {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  margin-left: 150px;
+  display: inline-flex;
+  width: 25%;
+
+}
+
+.position p {
+  font-size: 18px;
+  margin-top: 19px;
+  color: white;
   display:inline-flex;
 }
 
-.position {
+.staffID p {
   font-size: 18px;
   margin-top: 19px;
   color: white;
-  margin-left: 250px;
-  display:inline-flex;
-}
-
-.staffID {
-  font-size: 18px;
-  margin-top: 19px;
-  color: white;
-  margin-left: 350px;
   display:inline-flex;
 }
 
@@ -242,6 +251,7 @@ p {
   border-bottom: 2px solid transparent;
   border-left: 0;
   border-radius: 0
+
 }
 .select-onedate{
   display: inline-flex;
@@ -265,7 +275,10 @@ p {
   font-family: Tahoma;
   margin-left: 24px;
 }
-.dropdown-oneday{
+.selectstaff p{
+  margin-left: 88px;
+  font-family: 'SukhumvitSet-Bold';
+  font-size: 20px;
 
 }
 .DateInput {
@@ -845,29 +858,13 @@ font-size: 16px;
 
 }
 
-.headtable{
-  font-size: 16px;
-
-}
-
-.All{
-  margin-left: 50px;
-  font-family: 'Sukhumvit-Bold';
-
-}
-
-.All  p{
-  margin-left: 50px;
-  font-family: 'Sukhumvit-Bold';
-
-}
 
 .STable {
   text-align: center;
   border-style: solid;
   border-color:#C84342;
   background-color: #C84342;
-  width: 763px;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
@@ -876,26 +873,53 @@ font-size: 16px;
 
 }
 
-.tkboth {
-  margin: 102px auto 34px auto;
 
-}
 
 .tkstatistic {
   margin: auto;
-  padding: 0px;
+  width: 1000px;
 
 }
 
+.tkselecttype {
+  display: flex;
+  justify-content: flex-end;
+  margin-: 2%;
+  width: 1000px;
+
+}
+
+.positiontext b {
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.selecttype {
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+  margin-left: 10px;
+  border-radius: 12px;
+  margin-top: 5px;
+
+}
+
+.col-md-11{
+  margin-bottom: 34px;
+
+}
+
+
 .tkbubble {
   margin: auto;
+  width: 1000px;
 
 }
 
 .tkrow {
 
   display: block;
-  width: 763px;
+  width: 1000px;
   margin-top: 58px;
   justify-content: flex-end;
   margin: auto;
@@ -903,20 +927,8 @@ font-size: 16px;
 }
 
 .tktablerow {
-
-  display: inline-flex;
   width: 763px;
   margin-top: 58px;
-  justify-content: flex-end;
-  margin: auto;
-
-}
-
-.selectstaff p {
-  margin-left: 85px;
-  margin-top: 41px;
-  font-family: 'SukhumvitSet-Bold';
-  font-size: 20px;
 
 }
 
@@ -977,16 +989,15 @@ font-size: 16px;
 }
 
 .bbr{
-  border-radius: 12px;
   display: flex;
-  width: 763px;
+  width: 1000px;
   margin: auto;
   justify-content: flex-end;
 
 }
 
 .bbr input{
-  border-radius: 12px;
+  border-radius: 20px;
   border: none;
   width: 160px;
   height: 30px;
@@ -1013,7 +1024,7 @@ font-size: 16px;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  width: 763px;
+  width: 1000px;
   height: 80px;
   font-size : 16px;
 }
@@ -1122,7 +1133,7 @@ font-size: 16px;
   background-color: white;
   border-style: solid;
   border-width: 1px;
-  width: 763px;
+  width: 1000px;
   height: 80px;
   font-size : 16px;
 
@@ -1134,13 +1145,12 @@ font-size: 16px;
   border-style: solid;
   border-color:#C84342;
   background-color: #C84342;
-  width: 763px;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
   margin-top: 4px;
   font-size : 16px;
-  margin-left: 30px;
 
 
 }
@@ -1161,4 +1171,33 @@ font-size: 16px;
 .cover-popup-al{
   float: right;
   width: 20%;
+}
+
+.inline {
+  display: inline-flex;
+.logoutbutton {
+  list-style: none;
+  background-color: #C84342;
+  width: 10%;
+  height: 40px;
+  display: inline-flex;
+  border-radius: 12px;
+  float: right;
+  margin-right: 8%;
+  text-transform: uppercase;
+  font-family: 'SukhumvitSet-Bold';
+  margin-top: 5px;
+}
+
+.logoutbutton a{
+  list-style: none;
+  color: #F3F0E2;
+
+}
+
+.logoutbutton a:hover{
+  list-style: none;
+  color: #F3F0E2;
+  text-decoration: none;
+
 }

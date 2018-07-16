@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
+
 import { login, addHistory, addpudding, addStatistics, addTable } from '../action'
+
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -55,7 +57,7 @@ class LoginPage extends Component {
             })
         axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00002&year=2018")
             .then(res => {
-                this.props.addpudding(res)
+                this.props.addpudding(res.data)
             })
 
         axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour") //TableSearch...
@@ -127,8 +129,10 @@ const mapDispatchToProps = dispatch => ({
 
     addpudding: (data) => dispatch(addpudding(data)),
 
+
     addStatistics: (statistics) => dispatch(addStatistics(statistics)),
     addTable: (table) => dispatch(addTable(table)),
+
 
 })
 

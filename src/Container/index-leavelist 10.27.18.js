@@ -58,7 +58,7 @@ class LeaveList extends Component {
 
               </div>
               <div className="text-annualleave">
-                <Link to='/form/AnnualLeave'><button className="button"> Annual Leave</button>  </Link>
+                <Link to='/form/AnnualLeave'><button className="button"> Annual Leave</button></Link>
               </div>
             </div>
 
