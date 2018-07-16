@@ -30,7 +30,7 @@ class NavigationBar extends Component {
                         <Link to='/Approve'>Approve</Link>
                     </li>
                     <li className='logoutbutton'>
-                        <Link to='/logout'><img src={logout} width="19" height="19"/>Logout</Link>
+                        <Link to='/logout'><img src={logout}/>Logout</Link>
                     </li>
                 </ul>
 
