@@ -96,7 +96,33 @@ class SearchHistory extends Component {
 
 
     componentDidMount() {
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+            .then(res => {
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+                        if (key === 'ApprovedBy') {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: val || '-'
+                            }
+                        }
+                        if (key === 'LeaveId') {
+                            return {
+                                ...result,
+                                rawLeaveId: val,
+                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                            }
+                        }
 
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.props.addHistory(data)
+
+            })
 
     }
 
@@ -237,6 +263,10 @@ const mapStateToProps = state => ({
     })
 })
 
-export default connect(mapStateToProps, {})(SearchHistory)
+const mapDispatchToProps = dispatch => ({
+    addHistory: (history) => dispatch(addHistory(history))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchHistory)
 
 
