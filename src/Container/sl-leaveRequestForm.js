@@ -10,8 +10,9 @@ import axios from 'axios';
 import moment from 'moment';
 import sun from '../asset/images/sun.png'
 import '../App.css';
-import { Link } from "react-router";
+import { Redirect, browserHistory } from "react-router";
 import { connect } from 'react-redux';
+import bandage from '../asset/images/bandage.png';
 import { addpudding } from '../action';
 
 
@@ -333,7 +334,7 @@ class slRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
-                                <Link to="/home" />
+                                browserHistory.push('/home')
                             }
 
                         }
@@ -361,6 +362,7 @@ class slRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
                             }
 
                         }
@@ -405,7 +407,7 @@ class slRequestForm extends Component {
                     </div>
                     <div className="popup">
                         <div className="picture">
-                            <img src={sun} />
+                            <img src={bandage} />
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">

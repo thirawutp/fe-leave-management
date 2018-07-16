@@ -10,8 +10,9 @@ import axios from 'axios';
 import moment from 'moment';
 import sun from '../asset/images/sun.png'
 import '../App.css';
-import { Link } from "react-router";
+import { Redirect, browserHistory } from "react-router";
 import { connect } from 'react-redux';
+import money from '../asset/images/money.png';
 import { addpudding } from '../action';
 
 
@@ -310,7 +311,7 @@ class lwpRequestForm extends Component {
         this.setState({ selectedFile: event.target.files[0] })
     }
 
-    handleSubmit = async event => {
+    handleSubmit = async (event, history) => {
         if (window.confirm("Confirm ?")) {
             let attachFileBase64 = ''
             if (this.state.selectedFile) {
@@ -333,7 +334,7 @@ class lwpRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
-                                <Link to="/home" />
+                                browserHistory.push('/home')
                             }
 
                         }
@@ -360,7 +361,8 @@ class lwpRequestForm extends Component {
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                browserHistory.push('/home')
                             }
 
                         }
@@ -405,7 +407,7 @@ class lwpRequestForm extends Component {
                     </div>
                     <div className="popup">
                         <div className="picture">
-                            <img src={sun} />
+                            <img src={money} />
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
