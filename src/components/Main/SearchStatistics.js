@@ -37,13 +37,9 @@ class SearchStatistics extends Component {
                     <div className='tkstatistic'>
 
                         <div className="row">
-                            <div className="col-md-1"></div>
                             <div className="col-md-11">
 
-
-
-
-
+                            <div className="tkboth"></div>
                             <div className="tktablerow">
                             <div className="tkselecttype">
                                 <div className="positiontext">
