@@ -14,20 +14,22 @@ import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetail
 import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
 import IndexSearchStatistics from '../src/Container/index-SearchStatistics.js';
 import IndexSearchHistory from '../src/Container/index-SearchHistory.js';
-import leaveDetail from '../src/components/Main/LeaveFormDetail.js';
 import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
 import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 import LoginPage from '../src/Container/LoginPage';
+import IndexindividualStatistic from '../src/Container/index-individualStatistics.js';
+
+
 
 class MainLayout extends Component {
   render() {
     return (
       <div className='App'>
         <div>
-          <Header  />
+          <Header />
         </div>
         <div>
           <NavigationBar {...this.props} />
@@ -45,7 +47,7 @@ class App extends Component {
     return (
 
       <Router history={browserHistory}>
-      <Route path='login' component={LoginPage} />
+        <Route path='login' component={LoginPage} />
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
           <Route path='home' component={LeaveList} />
@@ -59,10 +61,10 @@ class App extends Component {
           <Route path='form/SickLeave' component={slRequestForm} />
           <Route path='form/LwpLeave' component={lwpRequestForm} />
           <Route path='history' component={IndexSearchHistory} />
-          <Route path='leaveDetail' component={LeaveFormDetail} />
+          <Route path='leaveDetail/:formId' component={LeaveFormDetail} />
           <Route path='SearchStatic' component={IndexSearchStatistics} />
-          <Route path='leaveDetail' component={LeaveFormDetail} />
           <Route path='setApprove' component={SetApproveLeaveForm} />
+          <Route path='indexindividualStatistic' component={IndexindividualStatistic} />
 
 
 

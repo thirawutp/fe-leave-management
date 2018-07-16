@@ -8,21 +8,13 @@ class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Sirapob',
-      surn: 'Meechoovet',
-      staffID: '12345',
-      section: 'Developer',
-      position: 'frontend',
-      annualDay: '12',
-      annualHour: '2',
-      sickDay: '2',
-      sickHour: '3',
-      payDay: '122',
-      payHour: '12'
+      people: []
 
     }
 
   }
+
+
   render() {
     return (
       <div>

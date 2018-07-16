@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { addHistory } from '../../action'
 
 const getLeaveTypePicture = leaveType => {
-    if (leaveType === 'Sick Leave') {
+    if (leaveType === 'sick leave') {
         return SickLeave
     }
     if (leaveType === 'Annual Leave') {
@@ -23,6 +23,9 @@ const getLeaveTypePicture = leaveType => {
     }
     return ''
 }
+
+
+
 
 const people = [
     {
@@ -94,6 +97,7 @@ class SearchHistory extends Component {
 
     componentDidMount() {
 
+
     }
 
 
@@ -122,16 +126,16 @@ class SearchHistory extends Component {
                     <div className="row ">
 
 
-                    <div className='tkboth'>
-                        <form>
-                            <div className="bbr">
-                                <input type="text" placeholder="   Search ..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
-                            </div>
-                        </form>
+                        <div className='tkboth'>
+                            <form>
+                                <div className="bbr">
+                                    <input type="text" placeholder="   Search ..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
+                                </div>
+                            </form>
 
 
 
-                        
+
                             <div className='TangKwatable'>
                                 <div className="STable">
                                     <div className="row">
@@ -176,7 +180,7 @@ class SearchHistory extends Component {
                                                     </div>
                                                     <div className="col-md-2">
                                                         <div>
-                                                            <Link to={`/leaveForm/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
+                                                            <Link to={`/leaveDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         </div>
                                                         <div>
 

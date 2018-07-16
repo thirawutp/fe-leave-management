@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import _ from 'lodash'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class SearchStatistics extends Component {
     constructor(props) {
@@ -41,23 +42,23 @@ class SearchStatistics extends Component {
 
 
 
-                            <div className="tktablerow ">
-                                <div className="col-md-1">
-                                    <p><b>Position:</b></p>
-                                </div>
-                                <div className="col-md-1">
-                                    <select onChange={this.handleSetValue} >
+                                <div className="tktablerow ">
+                                    <div className="col-md-1">
+                                        <p><b>Position:</b></p>
+                                    </div>
+                                    <div className="col-md-1">
+                                        <select onChange={this.handleSetValue} >
 
-                                        <option value="All">All</option>
-                                        <option value="Frontend">Frontend</option>
-                                        <option value="Backend">Backend</option>
-                                        <option value="BA">BA</option>
-                                        <option value="Graphic">Graphic</option>
-                                        <option value="QA">QA</option>
-                                    </select>
-                                </div>
+                                            <option value="All">All</option>
+                                            <option value="Frontend">Frontend</option>
+                                            <option value="Backend">Backend</option>
+                                            <option value="BA">BA</option>
+                                            <option value="Graphic">Graphic</option>
+                                            <option value="QA">QA</option>
+                                        </select>
+                                    </div>
 
-                        
+
 
                                 </div>
 
@@ -101,7 +102,7 @@ class SearchStatistics extends Component {
                                             </div>
                                             <div className="col-md-3">
                                                 <div>
-                                                    <td>{people.staffId}</td>
+                                                    <Link to='/indexindividualStatistic'><td>{people.staffId}</td></Link>
                                                 </div>
 
                                                 <div><td>{people.firstName} {people.lastName}</td></div>

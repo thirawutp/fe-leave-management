@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
-import { login, addHistory, addpudding, addStatistics } from '../action'
+import { login, addHistory, addpudding, addStatistics, addTable } from '../action'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -26,7 +26,7 @@ class LoginPage extends Component {
         data = mockResponse
         this.props.handleLogin(data)
         //TODO login to server
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002')
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -58,6 +58,22 @@ class LoginPage extends Component {
                 this.props.addpudding(res)
             })
 
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour") //TableSearch...
+            .then(res => {
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.props.addTable(data)
+            })
+
+
+
 
 
         axios.get('http://appmanleavemanagement.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
@@ -76,6 +92,8 @@ class LoginPage extends Component {
             })
         this.props.router.push('/home')
     }
+
+
 
     handleLoginFailure = () => {
         if (this.state.isLogedIn) {
@@ -109,7 +127,8 @@ const mapDispatchToProps = dispatch => ({
 
     addpudding: (data) => dispatch(addpudding(data)),
 
-    addStatistics: (statistics) => dispatch(addStatistics(statistics))
+    addStatistics: (statistics) => dispatch(addStatistics(statistics)),
+    addTable: (table) => dispatch(addTable(table)),
 
 })
 
