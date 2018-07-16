@@ -61,7 +61,7 @@ class LeaveFormDetail extends Component {
     }
     handleonClickpic = () => {
 
-        <LightboxExample images={this.props.leaveForm.attachedFile1} />
+        <LightboxExample images={this.props.leaveForm.attachedFile} />
         console.log("fdfdfdfd")
     }
 
@@ -69,7 +69,7 @@ class LeaveFormDetail extends Component {
     render() {
         console.log('5555555555', this.props.leaveForm)
         const { photoIndex, isOpen } = this.state;
-        let images = [this.props.leaveForm.attachedFile1]
+        let images = [this.props.leaveForm.attachedFile]
         return (
             <div>
 
