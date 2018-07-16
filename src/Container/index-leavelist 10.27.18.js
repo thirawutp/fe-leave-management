@@ -5,27 +5,22 @@ import sun from '../asset/images/sun.png';
 import money from '../asset/images/money.png';
 import bandage from '../asset/images/bandage.png';
 import axios from 'axios';
+import { connect } from 'react-redux'
 
 
 
 class LeaveList extends Component {
-  state = {
-    timeleftal: 0, timeleftsl: 0, timeleftlwp: 0
+  constructor(props) {
+    super(props)
+    const { leaveData = {} } = this.props
+    this.state = {
+      timeleftal: leaveData.AnnualHours, timeleftsl: leaveData.SickHours, timeleftlwp: leaveData.LWPHours
+
+    };
 
   };
-
-
-  componentDidMount() {
-    axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00005&year=2018")
-      .then(res => {
-        this.setState({ timeleftal: res.data.AnnualHours })
-        this.setState({ timeleftsl: res.data.SickHours })
-        this.setState({ timeleftlwp: res.data.LWPHours })
-      })
-  }
-
-
   render() {
+
     return (
 
       <div className="leavelistbox">
@@ -129,4 +124,10 @@ class LeaveList extends Component {
   }
 }
 
-export default LeaveList;
+const mapStateToProps = state => ({
+  leaveData: state.data
+})
+
+export default connect(
+  mapStateToProps
+)(LeaveList);

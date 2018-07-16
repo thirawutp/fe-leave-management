@@ -7,7 +7,7 @@ class TimeSelect extends React.Component {
         super(props);
 
         this.state = {
-            timeStart: '00:00'
+            timeStart: '--:--'
         };
 
         this.onTimeChange = this.onTimeChange.bind(this);
