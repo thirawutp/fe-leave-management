@@ -37,30 +37,27 @@ class SearchStatistics extends Component {
                     <div className='tkstatistic'>
 
                         <div className="row">
-                            <div className="col-md-1"></div>
                             <div className="col-md-11">
 
+                            <div className="tkboth"></div>
+                            <div className="tktablerow">
+                            <div className="tkselecttype">
+                                <div className="positiontext">
+                                    <p><b>Position:</b></p>
+                                </div>
+                                <div className="selecttype">
+                                    <select onChange={this.handleSetValue} >
 
-
-
-
-                                <div className="tktablerow">
-                                    <div className="tkselecttype">
-                                        <div className="positiontext">
-                                            <p><b>Position:</b></p>
-                                        </div>
-                                        <div className="selecttype">
-                                            <select onChange={this.handleSetValue} >
-
-                                                <option value="All">All</option>
-                                                <option value="Frontend">Frontend</option>
-                                                <option value="Backend">Backend</option>
-                                                <option value="BA">BA</option>
-                                                <option value="Graphic">Graphic</option>
-                                                <option value="QA">QA</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                        <option value="All">All</option>
+                                        <option value="Frontend">Frontend</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="BA">BA</option>
+                                        <option value="Graphic">Graphic</option>
+                                        <option value="QA">QA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        
 
 
 

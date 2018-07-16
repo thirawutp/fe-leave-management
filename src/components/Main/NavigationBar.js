@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../../App.css';
 import Header from './Header.js';
 import { Link } from 'react-router';
+import logout from '../../asset/images/logout.png';
 
 
 class NavigationBar extends Component {
@@ -29,7 +30,7 @@ class NavigationBar extends Component {
                         <Link to='/Approve'>Approve</Link>
                     </li>
                     <li className='logoutbutton'>
-                        <Link to='/Logout'>Logout</Link>
+                        <Link to='/logout'><img src={logout} width="19" height="19"/>Logout</Link>
                     </li>
                 </ul>
 
