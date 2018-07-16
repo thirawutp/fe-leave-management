@@ -10,6 +10,7 @@ import _ from 'lodash'
 import moment from 'moment'
 
 
+
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
         return SickLeave
@@ -23,54 +24,7 @@ const getLeaveTypePicture = leaveType => {
     return ''
 }
 
-const people = [
-    {
-        status: 'Pending',
-        leaveID: 'LEAVE672',
-
-        leaveType: 'Sick Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: '-'
-    },
-    {
-        status: 'Pending',
-        leaveID: 'LEAVE672',
-        leaveType: 'Annual Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '03/07/2018',
-        approver: '-'
-    },
-    {
-        status: 'Approve',
-        leaveID: 'LEAVE672',
-        leaveType: 'Leave with out pay',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: 'ข้าวโอ๊ต'
-    },
-    {
-        status: 'Approve',
-        leaveID: 'LEAVE672',
-        leaveType: 'Sick Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: 'พี่นิว'
-    },
-    {
-        status: 'Reject',
-        leaveID: 'LEAVE672',
-        leaveType: 'Sick Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: 'พี่เก่ง'
-    },
-]
+const people = []
 
 
 
@@ -92,39 +46,39 @@ class SearchApprove extends Component {
 
 
     componentDidMount() {
-        console.log('Didmount')
+        console.log('Didmount-----')
         axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves')
             .then(res => {
-                console.log('------', res.data)
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-                        if (key === 'ApprovedBy') {
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: val || '-'
-                            }
-                        }
-                        if (key === 'LeaveId') {
-                            return {
-                                ...result,
-                                rawLeaveId: val,
-                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
-                            }
-                        }
-                        if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
-                            console.log('do this sus', moment(val).format('DD-MM-YYYY'))
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                            }
-                        }
+                console.log('----55555--', res.data)
+                const data = _.reduce(res.data, (result, val, key) => {
+                    if (key === 'ApprovedBy') {
                         return {
                             ...result,
-                            [_.camelCase(key)]: val
+                            [_.camelCase(key)]: val || '-'
                         }
-                    }, {})
+                    }
+                    if (key === 'LeaveId') {
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                        }
+                    }
+                    if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
+                        console.log('do this sus', moment(val).format('DD-MM-YYYY'))
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                        }
+                    }
+                    return {
+                        ...result,
+                        [_.camelCase(key)]: val
+                    }
+                    this.setState({ people: data })
+
                 })
-                this.setState({ people: data })
+
+
             })
     }
 
@@ -204,7 +158,7 @@ class SearchApprove extends Component {
                                                     </div>
                                                     <div className="col-md-2">
                                                         <div>
-                                                            <Link to='/setApprove' ><td><b>{people.leaveId}</b></td></Link>
+                                                            <Link to='/setApprove' ><td><b>{people.LeaveId}</b></td></Link>
                                                         </div>
                                                         <div>
 
@@ -242,12 +196,6 @@ class SearchApprove extends Component {
 }
 
 
-
-
 export default SearchApprove;
-// this.handleFilterItem(term)
-
-
-
 
 

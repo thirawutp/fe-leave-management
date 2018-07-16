@@ -6,6 +6,8 @@ import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
 import { connect } from 'react-redux'
+import LightboxExample from '../Main/LightboxExample '
+import Lightbox from 'react-image-lightbox';
 
 
 class LeaveFormDetail extends Component {
@@ -13,7 +15,9 @@ class LeaveFormDetail extends Component {
         super(props);
         this.state = {
             person: [],
-            roles: 'HR'
+            roles: 'HR',
+            photoIndex: 0,
+            isOpen: false,
         }
 
 
@@ -47,32 +51,30 @@ class LeaveFormDetail extends Component {
 
 
         if (roles === 'HR') {
-            <img src={doctor} width="600" height="400" />
+            return true
 
         }
         else {
-            return ''
+            return false
         }
 
     }
+    handleonClickpic = () => {
 
-
-    componentDidMount() {
-        console.log('Didmount')
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Info?leaveId=33')
-            .then(res => {
-                console.log('--jjj-----', res.data)
-                this.setState({ person: res.data })
-
-            })
-
+        <LightboxExample images={this.props.leaveForm.attachedFile1} />
+        console.log("fdfdfdfd")
     }
 
 
     render() {
         console.log('5555555555', this.props.leaveForm)
+        const { photoIndex, isOpen } = this.state;
+        let images = [this.props.leaveForm.attachedFile1]
         return (
             <div>
+
+
+
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10 rabbit">
@@ -143,11 +145,37 @@ class LeaveFormDetail extends Component {
                             <div className="col-md-1">
                                 <p><b>File : </b></p>
                             </div>
-                            <div className="tkpicture">
-                                <div className="col-md-11">
 
-                                    <img src={doctor} width="75" height="52" onClick={() => this.handleShow(this.state.roles)} />
-                                </div>
+
+                            <div className="tkpicture">
+                                {this.handleShow(this.state.roles) && <div className="col-md-11">
+                                    {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
+                                    <p>{this.props.leaveForm.attachedFileName}</p>
+                                    <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" onClick={() => this.setState({ isOpen: true })} /></p>
+                                    {isOpen && (
+                                        <Lightbox
+                                            mainSrc={images[photoIndex]}
+                                            nextSrc={images[(photoIndex + 1) % images.length]}
+                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onMovePrevRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                })
+                                            }
+                                            onMoveNextRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + 1) % images.length,
+                                                })
+                                            }
+                                        />
+                                    )}
+                                </div>}
+                                {!this.handleShow(this.state.roles) && <div className="col-md-11">
+                                    <p>{this.props.leaveForm.attachedFileName}</p>
+                                    <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" /></p>
+                                </div>}
+
                             </div>
                         </div>
                     </div>
@@ -160,9 +188,11 @@ class LeaveFormDetail extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => ({
-    leaveForm: _.find(state.history, { rawLeaveId: Number(props.params.formId) }) || {}
-})
+const mapStateToProps = (state, props) => {
+    return {
+        leaveForm: _.find(state.history, { rawLeaveId: Number(props.params.formId) }) || {}
+    }
+}
 
 export default connect(
     mapStateToProps,

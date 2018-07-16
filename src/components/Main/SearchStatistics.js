@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import _ from 'lodash'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class SearchStatistics extends Component {
     constructor(props) {
@@ -41,6 +42,8 @@ class SearchStatistics extends Component {
 
 
 
+
+
                             <div className="tktablerow">
                             <div className="tkselecttype">
                                 <div className="positiontext">
@@ -59,6 +62,7 @@ class SearchStatistics extends Component {
                                 </div>
                             </div>
                         
+
 
                                 </div>
 
@@ -102,7 +106,7 @@ class SearchStatistics extends Component {
                                             </div>
                                             <div className="col-md-3">
                                                 <div>
-                                                    <td>{people.staffId}</td>
+                                                    <Link to='/indexindividualStatistic'><td>{people.staffId}</td></Link>
                                                 </div>
 
                                                 <div><td>{people.firstName} {people.lastName}</td></div>

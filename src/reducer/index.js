@@ -23,6 +23,18 @@ export default (state = inttialState, action) => {
         ...state,
         statistics: action.payload.statistics
       }
+
+    case 'ADD_APPROVE':
+      return {
+        ...state,
+        statistics: action.payload.approve
+      }
+
+    case 'ADD_TABLE':
+      return {
+        ...state,
+        statistics: action.payload.table
+      }
     default:
       return state
   }

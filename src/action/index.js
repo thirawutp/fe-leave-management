@@ -20,3 +20,13 @@ export const addStatistics = statistics => ({
   payload: { statistics }
 })
 
+
+export const addApprove = approve => ({
+  type: 'ADD_APPROVE',
+  payload: { approve }
+})
+
+export const addTable = table => ({
+  type: 'ADD_TABLE',
+  payload: { table }
+})
