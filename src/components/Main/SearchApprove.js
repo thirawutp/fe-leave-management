@@ -46,10 +46,10 @@ class SearchApprove extends Component {
 
 
     componentDidMount() {
-        console.log('Didmount-----')
+        console.log('Didmount--555---')
         axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves')
             .then(res => {
-                console.log('----55555--', res.data)
+                console.log('----55888555--', res.data)
                 const data = _.reduce(res.data, (result, val, key) => {
                     if (key === 'ApprovedBy') {
                         return {
@@ -152,7 +152,7 @@ class SearchApprove extends Component {
                                                             <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
                                                         <div className={`${people.approvalStatus == 'Approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
 
-                                                            <td><b>{people.approvalStatus}</b></td>
+                                                            <td><b>{people.ApprovalStatus}</b></td>
                                                         </div>
 
                                                     </div>
