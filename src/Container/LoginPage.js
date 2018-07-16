@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
 
-import { login, addHistory, addpudding, addStatistics, addTable } from '../action'
+import { login, addHistory, addpudding, addStatistics, addProfile } from '../action'
 
 import _ from 'lodash'
 import moment from 'moment'
@@ -131,7 +131,7 @@ const mapDispatchToProps = dispatch => ({
 
 
     addStatistics: (statistics) => dispatch(addStatistics(statistics)),
-    addTable: (table) => dispatch(addTable(table)),
+    addTable: (table) => dispatch(addStatistics(table))
 
 
 })
