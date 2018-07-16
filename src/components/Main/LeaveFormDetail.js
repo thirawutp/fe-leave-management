@@ -148,7 +148,8 @@ class LeaveFormDetail extends Component {
 
 
                             <div className="tkpicture">
-                                {this.handleShow(this.state.roles) && <div className="col-md-11">
+                                {this.handleShow(this.state.roles) && 
+                                <div className="tklink">
                                     {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
                                     <p>{this.props.leaveForm.attachedFileName.substring(0, 15)}</p>
                                     <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" onClick={() => this.setState({ isOpen: true })} /></p>

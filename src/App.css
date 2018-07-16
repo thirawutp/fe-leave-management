@@ -96,7 +96,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 
 .tkboth {
-  margin: 139px auto 50px auto;
+  margin: 10px auto 50px auto;
   width: 1000px;
 
 }
@@ -129,6 +129,11 @@ margin-top: 24px;
   margin-top: 30px;
   display: inline-flex;
 
+}
+
+.tklink {
+  width: 500px;
+  display: block;
 
 }
 
@@ -136,17 +141,28 @@ margin-top: 24px;
   font-size: 36px;
   color: #F3F0E2;
   font-family: 'SukhumvitSet-Bold';
-  width: 40%;
   display: inline;
+  width: 450px;
+
+}
+
+.section {
+  width: 320px;
+  text-align: center;
 
 }
 
 .section p {
   font-size: 18px;
-  margin-top: 19px;
+  margin-top: 18px;
   color: white;
   display: inline-flex;
-  width: 25%;
+
+}
+
+.position {
+  width: 300px;
+  text-align: center;
 
 }
 
@@ -155,6 +171,12 @@ margin-top: 24px;
   margin-top: 19px;
   color: white;
   display:inline-flex;
+}
+
+.staffID  {
+  width: 300px;
+  text-align: center;
+
 }
 
 .staffID p {
@@ -197,7 +219,7 @@ p {
 }
 
 .show-header{
- font-family: Tahoma;
+ font-family: 'Sukhumvitset-Bold';
  font-size: 20px;
  max-width: 251;
  max-height: 25px;
@@ -206,7 +228,7 @@ p {
  font-weight: bold;
 }
 .show-DayRequested{
-  font-family: Tahoma;
+  font-family: 'Sukhumvitset-Bold';
   font-size: 16px;
   text-align: left;
   max-width: 127px;
@@ -220,6 +242,7 @@ p {
 
 .checkform {
   padding-left: 29px;
+  font-family: 'Sukhumvitset-Text';
 }
 
 .form-check-label {
@@ -235,8 +258,15 @@ p {
 
 .text-Date {
   font-size: 16px;
-  font-family: Tahoma; 
+  font-family: 'Sukhumvitset-Bold'; 
 }
+
+.date {
+  font-family: 'Sukhumvitset-Text';
+  margin-top: 4px;
+
+}
+
 .DateInput_input {
   font-weight: 200;
   font-size: 16px;
@@ -253,8 +283,10 @@ p {
   border-radius: 0
 
 }
+
 .select-onedate{
   display: inline-flex;
+  font-family: 'Sukhumvitset-Bold';
 }
 
 .custom-input {
@@ -264,7 +296,7 @@ p {
   margin-left: 80px;
   margin-left: 10px;
   background-color: #FFFFFF;
-    border-radius: 3px;
+  border-radius: 3px;
 }
 .timeselect-oneday {
   display: inline-flex;
@@ -272,11 +304,16 @@ p {
 
 .text-time {
   font-size: 16px;
-  font-family: Tahoma;
+  font-family: 'Sukhumvitset-Bold';
   margin-left: 24px;
 }
-.selectstaff p{
+
+.selectstaff {
+  padding-top: 41px;
   margin-left: 88px;
+
+}
+.selectstaff p{
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
 
@@ -331,7 +368,7 @@ p {
 
 .text-note {
   font-size: 16px;
-  font-family: Tahoma;
+  font-family: 'Sukhumvitset-Bold';;
 }
 .row-comment {
   padding-top: 41px;
@@ -356,10 +393,11 @@ p {
   width: 88px;
   height: 24px;
   margin-left: 29px;
+  font-family: 'Sukhumvitset-Text';
 }
 .text-file {
   font-size: 16px;
-  font-family: Tahoma;
+  font-family: 'Sukhumvitset-Bold';
 }
 
 .row-button {
@@ -371,12 +409,22 @@ p {
 .custom-button {
   width: 103px;
   height: 30px;
+  border: none;
   border-radius: 15.5px;
   margin-left: 56px;
   background-color: #C84342;
   color: white;
   font-weight: bold;
+  font-family: 'Sukhumvitset-Text';
+  
+
 }
+
+.custom-button:hover {
+  box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+
+}
+
 
 .cover-button {
   text-align: center;
@@ -406,7 +454,7 @@ p {
   border-style: solid;
   border-color:#525252;
   background-color: #525252;
-  width: 800px;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
@@ -415,14 +463,31 @@ p {
   
 }
 
+.gun b {
+  font-family: 'SukhumvitSet-Bold';
+  font-size: 20px;
+
+}
+
+.Table th{
+  font-family: 'SukhumvitSet-Bold';
+  font-size: 16px;
+}
+
+.row td{
+  font-family: 'SukhumvitSet-Text';
+}
+
 .Data {
   padding: 20px;
   text-align: center;
+  border-color: #D8D8D8;
+  background-color:#FFFFFF;
   border-style: solid;
   border-width: 1px;
-  width: 800px;
-height: 33px;
-font-size : 16px;
+  width: 1000px;
+  height: 60px;
+  font-size : 16px;
   
 
 }
@@ -450,7 +515,7 @@ font-size : 16px;
   border-style: solid;
   border-color:#525252;
   background-color: #525252;
-  width: 800px;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
@@ -511,6 +576,7 @@ font-size : 16px;
   font-size: 20px;
   font-family: "SukhumvitSet-Bold";
   margin-left: 88px;
+  padding-top: 41px;
 
 }
 
@@ -529,10 +595,13 @@ font-size : 16px;
 .block {
   text-align: center;
   display: flex;
-  margin: 139px auto;
+  margin: 66px auto;
   width: 698px;
 
+}
 
+.tktabledetails p{
+  font-family: 'Sukhumvitset-Bold';
 }
 
 .popup{
@@ -644,14 +713,12 @@ color: #333333;
 }
 
 .Table {
-  
-  
   padding: 20px;
   text-align: center;
   border-style: solid;
-  border-color:#525252;
-  background-color: #525252;
-  width: 800px;
+  border-color: #C84342;;
+  background-color: #C84342;;
+  width: 1000px;
   height: 33px;
   border-width: 2px;
   color : white;
@@ -660,17 +727,6 @@ color: #333333;
   
 }
 
-.Data {
-  padding: 20px;
-  text-align: center;
-  border-style: solid;
-  border-width: 1px;
-  width: 800px;
-height: 33px;
-font-size : 16px;
-  
-
-}
 
 .Dataodd{
   border-color:#FFFFFF;
@@ -702,33 +758,6 @@ font-size : 16px;
   margin-top: 20px;
   font-size : 16px;
   
-}
-
-.Datas {
-  padding: 20px;
-  text-align: center;
-  border-style: solid;
-  border-width: 1px;
-  width: 800px;
-height: 33px;
-font-size : 16px;
-  
-
-}
-
-.Dataodds{
-  border-color:#FFFFFF;
-  background-color:#FFFFFF;
-  font-size : 16px;
- 
-}
-
-.Dataevens{
- 
-  border-color:#C4C4C4;
-  background-color:#C4C4C4;
-  font-size : 16px;
-
 }
 
 .root {
@@ -800,8 +829,9 @@ font-size: 16px;
 
 .text-limit{
   text-align: right;
-  margin-top: 85px;
-    margin-left: 5px;
+  margin-top: 89px;
+  margin-left: 5px;
+  font-family: 'Sukhumvitset-Text';
 }
 
 .qqq {
@@ -849,12 +879,15 @@ font-size: 16px;
 
 .rabbit{
   font-size: 14px;
+  width: 1000px;
+  margin: auto;
 
 }
 
 .horse{
   font-size: 20px;
   margin-top: 50px;
+  font-family: 'Sukhumvitset-Bold';
 
 }
 
@@ -876,7 +909,6 @@ font-size: 16px;
 
 
 .tkstatistic {
-  margin: auto;
   width: 1000px;
 
 }
@@ -884,14 +916,15 @@ font-size: 16px;
 .tkselecttype {
   display: flex;
   justify-content: flex-end;
-  margin-: 2%;
+  margin-right: 10px;
   width: 1000px;
 
 }
 
-.positiontext b {
+.positiontext p {
   font-size: 16px;
   font-family: 'SukhumvitSet-Bold';
+  padding-top: 3px;
 
 }
 
@@ -934,7 +967,7 @@ font-size: 16px;
 
 .searchhistory p {
   margin-left: 85px;
-  margin-top: 41px;
+  padding-top: 41px;
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
 
@@ -952,7 +985,7 @@ font-size: 16px;
 
 .selectleaveid p {
   margin-left: 85px;
-  margin-top: 41px;
+  padding-top: 41px;
   width: 100%;
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
@@ -960,11 +993,13 @@ font-size: 16px;
 }
 
 .leave-form {
-  margin: auto;
-  margin-top: 23px;
+  margin: 23px auto;
+  padding-top: 60px;
+  padding-left: 0px;
 
 }
 
+.sho
 .tktablestatic {
   margin: auto;
 
@@ -1171,11 +1206,14 @@ font-size: 16px;
 .cover-popup-al{
   float: right;
   width: 20%;
+
 }
 
 .inline {
   display: inline-flex;
+
 }
+
 .logoutbutton {
   list-style: none;
   background-color: #C84342;
@@ -1187,7 +1225,13 @@ font-size: 16px;
   margin-right: 8%;
   text-transform: uppercase;
   font-family: 'SukhumvitSet-Bold';
-  margin-top: 5px;
+}
+
+.logoutbutton img{
+  width: 19px;
+  height: 19px;
+  margin-right: 10px;
+  
 }
 
 .logoutbutton a{
@@ -1202,3 +1246,4 @@ font-size: 16px;
   text-decoration: none;
 
 }
+

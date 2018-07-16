@@ -34,16 +34,15 @@ class TableSearchLeaveStatisticsDetails extends Component {
   render() {
     const { people } = this.props
     return (
-
       <div>
         <div className="row">
-          <div className="col-md-1"></div>
-          <div className="col-md-9">
+          <div className="tkboth">
             <div className="row">
               <div className="gun">
-                <h3><b>Leave Statistic</b></h3>
+                <p><b>Leave Statistic</b></p>
               </div>
             </div>
+            <div className='tktabledetails'>
             <div className="row">
               <div className="col-md-3">
                 <p><b>ชื่อ : </b>{this.state.people.FirstName}</p>
@@ -62,9 +61,8 @@ class TableSearchLeaveStatisticsDetails extends Component {
               <div className="col-md-3">
                 <p><b>Position : </b>{this.state.people.Position}</p>
 
-
-
               </div>
+            </div>
             </div>
             <div className="Table">
               <div className="row">
