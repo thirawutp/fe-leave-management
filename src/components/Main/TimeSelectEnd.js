@@ -8,7 +8,7 @@ class TimeSelectEnd extends React.Component {
         super(props);
 
         this.state = {
-            timeEnd: '00:00'
+            timeEnd: '--:--'
         };
 
         this.onTimeChange = this.onTimeChange.bind(this);

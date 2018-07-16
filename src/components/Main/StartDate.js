@@ -13,7 +13,7 @@ class StartDate extends React.Component {
         };
     }
     handleChange = (date) => {
-        let { onChange, id, id2, Calculate, begin } = this.props
+        let { onChange, id, id2, Calculate, begin, } = this.props
         this.setState({
             startDate: date
         });

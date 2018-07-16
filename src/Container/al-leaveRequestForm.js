@@ -78,7 +78,7 @@ const OnedayForm = props => {
           </div>
                         <div className="dropdown-oneday">
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
-                                <option> 0 hour</option>
+                                <option value={0}> select hour</option>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -116,7 +116,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(event) => onChange('leaveAmount', event.target.value)}>
-                        <option> 0 hour</option>
+                        <option value={0}> select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -146,7 +146,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(e) => onChange('leaveAmountStop', e.target.value)}>
-                        <option> 0 hour</option>
+                        <option value={0}> select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -179,25 +179,18 @@ const NoteQuestion = props => {
     )
 }
 
-const FileForm = props => {
-    return (
-        <div className="row-file">
-            <div className="text-file">
-                File :
-          </div>
-            <div className="input-file">
-                <input
-                    onChange={e => console.log(e.target.files[0])}
-                    type="file"
-                />
-            </div>
-        </div>
-    )
+const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            resolve(reader.result)
+        };
+        reader.onerror = function (error) {
+            reject(error)
+        };
+    })
 }
-
-
-
-
 class alRequestForm extends Component {
 
     constructor(props) {
@@ -215,27 +208,34 @@ class alRequestForm extends Component {
             len: 0,
             note: '',
             timeleftal: undefined,
-            file: undefined,
+            selectedFile: null,
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
             timeSum: leaveData.AnnualHours,
             showSum: leaveData.AnnualHours,
+            caseID: ''
         };
     }
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
         this.setState({ showSum: this.state.timeSum })
+        this.setState({
+            leaveDate: undefined,
+            leaveDateStop: undefined,
+            leaveAmountStop: 0,
+            leaveAmount: 0,
+        })
     }
-
     handleChangeOnedayForm = (id, value, id2) => {
 
         this.setState({ [id]: value })
-        this.setState({ [id2]: value }, this.CalHours1day)
+        this.setState({
+            [id2]: value
+        }, this.CalHours1day)
     }
 
     handleChangeMoreOneDay = (id, value) => {
-        console.log('DO did na', id, value)
         this.setState({ [id]: value }, this.CalHours)
     }
 
@@ -244,11 +244,6 @@ class alRequestForm extends Component {
         this.setState({ [id]: value })
         this.setState({ len: count })
     }
-    handleMoment = () => {
-        const diff = moment(this.state.leaveDateBegin).diff(moment(this.state.leaveDateEnd), 'hours')
-        this.setState({ amountLeft: diff * (-1) })
-    }
-
     CheckStatus = (id, value) => {
         this.setState({ [id]: value })
     }
@@ -260,16 +255,27 @@ class alRequestForm extends Component {
             this.setState({ leaveDateEnd: day2 })
             this.CalHours()
         }
-
     }
     CalHours = () => {
-        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
+        if (this.state.leaveDate && this.state.leaveDateStop) {
             const start = this.state.leaveDate.replace('T', '')
             const end = this.state.leaveDateStop.replace('T', '')
             const momentStart = moment(start, 'YYYY-MM-DD')
             const momentEnd = moment(end, 'YYYY-MM-DD')
             var hours = momentEnd.diff(momentStart, 'hours')
-            this.setState({ amountLeft: hours }, this.CalDayLeft)
+            if (hours <= 0) {
+                this.setState({
+                    showSum: this.state.timeSum,
+                    caseID: -1
+
+                })
+
+            }
+            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+                this.setState({
+                    amountLeft: hours, caseID: 1
+                }, this.CalDayLeft)
+            }
         }
     }
 
@@ -284,26 +290,24 @@ class alRequestForm extends Component {
         }
 
     }
-
-
     CalDayLeft = () => {
-        console.log('Do cal Day na')
-        let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
-        this.setState({ showSum: sum }, this.CalHoursLeft)
-    }
-
-
-
-    CalHoursLeft = () => {
-        console.log('Do cal Hours na')
-        if (this.state.leaveAmount && this.state.leaveAmountStop) {
-            let sum2 = this.state.timeSum - (this.state.leaveAmount + this.state.leaveAmountStop)
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+            let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
+            this.setState({
+                showSum: sum,
+            })
         }
-
     }
 
-    handleSubmit = event => {
+
+    fileChangedHandler = (event) => {
+        console.log(event.target.files)
+        this.setState({ selectedFile: event.target.files[0] })
+    }
+
+    handleSubmit = async event => {
         window.confirm("Confirm ?")
+        const attachFileBase64 = await getBase64(this.state.selectedFile)
         axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
 
             "type": "Annual Leave",
@@ -316,7 +320,8 @@ class alRequestForm extends Component {
             "comment": this.state.note,
             "approvedTime": "2018-07-09T08:42:39.014Z",
             "approvedBy": "null",
-            "attachedFile": "null",
+            "attachedFile": attachFileBase64,
+            "attachedFileName": this.state.selectedFile.name,
             "requestedDateTime": moment().format().toString()
         })
             .then(function (response) {
@@ -324,9 +329,10 @@ class alRequestForm extends Component {
             })
     }
     handleCheckSubmit = () => {
+        console.log(this.state.caseID)
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
-                alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+                alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
             }
             else {
                 console.log("success")
@@ -334,11 +340,14 @@ class alRequestForm extends Component {
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime || !this.state.leaveDateEnd || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0) {
-                alert('กรุณากรอกข้อมูลให้ครบถ้วน')
+            if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime || !this.state.leaveDateStop || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
+                alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+            }
+            else if (this.state.showSum < 0) {
+                alert('เกินกำหนดการลา')
             }
             else {
-                this.handleSubmit
+                this.handleSubmit()
             }
         }
     }
@@ -348,7 +357,6 @@ class alRequestForm extends Component {
             <div className="leave-form">
                 <div className="cover-popup-al">
                     <div className="textpopup">
-                        <p>{this.state.amountLeft}</p>
                     </div>
                     <div className="popup">
                         <div className="picture">
@@ -392,7 +400,14 @@ class alRequestForm extends Component {
                     end={this.state.leaveDateEnd}
                 />}
                 <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
-                <FileForm />
+                <div className="row-file">
+                    <div className="text-file">
+                        File :
+          </div>
+                    <div className="input-file">
+                        <input type="file" onChange={this.fileChangedHandler} />
+                    </div>
+                </div>
                 <div className="cover-button">
                     <div className="row-button">
                         <div className="submit-button">
