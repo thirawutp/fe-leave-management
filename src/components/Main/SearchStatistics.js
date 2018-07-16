@@ -108,7 +108,7 @@ class SearchStatistics extends Component {
                                                 <div>
 
 
-                                                    <Link to={`/indexindividualStatistic/${people.staffId}`}><td>{people.staffId}</td></Link>
+                                                    <Link to="/indexindividualStatistic"><td>{people.staffId}</td></Link>
                                                 </div>
 
                                                 <div><td>{people.firstName} {people.lastName}</td></div>
