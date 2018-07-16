@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { addHistory } from '../../action'
 
 const getLeaveTypePicture = leaveType => {
-    if (leaveType === 'sick leave') {
+    if (leaveType === 'Sick Leave') {
         return SickLeave
     }
     if (leaveType === 'Annual Leave') {

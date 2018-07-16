@@ -55,12 +55,12 @@ class LoginPage extends Component {
                 this.props.addHistory(data)
 
             })
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00002&year=2018")
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
             .then(res => {
                 this.props.addpudding(res.data)
             })
 
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour") //TableSearch...
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
