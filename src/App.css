@@ -286,7 +286,7 @@ p {
 
 .select-onedate{
   display: inline-flex;
-  font-family: 'Sukhumvitset-Bold';
+  font-family: 'SukhumvitSet-Text';
 }
 
 .custom-input {
@@ -485,7 +485,7 @@ p {
   background-color:#FFFFFF;
   border-style: solid;
   border-width: 2px;
-  width: 1000px;
+  width: 100%;
   height: 60px;
   font-size : 16px;
   border-top: none;
@@ -1257,6 +1257,12 @@ background-color: #f2f2f2;
 .login button {
   margin: auto;
   margin-top: 46px;
+  font-family: 'Sukhumvitset-Text';
+
+}
+
+.login buttonText {
+  font-family: 'Sukhumvitset-Text';
 
 }
 
@@ -1264,4 +1270,55 @@ background-color: #f2f2f2;
   box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
   background-color: #800000;
 
+}
+
+.dateused th {
+  padding-left: 108px;
+
+}
+
+.daysused th {
+  padding-left: 160px;
+  
+}
+
+.hoursused th {
+  padding-left: 160px;
+  
+}
+
+.topic td{
+  padding-left: 95px;
+}
+
+.topic2 td{
+  padding-left: 105px;
+}
+
+.topic3 td{
+  padding-left: 75px;
+}
+
+.daytopic td{
+  padding-left: 168px;
+}
+
+.daytopic2 td{
+  padding-left: 168px;
+}
+
+.daytopic3 td{
+  padding-left: 168px;
+}
+
+.hourstopic td{
+  padding-left: 175px;
+}
+
+.hourstopic2 td{
+  padding-left: 175px;
+}
+
+.hourstopic3 td{
+  padding-left: 175px;
 }

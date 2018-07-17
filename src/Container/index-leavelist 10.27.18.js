@@ -15,10 +15,7 @@ class LeaveList extends Component {
     const { leaveData = {} } = this.props
     this.state = {
       timeleftal: leaveData.AnnualHours, timeleftsl: leaveData.SickHours, timeleftlwp: leaveData.LWPHours
-
     };
- 
-  
   };
   render() {
 
