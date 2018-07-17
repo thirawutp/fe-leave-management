@@ -35,6 +35,12 @@ export default (state = inttialState, action) => {
         ...state,
         table: action.payload.table
       }
+
+    case 'SEARCH_IN_TABLE':
+      return {
+        ...state,
+        search: action.payload.search
+      }
     default:
       return state
   }

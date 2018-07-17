@@ -39,25 +39,25 @@ class SearchStatistics extends Component {
                         <div className="row">
                             <div className="col-md-11">
 
-                            <div className="tkboth"></div>
-                            <div className="tktablerow">
-                            <div className="tkselecttype">
-                                <div className="positiontext">
-                                    <p><b>Position:</b></p>
-                                </div>
-                                <div className="selecttype">
-                                    <select onChange={this.handleSetValue} >
+                                <div className="tkboth"></div>
+                                <div className="tktablerow">
+                                    <div className="tkselecttype">
+                                        <div className="positiontext">
+                                            <p><b>Position:</b></p>
+                                        </div>
+                                        <div className="selecttype">
+                                            <select onChange={this.handleSetValue} >
 
-                                        <option value="All">All</option>
-                                        <option value="Frontend">Frontend</option>
-                                        <option value="Backend">Backend</option>
-                                        <option value="BA">BA</option>
-                                        <option value="Graphic">Graphic</option>
-                                        <option value="QA">QA</option>
-                                    </select>
-                                </div>
-                            </div>
-                        
+                                                <option value="All">All</option>
+                                                <option value="Frontend">Frontend</option>
+                                                <option value="Backend">Backend</option>
+                                                <option value="BA">BA</option>
+                                                <option value="Graphic">Graphic</option>
+                                                <option value="QA">QA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
 
 
 
@@ -105,7 +105,7 @@ class SearchStatistics extends Component {
                                                 <div>
 
 
-                                                    <Link to="/indexindividualStatistic"><td>{people.staffId}</td></Link>
+                                                    <Link to={`/indexindividualStatistic/${people.staffId}`}><td>{people.staffId}</td></Link>
                                                 </div>
 
                                                 <div><td>{people.firstName} {people.lastName}</td></div>

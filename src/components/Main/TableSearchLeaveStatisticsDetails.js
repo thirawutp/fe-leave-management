@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-
+import _ from 'lodash';
 import '../../App.css';
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { addProfile } from '../../action'
+
 class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
-
     super(props);
 
+    const staffId = _.last(window.location.pathname.split('/'))
+
+    const person = _.find(props.table, item => item.staffId === staffId)
+    const personProfile = _.find(props.profile, item => item.staffId === staffId)
+
     this.state = {
-      people: [],
-      person: []
+      person,
+      personProfile,
+      people: []
     }
   }
 
@@ -19,11 +25,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
   componentDidMount() {
 
-    axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00007&year=2018")
-      .then(res => {
-        console.log('leaveeeeee', res.data)
-        this.setState({ person: res.data })
-      })
+
 
   }
 
@@ -33,6 +35,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
   render() {
     const { people } = this.props
+    console.log('people'), people
     return (
       <div>
         <div className="row">
@@ -43,26 +46,26 @@ class TableSearchLeaveStatisticsDetails extends Component {
               </div>
             </div>
             <div className='tktabledetails'>
-            <div className="row">
-              <div className="col-md-3">
-                <p><b>ชื่อ : </b>{this.state.people.FirstName}</p>
+              <div className="row">
+                <div className="col-md-3">
+                  <p><b>ชื่อ : </b>{this.state.personProfile.firstName}</p>
+                </div>
+                <div className="col-md-3">
+                  <p><b>สกุล : </b>{this.state.personProfile.lastName}</p>
+                </div>
               </div>
-              <div className="col-md-3">
-                <p><b>สกุล : </b>{this.state.people.LastName}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <p><b>StaffID : </b>{this.state.people.StaffId}</p>
-              </div>
-              <div className="col-md-3">
-                <p><b>Section : </b>{this.state.people.Section}</p>
-              </div>
-              <div className="col-md-3">
-                <p><b>Position : </b>{this.state.people.Position}</p>
+              <div className="row">
+                <div className="col-md-3">
+                  <p><b>StaffID : </b>{this.state.personProfile.staffId}</p>
+                </div>
+                <div className="col-md-3">
+                  <p><b>Section : </b>{this.state.personProfile.section}</p>
+                </div>
+                <div className="col-md-3">
+                  <p><b>Position : </b>{this.state.personProfile.position}</p>
 
+                </div>
               </div>
-            </div>
             </div>
             <div className="Table">
               <div className="row">
@@ -85,10 +88,10 @@ class TableSearchLeaveStatisticsDetails extends Component {
                   <td>Annual Leave</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{parseInt(this.state.person.AnnualHours / 8)}</td>
+                  <td>{parseInt(this.state.person.annualHours / 8)}</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{(this.state.person.AnnualHours) % 8}</td>
+                  <td>{(this.state.person.annualHours) % 8}</td>
                 </div>
 
               </div>
@@ -99,10 +102,10 @@ class TableSearchLeaveStatisticsDetails extends Component {
                   <td>Sick Leave</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{this.state.sickDay}</td>
+                  <td>{parseInt(this.state.person.sickHours / 8)}</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{this.state.sickHour}</td>
+                  <td>{(this.state.person.sickHours) % 8}</td>
                 </div>
 
               </div>
@@ -113,10 +116,10 @@ class TableSearchLeaveStatisticsDetails extends Component {
                   <td>Leave with out pay</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{this.state.payDay}</td>
+                  <td>{parseInt(this.state.person.lwpHours / 8)}</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{this.state.payHour}</td>
+                  <td>{(this.state.person.lwpHours) % 8}</td>
                 </div>
               </div>
             </div>
@@ -138,8 +141,18 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
 
 
-const mapStateToProps = state => ({
-  profile: state.statistics
-})
+const mapStateToProps = state => {
+  console.log('state', state)
+  return {
+    profile: state.statistics,
+    table: state.table
+  }
 
-export default TableSearchLeaveStatisticsDetails;
+}
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TableSearchLeaveStatisticsDetails);

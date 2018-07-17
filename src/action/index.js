@@ -31,3 +31,9 @@ export const addTable = table => ({
   payload: { table }
 })
 
+export const searchInTable = search => ({
+  type: 'SEARCH_IN_TABLE',
+  payload: { search }
+})
+
+

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import SearchHistory from '../components/Main/SearchHistory.js'
+import SearchTable from '../components/Main/SearchTable.js'
 import TableSearchLeaveStatisticsDetails from '../components/Main/TableSearchLeaveStatisticsDetails'
 
 
@@ -13,7 +13,7 @@ class IndexIndividualStatistics extends Component {
             <div>
 
                 <TableSearchLeaveStatisticsDetails />
-                <SearchHistory />
+                <SearchTable />
 
 
 
