@@ -165,22 +165,22 @@ class SearchHistory extends Component {
                             <div className='TangKwatable'>
                                 <div className="STable">
                                     <div className="row">
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic">
                                             <th>Status</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic1">
                                             <th>Leave ID</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic2">
                                             <th>Staff ID</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic3">
                                             <th>สร้างใบลาเมื่อ</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic4">
                                             <th>Leaving Date</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic5">
                                             <th>Manage by</th>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@ class SearchHistory extends Component {
                                                             <td><b>{people.approvalStatus}</b></td>
                                                         </div>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tktkleave">
                                                         <div>
                                                             <Link to={`/leaveDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         </div>
@@ -213,18 +213,18 @@ class SearchHistory extends Component {
                                                             <td>{people.type}</td>
                                                         </div>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkstaffid">
                                                         <td>{people.staffId}</td>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkrequest">
 
                                                         <td>{people.requestedDateTime}</td>
 
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkstartdate">
                                                         <td>{people.startDateTime}</td>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkapprove">
                                                         <td>{people.approvedBy}</td>
                                                     </div>
                                                 </div>

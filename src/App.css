@@ -286,7 +286,7 @@ p {
 
 .select-onedate{
   display: inline-flex;
-  font-family: 'SukhumvitSet-Text';
+  font-family: 'SukhumvitSet-';
 }
 
 .custom-input {
@@ -860,7 +860,7 @@ font-size: 16px;
 }
 
 .ooo{
-  margin-right: 70px;
+  padding-left: 25px;
 
 }
 
@@ -986,7 +986,6 @@ font-size: 16px;
 
 }
 
-.sho
 .tktablestatic {
   margin: auto;
 
@@ -996,18 +995,60 @@ font-size: 16px;
 .SApprove{
   color : #27AE60;
   font-size: 14px;
+  padding-left: 10px;
 
 }
 
 .SPending{
   color : #F2C94C;
   font-size: 14px;
+  padding-left: 13px;
 
 }
 
+.tktopic th{
+  padding-left: 35px;
+}
+
+.tktopic1 th{
+  padding-left: 38px;
+}
+
+.tktopic2 th{
+  padding-left: 40px;
+}
+
+.tktopic3 th{
+  padding-left: 23px;
+}
+
+.tktopic4 th{
+  padding-left: 20px;
+}
+
+.tktopic5 th{
+  padding-left: 30px;
+}
+
+.tkstaffid td{
+  padding-left: 40px;
+}
+
+.tkstartdate td{
+  padding-left: 35px;
+}
+
+.tkrequest td{
+  padding-left: 30px;
+}
+
+.tkapprove td{
+  padding-left: 60px;
+}
 .SReject{
   color : red;
   font-size: 14px;
+  padding-left: 12px;
 }
 
 .bbr{
@@ -1041,7 +1082,6 @@ font-size: 16px;
 
 .SData {
   padding: 20px;
-  text-align: center;
   border-color:#D8D8D8;
   background-color: white;
   border-style: solid;
@@ -1166,6 +1206,13 @@ background-color: #f2f2f2;
   font-size : 16px;
 
 }
+
+.PPData:hover {
+  border-color:#f2f2f2;
+ background-color: #f2f2f2;
+
+}
+
 
 .bubble{
   padding: 20px;
