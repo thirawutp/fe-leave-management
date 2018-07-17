@@ -15,9 +15,7 @@ class LeaveList extends Component {
     const { leaveData = {} } = this.props
     this.state = {
       timeleftal: leaveData.AnnualHours, timeleftsl: leaveData.SickHours, timeleftlwp: leaveData.LWPHours
-
     };
-
 
   };
   render() {
@@ -103,7 +101,7 @@ class LeaveList extends Component {
                   </div>
                 </div>
                 <div className="">
-                  <p className="text-bottom">{this.state.timeleftlwp % 8}Hours</p>
+                  <p className="text-bottom">{this.state.timeleftlwp % 8} Hours</p>
                 </div>
               </div>
 

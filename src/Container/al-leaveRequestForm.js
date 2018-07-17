@@ -79,7 +79,7 @@ const OnedayForm = props => {
           </div>
                         <div className="dropdown-oneday">
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
-                                <option value={0}> select hour</option>
+                                <option value={0}>select hour</option>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -117,7 +117,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(event) => onChange('leaveAmount', event.target.value)}>
-                        <option value={0}> select hour</option>
+                        <option value={0}>select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -147,7 +147,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(e) => onChange('leaveAmountStop', e.target.value)}>
-                        <option value={0}> select hour</option>
+                        <option value={0}>select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -276,7 +276,7 @@ class alRequestForm extends Component {
                 })
 
             }
-            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
                 this.setState({
                     amountLeft: hours, caseID: 1
                 }, this.CalDayLeft)
@@ -296,7 +296,7 @@ class alRequestForm extends Component {
 
     }
     CalDayLeft = () => {
-        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
             let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
             this.setState({
                 showSum: sum,

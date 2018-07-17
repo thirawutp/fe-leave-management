@@ -83,13 +83,13 @@ class TableSearchLeaveStatisticsDetails extends Component {
             </div>
             <div className="Table">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-4 dateused">
                   <th>วันลาที่ใช้ไป</th>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 daysused">
                   <th>Days</th>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 hoursused">
                   <th>Hours</th>
                 </div>
               </div>
@@ -98,13 +98,13 @@ class TableSearchLeaveStatisticsDetails extends Component {
             <div className="Data">
               <div className="row">
 
-                <div className="col-md-4">
+                <div className="col-md-4 topic">
                   <td>Annual Leave</td>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 daytopic">
                   <td>{parseInt(this.state.person.annualHours / 8)}</td>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 hourstopic">
                   <td>{(this.state.person.annualHours) % 8}</td>
                 </div>
 
@@ -112,13 +112,13 @@ class TableSearchLeaveStatisticsDetails extends Component {
             </div>
             <div className="Data">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-4 topic2">
                   <td>Sick Leave</td>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 daytopic2">
                   <td>{parseInt(this.state.person.sickHours / 8)}</td>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 hourstopic2">
                   <td>{(this.state.person.sickHours) % 8}</td>
                 </div>
 
@@ -126,13 +126,13 @@ class TableSearchLeaveStatisticsDetails extends Component {
             </div>
             <div className="Data">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-4 topic3">
                   <td>Leave with out pay</td>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 daytopic3">
                   <td>{parseInt(this.state.person.lwpHours / 8)}</td>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-4 hourstopic3">
                   <td>{(this.state.person.lwpHours) % 8}</td>
                 </div>
               </div>

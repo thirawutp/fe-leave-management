@@ -3,10 +3,13 @@ import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
 
+
 import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, addApprove } from '../action'
+
 
 import _ from 'lodash'
 import moment from 'moment'
+import logologin from '../../src/asset/images/logologin.png';
 
 const mockResponse = {
     profileObj: {
@@ -180,11 +183,12 @@ class LoginPage extends Component {
     render() {
         console.log(this.props)
         return (
-            <div className="App">
+            <div className="login">
+            <img src={logologin}/>
                 <GoogleLogin
                     clientId="641800244467-7rc34tcaa2bh0mu7i109blv72n8ilnse.apps.googleusercontent.com"
                     hostedDomain="appman.co.th"
-                    buttonText="Login"
+                    buttonText="          Sign in with Google          "
                     onSuccess={this.handleLoginSuccess}
                     onFailure={this.handleLoginFailure}
                 />

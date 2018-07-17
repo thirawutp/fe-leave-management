@@ -277,7 +277,7 @@ class slRequestForm extends Component {
                 })
 
             }
-            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
                 this.setState({
                     amountLeft: hours, caseID: 1
                 }, this.CalDayLeft)
@@ -297,7 +297,7 @@ class slRequestForm extends Component {
 
     }
     CalDayLeft = () => {
-        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
             let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
             this.setState({
                 showSum: sum,
@@ -317,7 +317,7 @@ class slRequestForm extends Component {
             if (this.state.selectedFile) {
                 attachFileBase64 = await getBase64(this.state.selectedFile)
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                    "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
@@ -345,7 +345,7 @@ class slRequestForm extends Component {
             }
             else {
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                    "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
