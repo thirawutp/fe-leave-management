@@ -317,7 +317,7 @@ class slRequestForm extends Component {
             if (this.state.selectedFile) {
                 attachFileBase64 = await getBase64(this.state.selectedFile)
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                    "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
@@ -345,7 +345,7 @@ class slRequestForm extends Component {
             }
             else {
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                    "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
