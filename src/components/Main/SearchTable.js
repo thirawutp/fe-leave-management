@@ -78,27 +78,54 @@ const people = [
 
 
 
+
 class SearchTable extends Component {
     constructor(props) {
         super(props);
-        const staffId = _.last(window.location.pathname.split('/'))
-        const personProfile = _.find(props.profile, item => item.staffId === staffId)
+
+
         this.state = {
             people: [],
             term: '',
             SetImg: '',
-            personProfile
 
         }
         this.searchHandle = this.searchHandle.bind(this);
     }
-
     searchHandle(event) {
         this.setState({ term: event.target.value })
     }
 
 
     componentDidMount() {
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchInTable
+            .then(res => {
+                console.log('iiiiiiiiiiiiiii')
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+                        if (key === 'ApprovedBy') {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: val || '-'
+                            }
+                        }
+                        if (key === 'LeaveId') {
+                            return {
+                                ...result,
+                                rawLeaveId: val,
+                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                            }
+                        }
+
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.props.searchInTable(data)
+
+            })
 
     }
 
@@ -107,7 +134,7 @@ class SearchTable extends Component {
     render() {
         const { term } = this.state;
         const { people } = this.props
-        console.log('--------people', people)
+        console.log('--------people', this.state, people)
         const filtered = people.filter((curr) => {
             const test1 = curr.requestedDateTime.toLowerCase().includes(term)
             const test2 = curr.approvalStatus.toLowerCase().includes(term)
@@ -222,27 +249,40 @@ class SearchTable extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    people: state.history.map(row => {
-        return _.reduce(row, (result, val, key) => {
-            if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+const mapStateToProps = state => {
+    const staffId = _.last(window.location.pathname.split('/'))
+    console.log('staffId', staffId)
+    return {
+        people: state.search.map(row => {
+            return _.reduce(row, (result, val, key) => {
+                if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                    return {
+                        ...result,
+                        [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    }
+                }
                 return {
                     ...result,
-                    [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    [_.camelCase(key)]: val
                 }
-            }
-            return {
-                ...result,
-                [_.camelCase(key)]: val
-            }
-        }, {})
-    })
-})
+            }, {})
+        })
+            .filter((item, i) => {
+                return item.staffId === staffId
+            })
+
+    }
+
+}
 
 const mapDispatchToProps = dispatch => ({
     searchInTable: (search) => dispatch(searchInTable(search))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchTable)
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(SearchTable)
 
 

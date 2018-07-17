@@ -3,7 +3,7 @@ import _ from 'lodash';
 import '../../App.css';
 import axios from 'axios';
 import { connect } from 'react-redux'
-import { addProfile } from '../../action'
+import { addTable } from '../../action'
 
 class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
@@ -24,6 +24,20 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
 
   componentDidMount() {
+    axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
+      .then(res => {
+        console.log('sdvbdf drgfbdrgfbdrgf', res.data)
+        const data = res.data.map(p => {
+          return _.reduce(p, (result, val, key) => {
+
+            return {
+              ...result,
+              [_.camelCase(key)]: val
+            }
+          }, {})
+        })
+        this.props.addTable(data)
+      })
 
 
 
@@ -150,9 +164,11 @@ const mapStateToProps = state => {
 
 }
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({
+  addTable: (table) => dispatch(addTable(table))
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TableSearchLeaveStatisticsDetails);
+)(TableSearchLeaveStatisticsDetails)

@@ -16,6 +16,7 @@ class LeaveList extends Component {
     this.state = {
       timeleftal: leaveData.AnnualHours, timeleftsl: leaveData.SickHours, timeleftlwp: leaveData.LWPHours
     };
+
   };
   render() {
 

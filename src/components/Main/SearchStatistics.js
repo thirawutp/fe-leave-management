@@ -4,7 +4,7 @@ import axios from 'axios';
 import _ from 'lodash'
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
+import { addStatistics } from '../../action'
 class SearchStatistics extends Component {
     constructor(props) {
         super(props);
@@ -21,6 +21,22 @@ class SearchStatistics extends Component {
 
     }
 
+    componentDidMount() {
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+            .then(res => {
+                console.log('------', res.data)
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.props.addStatistics(data)
+            })
+    }
 
 
 
@@ -151,5 +167,10 @@ class SearchStatistics extends Component {
 const mapStateToProps = state => ({
     people: state.statistics || []
 })
-
-export default connect(mapStateToProps, {})(SearchStatistics)
+const mapDispatchToProps = dispatch => ({
+    addStatistics: (statistics) => dispatch(addStatistics(statistics))
+})
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(SearchStatistics)
