@@ -277,7 +277,7 @@ class lwpRequestForm extends Component {
                 })
 
             }
-            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+            else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
                 this.setState({
                     amountLeft: hours, caseID: 1
                 }, this.CalDayLeft)
@@ -297,7 +297,7 @@ class lwpRequestForm extends Component {
 
     }
     CalDayLeft = () => {
-        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount != 0 && this.state.leaveAmountStop != 0) {
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
             let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
             this.setState({
                 showSum: sum,
