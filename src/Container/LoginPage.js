@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
 
-import { login, addHistory, addpudding, addStatistics, searchInTable, addTable } from '../action'
+import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, addApprove } from '../action'
 
 import _ from 'lodash'
 import moment from 'moment'
@@ -74,6 +74,12 @@ class LoginPage extends Component {
                                 [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
                             }
                         }
+                        if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                            }
+                        }
 
                         return {
                             ...result,
@@ -91,7 +97,7 @@ class LoginPage extends Component {
                 this.props.addpudding(res.data)
             })
 
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
             .then(res => {
 
                 const data = res.data.map(p => {
@@ -104,6 +110,40 @@ class LoginPage extends Component {
                     }, {})
                 })
                 this.props.addTable(data)
+            })
+
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchApprove
+            .then(res => {
+                console.log('APPROVEEEE', res.data)
+                const data = _.reduce(res.data, (result, val, key) => {
+                    if (key === 'ApprovedBy') {
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val || '-'
+                        }
+                    }
+                    if (key === 'LeaveId') {
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                        }
+                    }
+                    if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
+                        console.log('do this sus', moment(val).format('DD-MM-YYYY'))
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                        }
+                    }
+                    return {
+                        ...result,
+                        [_.camelCase(key)]: val
+                    }
+                    this.props.addApprove(data)
+
+                })
+
+
             })
 
 
