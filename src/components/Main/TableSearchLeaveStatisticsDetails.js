@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
 
 import '../../App.css';
-
-
-
+import axios from 'axios';
+import { connect } from 'react-redux'
+import { addProfile } from '../../action'
 class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      people: []
 
+    super(props);
+
+    this.state = {
+      people: [],
+      person: []
     }
+  }
+
+
+
+  componentDidMount() {
+
+    axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemaingHour?staffId=00007&year=2018")
+      .then(res => {
+        console.log('leaveeeeee', res.data)
+        this.setState({ person: res.data })
+      })
 
   }
 
 
+
+
+
   render() {
+    const { people } = this.props
     return (
-      <div className="">
+      <div>
         <div className="row">
           <div className="tkboth">
             <div className="row">
@@ -28,21 +45,22 @@ class TableSearchLeaveStatisticsDetails extends Component {
             <div className='tktabledetails'>
             <div className="row">
               <div className="col-md-3">
-                <p><b>ชื่อ : </b>{this.state.name}</p>
+                <p><b>ชื่อ : </b>{this.state.people.FirstName}</p>
               </div>
               <div className="col-md-3">
-                <p><b>สกุล : </b>{this.state.surn}</p>
+                <p><b>สกุล : </b>{this.state.people.LastName}</p>
               </div>
             </div>
             <div className="row">
               <div className="col-md-3">
-                <p><b>StaffID : </b>{this.state.staffID}</p>
+                <p><b>StaffID : </b>{this.state.people.StaffId}</p>
               </div>
               <div className="col-md-3">
-                <p><b>Section : </b>{this.state.section}</p>
+                <p><b>Section : </b>{this.state.people.Section}</p>
               </div>
               <div className="col-md-3">
-                <p><b>Position : </b>{this.state.position}</p>
+                <p><b>Position : </b>{this.state.people.Position}</p>
+
               </div>
             </div>
             </div>
@@ -67,10 +85,10 @@ class TableSearchLeaveStatisticsDetails extends Component {
                   <td>Annual Leave</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{this.state.annualDay}</td>
+                  <td>{parseInt(this.state.person.AnnualHours / 8)}</td>
                 </div>
                 <div className="col-md-4">
-                  <td>{this.state.annualHour}</td>
+                  <td>{(this.state.person.AnnualHours) % 8}</td>
                 </div>
 
               </div>
@@ -117,6 +135,11 @@ class TableSearchLeaveStatisticsDetails extends Component {
   }
 }
 
+
+
+
+const mapStateToProps = state => ({
+  profile: state.statistics
+})
+
 export default TableSearchLeaveStatisticsDetails;
-
-

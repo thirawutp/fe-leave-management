@@ -61,7 +61,7 @@ class LeaveFormDetail extends Component {
     }
     handleonClickpic = () => {
 
-        <LightboxExample images={this.props.leaveForm.attachedFile1} />
+        <LightboxExample images={this.props.leaveForm.attachedFile} />
         console.log("fdfdfdfd")
     }
 
@@ -69,7 +69,7 @@ class LeaveFormDetail extends Component {
     render() {
         console.log('5555555555', this.props.leaveForm)
         const { photoIndex, isOpen } = this.state;
-        let images = [this.props.leaveForm.attachedFile1]
+        let images = [this.props.leaveForm.attachedFile]
         return (
             <div>
 
@@ -151,7 +151,7 @@ class LeaveFormDetail extends Component {
                                 {this.handleShow(this.state.roles) && 
                                 <div className="tklink">
                                     {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
-                                    <p>{this.props.leaveForm.attachedFileName}</p>
+                                    <p>{this.props.leaveForm.attachedFileName.substring(0, 15)}</p>
                                     <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" onClick={() => this.setState({ isOpen: true })} /></p>
                                     {isOpen && (
                                         <Lightbox

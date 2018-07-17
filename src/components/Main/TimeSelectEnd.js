@@ -1,38 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import TimeField from 'react-simple-timefield';
-import { validateTimeAndCursor } from 'react-simple-timefield/dist';
-
-
-class TimeSelectEnd extends React.Component {
+import { Component, console } from "./TimeSelect";
+export class TimeSelectEnd extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             timeEnd: '--:--'
         };
-
         this.onTimeChange = this.onTimeChange.bind(this);
     }
-
     onTimeChange(timeEnd) {
-        const { onChange, id } = this.props
-        this.setState({ timeEnd });
+        const { id, onChange } = this.props
         onChange(id, timeEnd)
 
     }
-
-
     render() {
-        const { onChange, id } = this.props
-        const { timeEnd } = this.state;
-        const value = ''
 
-        return (
-            <TimeField value={value} onChange={(value) => onChange(id, value)}
-                input={<input className='custom-input' />}
-            />
-        );
+        const { timeEnd } = this.state;
+        return (<TimeField value={timeEnd} onChange={this.onTimeChange} input={<input className='custom-input' />} />);
     }
 }
+
 
 export default TimeSelectEnd;

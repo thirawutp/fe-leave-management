@@ -11,7 +11,8 @@ import moment from 'moment';
 import sun from '../asset/images/sun.png'
 import '../App.css';
 import { connect } from 'react-redux';
-import { addpudding } from '../action'
+import { Redirect, browserHistory } from "react-router";
+import { addpudding } from '../action';
 
 
 const FormHeader = props => {
@@ -21,7 +22,7 @@ const FormHeader = props => {
 
 
             <div className="show-header">
-                Leave Request Form
+                Annual Leave Request
             </div>
             <div className='header1'>
 
@@ -181,14 +182,18 @@ const NoteQuestion = props => {
 
 const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            resolve(reader.result)
-        };
-        reader.onerror = function (error) {
+        try {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                resolve(reader.result)
+            };
+            reader.onerror = function (error) {
+                reject(error)
+            };
+        } catch (error) {
             reject(error)
-        };
+        }
     })
 }
 class alRequestForm extends Component {
@@ -306,27 +311,69 @@ class alRequestForm extends Component {
     }
 
     handleSubmit = async event => {
-        window.confirm("Confirm ?")
-        const attachFileBase64 = await getBase64(this.state.selectedFile)
-        axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+        if (window.confirm("Confirm ?")) {
+            let attachFileBase64 = ''
+            if (this.state.selectedFile) {
+                attachFileBase64 = await getBase64(this.state.selectedFile)
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile": attachFileBase64,
+                    "attachedFileName": this.state.selectedFile.name,
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                browserHistory.push('/home')
 
-            "type": "Annual Leave",
-            "staffId": "00002",
-            "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-            "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
-            "hoursStartDate": this.state.leaveAmount,
-            "hoursEndDate": this.state.leaveAmountStop,
-            "approvalStatus": "string",
-            "comment": this.state.note,
-            "approvedTime": "2018-07-09T08:42:39.014Z",
-            "approvedBy": "null",
-            "attachedFile": attachFileBase64,
-            "attachedFileName": this.state.selectedFile.name,
-            "requestedDateTime": moment().format().toString()
-        })
-            .then(function (response) {
-                console.log(response);
-            })
+                            }
+
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
+            else {
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile": '',
+                    "attachedFileName": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
+
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
+        }
+
+
     }
     handleCheckSubmit = () => {
         console.log(this.state.caseID)

@@ -103,7 +103,7 @@ class LeaveList extends Component {
                   </div>
                 </div>
                 <div className="">
-                  <p className="text-bottom">{this.state.timeleftlwp % 8}Hours</p>
+                  <p className="text-bottom">{this.state.timeleftlwp % 8} Hours</p>
                 </div>
               </div>
 

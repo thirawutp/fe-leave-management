@@ -481,13 +481,14 @@ p {
 .Data {
   padding: 20px;
   text-align: center;
-  border-color: #D8D8D8;
+  border-color: #3D3D3D;
   background-color:#FFFFFF;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   width: 1000px;
   height: 60px;
   font-size : 16px;
+  border-top: none;
   
 
 }
@@ -712,20 +713,6 @@ color: #333333;
 
 }
 
-.Table {
-  padding: 20px;
-  text-align: center;
-  border-style: solid;
-  border-color: #C84342;;
-  background-color: #C84342;;
-  width: 1000px;
-  height: 33px;
-  border-width: 2px;
-  color : white;
-  margin-top: 20px;
-  font-size : 16px;
-  
-}
 
 
 .Dataodd{
@@ -1062,6 +1049,12 @@ font-size: 16px;
   width: 1000px;
   height: 80px;
   font-size : 16px;
+}
+
+.SData:hover {
+border-color:#f2f2f2;
+background-color: #f2f2f2;
+
 }
 
 .br{

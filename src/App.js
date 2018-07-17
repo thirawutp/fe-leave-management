@@ -31,9 +31,9 @@ class MainLayout extends Component {
         <div>
           <Header />
         </div>
-        
-          <NavigationBar {...this.props} />
-        
+
+        <NavigationBar {...this.props} />
+
         <div className="box">
           {this.props.children}
         </div>
@@ -48,8 +48,8 @@ class App extends Component {
 
       <Router history={browserHistory}>
 
-      <Route path='login' component={LoginPage} />
-      <Route path='logout' component={LoginPage} />
+        <Route path='login' component={LoginPage} />
+        <Route path='logout' component={LoginPage} />
 
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
@@ -67,13 +67,7 @@ class App extends Component {
           <Route path='leaveDetail/:formId' component={LeaveFormDetail} />
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='setApprove' component={SetApproveLeaveForm} />
-
           <Route path='indexindividualStatistic' component={IndexindividualStatistic} />
-
-
-
-
-
         </Route>
       </Router>
     )

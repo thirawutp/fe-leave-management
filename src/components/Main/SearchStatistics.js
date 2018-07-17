@@ -60,6 +60,7 @@ class SearchStatistics extends Component {
                         
 
 
+
                                 </div>
 
 
@@ -102,7 +103,9 @@ class SearchStatistics extends Component {
                                             </div>
                                             <div className="col-md-3">
                                                 <div>
-                                                    <Link to='/indexindividualStatistic'><td>{people.staffId}</td></Link>
+
+
+                                                    <Link to="/indexindividualStatistic"><td>{people.staffId}</td></Link>
                                                 </div>
 
                                                 <div><td>{people.firstName} {people.lastName}</td></div>
