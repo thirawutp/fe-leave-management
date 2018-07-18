@@ -312,7 +312,9 @@ class alRequestForm extends Component {
 
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
+            console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
+                console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
@@ -348,6 +350,7 @@ class alRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 2) {
+                console.log("do did na2")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
@@ -384,6 +387,7 @@ class alRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 3) {
+                console.log("do did na3")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 let attachFileBase64p3 = ''
@@ -419,12 +423,40 @@ class alRequestForm extends Component {
                     .then(function (response) {
                         console.log(response);
                     })
-
-
+            }
+            else {
+                console.log("do did na")
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": '',
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": '',
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
             }
         }
-
-
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
