@@ -423,6 +423,38 @@ class slRequestForm extends Component {
 
 
             }
+            else {
+                console.log("do did na")
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": '',
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": '',
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
         }
 
 
