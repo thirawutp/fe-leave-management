@@ -327,13 +327,15 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
-                    "approvedBy": "null",
-                    "attachedFile1": attachFileBase64,
-                    "attachedFile2": '',
-                    "attachedFile3": '',
-                    "attachedFileName1": this.state.selectedFile[0].name,
-                    "attachedFileName2": '',
-                    "attachedFileName3": '',
+
+                    "approvedBy": "",
+                    "attachedFile1": "",
+                    "attachedFile2": "",
+                    "attachedFile3": "",
+                    "attachedFileName1": "",
+                    "attachedFileName2": "",
+                    "attachedFileName3": "",
+
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
@@ -366,12 +368,14 @@ class alRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "null",
-                    "attachedFile1": attachFileBase64,
-                    "attachedFile2": attachFileBase64p2,
-                    "attachedFile3": '',
-                    "attachedFileName1": this.state.selectedFile[0].name,
-                    "attachedFileName2": this.state.selectedFile[1].name,
-                    "attachedFileName3": '',
+
+                    "attachedFile1": "",
+                    "attachedFile2": "",
+                    "attachedFile3": "",
+                    "attachedFileName1": "",
+                    "attachedFileName2": "",
+                    "attachedFileName3": "",
+
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {

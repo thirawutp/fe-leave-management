@@ -31,7 +31,7 @@ class LoginPage extends Component {
         data = mockResponse
         this.props.handleLogin(data)
         //TODO login to server
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('http://leavemanagementappman.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -55,11 +55,16 @@ class LoginPage extends Component {
                         }
                     }, {})
                 })
+                console.log("cnr", data)
                 this.props.addHistory(data)
+                this.props.router.push('/home')
 
+            }).catch(function (error) {
+                // handle error
+                console.log(error);
             })
 
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchInTable
+        axios.get('http://leavemanagementappman.azurewebsites.net/api/History/Leaves') //searchInTable
             .then(res => {
                 console.log('hahahahhahhha')
                 const data = res.data.map(p => {
@@ -93,6 +98,7 @@ class LoginPage extends Component {
                 this.props.searchInTable(data)
 
             })
+
         axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
             .then(res => {
 
@@ -161,6 +167,7 @@ class LoginPage extends Component {
                 this.props.addStatistics(data)
             })
         this.props.router.push('/home')
+
     }
 
 

@@ -148,33 +148,33 @@ class LeaveFormDetail extends Component {
 
 
                             <div className="tkpicture">
-                                {this.handleShow(this.state.roles) && 
-                                <div className="tklink">
-                                    {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
-                                    <p>{this.props.leaveForm.attachedFileName.substring(0, 15)}</p>
-                                    <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" onClick={() => this.setState({ isOpen: true })} /></p>
-                                    {isOpen && (
-                                        <Lightbox
-                                            mainSrc={images[photoIndex]}
-                                            nextSrc={images[(photoIndex + 1) % images.length]}
-                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                                            onCloseRequest={() => this.setState({ isOpen: false })}
-                                            onMovePrevRequest={() =>
-                                                this.setState({
-                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
-                                                })
-                                            }
-                                            onMoveNextRequest={() =>
-                                                this.setState({
-                                                    photoIndex: (photoIndex + 1) % images.length,
-                                                })
-                                            }
-                                        />
-                                    )}
-                                </div>}
+                                {this.handleShow(this.state.roles) &&
+                                    <div className="tklink">
+                                        {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
+                                        <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
+                                        <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true })} /></p>
+                                        {isOpen && (
+                                            <Lightbox
+                                                mainSrc={images[photoIndex]}
+                                                nextSrc={images[(photoIndex + 1) % images.length]}
+                                                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                                onCloseRequest={() => this.setState({ isOpen: false })}
+                                                onMovePrevRequest={() =>
+                                                    this.setState({
+                                                        photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                    })
+                                                }
+                                                onMoveNextRequest={() =>
+                                                    this.setState({
+                                                        photoIndex: (photoIndex + 1) % images.length,
+                                                    })
+                                                }
+                                            />
+                                        )}
+                                    </div>}
                                 {!this.handleShow(this.state.roles) && <div className="col-md-11">
-                                    <p>{this.props.leaveForm.attachedFileName}</p>
-                                    <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" /></p>
+                                    <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
+                                    <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" /></p>
                                 </div>}
 
                             </div>
