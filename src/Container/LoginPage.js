@@ -31,7 +31,7 @@ class LoginPage extends Component {
         data = mockResponse
         this.props.handleLogin(data)
         //TODO login to server
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('http://leavemanagementappman.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -55,11 +55,16 @@ class LoginPage extends Component {
                         }
                     }, {})
                 })
+                console.log("cnr", data)
                 this.props.addHistory(data)
+                this.props.router.push('/home')
 
+            }).catch(function (error) {
+                // handle error
+                console.log(error);
             })
 
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchInTable
+        axios.get('http://leavemanagementappman.azurewebsites.net/api/History/Leaves') //searchInTable
             .then(res => {
                 console.log('hahahahhahhha')
                 const data = res.data.map(p => {
@@ -94,80 +99,71 @@ class LoginPage extends Component {
 
             })
 
+        // axios.get("http://leavemanagementappman.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
+        //     .then(res => {
 
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
-            .then(res => {
-                this.props.addpudding(res.data)
-            })
+        //         const data = res.data.map(p => {
+        //             return _.reduce(p, (result, val, key) => {
 
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
-            .then(res => {
+        //                 return {
+        //                     ...result,
+        //                     [_.camelCase(key)]: val
+        //                 }
+        //             }, {})
+        //         })
+        //         this.props.addTable(data)
+        //     })
 
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
+        // axios.get('http://leavemanagementappman.azurewebsites.net/api/History/Leaves') //searchApprove
+        //     .then(res => {
+        //         console.log('APPROVEEEE', res.data)
+        //         const data = _.reduce(res.data, (result, val, key) => {
+        //             if (key === 'ApprovedBy') {
+        //                 return {
+        //                     ...result,
+        //                     [_.camelCase(key)]: val || '-'
+        //                 }
+        //             }
+        //             if (key === 'LeaveId') {
+        //                 return {
+        //                     ...result,
+        //                     [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+        //                 }
+        //             }
+        //             if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
+        //                 console.log('do this sus', moment(val).format('DD-MM-YYYY'))
+        //                 return {
+        //                     ...result,
+        //                     [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+        //                 }
+        //             }
+        //             return {
+        //                 ...result,
+        //                 [_.camelCase(key)]: val
+        //             }
+        //             this.props.addApprove(data)
 
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.addTable(data)
-            })
-
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchApprove
-            .then(res => {
-                console.log('APPROVEEEE', res.data)
-                const data = _.reduce(res.data, (result, val, key) => {
-                    if (key === 'ApprovedBy') {
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val || '-'
-                        }
-                    }
-                    if (key === 'LeaveId') {
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
-                        }
-                    }
-                    if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
-                        console.log('do this sus', moment(val).format('DD-MM-YYYY'))
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                        }
-                    }
-                    return {
-                        ...result,
-                        [_.camelCase(key)]: val
-                    }
-                    this.props.addApprove(data)
-
-                })
+        //         })
 
 
-            })
+        //     })
 
+        // axios.get('http://leavemanagementappman.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+        //     .then(res => {
+        //         console.log('------', res.data)
+        //         const data = res.data.map(p => {
+        //             return _.reduce(p, (result, val, key) => {
 
+        //                 return {
+        //                     ...result,
+        //                     [_.camelCase(key)]: val
+        //                 }
+        //             }, {})
+        //         })
+        //         this.props.addStatistics(data)
 
+        //     })
 
-
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
-            .then(res => {
-                console.log('------', res.data)
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.addStatistics(data)
-            })
-        this.props.router.push('/home')
     }
 
 
@@ -184,7 +180,7 @@ class LoginPage extends Component {
         console.log(this.props)
         return (
             <div className="login">
-            <img src={logologin}/>
+                <img src={logologin} />
                 <GoogleLogin
                     clientId="641800244467-7rc34tcaa2bh0mu7i109blv72n8ilnse.apps.googleusercontent.com"
                     hostedDomain="appman.co.th"
