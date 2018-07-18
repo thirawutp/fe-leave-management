@@ -313,9 +313,9 @@ class slRequestForm extends Component {
 
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
-            let attachFileBase64 = ''
-            if (this.state.selectedFile) {
-                attachFileBase64 = await getBase64(this.state.selectedFile)
+            if (this.state.selectedFile.length == 1) {
+                let attachFileBase64 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
@@ -327,13 +327,54 @@ class slRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "null",
-                    "attachedFile": attachFileBase64,
-                    "attachedFileName": this.state.selectedFile.name,
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                browserHistory.push('/home')
+
+                            }
+
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
+            else if (this.state.selectedFile.length == 2) {
+                let attachFileBase64 = ''
+                let attachFileBase64p2 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Sick Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": attachFileBase64p2,
+                    "attachedFile3": '',
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
                                 browserHistory.push('/home')
                             }
 
@@ -343,7 +384,13 @@ class slRequestForm extends Component {
                         console.log(response);
                     })
             }
-            else {
+            else if (this.state.selectedFile.length == 3) {
+                let attachFileBase64 = ''
+                let attachFileBase64p2 = ''
+                let attachFileBase64p3 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
+                attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
@@ -355,8 +402,12 @@ class slRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "null",
-                    "attachedFile": '',
-                    "attachedFileName": '',
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": attachFileBase64p2,
+                    "attachedFile3": attachFileBase64p3,
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName3": this.state.selectedFile[2].name,
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
@@ -364,7 +415,40 @@ class slRequestForm extends Component {
                                 alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
                                 browserHistory.push('/home')
                             }
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
 
+
+            }
+            else {
+                console.log("do did na")
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": '',
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": '',
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
                         }
                     })
                     .then(function (response) {

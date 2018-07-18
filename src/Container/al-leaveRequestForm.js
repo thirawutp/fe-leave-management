@@ -180,6 +180,7 @@ const NoteQuestion = props => {
     )
 }
 
+
 const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
         try {
@@ -213,7 +214,7 @@ class alRequestForm extends Component {
             len: 0,
             note: '',
             timeleftal: undefined,
-            selectedFile: null,
+            selectedFile: [],
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
@@ -306,15 +307,16 @@ class alRequestForm extends Component {
 
 
     fileChangedHandler = (event) => {
-        console.log(event.target.files)
-        this.setState({ selectedFile: event.target.files[0] })
+        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile))
     }
 
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
-            let attachFileBase64 = ''
-            if (this.state.selectedFile) {
-                attachFileBase64 = await getBase64(this.state.selectedFile)
+            console.log(this.state.selectedFile)
+            if (this.state.selectedFile.length == 1) {
+                console.log("do did na1")
+                let attachFileBase64 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
@@ -325,6 +327,7 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
+
                     "approvedBy": "",
                     "attachedFile1": "",
                     "attachedFile2": "",
@@ -332,6 +335,7 @@ class alRequestForm extends Component {
                     "attachedFileName1": "",
                     "attachedFileName2": "",
                     "attachedFileName3": "",
+
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
@@ -347,7 +351,12 @@ class alRequestForm extends Component {
                         console.log(response);
                     })
             }
-            else {
+            else if (this.state.selectedFile.length == 2) {
+                console.log("do did na2")
+                let attachFileBase64 = ''
+                let attachFileBase64p2 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
@@ -359,12 +368,14 @@ class alRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "null",
+
                     "attachedFile1": "",
                     "attachedFile2": "",
                     "attachedFile3": "",
                     "attachedFileName1": "",
                     "attachedFileName2": "",
                     "attachedFileName3": "",
+
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
@@ -379,15 +390,88 @@ class alRequestForm extends Component {
                         console.log(response);
                     })
             }
+            else if (this.state.selectedFile.length == 3) {
+                console.log("do did na3")
+                let attachFileBase64 = ''
+                let attachFileBase64p2 = ''
+                let attachFileBase64p3 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
+                attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": attachFileBase64p2,
+                    "attachedFile3": attachFileBase64p3,
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName3": this.state.selectedFile[2].name,
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
+            else {
+                console.log("do did na")
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": '',
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": '',
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
         }
-
-
     }
     handleCheckSubmit = () => {
-        console.log(this.state.caseID)
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
                 alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+            }
+            else if (this.state.showSum < 0) {
+                alert('เกินกำหนดการลา')
+            }
+            else if (this.state.selectedFile.length > 3) {
+                alert('เกินสามรูป')
             }
             else {
                 console.log("success")
@@ -400,6 +484,9 @@ class alRequestForm extends Component {
             }
             else if (this.state.showSum < 0) {
                 alert('เกินกำหนดการลา')
+            }
+            else if (this.state.selectedFile.length > 3) {
+                alert('เกินสามรูป')
             }
             else {
                 this.handleSubmit()
@@ -460,7 +547,7 @@ class alRequestForm extends Component {
                         File :
           </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} />
+                        <input type="file" onChange={this.fileChangedHandler} required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
