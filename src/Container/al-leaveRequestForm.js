@@ -349,7 +349,7 @@ class alRequestForm extends Component {
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                alert("Data has been sent!.");
                                 browserHistory.push('/home')
 
                             }
@@ -389,7 +389,7 @@ class alRequestForm extends Component {
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
 
@@ -474,7 +474,7 @@ class alRequestForm extends Component {
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
-                alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+                alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
                 alert('เกินกำหนดการลา')
@@ -489,10 +489,10 @@ class alRequestForm extends Component {
         }
         else if (this.state.isOneday == false) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime || !this.state.leaveDateStop || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
-                alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+                alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
-                alert('เกินกำหนดการลา')
+                alert('Overtime!.')
             }
             else if (this.state.selectedFile.length > 3) {
                 alert('เกินสามรูป')
@@ -509,7 +509,7 @@ class alRequestForm extends Component {
                 <div className="cover-popup-al">
                     <div className="textpopup">
                     </div>
-                    <div className="popup">
+                    <div className="alpopup">
                         <div className="picture">
                             <img src={sun} />
                         </div>
@@ -561,12 +561,10 @@ class alRequestForm extends Component {
                 </div>
                 <div className="cover-button">
                     <div className="row-button">
-                        <div className="submit-button">
-                            <button className="custom-button" onClick={this.handleCheckSubmit}>submit</button>
+                        <div className="submit1-button">
+                            <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-                        <div className="cancel-button">
-                            <button className="custom-button">cancel</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
