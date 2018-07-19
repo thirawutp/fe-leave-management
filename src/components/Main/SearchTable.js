@@ -98,7 +98,7 @@ class SearchTable extends Component {
 
 
     componentDidMount() {
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchInTable
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchInTable
             .then(res => {
                 console.log('iiiiiiiiiiiiiii')
                 const data = res.data.map(p => {
