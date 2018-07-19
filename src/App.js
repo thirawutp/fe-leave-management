@@ -21,6 +21,8 @@ import Doctors from './components/Main/Doctors.js';
 import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 import LoginPage from '../src/Container/LoginPage';
 import IndexindividualStatistic from '../src/Container/index-individualStatistics.js';
+import SearchStatistics from './components/Main/SearchStatistics.js';
+import SearchStatisticsback from '../src/components/Main/SearchStatistics';
 
 
 
@@ -68,6 +70,7 @@ class App extends Component {
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='setApprove/:formId' component={SetApproveLeaveForm} />
           <Route path='indexindividualStatistic/:personId' component={IndexindividualStatistic} />
+          <Route path='TableLeaveStatisticsDeatils' component={SearchStatisticsback}/>
         </Route>
       </Router>
     )
