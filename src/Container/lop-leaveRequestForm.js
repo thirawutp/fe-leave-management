@@ -556,12 +556,10 @@ class lwpRequestForm extends Component {
                 </div>
                 <div className="cover-button">
                     <div className="row-button">
-                        <div className="submit-button">
-                            <button className="custom-button" onClick={this.handleCheckSubmit}>submit</button>
+                        <div className="submit1-button">
+                            <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-                        <div className="cancel-button">
-                            <button className="custom-button">cancel</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
