@@ -337,6 +337,7 @@ class alRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
 
+
                     "approvedBy": "",
                     "attachedFile1": attachFileBase64,
                     "attachedFile2": '',
@@ -344,6 +345,7 @@ class alRequestForm extends Component {
                     "attachedFileName1": this.state.selectedFile[0].name,
                     "attachedFileName2": 'No Image',
                     "attachedFileName3": 'No Image',
+
 
                     "requestedDateTime": moment().format().toString(),
                 }, {
@@ -376,6 +378,7 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
+
                     "approvedBy": "",
 
                     "attachedFile1": attachFileBase64,
@@ -384,6 +387,7 @@ class alRequestForm extends Component {
                     "attachedFileName1": this.state.selectedFile[0].name,
                     "attachedFileName2": this.state.selectedFile[1].name,
                     "attachedFileName3": 'No Image',
+
 
                     "requestedDateTime": moment().format().toString(),
                 }, {
@@ -417,7 +421,9 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
+
                     "approvedBy": "",
+
                     "attachedFile1": attachFileBase64,
                     "attachedFile2": attachFileBase64p2,
                     "attachedFile3": attachFileBase64p3,
@@ -449,7 +455,9 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
+
                     "approvedBy": "",
+
                     "attachedFile1": '',
                     "attachedFile2": '',
                     "attachedFile3": '',
