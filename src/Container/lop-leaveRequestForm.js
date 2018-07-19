@@ -10,9 +10,8 @@ import axios from 'axios';
 import moment from 'moment';
 import sun from '../asset/images/sun.png'
 import '../App.css';
-import { Redirect, browserHistory } from "react-router";
 import { connect } from 'react-redux';
-import money from '../asset/images/money.png';
+import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
 
 
@@ -80,7 +79,7 @@ const OnedayForm = props => {
           </div>
                         <div className="dropdown-oneday">
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
-                                <option value={0}> select hour</option>
+                                <option value={0}>select hour</option>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -118,7 +117,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(event) => onChange('leaveAmount', event.target.value)}>
-                        <option value={0}> select hour</option>
+                        <option value={0}>select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -148,7 +147,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(e) => onChange('leaveAmountStop', e.target.value)}>
-                        <option value={0}> select hour</option>
+                        <option value={0}>select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -180,6 +179,7 @@ const NoteQuestion = props => {
         </div>
     )
 }
+
 
 const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -214,7 +214,7 @@ class lwpRequestForm extends Component {
             len: 0,
             note: '',
             timeleftal: undefined,
-            selectedFile: null,
+            selectedFile: [],
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
@@ -307,15 +307,14 @@ class lwpRequestForm extends Component {
 
 
     fileChangedHandler = (event) => {
-        console.log(event.target.files)
-        this.setState({ selectedFile: event.target.files[0] })
+        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile))
     }
 
-    handleSubmit = async (event, history) => {
+    handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
-            let attachFileBase64 = ''
-            if (this.state.selectedFile) {
-                attachFileBase64 = await getBase64(this.state.selectedFile)
+            if (this.state.selectedFile.length == 1) {
+                let attachFileBase64 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Leave without Pay",
                     "staffId": "00002",
@@ -327,13 +326,54 @@ class lwpRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "null",
-                    "attachedFile": attachFileBase64,
-                    "attachedFileName": this.state.selectedFile.name,
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                browserHistory.push('/home')
+
+                            }
+
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+            }
+            else if (this.state.selectedFile.length == 2) {
+                let attachFileBase64 = ''
+                let attachFileBase64p2 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Leave without Pay",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": attachFileBase64p2,
+                    "attachedFile3": '',
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
                                 browserHistory.push('/home')
                             }
 
@@ -343,7 +383,13 @@ class lwpRequestForm extends Component {
                         console.log(response);
                     })
             }
-            else {
+            else if (this.state.selectedFile.length == 3) {
+                let attachFileBase64 = ''
+                let attachFileBase64p2 = ''
+                let attachFileBase64p3 = ''
+                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
+                attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
                 axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Leave without Pay",
                     "staffId": "00002",
@@ -355,16 +401,53 @@ class lwpRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "null",
-                    "attachedFile": '',
-                    "attachedFileName": '',
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": attachFileBase64p2,
+                    "attachedFile3": attachFileBase64p3,
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName3": this.state.selectedFile[2].name,
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
                                 browserHistory.push('/home')
                             }
+                        }
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
 
+
+            }
+            else {
+                console.log("do did na")
+                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Annual Leave",
+                    "staffId": "00002",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "hoursStartDate": this.state.leaveAmount,
+                    "hoursEndDate": this.state.leaveAmountStop,
+                    "approvalStatus": "string",
+                    "comment": this.state.note,
+                    "approvedTime": "2018-07-09T08:42:39.014Z",
+                    "approvedBy": "null",
+                    "attachedFile1": '',
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": '',
+                    "attachedFileName2": '',
+                    "attachedFileName3": '',
+                    "requestedDateTime": moment().format().toString(),
+                }, {
+                        onUploadProgress: ProgressEvent => {
+                            if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                browserHistory.push('/home')
+                            }
                         }
                     })
                     .then(function (response) {
@@ -376,10 +459,15 @@ class lwpRequestForm extends Component {
 
     }
     handleCheckSubmit = () => {
-        console.log(this.state.caseID)
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
                 alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+            }
+            else if (this.state.showSum < 0) {
+                alert('เกินกำหนดการลา')
+            }
+            else if (this.state.selectedFile.length > 3) {
+                alert('เกินสามรูป')
             }
             else {
                 console.log("success")
@@ -392,6 +480,9 @@ class lwpRequestForm extends Component {
             }
             else if (this.state.showSum < 0) {
                 alert('เกินกำหนดการลา')
+            }
+            else if (this.state.selectedFile.length > 3) {
+                alert('เกินสามรูป')
             }
             else {
                 this.handleSubmit()
@@ -407,7 +498,7 @@ class lwpRequestForm extends Component {
                     </div>
                     <div className="popup">
                         <div className="picture">
-                            <img src={money} />
+                            <img src={sun} />
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
@@ -452,7 +543,7 @@ class lwpRequestForm extends Component {
                         File :
           </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} />
+                        <input type="file" onChange={this.fileChangedHandler} required multiple />
                     </div>
                 </div>
                 <div className="cover-button">

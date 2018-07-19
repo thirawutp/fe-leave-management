@@ -66,7 +66,7 @@ class App extends Component {
           <Route path='history' component={IndexSearchHistory} />
           <Route path='leaveDetail/:formId' component={LeaveFormDetail} />
           <Route path='SearchStatic' component={IndexSearchStatistics} />
-          <Route path='setApprove' component={SetApproveLeaveForm} />
+          <Route path='setApprove/:formId' component={SetApproveLeaveForm} />
           <Route path='indexindividualStatistic/:personId' component={IndexindividualStatistic} />
         </Route>
       </Router>

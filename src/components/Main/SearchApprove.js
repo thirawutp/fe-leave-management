@@ -8,8 +8,8 @@ import { Link } from "react-router";
 import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
-
-
+import { connect } from 'react-redux'
+import { addApprove } from '../../action'
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -24,11 +24,61 @@ const getLeaveTypePicture = leaveType => {
     return ''
 }
 
-const people = []
 
 
 
-class SearchApprove extends Component {
+const people = [
+    {
+        status: 'Pending',
+        leaveID: 'LEAVE672',
+
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: '-'
+    },
+    {
+        status: 'Pending',
+        leaveID: 'LEAVE672',
+        leaveType: 'Annual Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '03/07/2018',
+        approver: '-'
+    },
+    {
+        status: 'Approve',
+        leaveID: 'LEAVE672',
+        leaveType: 'Leave with out pay',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: 'ข้าวโอ๊ต'
+    },
+    {
+        status: 'Approve',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: 'พี่นิว'
+    },
+    {
+        status: 'Reject',
+        leaveID: 'LEAVE672',
+        leaveType: 'Sick Leave',
+        staffID: '23097',
+        reqDate: '20/06/2018',
+        leaveDate: '01/07/2018-03/07/2018',
+        approver: 'พี่เก่ง'
+    },
+]
+
+
+
+class SeachApprove extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,47 +96,44 @@ class SearchApprove extends Component {
 
 
     componentDidMount() {
-        console.log('Didmount--555---')
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves')
-            .then(res => {
-                console.log('----55888555--', res.data)
-                const data = _.reduce(res.data, (result, val, key) => {
-                    if (key === 'ApprovedBy') {
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val || '-'
-                        }
-                    }
-                    if (key === 'LeaveId') {
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
-                        }
-                    }
-                    if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
-                        console.log('do this sus', moment(val).format('DD-MM-YYYY'))
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                        }
-                    }
-                    return {
-                        ...result,
-                        [_.camelCase(key)]: val
-                    }
-                    this.setState({ people: data })
+        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //SeachApprove
 
+            .then(res => {
+                const data = res.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+                        if (key === 'ApprovedBy') {
+                            return {
+                                ...result,
+                                [_.camelCase(key)]: val || '-'
+                            }
+                        }
+                        if (key === 'LeaveId') {
+                            return {
+                                ...result,
+                                rawLeaveId: val,
+                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                            }
+                        }
+
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
                 })
+                this.props.addApprove(data)
 
 
             })
+
     }
 
 
 
     render() {
-        console.log('state', this.state)
-        const { term, people } = this.state;
+        const { term } = this.state;
+        const { people } = this.props
+        console.log('--------people', people)
         const filtered = people.filter((curr) => {
             const test1 = curr.requestedDateTime.toLowerCase().includes(term)
             const test2 = curr.approvalStatus.toLowerCase().includes(term)
@@ -101,11 +148,11 @@ class SearchApprove extends Component {
             const test11 = curr.leaveId.toString().includes(term)
             return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11
         })
-        console.log(filtered)
         return (
             <div className="All">
                 <div className="headtable">
-                    <div className="row">
+                    <div className="row ">
+
 
                         <div className='tkboth'>
                             <form>
@@ -113,6 +160,10 @@ class SearchApprove extends Component {
                                     <input type="text" placeholder="   Search by..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
                                 </div>
                             </form>
+
+
+
+
                             <div className='TangKwatable'>
                                 <div className="STable">
                                     <div className="row">
@@ -152,31 +203,30 @@ class SearchApprove extends Component {
                                                             <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
                                                         <div className={`${people.approvalStatus == 'Approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
 
-                                                            <td><b>{people.ApprovalStatus}</b></td>
+                                                            <td><b>{people.approvalStatus}</b></td>
                                                         </div>
-
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tktkleave">
                                                         <div>
-                                                            <Link to='/setApprove' ><td><b>{people.LeaveId}</b></td></Link>
+                                                            <Link to={`/setApprove/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         </div>
                                                         <div>
 
                                                             <td>{people.type}</td>
                                                         </div>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkstaffid">
                                                         <td>{people.staffId}</td>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkrequest">
 
                                                         <td>{people.requestedDateTime}</td>
 
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkstartdate">
                                                         <td>{people.startDateTime}</td>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tkapprove">
                                                         <td>{people.approvedBy}</td>
                                                     </div>
                                                 </div>
@@ -185,8 +235,11 @@ class SearchApprove extends Component {
                                         </div>
                                     )
                                 }
+
+
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -195,7 +248,27 @@ class SearchApprove extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    people: state.approve.map(row => {
+        return _.reduce(row, (result, val, key) => {
+            if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                return {
+                    ...result,
+                    [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                }
+            }
+            return {
+                ...result,
+                [_.camelCase(key)]: val
+            }
+        }, {})
+    })
+})
 
-export default SearchApprove;
+const mapDispatchToProps = dispatch => ({
+    addApprove: (approve) => dispatch(addApprove(approve))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SeachApprove)
 
 

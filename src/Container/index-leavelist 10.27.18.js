@@ -14,10 +14,22 @@ class LeaveList extends Component {
     super(props)
     const { leaveData = {} } = this.props
     this.state = {
-      timeleftal: leaveData.AnnualHours, timeleftsl: leaveData.SickHours, timeleftlwp: leaveData.LWPHours
+      timeleftal: '',
+      timeleftsl: '',
+      timeleftlwp: '',
     };
 
+
   };
+  componentDidMount() {
+    axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+      .then(res => {
+        console.log("data in database", res.data)
+        this.setState({ timeleftal: res.data.AnnualHours })
+        this.setState({ timeleftsl: res.data.SickHours })
+        this.setState({ timeleftlwp: res.data.LWPHours })
+      })
+  }
   render() {
 
     return (

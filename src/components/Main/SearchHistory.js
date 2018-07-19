@@ -96,7 +96,8 @@ class SearchHistory extends Component {
 
 
     componentDidMount() {
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('http://leavemanagementappman.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -245,22 +246,26 @@ class SearchHistory extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    people: state.history.map(row => {
-        return _.reduce(row, (result, val, key) => {
-            if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+
+        people: state.history.map(row => {
+            return _.reduce(row, (result, val, key) => {
+                if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                    return {
+                        ...result,
+                        [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    }
+                }
                 return {
                     ...result,
-                    [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    [_.camelCase(key)]: val
                 }
-            }
-            return {
-                ...result,
-                [_.camelCase(key)]: val
-            }
-        }, {})
-    })
-})
+            }, {})
+        })
+    }
+}
 
 const mapDispatchToProps = dispatch => ({
     addHistory: (history) => dispatch(addHistory(history))

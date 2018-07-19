@@ -3,13 +3,20 @@ import pic from '../../asset/images/Doctorr.jpg';
 import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
-
+import { connect } from 'react-redux'
+import { searchInTable } from '../../action'
 
 class SetApproveLeaveForm extends Component {
     constructor(props) {
         super(props);
+        const LeaveId = parseInt(_.last(window.location.pathname.split('/')))
+
+
+        const personProfile = _.find(props.profile, item => item.rawLeaveId === LeaveId)
+        console.log('TANGKAAAA', personProfile, props.profile, LeaveId)
         this.state = {
             person: [],
+            personProfile
         }
 
 
@@ -29,27 +36,21 @@ class SetApproveLeaveForm extends Component {
         window.confirm("แน่ใจว่าจะ Reject?")
         console.log(this.state.check)
     }
+    getDayType = (start, end) => {
 
-
-    getDayType = (param) => {
-
-        if (param == 'One day') {
-            return false
+        if (moment(start).isSame(end, 'days')) {
+            return true
         }
         else {
-            return true
+            return
         }
 
     }
 
-    componentDidMount() {
-        console.log('Didmount')
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Info?leaveId=2')
-            .then(res => {
-                console.log('-------', res.data)
-                this.setState({ person: res.data })
 
-            })
+
+    componentDidMount() {
+
 
     }
     render() {
@@ -69,7 +70,7 @@ class SetApproveLeaveForm extends Component {
                                 <th><b>Name : </b></th>
                             </div>
                             <div className="col-md-2">
-                                <td>{this.state.name}</td>
+                                <td>{this.state.firstName}</td>
                             </div>
                             <div className="col-md-2">
                                 <th><b>Surnname : </b></th>
@@ -108,56 +109,56 @@ class SetApproveLeaveForm extends Component {
                             <p><b>Leave ID : </b></p>
                         </div>
                         <div className="col-md-2">
-                            <p>{this.state.leaveID}</p>
+                            <p>{this.state.personProfile.leaveId}</p>
                         </div>
                         <div className="col-md-2">
                             <p><b>Leave Type : </b></p>
                         </div>
                         <div className="col-md-2">
-                            <p>{this.state.leaveType}</p>
+                            <p>{this.state.personProfile.type}</p>
                         </div>
                         <div className="col-md-2">
                             <p><b>Day Requested : </b></p>
                         </div>
                         <div className="col-md-2">
-                            <p>{this.state.dayType}</p>
+                            <p>{this.state.personProfile.RequestedDateTime}</p>
                         </div>
                     </div>
 
 
-                    {this.getDayType(this.state.dayType) && <div> <div className="row">
+
+                    {!this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div> <div className="row">
 
                         <div className="col-md-2"><p><b>Day Start : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.dayStart}</p></div>
+                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
                         <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.timeStart} Hrs.</p></div>
+                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
                         <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.hourStart} Hrs.</p></div>
+                        <div className="col-md-2"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div>
                     </div>
                         <div className="row">
                             <div className="col-md-2"><p><b>Day End : </b></p></div>
-                            <div className="col-md-2"><p>{this.state.dayEnd}</p></div>
+                            <div className="col-md-2"><p>{moment(this.state.personProfile.endDateTime).format('DD-MM-YYYY')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.state.timeEnd} Hrs.</p></div>
+                            <div className="col-md-2"><p>{moment(this.state.personProfile.endDateTime).format('HH:mm')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.state.hourEnd} Hrs.</p></div></div>
+                            <div className="col-md-2"><p>{this.state.personProfile.hoursEndDate} Hrs.</p></div></div>
 
 
                     </div>}
-                    {!this.getDayType(this.state.dayType) && <div className="row">
+                    {this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div className="row">
                         <div className="col-md-2"><p><b>Date : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.dayStart}</p></div>
+                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
                         <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.timeStart} Hrs.</p></div>
+                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
                         <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.hourStart} Hrs.</p></div></div>}
-
+                        <div className="col-md-2"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div></div>}
                     <div className="row">
                         <div className="col-md-3">
                             <p><b>Note/comments : </b></p>
                         </div>
                         <div className="col-md-9">
-                            <p>{this.state.note}</p>
+                            <p>{this.state.personProfile.comment}</p>
                         </div>
                     </div>
                     <div className="row">
@@ -193,4 +194,25 @@ class SetApproveLeaveForm extends Component {
     }
 }
 
-export default SetApproveLeaveForm;
+
+
+const mapStateToProps = state => {
+    console.log('state', state)
+
+    return {
+        profile: state.search
+
+
+    }
+
+}
+
+const mapDispatchToProps = dispatch => ({
+    searchInTable: (search) => dispatch(searchInTable(search))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+
+)(SetApproveLeaveForm)
