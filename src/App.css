@@ -525,6 +525,10 @@ p {
   
 }
 
+.mickeymouse {
+  display: inline-flex;
+}
+
 .Datas {
   padding: 20px;
   text-align: center;

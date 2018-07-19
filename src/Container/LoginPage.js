@@ -31,7 +31,7 @@ class LoginPage extends Component {
         data = mockResponse
         this.props.handleLogin(data)
         //TODO login to server
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00006') //searchHistory
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {

@@ -27,58 +27,10 @@ const getLeaveTypePicture = leaveType => {
 
 
 
-const people = [
-    {
-        status: 'Pending',
-        leaveID: 'LEAVE672',
-
-        leaveType: 'Sick Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: '-'
-    },
-    {
-        status: 'Pending',
-        leaveID: 'LEAVE672',
-        leaveType: 'Annual Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '03/07/2018',
-        approver: '-'
-    },
-    {
-        status: 'Approve',
-        leaveID: 'LEAVE672',
-        leaveType: 'Leave with out pay',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: 'ข้าวโอ๊ต'
-    },
-    {
-        status: 'Approve',
-        leaveID: 'LEAVE672',
-        leaveType: 'Sick Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: 'พี่นิว'
-    },
-    {
-        status: 'Reject',
-        leaveID: 'LEAVE672',
-        leaveType: 'Sick Leave',
-        staffID: '23097',
-        reqDate: '20/06/2018',
-        leaveDate: '01/07/2018-03/07/2018',
-        approver: 'พี่เก่ง'
-    },
-]
 
 
 
-class SeachApprove extends Component {
+class SearchApprove extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -96,7 +48,7 @@ class SeachApprove extends Component {
 
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //SeachApprove
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchApprove
 
             .then(res => {
                 const data = res.data.map(p => {
@@ -122,7 +74,6 @@ class SeachApprove extends Component {
                     }, {})
                 })
                 this.props.addApprove(data)
-
 
             })
 
@@ -248,27 +199,34 @@ class SeachApprove extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    people: state.approve.map(row => {
-        return _.reduce(row, (result, val, key) => {
-            if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+const mapStateToProps = state => {
+    console.log(state)
+    return {
+
+        people: _.get(state, 'approve', []).map(row => {
+            return _.reduce(row, (result, val, key) => {
+                if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                    return {
+                        ...result,
+                        [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    }
+                }
                 return {
                     ...result,
-                    [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    [_.camelCase(key)]: val
                 }
-            }
-            return {
-                ...result,
-                [_.camelCase(key)]: val
-            }
-        }, {})
-    })
-})
+            }, {})
+        })
+    }
+}
 
 const mapDispatchToProps = dispatch => ({
     addApprove: (approve) => dispatch(addApprove(approve))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SeachApprove)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(SearchApprove)
 
 
