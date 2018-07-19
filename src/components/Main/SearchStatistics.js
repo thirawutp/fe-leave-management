@@ -41,22 +41,16 @@ class SearchStatistics extends Component {
             })
     }
 
-
-
-
-
-
-
     render() {
         const { people } = this.props
-        console.log(people)
+        console.log(people,'nav props', this.props)
         return (
-            <div className="tkroot">
+            <div>
                 <div className="tkbubble">
                     <div className='tkstatistic'>
 
                         <div className="row">
-                            <div className="col-md-11">
+                            <div className="col-md-11 tktktables">
 
                                 <div className="tkboth"></div>
                                 <div className="tktablerow">

@@ -10,7 +10,7 @@ class IndexIndividualStatistics extends Component {
     render() {
         return (
 
-            <div>
+            <div className='staticticbox'>
 
                 <TableSearchLeaveStatisticsDetails />
                 <SearchTable />

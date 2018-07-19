@@ -39,7 +39,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
   width: 92%;
   min-height: 600px;
   margin: 57px auto;
-  background-color: #F3F0E2;
+  background-color: #FFFFFF;
 }
 
 
@@ -85,7 +85,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 
 .buttonchange {
-  background-color: #F3F0E2;
+  background-color: #FFFFFF;
 }
 
 .buttonchange a{
@@ -252,6 +252,10 @@ p {
   padding-right: 53px;
 }
 
+.rowback {
+  margin-left: 90px;
+}
+
 .row-select-onedate{
   padding-top: 90px;
 
@@ -311,13 +315,15 @@ p {
 }
 
 .selectstaff {
-  padding-top: 41px;
-  margin-left: 88px;
+  
+  
 
 }
 .selectstaff p{
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
+  margin-left: 88px;
+  padding-top: 41px;
 
 }
 .DateInput {
@@ -462,6 +468,9 @@ p {
   color : white;
   margin-top: 20px;
   font-size : 16px;
+  line-height: 9px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
   
 }
 
@@ -491,7 +500,6 @@ p {
   height: 60px;
   font-size : 16px;
   border-top: none;
-  
 
 }
 
@@ -524,6 +532,7 @@ p {
   color : white;
   margin-top: 20px;
   font-size : 16px;
+  
   
 }
 
@@ -603,8 +612,20 @@ p {
 
 }
 
+.staticticbox{
+  width: 92%;
+  margin: 57px auto;
+  background-color: #FFFFFF;
+
+}
+
+.tktabledetails {
+  padding-left: 185px;
+  font-size: 18px;
+}
+
 .tktabledetails p{
-  font-family: 'Sukhumvitset-Bold';
+  font-family: 'Sukhumvitset-Text';
 }
 
 .popup{
@@ -684,7 +705,7 @@ color: #333333;
 
 }
 
-.text-cover1 th {
+.text-cover1   {
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
@@ -799,10 +820,34 @@ color: #333333;
 }
 
 .gun {
-margin-top : 50px;
-margin-bottom: 20px;
-margin-left: 20px;
+padding-top: 17px;
+padding-left: 200px;
+font-size: 20px;
+font-family: 'SukhumvitSet-Text';
 
+}
+
+.backbutton {
+  padding-top: 17px;
+  padding-left: 17px;
+  width: 98px;
+}
+
+.back-button {
+  width: 98px;
+  height: 35px;
+  color: #C84342;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+  border: 2px solid #C84342;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+.back-button img{
+  width: 10px;
+  height: 15px;
+  margin-right: 5px;
 }
 
 .text-annualleave{
@@ -905,21 +950,24 @@ font-size: 16px;
   color : white;
   margin-top: 20px;
   text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
+  
 
 }
 
 
 
 .tkstatistic {
-  width: 1000px;
+  width: 100%;
+  margin: auto;
 
 }
 
 .tkselecttype {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
   width: 1000px;
+  padding-left: 737px;
 
 }
 
@@ -959,6 +1007,10 @@ font-size: 16px;
   justify-content: flex-end;
   margin: auto;
 
+}
+
+.tktktables {
+  
 }
 
 .tktablerow {
@@ -1102,6 +1154,7 @@ font-size: 16px;
   border: none;
   width: 160px;
   height: 30px;
+  border: 1px solid #D8D8D8;
  
 }
 
@@ -1120,10 +1173,8 @@ font-size: 16px;
 
 .SData {
   padding: 20px;
-  border-color:#D8D8D8;
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
+  border-bottom: 1px solid #D8D8D8;
   width: 1000px;
   height: 80px;
   font-size : 16px;
@@ -1131,8 +1182,9 @@ font-size: 16px;
 }
 
 .SData:hover {
-border-color:#f2f2f2;
-background-color: #f2f2f2;
+border-color: #f2f2f2;
+background-color : #f2f2f2;
+border-bottom: 1px solid #f2f2f2;
 
 }
 
@@ -1235,19 +1287,17 @@ background-color: #f2f2f2;
 
 .PPData {
   padding: 20px;
-  border-color:#D8D8D8;
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
   width: 1000px;
   height: 80px;
   font-size : 16px;
+  border-bottom: 1px solid #D8D8D8;
 
 }
 
 .PPData:hover {
-  border-color:#f2f2f2;
- background-color: #f2f2f2;
+  border-color: #D8D8D8;
+ background-color: #D8D8D8;
 
 }
 
@@ -1463,11 +1513,17 @@ line-height: 5px;
   text-align: left;
   color: #3D3D3D;
   font-size: 16px;
+  
+}
+
+.tktkleave a{
+  font-family: 'SukhumvitSet-Text';
 }
 
 .tktkleave a:hover{
   text-decoration: none;
   list-style: none;
+  text-shadow: 1px 1px #3D3D3D;
 }
 
 .tktkdata {
@@ -1480,7 +1536,14 @@ line-height: 5px;
   text-decoration: none;
   list-style: none;
   text-align: center;
+  font-size: 16px;
  
+}
+
+.tktkstaffid a:hover{
+  text-decoration: none;
+  list-style: none;
+  text-shadow: 1px 1px #3D3D3D;
 }
 
 .tkstaffid td{

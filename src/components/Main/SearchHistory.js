@@ -176,7 +176,7 @@ class SearchHistory extends Component {
                                             <th>Staff ID</th>
                                         </div>
                                         <div className="col-md-2 tktopic3">
-                                            <th>สร้างใบลาเมื่อ</th>
+                                            <th>Created Date</th>
                                         </div>
                                         <div className="col-md-2 tktopic4">
                                             <th>Leaving Date</th>
