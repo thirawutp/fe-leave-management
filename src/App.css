@@ -42,6 +42,8 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
   background-color: #F3F0E2;
 }
 
+
+
 .navigationbar-list {
   width: 100%;
   display: table;
@@ -406,13 +408,13 @@ p {
   display: inline-flex;
 }
 
-.custom-button {
-  width: 103px;
-  height: 30px;
+.submit-button {
+  width: 106px;
+  height: 35px;
   border: none;
-  border-radius: 15.5px;
+  border-radius: 6px;
   margin-left: 56px;
-  background-color: #C84342;
+  background-color: #219653;
   color: white;
   font-weight: bold;
   font-family: 'Sukhumvitset-Text';
@@ -617,6 +619,18 @@ p {
 
 }
 
+.alpopup{
+ background-color: #333333;
+  border-style: solid;
+  border-color: #333333;
+  border-width: 2px;
+  border-radius: 15px;
+  width: 176px;
+  height: 176px;
+  margin: auto;
+
+}
+
 .img-icon{
   height: 64px;
   width: 64px;
@@ -670,10 +684,11 @@ color: #333333;
 
 }
 
-.text-cover1 {
+.text-cover1 th {
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
+  color: #F2C94C;
 }
 
 .text-fill-small {
@@ -860,7 +875,7 @@ font-size: 16px;
 }
 
 .ooo{
-  padding-left: 25px;
+  width: 100%;
 
 }
 
@@ -885,7 +900,7 @@ font-size: 16px;
   border-color:#C84342;
   background-color: #C84342;
   width: 1000px;
-  height: 33px;
+  height: 40px;
   border-width: 2px;
   color : white;
   margin-top: 20px;
@@ -992,63 +1007,86 @@ font-size: 16px;
 }
 
 
-.SApprove{
+.SApprove td{
   color : #27AE60;
   font-size: 14px;
-  padding-left: 10px;
+  width: 200px;
+  text-align: center;
 
 }
 
-.SPending{
+.SPending td{
   color : #F2C94C;
   font-size: 14px;
-  padding-left: 13px;
-
+  width: 200px;
+  text-align: center;
+  
 }
 
 .tktopic th{
-  padding-left: 35px;
+  width: 200px;
+  padding-left: 20px;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
+  text-align: center;
 }
 
 .tktopic1 th{
-  padding-left: 38px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic2 th{
-  padding-left: 40px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic3 th{
-  padding-left: 23px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic4 th{
-  padding-left: 20px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic5 th{
-  padding-left: 30px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
-.tkstaffid td{
-  padding-left: 40px;
-}
+
 
 .tkstartdate td{
-  padding-left: 35px;
+    text-align: center;
+    width: 200px;
 }
 
 .tkrequest td{
-  padding-left: 30px;
+  text-align: center;
+  width: 200px;
 }
 
 .tkapprove td{
-  padding-left: 60px;
+  text-align: center;
+  width: 200px;
 }
-.SReject{
+.SReject td{
   color : red;
   font-size: 14px;
-  padding-left: 12px;
+  width: 200px;
+  text-align: center;
 }
 
 .bbr{
@@ -1089,6 +1127,7 @@ font-size: 16px;
   width: 1000px;
   height: 80px;
   font-size : 16px;
+  text-align: center;
 }
 
 .SData:hover {
@@ -1196,7 +1235,6 @@ background-color: #f2f2f2;
 
 .PPData {
   padding: 20px;
-  text-align: center;
   border-color:#D8D8D8;
   background-color: white;
   border-style: solid;
@@ -1368,4 +1406,84 @@ background-color: #f2f2f2;
 
 .hourstopic3 td{
   padding-left: 175px;
+}
+
+.tkpending th{
+width: 200px;
+font-size: 18px;
+font-family: 'Sukhumvitset-Text';
+line-height: 5px;
+}
+
+.tkapprove th{
+  width: 200px;
+  font-size: 18px;
+font-family: 'Sukhumvitset-Text';
+line-height: 5px;
+}
+
+.tkreject th{
+  width: 200px;
+  font-size: 18px;
+font-family: 'Sukhumvitset-Text';
+line-height: 5px;
+  }
+
+.tkpendingnum td{
+  width: 200px;
+  text-align: center;
+}
+
+.tkapprovenum td{
+  width: 200px;
+  text-align: center;
+}
+
+.tkrejectnum td{
+  width: 200px;
+  text-align: center;
+}
+
+.tkposec td{
+  width: 200px;
+}
+
+.tkusername td{
+  width: 200px;
+}
+
+.tkuserpicture img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.tktkleave td{
+  width: 200px;
+  text-align: left;
+  color: #3D3D3D;
+  font-size: 16px;
+}
+
+.tktkleave a:hover{
+  text-decoration: none;
+  list-style: none;
+}
+
+.tktkdata {
+  text-align: center;
+}
+
+.tktkstaffid td{
+  font-family: 'SukhumvitSet-Bold';
+  color: #3D3D3D;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+ 
+}
+
+.tkstaffid td{
+  width: 200px;
+  text-align: center;
 }

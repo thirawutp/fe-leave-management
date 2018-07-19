@@ -155,7 +155,7 @@ class SearchHistory extends Component {
                         <div className='tkboth'>
                             <form>
                                 <div className="bbr">
-                                    <input type="text" placeholder="   Search ..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
+                                    <input type="text" placeholder="   Search by..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
                                 </div>
                             </form>
 
@@ -192,10 +192,10 @@ class SearchHistory extends Component {
                                 {
 
                                     filtered.map((people, index) =>
-                                        <div>
+                                        <div className='tktkdata'>
 
                                             <div className="SData">
-                                                <div className="row ">
+                                                <div className="row" style={{ height: '100%' }}>
                                                     <div className="col-md-2">
                                                         <div className="ooo">
                                                             <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
@@ -208,8 +208,7 @@ class SearchHistory extends Component {
                                                         <div>
                                                             <Link to={`/leaveDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         </div>
-                                                        <div>
-
+                                                        <div className='tktktype'>
                                                             <td>{people.type}</td>
                                                         </div>
                                                     </div>

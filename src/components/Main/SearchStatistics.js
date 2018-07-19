@@ -5,6 +5,9 @@ import _ from 'lodash'
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { addStatistics } from '../../action'
+import kendall from '../../asset/images/kendall.jpg'
+
+
 class SearchStatistics extends Component {
     constructor(props) {
         super(props);
@@ -94,13 +97,13 @@ class SearchStatistics extends Component {
                                     <div className="col-md-2">
                                         <th></th>
                                     </div>
-                                    <div className="col-md-2">
+                                    <div className="col-md-2 tkpending">
                                         <th>Pending</th>
                                     </div>
-                                    <div className="col-md-2">
+                                    <div className="col-md-2 tkapprove">
                                         <th>Approve</th>
                                     </div>
-                                    <div className="col-md-2">
+                                    <div className="col-md-2 tkreject">
                                         <th>Reject</th>
                                     </div>
 
@@ -114,34 +117,34 @@ class SearchStatistics extends Component {
                                         return people.position === this.state.Save
                                     }).map((people) =>
                                         <div className="row PPData">
-                                            <div className="col-md-1">
-                                                <td><p>รูป</p></td>
+                                            <div className="col-md-1 tkuserpicture">
+                                                <img src={kendall}/>
                                             </div>
                                             <div className="col-md-3">
-                                                <div>
-
-
+                                                <div className='tktkstaffid'>
                                                     <Link to={`/indexindividualStatistic/${people.staffId}`}><td>{people.staffId}</td></Link>
                                                 </div>
 
-                                                <div><td>{people.firstName} {people.lastName}</td></div>
+                                                <div className='tkusername'>
+                                                    <td>{people.firstName} {people.lastName}</td>
+                                                </div>
 
                                             </div>
 
 
-                                            <div className="col-md-2">
+                                            <div className="col-md-2 tkposec">
 
                                                 <div><td>{people.position}</td></div>
                                                 <div><td>{people.section}</td></div>
 
                                             </div>
-                                            <div className="col-md-2">
+                                            <div className="col-md-2 tkpendingnum">
                                                 <td>{people.pending}</td>
                                             </div>
-                                            <div className="col-md-2">
+                                            <div className="col-md-2 tkapprovenum">
                                                 <td>{people.approve}</td>
                                             </div>
-                                            <div className="col-md-2">
+                                            <div className="col-md-2 tkrejectnum">
                                                 <td>{people.reject}</td>
                                             </div>
 

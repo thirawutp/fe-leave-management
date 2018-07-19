@@ -110,28 +110,28 @@ class SearchApprove extends Component {
                         <div className='tkboth'>
                             <form>
                                 <div className="bbr">
-                                    <input type="text" placeholder="   Search ..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
+                                    <input type="text" placeholder="   Search by..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
                                 </div>
                             </form>
                             <div className='TangKwatable'>
                                 <div className="STable">
                                     <div className="row">
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic">
                                             <th>Status</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic1">
                                             <th>Leave ID</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic2">
                                             <th>Staff ID</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic3">
                                             <th>สร้างใบลาเมื่อ</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic4">
                                             <th>Leaving Date</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 tktopic5">
                                             <th>Manage by</th>
                                         </div>
                                     </div>
