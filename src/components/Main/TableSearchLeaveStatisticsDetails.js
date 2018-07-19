@@ -24,7 +24,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
 
   componentDidMount() {
-    axios.get("http://leavemanagementappman.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
+    axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
       .then(res => {
         console.log('sdvbdf drgfbdrgfbdrgf', res.data)
         const data = res.data.map(p => {

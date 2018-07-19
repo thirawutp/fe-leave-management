@@ -96,7 +96,7 @@ class SeachApprove extends Component {
 
 
     componentDidMount() {
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //SeachApprove
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //SeachApprove
 
             .then(res => {
                 const data = res.data.map(p => {

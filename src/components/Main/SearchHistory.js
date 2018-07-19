@@ -96,7 +96,7 @@ class SearchHistory extends Component {
 
 
     componentDidMount() {
-        axios.get('http://leavemanagementappman.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
 
             .then(res => {
                 const data = res.data.map(p => {
