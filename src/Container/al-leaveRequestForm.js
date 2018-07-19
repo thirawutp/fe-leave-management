@@ -218,10 +218,19 @@ class alRequestForm extends Component {
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
-            timeSum: leaveData.AnnualHours,
-            showSum: leaveData.AnnualHours,
+            timeSum: '',
+            showSum: '',
             caseID: ''
         };
+    }
+
+    componentDidMount() {
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+            .then(res => {
+                console.log("data in database", res.data)
+                this.setState({ timeSum: res.data.AnnualHours })
+                this.setState({ showSum: res.data.AnnualHours })
+            })
     }
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
@@ -317,7 +326,7 @@ class alRequestForm extends Component {
                 console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -355,7 +364,7 @@ class alRequestForm extends Component {
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -394,7 +403,7 @@ class alRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -426,7 +435,7 @@ class alRequestForm extends Component {
             }
             else {
                 console.log("do did na")
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -565,6 +574,4 @@ const mapStateToProps = state => ({
     leaveData: state.data
 })
 
-export default connect(
-    mapStateToProps
-)(alRequestForm);
+export default alRequestForm;

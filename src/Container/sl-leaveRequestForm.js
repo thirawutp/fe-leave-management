@@ -10,9 +10,8 @@ import axios from 'axios';
 import moment from 'moment';
 import sun from '../asset/images/sun.png'
 import '../App.css';
-import { Redirect, browserHistory } from "react-router";
 import { connect } from 'react-redux';
-import bandage from '../asset/images/bandage.png';
+import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
 
 
@@ -80,7 +79,7 @@ const OnedayForm = props => {
           </div>
                         <div className="dropdown-oneday">
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
-                                <option value={0}> select hour</option>
+                                <option value={0}>select hour</option>
                                 <option value={2}>2 hour</option>
                                 <option value={4} >4 hour</option>
                                 <option value={6} >6 hour</option>
@@ -118,7 +117,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(event) => onChange('leaveAmount', event.target.value)}>
-                        <option value={0}> select hour</option>
+                        <option value={0}>select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -148,7 +147,7 @@ const ManyDayForm = props => {
 
                 <div className="dropdown-custom">
                     <select className="option-time" onChange={(e) => onChange('leaveAmountStop', e.target.value)}>
-                        <option value={0}> select hour</option>
+                        <option value={0}>select hour</option>
                         <option value={2}>2 hour</option>
                         <option value={4}>4 hour</option>
                         <option value={6}>6 hour</option>
@@ -181,6 +180,7 @@ const NoteQuestion = props => {
     )
 }
 
+
 const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
         try {
@@ -203,7 +203,7 @@ class slRequestForm extends Component {
         super(props);
         const { leaveData = {} } = this.props
         this.state = {
-            type: "Sick Leave", // get form props :type
+            type: "Leave without Pay", // get form props :type
             isOneday: true,
             leaveDate: undefined,
             leaveTime: undefined,
@@ -214,14 +214,22 @@ class slRequestForm extends Component {
             len: 0,
             note: '',
             timeleftal: undefined,
-            selectedFile: null,
+            selectedFile: [],
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
-            timeSum: leaveData.SickHours,
-            showSum: leaveData.SickHours,
+            timeSum: '',
+            showSum: '',
             caseID: ''
         };
+    }
+    componentDidMount() {
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+            .then(res => {
+                console.log("data in database", res.data)
+                this.setState({ timeSum: res.data.SickHours })
+                this.setState({ showSum: res.data.SickHours })
+            })
     }
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
@@ -307,16 +315,17 @@ class slRequestForm extends Component {
 
 
     fileChangedHandler = (event) => {
-        console.log(event.target.files)
-        this.setState({ selectedFile: event.target.files[0] })
+        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile))
     }
 
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
+            console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
+                console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -349,11 +358,12 @@ class slRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 2) {
+                console.log("do did na2")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -385,13 +395,14 @@ class slRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 3) {
+                console.log("do did na3")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 let attachFileBase64p3 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -420,13 +431,11 @@ class slRequestForm extends Component {
                     .then(function (response) {
                         console.log(response);
                     })
-
-
             }
             else {
                 console.log("do did na")
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Sick Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
@@ -456,14 +465,17 @@ class slRequestForm extends Component {
                     })
             }
         }
-
-
     }
     handleCheckSubmit = () => {
-        console.log(this.state.caseID)
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
                 alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+            }
+            else if (this.state.showSum < 0) {
+                alert('เกินกำหนดการลา')
+            }
+            else if (this.state.selectedFile.length > 3) {
+                alert('เกินสามรูป')
             }
             else {
                 console.log("success")
@@ -476,6 +488,9 @@ class slRequestForm extends Component {
             }
             else if (this.state.showSum < 0) {
                 alert('เกินกำหนดการลา')
+            }
+            else if (this.state.selectedFile.length > 3) {
+                alert('เกินสามรูป')
             }
             else {
                 this.handleSubmit()
@@ -491,7 +506,7 @@ class slRequestForm extends Component {
                     </div>
                     <div className="popup">
                         <div className="picture">
-                            <img src={bandage} />
+                            <img src={sun} />
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
@@ -536,7 +551,7 @@ class slRequestForm extends Component {
                         File :
           </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} />
+                        <input type="file" onChange={this.fileChangedHandler} required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
@@ -558,6 +573,4 @@ const mapStateToProps = state => ({
     leaveData: state.data
 })
 
-export default connect(
-    mapStateToProps
-)(slRequestForm);
+export default slRequestForm;
