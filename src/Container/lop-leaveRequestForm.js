@@ -8,6 +8,7 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
+import lwop from '../../src/asset/images/lwop.png';
 import sun from '../asset/images/sun.png'
 import money from '../asset/images/money.png'
 import '../App.css';
@@ -507,7 +508,7 @@ class lwpRequestForm extends Component {
                     </div>
                     <div className="alpopup">
                         <div className="picture">
-                            <img src={money} />
+                            <img src={lwop} />
                         </div>
                         <div className="object">
                             <div className="row text-cover1 ">

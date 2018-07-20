@@ -508,12 +508,8 @@ class slRequestForm extends Component {
                     </div>
                     <div className="alpopup">
                         <div className="picture">
-<<<<<<< HEAD
-                            <img src={bandage} />
-=======
                             <img src={patient} />
 
->>>>>>> 7f0d6d7c88ab4932bbe840ece98023577d994426
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
