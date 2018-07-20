@@ -12,6 +12,7 @@ import sun from '../asset/images/sun.png'
 import bandage from '../asset/images/bandage.png'
 import '../App.css';
 import { connect } from 'react-redux';
+import patient from '../asset/images/patient.png'
 import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
 
@@ -505,21 +506,31 @@ class slRequestForm extends Component {
                 <div className="cover-popup-al">
                     <div className="textpopup">
                     </div>
-                    <div className="popup">
+                    <div className="alpopup">
                         <div className="picture">
+<<<<<<< HEAD
                             <img src={bandage} />
+=======
+                            <img src={patient} />
+
+>>>>>>> 7f0d6d7c88ab4932bbe840ece98023577d994426
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
                                 <div className="col-md-6">
-                                    <p className="text-fill" >{parseInt(this.state.showSum / 8)}</p>
+                                    <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
                                 </div>
                                 <div className="col-md-6">
-                                    <p className="text-under">Days</p>
+                                    <p className="text-under1">Days</p>
                                 </div>
                             </div>
-                            <div className="">
-                                <p className="text-bottom">{this.state.showSum % 8} Hours</p>
+                            <div className="row text-cover1">
+                            <div>
+                                <p className="text-bottom1">{this.state.showSum % 8} </p>
+                            </div>
+                            <div className="col-md-6 ">
+                                    <p className="text-hour1">Hours</p>
+                            </div>
                             </div>
                         </div>
 
