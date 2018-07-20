@@ -108,7 +108,7 @@ class SearchApprove extends Component {
                         <div className='tkboth'>
                             <form>
                                 <div className="bbr">
-                                    <input type="text" placeholder="   Search ..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
+                                    <input type="text" placeholder="   Search by..." onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
                                 </div>
                             </form>
 

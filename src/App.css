@@ -39,8 +39,10 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
   width: 92%;
   min-height: 600px;
   margin: 57px auto;
-  background-color: #F3F0E2;
+  background-color: #FFFFFF;
 }
+
+
 
 .navigationbar-list {
   width: 100%;
@@ -83,7 +85,7 @@ url(./fonts/SukhumvitSet-Text.ttf) format('opentype');
 }
 
 .buttonchange {
-  background-color: #F3F0E2;
+  background-color: #FFFFFF;
 }
 
 .buttonchange a{
@@ -250,6 +252,10 @@ p {
   padding-right: 53px;
 }
 
+.rowback {
+  margin-left: 90px;
+}
+
 .row-select-onedate{
   padding-top: 90px;
 
@@ -309,13 +315,15 @@ p {
 }
 
 .selectstaff {
-  padding-top: 41px;
-  margin-left: 88px;
+  
+  
 
 }
 .selectstaff p{
   font-family: 'SukhumvitSet-Bold';
   font-size: 20px;
+  margin-left: 88px;
+  padding-top: 41px;
 
 }
 .DateInput {
@@ -406,13 +414,13 @@ p {
   display: inline-flex;
 }
 
-.custom-button {
-  width: 103px;
-  height: 30px;
+.submit-button {
+  width: 106px;
+  height: 35px;
   border: none;
-  border-radius: 15.5px;
+  border-radius: 6px;
   margin-left: 56px;
-  background-color: #C84342;
+  background-color: #219653;
   color: white;
   font-weight: bold;
   font-family: 'Sukhumvitset-Text';
@@ -460,6 +468,9 @@ p {
   color : white;
   margin-top: 20px;
   font-size : 16px;
+  line-height: 9px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
   
 }
 
@@ -489,7 +500,6 @@ p {
   height: 60px;
   font-size : 16px;
   border-top: none;
-  
 
 }
 
@@ -522,6 +532,7 @@ p {
   color : white;
   margin-top: 20px;
   font-size : 16px;
+  
   
 }
 
@@ -605,14 +616,38 @@ p {
 
 }
 
+.staticticbox{
+  width: 92%;
+  margin: 57px auto;
+  background-color: #FFFFFF;
+
+}
+
+.tktabledetails {
+  padding-left: 185px;
+  font-size: 18px;
+}
+
 .tktabledetails p{
-  font-family: 'Sukhumvitset-Bold';
+  font-family: 'Sukhumvitset-Text';
 }
 
 .popup{
  
   border-style: solid;
   border-color: black;
+  border-width: 2px;
+  border-radius: 15px;
+  width: 176px;
+  height: 176px;
+  margin: auto;
+
+}
+
+.alpopup{
+ background-color: #333333;
+  border-style: solid;
+  border-color: #333333;
   border-width: 2px;
   border-radius: 15px;
   width: 176px;
@@ -674,10 +709,11 @@ color: #333333;
 
 }
 
-.text-cover1 {
+.text-cover1   {
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
+  color: #F2C94C;
 }
 
 .text-fill-small {
@@ -788,10 +824,34 @@ color: #333333;
 }
 
 .gun {
-margin-top : 50px;
-margin-bottom: 20px;
-margin-left: 20px;
+padding-top: 17px;
+padding-left: 200px;
+font-size: 20px;
+font-family: 'SukhumvitSet-Text';
 
+}
+
+.backbutton {
+  padding-top: 17px;
+  padding-left: 17px;
+  width: 98px;
+}
+
+.back-button {
+  width: 98px;
+  height: 35px;
+  color: #C84342;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+  border: 2px solid #C84342;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+}
+
+.back-button img{
+  width: 10px;
+  height: 15px;
+  margin-right: 5px;
 }
 
 .text-annualleave{
@@ -864,7 +924,7 @@ font-size: 16px;
 }
 
 .ooo{
-  padding-left: 25px;
+  width: 100%;
 
 }
 
@@ -889,26 +949,29 @@ font-size: 16px;
   border-color:#C84342;
   background-color: #C84342;
   width: 1000px;
-  height: 33px;
+  height: 40px;
   border-width: 2px;
   color : white;
   margin-top: 20px;
   text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
+  
 
 }
 
 
 
 .tkstatistic {
-  width: 1000px;
+  width: 100%;
+  margin: auto;
 
 }
 
 .tkselecttype {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 10px;
   width: 1000px;
+  padding-left: 737px;
 
 }
 
@@ -948,6 +1011,10 @@ font-size: 16px;
   justify-content: flex-end;
   margin: auto;
 
+}
+
+.tktktables {
+  
 }
 
 .tktablerow {
@@ -996,63 +1063,86 @@ font-size: 16px;
 }
 
 
-.SApprove{
+.SApprove td{
   color : #27AE60;
   font-size: 14px;
-  padding-left: 10px;
+  width: 200px;
+  text-align: center;
 
 }
 
-.SPending{
+.SPending td{
   color : #F2C94C;
   font-size: 14px;
-  padding-left: 13px;
-
+  width: 200px;
+  text-align: center;
+  
 }
 
 .tktopic th{
-  padding-left: 35px;
+  width: 200px;
+  padding-left: 20px;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
+  text-align: center;
 }
 
 .tktopic1 th{
-  padding-left: 38px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic2 th{
-  padding-left: 40px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic3 th{
-  padding-left: 23px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic4 th{
-  padding-left: 20px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
 .tktopic5 th{
-  padding-left: 30px;
+  width: 200px;
+  text-align: center;
+  font-family: 'SukhumvitSet-Bold';
+  line-height: 40px;
 }
 
-.tkstaffid td{
-  padding-left: 40px;
-}
+
 
 .tkstartdate td{
-  padding-left: 35px;
+    text-align: center;
+    width: 200px;
 }
 
 .tkrequest td{
-  padding-left: 30px;
+  text-align: center;
+  width: 200px;
 }
 
 .tkapprove td{
-  padding-left: 60px;
+  text-align: center;
+  width: 200px;
 }
-.SReject{
+.SReject td{
   color : red;
   font-size: 14px;
-  padding-left: 12px;
+  width: 200px;
+  text-align: center;
 }
 
 .bbr{
@@ -1068,6 +1158,7 @@ font-size: 16px;
   border: none;
   width: 160px;
   height: 30px;
+  border: 1px solid #D8D8D8;
  
 }
 
@@ -1086,18 +1177,18 @@ font-size: 16px;
 
 .SData {
   padding: 20px;
-  border-color:#D8D8D8;
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
+  border-bottom: 1px solid #D8D8D8;
   width: 1000px;
   height: 80px;
   font-size : 16px;
+  text-align: center;
 }
 
 .SData:hover {
-border-color:#f2f2f2;
-background-color: #f2f2f2;
+border-color: #f2f2f2;
+background-color : #f2f2f2;
+border-bottom: 1px solid #f2f2f2;
 
 }
 
@@ -1200,20 +1291,17 @@ background-color: #f2f2f2;
 
 .PPData {
   padding: 20px;
-  text-align: center;
-  border-color:#D8D8D8;
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
   width: 1000px;
   height: 80px;
   font-size : 16px;
+  border-bottom: 1px solid #D8D8D8;
 
 }
 
 .PPData:hover {
-  border-color:#f2f2f2;
- background-color: #f2f2f2;
+  border-color: #D8D8D8;
+ background-color: #D8D8D8;
 
 }
 
@@ -1372,4 +1460,97 @@ background-color: #f2f2f2;
 
 .hourstopic3 td{
   padding-left: 175px;
+}
+
+.tkpending th{
+width: 200px;
+font-size: 18px;
+font-family: 'Sukhumvitset-Text';
+line-height: 5px;
+}
+
+.tkapprove th{
+  width: 200px;
+  font-size: 18px;
+font-family: 'Sukhumvitset-Text';
+line-height: 5px;
+}
+
+.tkreject th{
+  width: 200px;
+  font-size: 18px;
+font-family: 'Sukhumvitset-Text';
+line-height: 5px;
+  }
+
+.tkpendingnum td{
+  width: 200px;
+  text-align: center;
+}
+
+.tkapprovenum td{
+  width: 200px;
+  text-align: center;
+}
+
+.tkrejectnum td{
+  width: 200px;
+  text-align: center;
+}
+
+.tkposec td{
+  width: 200px;
+}
+
+.tkusername td{
+  width: 200px;
+}
+
+.tkuserpicture img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.tktkleave td{
+  width: 200px;
+  text-align: left;
+  color: #3D3D3D;
+  font-size: 16px;
+  
+}
+
+.tktkleave a{
+  font-family: 'SukhumvitSet-Text';
+}
+
+.tktkleave a:hover{
+  text-decoration: none;
+  list-style: none;
+  text-shadow: 1px 1px #3D3D3D;
+}
+
+.tktkdata {
+  text-align: center;
+}
+
+.tktkstaffid td{
+  font-family: 'SukhumvitSet-Bold';
+  color: #3D3D3D;
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  font-size: 16px;
+ 
+}
+
+.tktkstaffid a:hover{
+  text-decoration: none;
+  list-style: none;
+  text-shadow: 1px 1px #3D3D3D;
+}
+
+.tkstaffid td{
+  width: 200px;
+  text-align: center;
 }

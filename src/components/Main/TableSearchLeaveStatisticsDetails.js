@@ -4,6 +4,8 @@ import '../../App.css';
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { addTable } from '../../action'
+import leftarrow from '../../asset/images/left-arrow.png';
+import { Link } from 'react-router';
 
 class TableSearchLeaveStatisticsDetails extends Component {
   constructor(props) {
@@ -46,26 +48,29 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
 
 
-
   render() {
     const { people } = this.props
     console.log('people'), people
     return (
       <div>
-        <div className="row">
-          <div className="tkboth">
-            <div className="row">
+        <div className='nbbutton'>
+          <div className='backbutton'>
+            <Link to='/TableLeaveStatisticsDeatils'><button className="back-button"><img src={leftarrow}/>Back</button></Link>
+              </div>
+            <div className="row rowback">
+            
               <div className="gun">
                 <p><b>Leave Statistic</b></p>
               </div>
             </div>
             <div className='tktabledetails'>
+            
               <div className="row">
                 <div className="col-md-3">
-                  <p><b>ชื่อ : </b>{this.state.personProfile.firstName}</p>
+                  <p><b>Name : </b>{this.state.personProfile.firstName}</p>
                 </div>
                 <div className="col-md-3">
-                  <p><b>สกุล : </b>{this.state.personProfile.lastName}</p>
+                  <p><b>Surname : </b>{this.state.personProfile.lastName}</p>
                 </div>
               </div>
               <div className="row">
@@ -81,6 +86,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
                 </div>
               </div>
             </div>
+            <div className="tkboth">
             <div className="Table">
               <div className="row">
                 <div className="col-md-4 dateused">
