@@ -17,6 +17,7 @@ class SetApproveLeaveForm extends Component {
 
         const personProfile = _.find(props.profile, item => item.rawLeaveId === LeaveId)
         const staffId = personProfile.staffId
+
         const personal = _.find(props.info, info => info.staffId === staffId)
 
         console.log('TANGKAAAA', personProfile, props.profile, LeaveId)
@@ -26,7 +27,7 @@ class SetApproveLeaveForm extends Component {
             roles: 'HR',
             photoIndex: 0,
             isOpen: false,
-            personal,
+            personal
 
         }
 
@@ -38,14 +39,34 @@ class SetApproveLeaveForm extends Component {
     }
     handleSetTrue = () => {
         // this.setState({check : true})
-        window.confirm("แน่ใจว่าจะ Approve?")
+        const id = _.last(window.location.pathname.split('/'))
 
-        console.log(this.state.check)
+        if (window.confirm("แน่ใจว่าจะ Approve?")) {
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Approved&leaveId=${id}&approverId=00006`, {
+                "status": 'Approved',
+                "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
+                "approverId": "00006",
+            })
+                .then(res => {
+                    console.log('log approve', res);
+                    console.log('log approve', res.data);
+                })
+        }
     }
     handleSetFalse = () => {
-        // this.setState({check : false})
-        window.confirm("แน่ใจว่าจะ Reject?")
-        console.log(this.state.check)
+        if (window.confirm("แน่ใจว่าจะ Reject?")) {
+            const id = _.last(window.location.pathname.split('/'))
+            console.log(parseInt(this.state.personProfile.leaveId.substring(6)))
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Rejected&leaveId=${id}&approverId=00006`, {
+                "status": 'Rejected',
+                "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
+                "approverId": "00006",
+            })
+                .then(res => {
+                    console.log('log approve', res);
+                    console.log('log approve', res.data);
+                })
+        }
     }
     getDayType = (start, end) => {
 
@@ -274,7 +295,8 @@ const mapStateToProps = state => {
 
     return {
         profile: state.approve,
-        info: state.statistics
+        info: state.statistics,
+        number: state.history
 
 
     }
