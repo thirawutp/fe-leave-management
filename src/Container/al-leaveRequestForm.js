@@ -225,7 +225,7 @@ class alRequestForm extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=2018")
             .then(res => {
                 console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.AnnualHours })
@@ -531,10 +531,10 @@ class alRequestForm extends Component {
                                 </div>
                             </div>
                             <div className=" row text-cover1">
-                            <div>
-                                <p className="text-bottom1">{this.state.showSum % 8}</p>
-                            </div>
-                            <div className="col-md-6 ">
+                                <div>
+                                    <p className="text-bottom1">{this.state.showSum % 8}</p>
+                                </div>
+                                <div className="col-md-6 ">
                                     <p className="text-hour1">Hours</p>
                                 </div>
                             </div>

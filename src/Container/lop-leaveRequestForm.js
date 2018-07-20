@@ -8,6 +8,7 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
+import lwop from '../../src/asset/images/lwop.png';
 import sun from '../asset/images/sun.png'
 import money from '../asset/images/money.png'
 import '../App.css';
@@ -225,7 +226,7 @@ class lwpRequestForm extends Component {
         };
     }
     componentDidMount() {
-        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=2018")
             .then(res => {
                 console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.LWPHours })
@@ -507,7 +508,7 @@ class lwpRequestForm extends Component {
                     </div>
                     <div className="alpopup">
                         <div className="picture">
-                            <img src={money} />
+                            <img src={lwop} />
                         </div>
                         <div className="object">
                             <div className="row text-cover1 ">
@@ -519,12 +520,12 @@ class lwpRequestForm extends Component {
                                 </div>
                             </div>
                             <div className="row text-cover1">
-                            <div>
-                                <p className="text-bottom1">{this.state.showSum % 8} </p>
-                            </div>
-                            <div className="col-md-6 ">
+                                <div>
+                                    <p className="text-bottom1">{this.state.showSum % 8} </p>
+                                </div>
+                                <div className="col-md-6 ">
                                     <p className="text-hour1">Hours</p>
-                            </div>
+                                </div>
                             </div>
                         </div>
 
