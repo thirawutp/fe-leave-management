@@ -9,8 +9,10 @@ import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
 import sun from '../asset/images/sun.png'
+import bandage from '../asset/images/bandage.png'
 import '../App.css';
 import { connect } from 'react-redux';
+import patient from '../asset/images/patient.png'
 import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
 
@@ -22,7 +24,7 @@ const FormHeader = props => {
 
 
             <div className="show-header">
-                Annual Leave Request
+                Sick Leave
             </div>
             <div className='header1'>
 
@@ -340,13 +342,13 @@ class slRequestForm extends Component {
                     "attachedFile2": '',
                     "attachedFile3": '',
                     "attachedFileName1": this.state.selectedFile[0].name,
-                    "attachedFileName2": '',
-                    "attachedFileName3": '',
+                    "attachedFileName2": 'No Image',
+                    "attachedFileName3": 'No Image',
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว");
+                                alert("Data has been sent!.");
                                 browserHistory.push('/home')
 
                             }
@@ -379,12 +381,12 @@ class slRequestForm extends Component {
                     "attachedFile3": '',
                     "attachedFileName1": this.state.selectedFile[0].name,
                     "attachedFileName2": this.state.selectedFile[1].name,
-                    "attachedFileName3": '',
+                    "attachedFileName3": 'No Image',
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
 
@@ -423,7 +425,7 @@ class slRequestForm extends Component {
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
                         }
@@ -448,14 +450,14 @@ class slRequestForm extends Component {
                     "attachedFile1": '',
                     "attachedFile2": '',
                     "attachedFile3": '',
-                    "attachedFileName1": '',
-                    "attachedFileName2": '',
-                    "attachedFileName3": '',
+                    "attachedFileName1": 'No Image',
+                    "attachedFileName2": 'No Image',
+                    "attachedFileName3": 'No Image',
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
                         }
@@ -469,13 +471,13 @@ class slRequestForm extends Component {
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
-                alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+                alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
-                alert('เกินกำหนดการลา')
+                alert('Overtime!.')
             }
             else if (this.state.selectedFile.length > 3) {
-                alert('เกินสามรูป')
+                alert('You can only upload up to 3 images.')
             }
             else {
                 console.log("success")
@@ -484,13 +486,13 @@ class slRequestForm extends Component {
         }
         else if (this.state.isOneday == false) {
             if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime || !this.state.leaveDateStop || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
-                alert('กรอกข้อมูลไม่ถูกต้อง หรือ กรอกข้อมูลไม่ครบถ้วน')
+                alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
-                alert('เกินกำหนดการลา')
+                alert('Overtime!.')
             }
             else if (this.state.selectedFile.length > 3) {
-                alert('เกินสามรูป')
+                alert('You can only upload up to 3 images.')
             }
             else {
                 this.handleSubmit()
@@ -504,21 +506,27 @@ class slRequestForm extends Component {
                 <div className="cover-popup-al">
                     <div className="textpopup">
                     </div>
-                    <div className="popup">
+                    <div className="alpopup">
                         <div className="picture">
-                            <img src={sun} />
+                            <img src={patient} />
+
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
                                 <div className="col-md-6">
-                                    <p className="text-fill" >{parseInt(this.state.showSum / 8)}</p>
+                                    <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
                                 </div>
                                 <div className="col-md-6">
-                                    <p className="text-under">Days</p>
+                                    <p className="text-under1">Days</p>
                                 </div>
                             </div>
-                            <div className="">
-                                <p className="text-bottom">{this.state.showSum % 8} Hours</p>
+                            <div className="row text-cover1">
+                            <div>
+                                <p className="text-bottom1">{this.state.showSum % 8} </p>
+                            </div>
+                            <div className="col-md-6 ">
+                                    <p className="text-hour1">Hours</p>
+                            </div>
                             </div>
                         </div>
 
@@ -559,7 +567,7 @@ class slRequestForm extends Component {
                         <div className="submit1-button">
                             <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
