@@ -8,7 +8,7 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
-import sun from '../asset/images/sun.png'
+import sun from '../asset/images/sun1.png'
 import '../App.css';
 import { connect } from 'react-redux';
 import { Redirect, browserHistory } from "react-router";
@@ -522,16 +522,21 @@ class alRequestForm extends Component {
                             <img src={sun} />
                         </div>
                         <div className="object">
-                            <div className="text-cover1 row">
-                                <div className="col-md-6">
-                                    <p className="text-fill" >{parseInt(this.state.showSum / 8)}</p>
+                            <div className="row text-cover1 ">
+                                <div className="col-md-6 ">
+                                    <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
                                 </div>
-                                <div className="col-md-6">
-                                    <p className="text-under">Days</p>
+                                <div className="col-md-6 ">
+                                    <p className="text-under1">Days</p>
                                 </div>
                             </div>
-                            <div className="">
-                                <p className="text-bottom">{this.state.showSum % 8} Hours</p>
+                            <div className=" row text-cover1">
+                            <div>
+                                <p className="text-bottom1">{this.state.showSum % 8}</p>
+                            </div>
+                            <div className="col-md-6 ">
+                                    <p className="text-hour1">Hours</p>
+                                </div>
                             </div>
                         </div>
 
