@@ -508,12 +508,7 @@ class slRequestForm extends Component {
                     </div>
                     <div className="alpopup">
                         <div className="picture">
-<<<<<<< HEAD
-                            <img src={bandage} />
-=======
                             <img src={patient} />
-
->>>>>>> 7f0d6d7c88ab4932bbe840ece98023577d994426
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
@@ -525,12 +520,12 @@ class slRequestForm extends Component {
                                 </div>
                             </div>
                             <div className="row text-cover1">
-                            <div>
-                                <p className="text-bottom1">{this.state.showSum % 8} </p>
-                            </div>
-                            <div className="col-md-6 ">
+                                <div>
+                                    <p className="text-bottom1">{this.state.showSum % 8} </p>
+                                </div>
+                                <div className="col-md-6 ">
                                     <p className="text-hour1">Hours</p>
-                            </div>
+                                </div>
                             </div>
                         </div>
 
