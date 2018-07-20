@@ -9,9 +9,9 @@ class Header extends Component {
   render() {
     const {
       name,
-      section = '',
-      position = '',
-      staffID = ''
+      section,
+      position,
+      staffID
     } = this.props
     return (
       <div className="Header">
@@ -26,10 +26,10 @@ class Header extends Component {
             <p><b>Section: </b>{section}</p>
           </div>
           <div className='position'>
-            <p><b>Position: </b>{position}</p>
+            <p><b>Position:</b>{position}</p>
           </div>
           <div className='staffID'>
-            <p><b>Staff   ID: </b>{staffID}</p>
+            <p><b>StaffID:</b>{staffID}</p>
           </div>
         </div>
       </div>
@@ -40,9 +40,9 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
   name: _.get(state, 'profile.profileObj.name', ''),
-  section: 'Developer',
-  position: 'Frontend',
-  staffID: '12345',
+  section: _.get(state, 'profile.profileObj.section', ''),
+  position: _.get(state, 'profile.profileObj.position', ''),
+  staffID: _.get(state, 'profile.profileObj.staffID', '')
 })
 
 const mapDispatchToProps = {}
