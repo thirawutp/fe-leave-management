@@ -226,7 +226,7 @@ class slRequestForm extends Component {
         };
     }
     componentDidMount() {
-        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=2018")
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
             .then(res => {
                 console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.SickHours })
@@ -558,7 +558,7 @@ class slRequestForm extends Component {
                         File :
           </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} size="60MB" required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
