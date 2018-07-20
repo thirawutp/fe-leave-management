@@ -96,7 +96,7 @@ class SearchHistory extends Component {
 
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00006') //searchHistory
 
             .then(res => {
                 const data = res.data.map(p => {
@@ -200,7 +200,7 @@ class SearchHistory extends Component {
                                                     <div className="col-md-2">
                                                         <div className="ooo">
                                                             <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
-                                                        <div className={`${people.approvalStatus == 'Approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
+                                                        <div className={`${people.approvalStatus == 'approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
 
                                                             <td><b>{people.approvalStatus}</b></td>
                                                         </div>

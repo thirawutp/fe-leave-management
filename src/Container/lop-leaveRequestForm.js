@@ -218,10 +218,18 @@ class lwpRequestForm extends Component {
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
-            timeSum: leaveData.LWPHours,
-            showSum: leaveData.LWPHours,
+            timeSum: '',
+            showSum: '',
             caseID: ''
         };
+    }
+    componentDidMount() {
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+            .then(res => {
+                console.log("data in database", res.data)
+                this.setState({ timeSum: res.data.LWPHours })
+                this.setState({ showSum: res.data.LWPHours })
+            })
     }
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
@@ -312,10 +320,12 @@ class lwpRequestForm extends Component {
 
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
+            console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
+                console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Leave without Pay",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -348,11 +358,12 @@ class lwpRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 2) {
+                console.log("do did na2")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Leave without Pay",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -384,13 +395,14 @@ class lwpRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 3) {
+                console.log("do did na3")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 let attachFileBase64p3 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Leave without Pay",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -419,13 +431,11 @@ class lwpRequestForm extends Component {
                     .then(function (response) {
                         console.log(response);
                     })
-
-
             }
             else {
                 console.log("do did na")
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
+                    "type": "Leave without Pay",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
@@ -455,8 +465,6 @@ class lwpRequestForm extends Component {
                     })
             }
         }
-
-
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
@@ -568,6 +576,4 @@ const mapStateToProps = state => ({
     leaveData: state.data
 })
 
-export default connect(
-    mapStateToProps
-)(lwpRequestForm);
+export default lwpRequestForm;

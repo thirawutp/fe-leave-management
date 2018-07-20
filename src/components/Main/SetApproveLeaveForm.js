@@ -4,7 +4,9 @@ import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { searchInTable } from '../../action'
+import { addApprove, addStatistics } from '../../action'
+import LightboxExample from '../Main/LightboxExample '
+import Lightbox from 'react-image-lightbox';
 
 class SetApproveLeaveForm extends Component {
     constructor(props) {
@@ -12,11 +14,21 @@ class SetApproveLeaveForm extends Component {
         const LeaveId = parseInt(_.last(window.location.pathname.split('/')))
 
 
+
         const personProfile = _.find(props.profile, item => item.rawLeaveId === LeaveId)
+        const staffId = personProfile.staffId
+
+        const personal = _.find(props.info, info => info.staffId === staffId)
+
         console.log('TANGKAAAA', personProfile, props.profile, LeaveId)
         this.state = {
             person: [],
-            personProfile
+            personProfile,
+            roles: 'HR',
+            photoIndex: 0,
+            isOpen: false,
+            personal
+
         }
 
 
@@ -27,14 +39,34 @@ class SetApproveLeaveForm extends Component {
     }
     handleSetTrue = () => {
         // this.setState({check : true})
-        window.confirm("แน่ใจว่าจะ Approve?")
+        const id = _.last(window.location.pathname.split('/'))
 
-        console.log(this.state.check)
+        if (window.confirm("แน่ใจว่าจะ Approve?")) {
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Approved&leaveId=${id}&approverId=00006`, {
+                "status": 'Approved',
+                "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
+                "approverId": "00006",
+            })
+                .then(res => {
+                    console.log('log approve', res);
+                    console.log('log approve', res.data);
+                })
+        }
     }
     handleSetFalse = () => {
-        // this.setState({check : false})
-        window.confirm("แน่ใจว่าจะ Reject?")
-        console.log(this.state.check)
+        if (window.confirm("แน่ใจว่าจะ Reject?")) {
+            const id = _.last(window.location.pathname.split('/'))
+            console.log(parseInt(this.state.personProfile.leaveId.substring(6)))
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Rejected&leaveId=${id}&approverId=00006`, {
+                "status": 'Rejected',
+                "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
+                "approverId": "00006",
+            })
+                .then(res => {
+                    console.log('log approve', res);
+                    console.log('log approve', res.data);
+                })
+        }
     }
     getDayType = (start, end) => {
 
@@ -47,6 +79,19 @@ class SetApproveLeaveForm extends Component {
 
     }
 
+    handleShow = (roles) => {
+
+
+        if (roles === 'HR') {
+            return true
+
+        }
+        else {
+            return false
+        }
+
+    }
+
 
 
     componentDidMount() {
@@ -54,6 +99,11 @@ class SetApproveLeaveForm extends Component {
 
     }
     render() {
+        const { photoIndex, isOpen } = this.state;
+
+        let images = [this.state.personProfile.attachedFile1, this.state.personProfile.attachedFile2, this.state.personProfile.attachedFile3]
+
+
         return (
             <div>
                 <div className="Dory">
@@ -70,13 +120,13 @@ class SetApproveLeaveForm extends Component {
                                 <th><b>Name : </b></th>
                             </div>
                             <div className="col-md-2">
-                                <td>{this.state.firstName}</td>
+                                <td>{this.state.personal.firstName}</td>
                             </div>
                             <div className="col-md-2">
                                 <th><b>Surnname : </b></th>
                             </div>
                             <div className="col-md-2">
-                                <td>{this.state.surn}</td>
+                                <td>{this.state.personal.lastName}</td>
                             </div>
 
                         </div>
@@ -85,19 +135,19 @@ class SetApproveLeaveForm extends Component {
                                 <th><b>Staff ID : </b></th>
                             </div>
                             <div className="col-md-2">
-                                <td>{this.state.staffID}</td>
+                                <td>{this.state.personal.staffId}</td>
                             </div>
                             <div className="col-md-2">
                                 <th><b>Section : </b></th>
                             </div>
                             <div className="col-md-2">
-                                <td>{this.state.section}</td>
+                                <td>{this.state.personal.section}</td>
                             </div>
                             <div className="col-md-2">
                                 <th><b>Position : </b></th>
                             </div>
                             <div className="col-md-2">
-                                <td>{this.state.position}</td>
+                                <td>{this.state.personal.position}</td>
                             </div>
                         </div>
                     </div>
@@ -121,7 +171,8 @@ class SetApproveLeaveForm extends Component {
                             <p><b>Day Requested : </b></p>
                         </div>
                         <div className="col-md-2">
-                            <p>{this.state.personProfile.RequestedDateTime}</p>
+                            <p>
+                                {moment(this.state.personProfile.requestedDateTime).format('DD-MM-YYYY')}</p>
                         </div>
                     </div>
 
@@ -165,7 +216,50 @@ class SetApproveLeaveForm extends Component {
                         <div className="col-md-1">
                             <p><b>File : </b></p>
                         </div>
-                        <div className="col-md-11"><img src={pic} width="75" height="52" /></div>
+
+                        <div className="tkpicture">
+                            {this.handleShow(this.state.roles) &&
+                                <div className="tklink">
+                                    {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
+                                    <div className="mickeymouse">
+                                        <div>
+                                            <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                            <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        </div>
+                                        <div>
+                                            <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
+                                            <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 1 })} /></p>
+                                        </div>
+                                        <div>
+                                            <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
+                                            <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 2 })} /></p>
+                                        </div>
+                                    </div>
+                                    {isOpen && (
+                                        <Lightbox
+                                            mainSrc={images[photoIndex]}
+                                            nextSrc={images[(photoIndex + 1) % images.length]}
+                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onMovePrevRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                })
+                                            }
+                                            onMoveNextRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + 1) % images.length,
+                                                })
+                                            }
+                                        />
+                                    )}
+                                </div>}
+                            {!this.handleShow(this.state.roles) && <div className="col-md-11">
+                                <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" /></p>
+                            </div>}
+
+                        </div>
                     </div>
 
 
@@ -200,7 +294,9 @@ const mapStateToProps = state => {
     console.log('state', state)
 
     return {
-        profile: state.search
+        profile: state.approve,
+        info: state.statistics,
+        number: state.history
 
 
     }
@@ -208,7 +304,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    searchInTable: (search) => dispatch(searchInTable(search))
+    addApprove: (approve) => dispatch(addApprove(approve)),
+    addStatistics: (statistics) => dispatch(addStatistics(statistics))
+
 })
 
 export default connect(

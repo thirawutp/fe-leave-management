@@ -218,10 +218,19 @@ class alRequestForm extends Component {
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
-            timeSum: leaveData.AnnualHours,
-            showSum: leaveData.AnnualHours,
+            timeSum: '',
+            showSum: '',
             caseID: ''
         };
+    }
+
+    componentDidMount() {
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+            .then(res => {
+                console.log("data in database", res.data)
+                this.setState({ timeSum: res.data.AnnualHours })
+                this.setState({ showSum: res.data.AnnualHours })
+            })
     }
     handleOneDayQuestion = (isOneday) => {
         this.setState({ isOneday })
@@ -317,7 +326,7 @@ class alRequestForm extends Component {
                 console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -328,13 +337,15 @@ class alRequestForm extends Component {
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
 
+
                     "approvedBy": "",
-                    "attachedFile1": "",
-                    "attachedFile2": "",
-                    "attachedFile3": "",
-                    "attachedFileName1": "",
-                    "attachedFileName2": "",
-                    "attachedFileName3": "",
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": '',
+                    "attachedFile3": '',
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": 'No Image',
+                    "attachedFileName3": 'No Image',
+
 
                     "requestedDateTime": moment().format().toString(),
                 }, {
@@ -357,7 +368,7 @@ class alRequestForm extends Component {
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -367,14 +378,16 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
-                    "approvedBy": "null",
 
-                    "attachedFile1": "",
-                    "attachedFile2": "",
-                    "attachedFile3": "",
-                    "attachedFileName1": "",
-                    "attachedFileName2": "",
-                    "attachedFileName3": "",
+                    "approvedBy": "",
+
+                    "attachedFile1": attachFileBase64,
+                    "attachedFile2": attachFileBase64p2,
+                    "attachedFile3": '',
+                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName3": 'No Image',
+
 
                     "requestedDateTime": moment().format().toString(),
                 }, {
@@ -398,7 +411,7 @@ class alRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -408,7 +421,9 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
-                    "approvedBy": "null",
+
+                    "approvedBy": "",
+
                     "attachedFile1": attachFileBase64,
                     "attachedFile2": attachFileBase64p2,
                     "attachedFile3": attachFileBase64p3,
@@ -430,7 +445,7 @@ class alRequestForm extends Component {
             }
             else {
                 console.log("do did na")
-                axios.post('http://appmanleavemanagement.azurewebsites.net/api/Leaves/Leave', {
+                axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
@@ -440,13 +455,15 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
-                    "approvedBy": "null",
+
+                    "approvedBy": "",
+
                     "attachedFile1": '',
                     "attachedFile2": '',
                     "attachedFile3": '',
-                    "attachedFileName1": '',
-                    "attachedFileName2": '',
-                    "attachedFileName3": '',
+                    "attachedFileName1": 'No Image',
+                    "attachedFileName2": 'No Image',
+                    "attachedFileName3": 'No Image',
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
@@ -572,6 +589,4 @@ const mapStateToProps = state => ({
     leaveData: state.data
 })
 
-export default connect(
-    mapStateToProps
-)(alRequestForm);
+export default alRequestForm;
