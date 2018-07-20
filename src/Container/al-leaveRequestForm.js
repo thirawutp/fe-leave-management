@@ -434,7 +434,7 @@ class alRequestForm extends Component {
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
                         }
@@ -468,7 +468,7 @@ class alRequestForm extends Component {
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                                alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                                alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
                         }
@@ -485,10 +485,10 @@ class alRequestForm extends Component {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
-                alert('เกินกำหนดการลา')
+                alert('Overtime!.')
             }
             else if (this.state.selectedFile.length > 3) {
-                alert('เกินสามรูป')
+                alert('You can only upload up to 3 images.')
             }
             else {
                 console.log("success")
@@ -503,7 +503,7 @@ class alRequestForm extends Component {
                 alert('Overtime!.')
             }
             else if (this.state.selectedFile.length > 3) {
-                alert('เกินสามรูป')
+                alert('You can only upload up to 3 images.')
             }
             else {
                 this.handleSubmit()
@@ -572,7 +572,7 @@ class alRequestForm extends Component {
                         <div className="submit1-button">
                             <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
