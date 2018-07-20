@@ -74,6 +74,7 @@
     
     .navigationbar-item a {
       color: #F3F0E2;
+      font-family: 'Sukhumvitset-Text';
     
     }
     
@@ -805,7 +806,9 @@
     
     }
     
-    
+    .input-file {
+        background-color: #C84342;
+    }
     
     .Dataodd{
       border-color:#FFFFFF;
