@@ -572,7 +572,7 @@ class alRequestForm extends Component {
                         <div className="submit1-button">
                             <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
