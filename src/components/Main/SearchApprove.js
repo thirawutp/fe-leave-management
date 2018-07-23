@@ -51,11 +51,7 @@ class SearchApprove extends Component {
 
     countStatus = status => {
         console.log("asasasadsadsa")
-        if (status === 'Pending') {
-            this.setState({ count: this.state.count + 1 })
 
-
-        }
 
     }
 
@@ -79,9 +75,7 @@ class SearchApprove extends Component {
                                 [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
                             }
                         }
-                        if (key === 'approvalStatus') {
-                            console.log("asasasadsadsa")
-                        }
+
                         return {
                             ...result,
                             [_.camelCase(key)]: val
