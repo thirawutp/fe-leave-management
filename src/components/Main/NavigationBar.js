@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import moment from 'moment';
+import { connect } from 'react-redux';
 import '../../App.css';
 import { Link } from 'react-router';
 import logout from '../../asset/images/logout.png';
@@ -27,6 +30,19 @@ class NavigationBar extends Component {
                     </li>
                     <li className={'navigationbar-item' + this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
+                        <div>
+                            <p>555</p>
+                            {
+
+                                this.props.people.reduce((acc, curr) => {
+                                    if (curr.approvalStatus === "Pending") {
+                                        return acc + 1;
+                                    } else {
+                                        return acc;
+                                    }
+                                }, 0)
+                            }
+                        </div>
                     </li>
                     <li className='logoutbutton'>
                         <Link to='/logout'><img src={logout} />Logout</Link>
@@ -40,6 +56,31 @@ class NavigationBar extends Component {
 }
 
 
+const mapStateToProps = state => {
+    console.log(state)
+    return {
 
-export default NavigationBar;
+        people: _.get(state, 'approve', []).map(row => {
+            return _.reduce(row, (result, val, key) => {
+                if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
+                    return {
+                        ...result,
+                        [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
+                    }
+                }
+                return {
+                    ...result,
+                    [_.camelCase(key)]: val
+                }
+            }, {})
+        })
+    }
+}
+
+const mapDispatchToProps = dispatch => ({})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(NavigationBar)
 
