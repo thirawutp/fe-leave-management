@@ -26,7 +26,11 @@ class StartDate extends React.Component {
                 <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
+                    minDate={moment()}
+                    showDisabledMonthNavigation
                     dateFormat="DD/MM/YY"
+                    placeholderText="Click to select a date"
+                    disabledKeyboardNavigation
                 />
             </div>
         );

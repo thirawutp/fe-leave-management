@@ -1604,13 +1604,13 @@
       width: 200px;
       text-align: center;
     }
-<<<<<<< HEAD
+
     .ServerClose {
       color: red;
       font-size: 80px;
      
     }
-=======
+
 
     .approvetopic {
         padding-top: 29px;
@@ -1648,4 +1648,8 @@ padding-left: 118px;
 width: 200px;
 padding-left: 120px;
 }
->>>>>>> a64d90bbf3d8690f4c0bd3eb8375f9fe06f46557
+
+
+.CalendarOneDay{
+  cursor: pointer;
+}
