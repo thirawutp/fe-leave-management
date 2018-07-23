@@ -68,7 +68,9 @@ const OnedayForm = props => {
     </div>
             <div className="select-onedate">
                 <React.Fragment>
-                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                    <div className="CalendarOneDay">
+                        <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                    </div>
                     <div className="timeselect-oneday">
                         <div className="text-time">
                             Time :
@@ -225,7 +227,8 @@ class alRequestForm extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=2018")
+        let thisyear = moment().format('YYYY').toString()
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=${thisyear}`)
             .then(res => {
                 console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.AnnualHours })
@@ -240,6 +243,8 @@ class alRequestForm extends Component {
             leaveDateStop: undefined,
             leaveAmountStop: 0,
             leaveAmount: 0,
+            leaveTime: undefined,
+            leaveTimeStop: undefined
         })
     }
     handleChangeOnedayForm = (id, value, id2) => {
@@ -491,7 +496,7 @@ class alRequestForm extends Component {
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || !this.state.leaveTime) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -506,7 +511,7 @@ class alRequestForm extends Component {
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || !this.state.leaveDate || !this.state.leaveTime || !this.state.leaveDateStop || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || !this.state.leaveTime || this.state.leaveDateStop === 'Invalid dat' || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
