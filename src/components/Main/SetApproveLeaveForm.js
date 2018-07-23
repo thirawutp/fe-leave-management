@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { addApprove, addStatistics } from '../../action'
 import LightboxExample from '../Main/LightboxExample '
 import Lightbox from 'react-image-lightbox';
-
+import { browserHistory } from 'react-router'
 class SetApproveLeaveForm extends Component {
     constructor(props) {
         super(props);
@@ -46,7 +46,14 @@ class SetApproveLeaveForm extends Component {
                 "status": 'Approved',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
                 "approverId": "00006",
-            })
+            }, {
+                    onUploadProgress: ProgressEvent => {
+                        if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                            alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                            browserHistory.push('/Approve')
+                        }
+                    }
+                })
                 .then(res => {
                     console.log('log approve', res);
                     console.log('log approve', res.data);
@@ -61,7 +68,14 @@ class SetApproveLeaveForm extends Component {
                 "status": 'Rejected',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
                 "approverId": "00006",
-            })
+            }, {
+                    onUploadProgress: ProgressEvent => {
+                        if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                            alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                            browserHistory.push('/Approve')
+                        }
+                    }
+                })
                 .then(res => {
                     console.log('log approve', res);
                     console.log('log approve', res.data);
@@ -124,6 +138,7 @@ class SetApproveLeaveForm extends Component {
                                 <td>{this.state.personal.firstName}</td>
                             </div>
                             <div className="col-md-2 lastnamelastname">
+
                                 <th><b>Lastname : </b></th>
                             </div>
                             <div className="">
