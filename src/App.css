@@ -74,6 +74,7 @@
     
     .navigationbar-item a {
       color: #F3F0E2;
+      font-family: 'Sukhumvitset-Text';
     
     }
     
@@ -289,6 +290,7 @@
       border-radius: 0
     
     }
+
     
     .select-onedate{
       display: inline-flex;
@@ -462,12 +464,12 @@
       border-style: solid;
       border-color:#525252;
       background-color: #525252;
-      width: 1000px;
+      width: 1240px;
       height: 33px;
       border-width: 2px;
       color : white;
       margin-top: 20px;
-      font-size : 16px;
+      font-size : 14px;
       line-height: 9px;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
@@ -496,9 +498,9 @@
       background-color:#FFFFFF;
       border-style: solid;
       border-width: 2px;
-      width: 100%;
+      width: 1240px;
       height: 60px;
-      font-size : 16px;
+      font-size : 14px;
       border-top: none;
     
     }
@@ -531,7 +533,7 @@
       border-width: 2px;
       color : white;
       margin-top: 20px;
-      font-size : 16px;
+      font-size : 14px;
       
       
     }
@@ -805,7 +807,9 @@
     
     }
     
-    
+    .input-file {
+        background-color: #C84342;
+    }
     
     .Dataodd{
       border-color:#FFFFFF;
@@ -944,6 +948,8 @@
     
     .bird{
       font-size: 18px;
+      font-family: 'Sukhumvitset-Text';
+      padding-left: 30px;
     
     }
     
@@ -1308,14 +1314,6 @@
     }
     
     
-    .shark{
-        border-style: solid;
-        border-color : #f2f2f2;
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-    
-    
     .DDory{
       margin-top: 20px;
     }
@@ -1606,8 +1604,48 @@
       width: 200px;
       text-align: center;
     }
+<<<<<<< HEAD
     .ServerClose {
       color: red;
       font-size: 80px;
      
     }
+=======
+
+    .approvetopic {
+        padding-top: 29px;
+        
+
+    }
+
+.approvetopic p{
+font-size: 20px;
+font-family: 'SukhumvitSet-Bold';
+padding-left: 15px;
+}
+
+.namename {
+    width: 100%;
+    padding-left: 15px;
+}
+
+.lastnamelastname {
+width: 200px;
+padding-left: 150px;
+}
+
+.staffid1 {
+width: 200px;
+padding-left: 15px;
+}
+
+.section1 {
+width: 200px;
+padding-left: 118px;
+}
+
+.position1 {
+width: 200px;
+padding-left: 120px;
+}
+>>>>>>> a64d90bbf3d8690f4c0bd3eb8375f9fe06f46557

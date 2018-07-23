@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { addApprove, addStatistics } from '../../action'
 import LightboxExample from '../Main/LightboxExample '
 import Lightbox from 'react-image-lightbox';
-
+import { browserHistory } from 'react-router'
 class SetApproveLeaveForm extends Component {
     constructor(props) {
         super(props);
@@ -46,7 +46,14 @@ class SetApproveLeaveForm extends Component {
                 "status": 'Approved',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
                 "approverId": "00006",
-            })
+            }, {
+                    onUploadProgress: ProgressEvent => {
+                        if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                            alert("Approve Successfully")
+                            browserHistory.push('/Approve')
+                        }
+                    }
+                })
                 .then(res => {
                     console.log('log approve', res);
                     console.log('log approve', res.data);
@@ -61,7 +68,14 @@ class SetApproveLeaveForm extends Component {
                 "status": 'Rejected',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
                 "approverId": "00006",
-            })
+            }, {
+                    onUploadProgress: ProgressEvent => {
+                        if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
+                            alert("Rejected Successfully")
+                            browserHistory.push('/Approve')
+                        }
+                    }
+                })
                 .then(res => {
                     console.log('log approve', res);
                     console.log('log approve', res.data);
@@ -108,45 +122,47 @@ class SetApproveLeaveForm extends Component {
             <div>
                 <div className="Dory">
 
-                    <div className="row">
-                        <div className="col-md-3">
-                            <h4>Leave Static</h4>
+                    <div>
+                        <div className="col-md-3 approvetopic">
+                            <p>Leave Detail</p>
                         </div>
 
                     </div>
                     <div className="bird">
+                    
                         <div className="row Dory">
-                            <div className="col-md-2">
+                            <div className="col-md-2 namename">
                                 <th><b>Name : </b></th>
                             </div>
-                            <div className="col-md-2">
+                            <div className="">
                                 <td>{this.state.personal.firstName}</td>
                             </div>
-                            <div className="col-md-2">
-                                <th><b>Surnname : </b></th>
+                            <div className="col-md-2 lastnamelastname">
+
+                                <th><b>Lastname : </b></th>
                             </div>
-                            <div className="col-md-2">
+                            <div className="">
                                 <td>{this.state.personal.lastName}</td>
                             </div>
 
                         </div>
                         <div className="row Dory">
-                            <div className="col-md-2">
+                            <div className="col-md-2 staffid1">
                                 <th><b>Staff ID : </b></th>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-2 staffid2">
                                 <td>{this.state.personal.staffId}</td>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-2 section1">
                                 <th><b>Section : </b></th>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-2 section2">
                                 <td>{this.state.personal.section}</td>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-2 position1">
                                 <th><b>Position : </b></th>
                             </div>
-                            <div className="col-md-2">
+                            <div className="col-md-2 position2">
                                 <td>{this.state.personal.position}</td>
                             </div>
                         </div>

@@ -226,7 +226,7 @@ class lwpRequestForm extends Component {
         };
     }
     componentDidMount() {
-        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=2018")
             .then(res => {
 
                 this.setState({ timeSum: res.data.LWPHours })

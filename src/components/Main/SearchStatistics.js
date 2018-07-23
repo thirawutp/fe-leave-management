@@ -43,7 +43,7 @@ class SearchStatistics extends Component {
 
     render() {
         const { people } = this.props
-        console.log(people,'nav props', this.props)
+        console.log(people, 'nav props', this.props)
         return (
             <div>
                 <div className="tkbubble">
@@ -61,12 +61,13 @@ class SearchStatistics extends Component {
                                         <div className="selecttype">
                                             <select onChange={this.handleSetValue} >
 
-                                                <option value="All">All</option>
+                                                <option value="All">Please select</option>
                                                 <option value="Frontend">Frontend</option>
                                                 <option value="Backend">Backend</option>
-                                                <option value="BA">BA</option>
-                                                <option value="Graphic">Graphic</option>
+                                                <option value="Business Analyst">BA</option>
+                                                <option value="UX/UI">UX/UI</option>
                                                 <option value="QA">QA</option>
+                                                <option value="Mobile">Mobile</option>
                                             </select>
                                         </div>
                                     </div>
@@ -112,7 +113,7 @@ class SearchStatistics extends Component {
                                     }).map((people) =>
                                         <div className="row PPData">
                                             <div className="col-md-1 tkuserpicture">
-                                                <img src={kendall}/>
+                                                <img src={kendall} />
                                             </div>
                                             <div className="col-md-3">
                                                 <div className='tktkstaffid'>

@@ -30,7 +30,6 @@ class LoginPage extends Component {
         data = mockResponse
         this.props.handleLogin(data)
         //TODO login to server
-
         axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
 
             .then(res => {
@@ -178,3 +177,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
 )(LoginPage)
+// 
