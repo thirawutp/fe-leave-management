@@ -145,7 +145,15 @@ class SearchHistory extends Component {
             const test9 = curr.type.includes(term)
             const test10 = curr.approvedBy.includes(term)
             const test11 = curr.leaveId.toString().includes(term)
-            return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11
+            const test12 = curr.requestedDateTime.toUpperCase().includes(term)
+            const test13 = curr.approvalStatus.toUpperCase().includes(term)
+            const test14 = curr.leaveId.toString().toUpperCase().includes(term)
+            const test15 = curr.type.toUpperCase().includes(term)
+            const test16 = curr.staffId.toUpperCase().includes(term)
+            const test17 = curr.startDateTime.toUpperCase().includes(term)
+            const test18 = curr.approvedBy.toUpperCase().includes(term)
+
+            return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11 || test12 || test13 || test14 || test15 || test16 || test17 || test18
         })
         return (
             <div className="All">
