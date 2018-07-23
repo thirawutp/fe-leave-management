@@ -311,7 +311,7 @@ class lwpRequestForm extends Component {
     }
     CalDayLeft = () => {
         if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
-            let sum = (parseInt(this.state.timeSum) + (8 * (parseInt(this.state.amountLeft) / 24))) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop) + 8
+            let sum = (parseInt(this.state.timeSum) + (8 * (parseInt(this.state.amountLeft) / 24))) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop) - 8
             this.setState({
                 showSum: sum,
             })
