@@ -31,7 +31,7 @@ class NavigationBar extends Component {
                     <li className={'navigationbar-item' + this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
                         <div>
-                            <p>555</p>
+
                             {
 
                                 this.props.people.reduce((acc, curr) => {
