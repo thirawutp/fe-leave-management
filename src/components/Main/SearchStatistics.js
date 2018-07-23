@@ -61,12 +61,13 @@ class SearchStatistics extends Component {
                                         <div className="selecttype">
                                             <select onChange={this.handleSetValue} >
 
-                                                <option value="All">All</option>
+                                                <option value="All">Please select</option>
                                                 <option value="Frontend">Frontend</option>
                                                 <option value="Backend">Backend</option>
                                                 <option value="Business Analyst">BA</option>
                                                 <option value="UX/UI">UX/UI</option>
                                                 <option value="QA">QA</option>
+                                                <option value="Mobile">Mobile</option>
                                             </select>
                                         </div>
                                     </div>

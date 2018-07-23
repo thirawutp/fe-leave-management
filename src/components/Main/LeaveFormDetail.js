@@ -201,8 +201,11 @@ class LeaveFormDetail extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+    // _.find(state.history, { rawLeaveId: (props.params.formId) }) || {}
+    const leaveForm = _.find(state.approve, { rawLeaveId: Number(props.params.formId) }) || {}
+    console.log('kkkkkkkkkkk', props.params.formId, state.approve, leaveForm)
     return {
-        leaveForm: _.find(state.history, { rawLeaveId: Number(props.params.formId) }) || {}
+        leaveForm,
     }
 }
 

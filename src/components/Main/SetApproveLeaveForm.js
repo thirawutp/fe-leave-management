@@ -49,7 +49,7 @@ class SetApproveLeaveForm extends Component {
             }, {
                     onUploadProgress: ProgressEvent => {
                         if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                            alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                            alert("Approve Successfully")
                             browserHistory.push('/Approve')
                         }
                     }
@@ -71,7 +71,7 @@ class SetApproveLeaveForm extends Component {
             }, {
                     onUploadProgress: ProgressEvent => {
                         if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
-                            alert("ส่งข้่อมูลเรียบร้อยแแล้ว")
+                            alert("Rejected Successfully")
                             browserHistory.push('/Approve')
                         }
                     }
