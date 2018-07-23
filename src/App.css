@@ -1463,11 +1463,6 @@
     
     }
     
-    
-    
-    
- 
-    
     .tkpending th{
     width: 200px;
     font-size: 18px;
@@ -1559,6 +1554,11 @@
     .tkstaffid td{
       width: 200px;
       text-align: center;
+    }
+    .ServerClose {
+      color: red;
+      font-size: 80px;
+     
     }
 
     .approvetopic {
