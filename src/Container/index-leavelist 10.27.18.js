@@ -34,6 +34,8 @@ class LeaveList extends Component {
 
     return (
 
+    
+
       <div className="leavelistbox">
         <div className='selectLeave'>
           <p>Select Leave Type</p>
