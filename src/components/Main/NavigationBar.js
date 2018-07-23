@@ -32,6 +32,8 @@ class NavigationBar extends Component {
                         <Link to='/Approve'>Approve</Link>
                         <div>
 
+
+
                             {
 
                                 this.props.people.reduce((acc, curr) => {
