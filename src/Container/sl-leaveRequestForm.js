@@ -350,7 +350,9 @@ class slRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.");
                                 browserHistory.push('/home')
-
+                            }
+                            else {
+                                alert("waiting...")
                             }
 
                         }
@@ -389,7 +391,9 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -428,6 +432,9 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -459,6 +466,9 @@ class slRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
+                            }
+                            else {
+                                alert("waiting...")
                             }
                         }
                     })

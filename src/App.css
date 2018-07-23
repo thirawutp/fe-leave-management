@@ -1606,3 +1606,8 @@
       width: 200px;
       text-align: center;
     }
+    .ServerClose {
+      color: red;
+      font-size: 80px;
+     
+    }

@@ -6,7 +6,7 @@ import money from '../asset/images/money.png';
 import bandage from '../asset/images/bandage.png';
 import axios from 'axios';
 import { connect } from 'react-redux'
-
+import moment from 'moment';
 
 
 class LeaveList extends Component {
@@ -17,8 +17,10 @@ class LeaveList extends Component {
       timeleftal: '',
       timeleftsl: '',
       timeleftlwp: '',
+      timelock: '',
+      lockMoment: '',
+      date: moment().format('DD-MM').toString()
     };
-
 
   };
   componentDidMount() {
@@ -29,14 +31,24 @@ class LeaveList extends Component {
         this.setState({ timeleftsl: res.data.SickHours })
         this.setState({ timeleftlwp: res.data.LWPHours })
       })
+    if (this.state.date === '31-12') {
+      this.setState({ timelock: true })
+    }
+    else {
+      this.setState({ timelock: false })
+    }
   }
+
+
   render() {
-
+    console.log('re-render', this.state.timelock)
     return (
-
       <div className="leavelistbox">
         <div className='selectLeave'>
           <p>Select Leave Type</p>
+        </div>
+        <div className="ServerClose">
+          {this.state.timelock && <p>Server is closed</p>}
         </div>
         <div className="button-popup" >
           <div className="block">
@@ -64,7 +76,7 @@ class LeaveList extends Component {
 
               </div>
               <div className="text-annualleave">
-                <Link to='/form/AnnualLeave'><button className="button"> Annual Leave</button></Link>
+                {!this.state.timelock && <Link to='/form/AnnualLeave'><button className="button">Annual Leave</button></Link>}
               </div>
             </div>
 
@@ -93,7 +105,7 @@ class LeaveList extends Component {
               </div>
 
               <div className="text-sickleave">
-                <Link to='/form/SickLeave'><button className="button">Sick Leave</button></Link>
+                {!this.state.timelock && <Link to='/form/SickLeave'><button className="button">Sick Leave</button></Link>}
               </div>
             </div>
             <div className="cover-popup">
@@ -118,27 +130,15 @@ class LeaveList extends Component {
               </div>
 
               <div className="text-sickleave">
-                <Link to='/form/LwpLeave'><button className="button">Leave with out pay</button></Link>
+                {!this.state.timelock && <Link to='/form/LwpLeave'><button className="button">Leave with out pay</button></Link>}
               </div>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
     );
   }
 }
 
-const mapStateToProps = state => ({
-  leaveData: state.data
-})
 
-export default connect(
-  mapStateToProps
-)(LeaveList);
+export default LeaveList;

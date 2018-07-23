@@ -70,7 +70,7 @@ class App extends Component {
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='setApprove/:formId' component={SetApproveLeaveForm} />
           <Route path='indexindividualStatistic/:personId' component={IndexindividualStatistic} />
-          <Route path='TableLeaveStatisticsDeatils' component={SearchStatisticsback}/>
+          <Route path='TableLeaveStatisticsDeatils' component={SearchStatisticsback} />
         </Route>
       </Router>
     )

@@ -228,9 +228,10 @@ class lwpRequestForm extends Component {
     componentDidMount() {
         axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
             .then(res => {
-                console.log("data in database", res.data)
+
                 this.setState({ timeSum: res.data.LWPHours })
                 this.setState({ showSum: res.data.LWPHours })
+                console.log("data in database", res.data.LWPHours)
             })
     }
     handleOneDayQuestion = (isOneday) => {
@@ -296,19 +297,18 @@ class lwpRequestForm extends Component {
     }
 
     CalHours1day = () => {
-
-        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount) {
-            let day = this.state.timeSum - this.state.leaveAmount
+        if (this.state.leaveDate && this.state.leaveAmount) {
+            let day = parseInt(this.state.timeSum) + parseInt(this.state.leaveAmount)
             this.setState({
                 showSum: day
             })
 
         }
-
+        console.log("log one day", this.state.showSum)
     }
     CalDayLeft = () => {
         if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
-            let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
+            let sum = (parseInt(this.state.timeSum) + (8 * (parseInt(this.state.amountLeft) / 24))) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop) + 8
             this.setState({
                 showSum: sum,
             })
@@ -350,7 +350,9 @@ class lwpRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.");
                                 browserHistory.push('/home')
-
+                            }
+                            else {
+                                alert("waiting...")
                             }
 
                         }
@@ -389,7 +391,9 @@ class lwpRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -428,6 +432,9 @@ class lwpRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -459,6 +466,9 @@ class lwpRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
+                            }
+                            else {
+                                alert("waiting...")
                             }
                         }
                     })
