@@ -350,7 +350,9 @@ class slRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.");
                                 browserHistory.push('/home')
-
+                            }
+                            else {
+                                alert("waiting...")
                             }
 
                         }
@@ -389,7 +391,9 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -428,6 +432,9 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -459,6 +466,9 @@ class slRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
+                            }
+                            else {
+                                alert("waiting...")
                             }
                         }
                     })
@@ -509,7 +519,6 @@ class slRequestForm extends Component {
                     <div className="alpopup">
                         <div className="picture">
                             <img src={patient} />
-
                         </div>
                         <div className="object">
                             <div className="text-cover1 row">
@@ -521,12 +530,12 @@ class slRequestForm extends Component {
                                 </div>
                             </div>
                             <div className="row text-cover1">
-                            <div>
-                                <p className="text-bottom1">{this.state.showSum % 8} </p>
-                            </div>
-                            <div className="col-md-6 ">
+                                <div>
+                                    <p className="text-bottom1">{this.state.showSum % 8} </p>
+                                </div>
+                                <div className="col-md-6 ">
                                     <p className="text-hour1">Hours</p>
-                            </div>
+                                </div>
                             </div>
                         </div>
 
@@ -559,7 +568,7 @@ class slRequestForm extends Component {
                         File :
           </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} size="60MB" required multiple />
                     </div>
                 </div>
                 <div className="cover-button">

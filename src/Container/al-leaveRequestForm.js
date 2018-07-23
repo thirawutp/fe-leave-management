@@ -316,7 +316,8 @@ class alRequestForm extends Component {
 
 
     fileChangedHandler = (event) => {
-        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile))
+
+        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile[0]))
     }
 
     handleSubmit = async event => {
@@ -336,8 +337,6 @@ class alRequestForm extends Component {
                     "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
-
-
                     "approvedBy": "",
                     "attachedFile1": attachFileBase64,
                     "attachedFile2": '',
@@ -355,7 +354,9 @@ class alRequestForm extends Component {
                                 browserHistory.push('/home')
 
                             }
-
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -395,6 +396,9 @@ class alRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
+                            }
+                            else {
+                                alert("waiting...")
                             }
 
                         }
@@ -437,6 +441,9 @@ class alRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
+                            else {
+                                alert("waiting...")
+                            }
                         }
                     })
                     .then(function (response) {
@@ -470,6 +477,9 @@ class alRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
+                            }
+                            else {
+                                alert("waiting...")
                             }
                         }
                     })
@@ -531,10 +541,10 @@ class alRequestForm extends Component {
                                 </div>
                             </div>
                             <div className=" row text-cover1">
-                            <div>
-                                <p className="text-bottom1">{this.state.showSum % 8}</p>
-                            </div>
-                            <div className="col-md-6 ">
+                                <div>
+                                    <p className="text-bottom1">{this.state.showSum % 8}</p>
+                                </div>
+                                <div className="col-md-6 ">
                                     <p className="text-hour1">Hours</p>
                                 </div>
                             </div>
@@ -567,9 +577,9 @@ class alRequestForm extends Component {
                 <div className="row-file">
                     <div className="text-file">
                         File :
-          </div>
+                    </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} accept=".jpg" required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
@@ -577,16 +587,11 @@ class alRequestForm extends Component {
                         <div className="submit1-button">
                             <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-
                     </div>
                 </div>
             </div>
         );
     }
 }
-
-const mapStateToProps = state => ({
-    leaveData: state.data
-})
 
 export default alRequestForm;
