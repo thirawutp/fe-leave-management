@@ -30,13 +30,16 @@ const getLeaveTypePicture = leaveType => {
 
 
 
+
 class SearchApprove extends Component {
     constructor(props) {
         super(props);
         this.state = {
             people: [],
             term: '',
-            SetImg: ''
+            SetImg: '',
+            count: 0
+
 
         }
         this.searchHandle = this.searchHandle.bind(this);
@@ -46,10 +49,20 @@ class SearchApprove extends Component {
         this.setState({ term: event.target.value })
     }
 
+    countStatus = status => {
+        console.log("asasasadsadsa")
+        if (status === 'Pending') {
+            this.setState({ count: this.state.count + 1 })
+
+
+        }
+
+    }
+
+
 
     componentDidMount() {
         axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchApprove
-
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -66,7 +79,9 @@ class SearchApprove extends Component {
                                 [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
                             }
                         }
-
+                        if (key === 'approvalStatus') {
+                            console.log("asasasadsadsa")
+                        }
                         return {
                             ...result,
                             [_.camelCase(key)]: val
@@ -74,9 +89,7 @@ class SearchApprove extends Component {
                     }, {})
                 })
                 this.props.addApprove(data)
-
             })
-
     }
 
 
@@ -97,7 +110,14 @@ class SearchApprove extends Component {
             const test9 = curr.type.includes(term)
             const test10 = curr.approvedBy.includes(term)
             const test11 = curr.leaveId.toString().includes(term)
-            return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11
+            const test12 = curr.requestedDateTime.toUpperCase().includes(term)
+            const test13 = curr.approvalStatus.toUpperCase().includes(term)
+            const test14 = curr.leaveId.toString().toUpperCase().includes(term)
+            const test15 = curr.type.toUpperCase().includes(term)
+            const test16 = curr.staffId.toUpperCase().includes(term)
+            const test17 = curr.startDateTime.toUpperCase().includes(term)
+            const test18 = curr.approvedBy.toUpperCase().includes(term)
+            return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11 || test12 || test13 || test14 || test15 || test16 || test17 || test18
         })
         return (
             <div className="All">
@@ -134,7 +154,7 @@ class SearchApprove extends Component {
                                             <th>Leaving Date</th>
                                         </div>
                                         <div className="col-md-2 tktopic5">
-                                            <th>Manage by</th>
+                                            <th>Manage by{this.state.count}</th>
                                         </div>
                                     </div>
                                 </div>
