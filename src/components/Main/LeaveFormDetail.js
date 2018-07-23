@@ -18,7 +18,6 @@ class LeaveFormDetail extends Component {
             roles: 'HR',
             photoIndex: 0,
             isOpen: false,
-
         }
 
 
@@ -60,17 +59,19 @@ class LeaveFormDetail extends Component {
         }
 
     }
+    handleonClickpic = () => {
 
-
+        <LightboxExample images={this.props.leaveForm.attachedFile} />
+        console.log("fdfdfdfd")
+    }
 
 
     render() {
         console.log('5555555555', this.props.leaveForm)
         const { photoIndex, isOpen } = this.state;
-        let images = [this.props.leaveForm.attachedFile1, this.props.leaveForm.attachedFile2, this.props.leaveForm.attachedFile3]
-
+        let images = [this.props.leaveForm.attachedFile]
         return (
-            <div>
+            <div className='leavebox'>
 
 
 
@@ -147,45 +148,33 @@ class LeaveFormDetail extends Component {
 
 
                             <div className="tkpicture">
-                                {this.handleShow(this.state.roles) &&
-                                    <div className="tklink">
-                                        {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
-                                        <div className="mickeymouse">
-                                            <div>
-                                                <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
-                                                <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
-                                            <div>
-                                                <p>{this.props.leaveForm.attachedFileName2.substring(0, 15)}</p>
-                                                <p><img src={this.props.leaveForm.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 1 })} /></p>
-                                            </div>
-                                            <div>
-                                                <p>{this.props.leaveForm.attachedFileName3.substring(0, 15)}</p>
-                                                <p><img src={this.props.leaveForm.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 2 })} /></p>
-                                            </div>
-                                        </div>
-                                        {isOpen && (
-                                            <Lightbox
-                                                mainSrc={images[photoIndex]}
-                                                nextSrc={images[(photoIndex + 1) % images.length]}
-                                                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                                                onCloseRequest={() => this.setState({ isOpen: false })}
-                                                onMovePrevRequest={() =>
-                                                    this.setState({
-                                                        photoIndex: (photoIndex + images.length - 1) % images.length,
-                                                    })
-                                                }
-                                                onMoveNextRequest={() =>
-                                                    this.setState({
-                                                        photoIndex: (photoIndex + 1) % images.length,
-                                                    })
-                                                }
-                                            />
-                                        )}
-                                    </div>}
+                                {this.handleShow(this.state.roles) && 
+                                <div className="tklink">
+                                    {/* <LightboxExample images={this.props.leaveForm.attachedFile1} /> */}
+                                    <p>{this.props.leaveForm.attachedFileName.substring(0, 15)}</p>
+                                    <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" onClick={() => this.setState({ isOpen: true })} /></p>
+                                    {isOpen && (
+                                        <Lightbox
+                                            mainSrc={images[photoIndex]}
+                                            nextSrc={images[(photoIndex + 1) % images.length]}
+                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onMovePrevRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                })
+                                            }
+                                            onMoveNextRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + 1) % images.length,
+                                                })
+                                            }
+                                        />
+                                    )}
+                                </div>}
                                 {!this.handleShow(this.state.roles) && <div className="col-md-11">
-                                    <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
-                                    <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" /></p>
+                                    <p>{this.props.leaveForm.attachedFileName}</p>
+                                    <p><img src={this.props.leaveForm.attachedFile} width="75" height="52" /></p>
                                 </div>}
 
                             </div>
@@ -201,11 +190,8 @@ class LeaveFormDetail extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-    // _.find(state.history, { rawLeaveId: (props.params.formId) }) || {}
-    const leaveForm = _.find(state.approve, { rawLeaveId: Number(props.params.formId) }) || {}
-    console.log('kkkkkkkkkkk', props.params.formId, state.approve, leaveForm)
     return {
-        leaveForm,
+        leaveForm: _.find(state.history, { rawLeaveId: Number(props.params.formId) }) || {}
     }
 }
 
