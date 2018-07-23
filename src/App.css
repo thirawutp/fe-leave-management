@@ -290,6 +290,7 @@
       border-radius: 0
     
     }
+
     
     .select-onedate{
       display: inline-flex;
@@ -947,6 +948,8 @@
     
     .bird{
       font-size: 18px;
+      font-family: 'Sukhumvitset-Text';
+      padding-left: 30px;
     
     }
     
@@ -1311,14 +1314,6 @@
     }
     
     
-    .shark{
-        border-style: solid;
-        border-color : #f2f2f2;
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-    
-    
     .DDory{
       margin-top: 20px;
     }
@@ -1609,3 +1604,40 @@
       width: 200px;
       text-align: center;
     }
+
+    .approvetopic {
+        padding-top: 29px;
+        
+
+    }
+
+.approvetopic p{
+font-size: 20px;
+font-family: 'SukhumvitSet-Bold';
+padding-left: 15px;
+}
+
+.namename {
+    width: 100%;
+    padding-left: 15px;
+}
+
+.lastnamelastname {
+width: 200px;
+padding-left: 150px;
+}
+
+.staffid1 {
+width: 200px;
+padding-left: 15px;
+}
+
+.section1 {
+width: 200px;
+padding-left: 118px;
+}
+
+.position1 {
+width: 200px;
+padding-left: 120px;
+}
