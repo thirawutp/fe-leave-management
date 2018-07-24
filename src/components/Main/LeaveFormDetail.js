@@ -87,7 +87,7 @@ class LeaveFormDetail extends Component {
                                 <p><b>Leave ID : </b></p>
                             </div>
                             <div className="col-md-2">
-                                <p>{`LEAVE${_.padStart(this.props.params.formId, 3, '0')}`}</p>
+                                <p>{`LEAVE${_.padStart(this.props.params.formId, 5, '0')}`}</p>
                             </div>
                             <div className="col-md-2">
                                 <p><b>Leave Type : </b></p>

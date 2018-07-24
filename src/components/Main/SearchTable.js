@@ -111,7 +111,7 @@ class SearchTable extends Component {
                     if (key === 'LeaveId') {
                         return {
                             ...result,
-                            [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                            [_.camelCase(key)]: `LEA${_.padStart(val, 5, '0')}`
                         }
                     }
                     if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
