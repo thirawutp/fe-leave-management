@@ -26,7 +26,7 @@ class LeaveList extends Component {
   componentDidMount() {
     let thisyear = moment().format('YYYY').toString()
     console.log(thisyear)
-    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=${thisyear}`)
+    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=${thisyear}`)
       .then(res => {
         console.log("data in database", res.data)
         this.setState({ timeleftal: res.data.AnnualHours })

@@ -228,7 +228,7 @@ class alRequestForm extends Component {
 
     componentDidMount() {
         let thisyear = moment().format('YYYY').toString()
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=${thisyear}`)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=${thisyear}`)
             .then(res => {
                 console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.AnnualHours })
@@ -318,18 +318,13 @@ class alRequestForm extends Component {
             })
         }
     }
-
-
     fileChangedHandler = (event) => {
 
         this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile[0]))
     }
-
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
-            console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
-                console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
@@ -339,7 +334,7 @@ class alRequestForm extends Component {
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
-                    "approvalStatus": "string",
+                    "approvalStatus": "Pending",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-09T08:42:39.014Z",
                     "approvedBy": "",
@@ -349,8 +344,6 @@ class alRequestForm extends Component {
                     "attachedFileName1": this.state.selectedFile[0].name,
                     "attachedFileName2": 'No Image',
                     "attachedFileName3": 'No Image',
-
-
                     "requestedDateTime": moment().format().toString(),
                 }, {
                         onUploadProgress: ProgressEvent => {
