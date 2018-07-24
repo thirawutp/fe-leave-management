@@ -2,7 +2,6 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-import EndDate from './EndDate';
 
 class StartDate extends React.Component {
 
@@ -29,7 +28,7 @@ class StartDate extends React.Component {
                     minDate={moment()}
                     showDisabledMonthNavigation
                     dateFormat="DD/MM/YY"
-                    placeholderText="Click to select a date"
+                    placeholderText="DD/MM/YY"
                     disabledKeyboardNavigation
                 />
             </div>

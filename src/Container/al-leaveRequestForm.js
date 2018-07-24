@@ -208,9 +208,10 @@ class alRequestForm extends Component {
             type: "Annual Leave", // get form props :type
             isOneday: true,
             leaveDate: undefined,
-            leaveTime: undefined,
+            leaveTime: "Invalid date",
             leaveDateStop: undefined,
-            leaveTimeStop: undefined,
+            leaveTimeStop: "Invalid date",
+
             leaveAmount: 0,
             leaveAmountStop: 0,
             len: 0,
@@ -228,7 +229,7 @@ class alRequestForm extends Component {
 
     componentDidMount() {
         let thisyear = moment().format('YYYY').toString()
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=${thisyear}`)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=${thisyear}`)
             .then(res => {
                 console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.AnnualHours })
@@ -253,6 +254,7 @@ class alRequestForm extends Component {
         this.setState({
             [id2]: value
         }, this.CalHours1day)
+        console.log(id, value)
     }
 
     handleChangeMoreOneDay = (id, value) => {
@@ -331,8 +333,8 @@ class alRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": "annual leave",
-                    "staffId": "00002",
+                    "type": "Annual leave",
+                    "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
@@ -370,7 +372,7 @@ class alRequestForm extends Component {
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
-                    "staffId": "00002",
+                    "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
@@ -413,7 +415,7 @@ class alRequestForm extends Component {
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
-                    "staffId": "00002",
+                    "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
@@ -445,10 +447,10 @@ class alRequestForm extends Component {
                     })
             }
             else {
-                console.log("do NO PICTURE na")
+                console.log("do NO PICTURE na", this.state.leaveDate + this.state.leaveTime + ":00", this.state.leaveDateStop + this.state.leaveTimeStop + ":00")
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
-                    "staffId": "00002",
+                    "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
@@ -480,7 +482,7 @@ class alRequestForm extends Component {
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || !this.state.leaveTime) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -495,7 +497,7 @@ class alRequestForm extends Component {
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || !this.state.leaveTime || this.state.leaveDateStop === 'Invalid dat' || !this.state.leaveTimeStop || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {

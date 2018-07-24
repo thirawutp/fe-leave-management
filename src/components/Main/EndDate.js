@@ -34,7 +34,7 @@ class EndDate extends React.Component {
             minDate={moment()}
             showDisabledMonthNavigation
             dateFormat="DD/MM/YY"
-            placeholderText="Click to select a date"
+            placeholderText="DD/MM/YY"
             disabledKeyboardNavigation
         />;
     }
