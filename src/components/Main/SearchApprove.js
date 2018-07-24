@@ -72,7 +72,7 @@ class SearchApprove extends Component {
                             return {
                                 ...result,
                                 rawLeaveId: val,
-                                [_.camelCase(key)]: `LEA${_.padStart(val, 5, '0')}`
+                                [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
                             }
                         }
 

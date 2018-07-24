@@ -105,6 +105,12 @@ class SetApproveLeaveForm extends Component {
         }
 
     }
+    handleImg = (pic) => {
+        if (pic === '') {
+            return false
+        }
+        return true
+    }
 
 
 
@@ -129,23 +135,23 @@ class SetApproveLeaveForm extends Component {
 
                     </div>
                     <div className="bird">
-                    
+
                         <div className="row Dory">
-                        <div className="tknamename">
-                            <div className="namename">
-                                <th><b>Name : </b></th>
-                            </div>
-                            <div className="">
-                                <td>{this.state.personal.firstName}</td>
-                            </div>
+                            <div className="tknamename">
+                                <div className="namename">
+                                    <th><b>Name : </b></th>
+                                </div>
+                                <div className="">
+                                    <td>{this.state.personal.firstName}</td>
+                                </div>
                             </div>
                             <div className="tklastnametk">
-                            <div className="lastnamelastname">
-                                <th><b>Lastname : </b></th>
-                            </div>
-                            <div className="">
-                                <td>{this.state.personal.lastName}</td>
-                            </div>
+                                <div className="lastnamelastname">
+                                    <th><b>Lastname : </b></th>
+                                </div>
+                                <div className="">
+                                    <td>{this.state.personal.lastName}</td>
+                                </div>
                             </div>
 
                         </div>
@@ -170,7 +176,7 @@ class SetApproveLeaveForm extends Component {
                             </div>
                         </div>
                     </div>
-                    
+
 
 
                     <div className="row rabbit">
@@ -241,18 +247,24 @@ class SetApproveLeaveForm extends Component {
                                 <div className="tklink">
                                     {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
                                     <div className="mickeymouse">
-                                        <div>
+                                        {this.handleImg(this.state.personProfile.attachedFile1) && <div>
                                             <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
                                             <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
-                                        <div>
+
+                                        }
+                                        {this.handleImg(this.state.personProfile.attachedFile2) && <div>
                                             <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
-                                            <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 1 })} /></p>
+                                            <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
-                                        <div>
+
+                                        }
+                                        {this.handleImg(this.state.personProfile.attachedFile3) && <div>
                                             <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
-                                            <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 2 })} /></p>
+                                            <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
+
+                                        }
                                     </div>
                                     {isOpen && (
                                         <Lightbox
@@ -274,8 +286,24 @@ class SetApproveLeaveForm extends Component {
                                     )}
                                 </div>}
                             {!this.handleShow(this.state.roles) && <div className="col-md-11">
-                                <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
-                                <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" /></p>
+                                {this.handleImg(this.state.personProfile.attachedFile1) && <div>
+                                    <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                    <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                </div>
+
+                                }
+                                {this.handleImg(this.state.personProfile.attachedFile2) && <div>
+                                    <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
+                                    <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                </div>
+
+                                }
+                                {this.handleImg(this.state.personProfile.attachedFile3) && <div>
+                                    <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
+                                    <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                </div>
+
+                                }
                             </div>}
 
                         </div>
