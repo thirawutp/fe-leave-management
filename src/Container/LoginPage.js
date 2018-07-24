@@ -6,6 +6,7 @@ import { login, addHistory, addpudding, addStatistics, searchInTable, addTable }
 import _ from 'lodash'
 import moment from 'moment'
 import logologin from '../../src/asset/images/logologin.png';
+import googlelogo from '../../src/asset/images/google-logo.png'
 
 const mockResponse = {
     profileObj: {
@@ -148,6 +149,7 @@ class LoginPage extends Component {
                 <GoogleLogin
                     clientId="641800244467-7rc34tcaa2bh0mu7i109blv72n8ilnse.apps.googleusercontent.com"
                     hostedDomain="appman.co.th"
+                    img src={googlelogo}
                     buttonText="Sign in with Google"
                     onSuccess={this.handleLoginSuccess}
                     onFailure={this.handleLoginFailure}

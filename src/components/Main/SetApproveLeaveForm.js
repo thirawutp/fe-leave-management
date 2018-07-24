@@ -177,19 +177,19 @@ class SetApproveLeaveForm extends Component {
                         <div className="leaveidtk">
                             <p><b>Leave ID : </b></p>
                         </div>
-                        <div className="col-md-2 leaveidtk1">
+                        <div className="leaveidtk1">
                             <p>{this.state.personProfile.leaveId}</p>
                         </div>
-                        <div className="col-md-2 leaveidtk2">
+                        <div className="leaveidtk2">
                             <p><b>Leave Type : </b></p>
                         </div>
-                        <div className="col-md-2 leaveidtk3">
+                        <div className="leaveidtk3">
                             <p>{this.state.personProfile.type}</p>
                         </div>
-                        <div className="col-md-2 leaveidtk4">
+                        <div className="leaveidtk4">
                             <p><b>Day Requested : </b></p>
                         </div>
-                        <div className="col-md-2 leaveidtk5">
+                        <div className="leaveidtk5">
                             <p>
                                 {moment(this.state.personProfile.requestedDateTime).format('DD-MM-YYYY')}</p>
                         </div>
