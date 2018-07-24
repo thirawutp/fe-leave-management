@@ -320,31 +320,34 @@ class alRequestForm extends Component {
     }
     fileChangedHandler = (event) => {
 
-        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile[0]))
+        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("aaaaaaaaaaaaaaaaaaa", this.state.selectedFile.length))
+
     }
     handleSubmit = async event => {
         if (window.confirm("Confirm ?")) {
             if (this.state.selectedFile.length == 1) {
+                console.log("do 1 picture", this.state.leaveDate + this.state.leaveTime + ":00", this.state.leaveDateStop + this.state.leaveTimeStop + ":00")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
-                    "type": "Annual Leave",
+                    "leaveId": 0,
+                    "type": "annual leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
-                    "approvalStatus": "Pending",
-                    "comment": this.state.note,
-                    "approvedTime": "2018-07-09T08:42:39.014Z",
-                    "approvedBy": "",
+                    "approvalStatus": "string",
+                    "comment": "string",
+                    "approvedTime": "2018-07-24T04:09:48.478Z",
+                    "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFile2": '',
-                    "attachedFile3": '',
                     "attachedFileName1": this.state.selectedFile[0].name,
-                    "attachedFileName2": 'No Image',
-                    "attachedFileName3": 'No Image',
-                    "requestedDateTime": moment().format().toString(),
+                    "attachedFile2": "",
+                    "attachedFileName2": "No Image",
+                    "attachedFile3": "",
+                    "attachedFileName3": "No Image",
+                    "requestedDateTime": moment().format().toString()
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
@@ -352,9 +355,7 @@ class alRequestForm extends Component {
                                 browserHistory.push('/home')
 
                             }
-                            else {
-                                alert("waiting...")
-                            }
+
                         }
                     })
                     .then(function (response) {
@@ -370,8 +371,8 @@ class alRequestForm extends Component {
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -395,9 +396,6 @@ class alRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-                            else {
-                                alert("waiting...")
-                            }
 
                         }
                     })
@@ -416,8 +414,8 @@ class alRequestForm extends Component {
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -439,9 +437,7 @@ class alRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-                            else {
-                                alert("waiting...")
-                            }
+
                         }
                     })
                     .then(function (response) {
@@ -449,12 +445,12 @@ class alRequestForm extends Component {
                     })
             }
             else {
-                console.log("do did na")
+                console.log("do NO PICTURE na")
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Annual Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -473,9 +469,6 @@ class alRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
-                            }
-                            else {
-                                alert("waiting...")
                             }
                         }
                     })

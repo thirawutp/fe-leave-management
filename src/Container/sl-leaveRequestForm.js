@@ -335,8 +335,8 @@ class slRequestForm extends Component {
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -356,9 +356,6 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.");
                                 browserHistory.push('/home')
                             }
-                            else {
-                                alert("waiting...")
-                            }
 
                         }
                     })
@@ -375,8 +372,8 @@ class slRequestForm extends Component {
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -396,9 +393,7 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-                            else {
-                                alert("waiting...")
-                            }
+
                         }
                     })
                     .then(function (response) {
@@ -416,8 +411,8 @@ class slRequestForm extends Component {
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -437,9 +432,7 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-                            else {
-                                alert("waiting...")
-                            }
+
                         }
                     })
                     .then(function (response) {
@@ -451,8 +444,8 @@ class slRequestForm extends Component {
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "type": "Sick Leave",
                     "staffId": "00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".478Z",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".478Z",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "string",
@@ -472,9 +465,7 @@ class slRequestForm extends Component {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/home')
                             }
-                            else {
-                                alert("waiting...")
-                            }
+
                         }
                     })
                     .then(function (response) {
