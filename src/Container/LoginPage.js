@@ -46,7 +46,7 @@ class LoginPage extends Component {
                             return {
                                 ...result,
                                 rawLeaveId: val,
-                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                                [_.camelCase(key)]: `LEA${_.padStart(val, 5, '0')}`
                             }
                         }
 
@@ -75,7 +75,7 @@ class LoginPage extends Component {
                             return {
                                 ...result,
                                 rawLeaveId: val,
-                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                                [_.camelCase(key)]: `LEA${_.padStart(val, 5, '0')}`
                             }
                         }
 
@@ -145,7 +145,7 @@ class LoginPage extends Component {
         console.log(this.props)
         return (
             <div className="login">
-            <img src={logologin}/>
+                <img src={logologin} />
                 <GoogleLogin
                     clientId="641800244467-7rc34tcaa2bh0mu7i109blv72n8ilnse.apps.googleusercontent.com"
                     hostedDomain="appman.co.th"

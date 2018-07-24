@@ -1664,6 +1664,7 @@ text-align: center;
     display: inline-flex;
 }
 
+
 .leaveidtk{
     width: 85px;
     margin-left: 45px;
@@ -1694,3 +1695,9 @@ text-align: center;
     margin-left: 60px;
     font-family: 'SukhumvitSet-Bold';
 }
+
+
+.CalendarOneDay{
+  cursor: pointer;
+}
+

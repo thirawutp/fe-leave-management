@@ -72,7 +72,7 @@ class SearchApprove extends Component {
                             return {
                                 ...result,
                                 rawLeaveId: val,
-                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                                [_.camelCase(key)]: `LEA${_.padStart(val, 5, '0')}`
                             }
                         }
 
@@ -148,7 +148,7 @@ class SearchApprove extends Component {
                                             <th>Leaving Date</th>
                                         </div>
                                         <div className="col-md-2 tktopic5">
-                                            <th>Manage by{this.state.count}</th>
+                                            <th>Manage by</th>
                                         </div>
                                     </div>
                                 </div>

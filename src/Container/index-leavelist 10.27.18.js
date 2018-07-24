@@ -24,14 +24,16 @@ class LeaveList extends Component {
 
   };
   componentDidMount() {
-    axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00006&year=2018")
+    let thisyear = moment().format('YYYY').toString()
+    console.log(thisyear)
+    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=${thisyear}`)
       .then(res => {
         console.log("data in database", res.data)
         this.setState({ timeleftal: res.data.AnnualHours })
         this.setState({ timeleftsl: res.data.SickHours })
         this.setState({ timeleftlwp: res.data.LWPHours })
       })
-    if (this.state.date === '31-12') {
+    if (this.state.date == '31-12') {
       this.setState({ timelock: true })
     }
     else {
@@ -48,7 +50,7 @@ class LeaveList extends Component {
           <p>Select Leave Type</p>
         </div>
         <div className="ServerClose">
-          {this.state.timelock && <p>Server is closed</p>}
+          {this.state.timelock && <p>Server was closed</p>}
         </div>
         <div className="button-popup" >
           <div className="block">
