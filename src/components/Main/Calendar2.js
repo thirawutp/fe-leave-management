@@ -23,7 +23,7 @@ class Calendar2 extends React.Component {
       startDate: date
     });
 
-    console.log('------------------', date)
+    console.log('date is ', date)
 
     onChange(id, moment(date).format().toString().substring(0, 11));
     onChange(id2, moment(date).format().toString().substring(0, 11));
@@ -33,8 +33,11 @@ class Calendar2 extends React.Component {
     return <DatePicker
       selected={this.state.startDate}
       onChange={this.handleChange}
-
+      minDate={moment()}
+      showDisabledMonthNavigation
       dateFormat="DD/MM/YY"
+      placeholderText="Click to select a date"
+      disabledKeyboardNavigation
     />;
   }
 }

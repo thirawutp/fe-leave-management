@@ -131,62 +131,65 @@ class SetApproveLeaveForm extends Component {
                     <div className="bird">
                     
                         <div className="row Dory">
-                            <div className="col-md-2 namename">
+                        <div className="tknamename">
+                            <div className="namename">
                                 <th><b>Name : </b></th>
                             </div>
                             <div className="">
                                 <td>{this.state.personal.firstName}</td>
                             </div>
-                            <div className="col-md-2 lastnamelastname">
-
+                            </div>
+                            <div className="tklastnametk">
+                            <div className="lastnamelastname">
                                 <th><b>Lastname : </b></th>
                             </div>
                             <div className="">
                                 <td>{this.state.personal.lastName}</td>
                             </div>
+                            </div>
 
                         </div>
                         <div className="row Dory">
-                            <div className="col-md-2 staffid1">
+                            <div className=" staffid1">
                                 <th><b>Staff ID : </b></th>
                             </div>
-                            <div className="col-md-2 staffid2">
+                            <div className="staffid2">
                                 <td>{this.state.personal.staffId}</td>
                             </div>
-                            <div className="col-md-2 section1">
+                            <div className="section1">
                                 <th><b>Section : </b></th>
                             </div>
-                            <div className="col-md-2 section2">
+                            <div className="section2">
                                 <td>{this.state.personal.section}</td>
                             </div>
-                            <div className="col-md-2 position1">
+                            <div className="position1">
                                 <th><b>Position : </b></th>
                             </div>
-                            <div className="col-md-2 position2">
+                            <div className="position2">
                                 <td>{this.state.personal.position}</td>
                             </div>
                         </div>
                     </div>
-                    <div className="shark Dory"></div>
+                    
 
 
                     <div className="row rabbit">
-                        <div className="col-md-2">
+                        <div className="leaveidtk">
                             <p><b>Leave ID : </b></p>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 leaveidtk1">
                             <p>{this.state.personProfile.leaveId}</p>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 leaveidtk2">
                             <p><b>Leave Type : </b></p>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 leaveidtk3">
                             <p>{this.state.personProfile.type}</p>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 leaveidtk4">
                             <p><b>Day Requested : </b></p>
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-md-2 leaveidtk5">
                             <p>
                                 {moment(this.state.personProfile.requestedDateTime).format('DD-MM-YYYY')}</p>
                         </div>

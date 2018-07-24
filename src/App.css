@@ -464,13 +464,13 @@
       border-style: solid;
       border-color:#525252;
       background-color: #525252;
-      width: 1240px;
+      width: 1000px;
       height: 33px;
       border-width: 2px;
       color : white;
       margin-top: 20px;
       font-size : 14px;
-      line-height: 9px;
+      line-height: 3px;
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
       
@@ -498,7 +498,7 @@
       background-color:#FFFFFF;
       border-style: solid;
       border-width: 2px;
-      width: 1240px;
+      width: 1000px;
       height: 60px;
       font-size : 14px;
       border-top: none;
@@ -626,7 +626,7 @@
     }
     
     .tktabledetails {
-      padding-left: 185px;
+      padding-left: 215px;
       font-size: 18px;
     }
     
@@ -881,7 +881,7 @@
     
     .gun {
     padding-top: 17px;
-    padding-left: 200px;
+    padding-left: 230px;
     font-size: 20px;
     font-family: 'SukhumvitSet-Text';
     
@@ -950,6 +950,8 @@
       font-size: 18px;
       font-family: 'Sukhumvitset-Text';
       padding-left: 30px;
+      border-bottom: 1px solid #D8D8D8;
+      margin: 19px 0px;
     
     }
     
@@ -1461,57 +1463,6 @@
     
     }
     
-    .dateused th {
-      padding-left: 108px;
-    
-    }
-    
-    .daysused th {
-      padding-left: 160px;
-      
-    }
-    
-    .hoursused th {
-      padding-left: 160px;
-      
-    }
-    
-    .topic td{
-      padding-left: 95px;
-    }
-    
-    .topic2 td{
-      padding-left: 105px;
-    }
-    
-    .topic3 td{
-      padding-left: 75px;
-    }
-    
-    .daytopic td{
-      padding-left: 168px;
-    }
-    
-    .daytopic2 td{
-      padding-left: 168px;
-    }
-    
-    .daytopic3 td{
-      padding-left: 168px;
-    }
-    
-    .hourstopic td{
-      padding-left: 175px;
-    }
-    
-    .hourstopic2 td{
-      padding-left: 175px;
-    }
-    
-    .hourstopic3 td{
-      padding-left: 175px;
-    }
-    
     .tkpending th{
     width: 200px;
     font-size: 18px;
@@ -1604,13 +1555,11 @@
       width: 200px;
       text-align: center;
     }
-<<<<<<< HEAD
     .ServerClose {
       color: red;
       font-size: 80px;
      
     }
-=======
 
     .approvetopic {
         padding-top: 29px;
@@ -1625,27 +1574,130 @@ padding-left: 15px;
 }
 
 .namename {
-    width: 100%;
+    width: 100px;
     padding-left: 15px;
 }
 
 .lastnamelastname {
-width: 200px;
+width: 250px;
 padding-left: 150px;
 }
 
 .staffid1 {
-width: 200px;
+width: 100px;
 padding-left: 15px;
+margin-bottom: 19px;
 }
 
 .section1 {
-width: 200px;
-padding-left: 118px;
+width: 219px;
+padding-left: 119px;
 }
 
 .position1 {
+width: 245px;
+padding-left: 145px;
+}
+
+.dateused th{
+font-family: 'Sukhumvitset-Bold';
+font-size: 18px;
 width: 200px;
-padding-left: 120px;
+text-align: center;
+}
+
+.daysused th{
+font-family: 'Sukhumvitset-Bold';
+font-size: 18px;
+width: 200px;
+text-align: center;
+}
+
+.hoursused th{
+font-family: 'Sukhumvitset-Bold';
+font-size: 18px;
+width: 200px;
+text-align: center;
+}
+
+.dateused1 th{
+font-family: 'Sukhumvitset-Bold';
+font-size: 18px;
+width: 200px;
+text-align: center;
+}
+
+.topic td{
+    font-family: 'SukhumvitSet-Text';
+    font-size: 18px;
+    text-align: center;
+    width: 200px;
+    text-align: center;
+}
+
+.daytopic td{
+    font-family: 'SukhumvitSet-Text';
+    font-size: 18px;
+    width: 200px;
+    text-align: center;
+}
+
+.hourstopic td{
+    font-family: 'SukhumvitSet-Text';
+    font-size: 18px;
+    width: 200px;
+    text-align: center;
+}
+
+.Shtable th{
+    font-family: 'SukhumvitSet-Text';
+    font-size: 16px;
+    width: 130px;
+    text-align: center;
+}
+
+.tknamename {
+    display: inline-flex;
+}
+
+.tklastnametk{
+    display: inline-flex;
+}
+
+
+.leaveidtk{
+    width: 85px;
+    margin-left: 45px;
+    font-size: 16px;
+    font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk1{
+    font-size: 16px;
+    font-family: 'SukhumvitSet-Text';
+}
+
+.leaveidtk2 {
+    width: 100px;
+    margin-left: 60px;
+    font-size: 16px;
+    font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk3{
+    font-size: 16px;
+    font-family: 'SukhumvitSet-Text';
+}
+
+.leaveidtk4 {
+    width: 130px;
+    margin-left: 60px;
+    font-size: 16px;
+    font-family: 'SukhumvitSet-Bold';
+}
+
+
+.CalendarOneDay{
+  cursor: pointer;
 }
 

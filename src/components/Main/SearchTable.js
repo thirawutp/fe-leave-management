@@ -180,22 +180,22 @@ class SearchTable extends Component {
                             <div className='TangKwatable'>
                                 <div className="STable">
                                     <div className="row">
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 Shtable">
                                             <th>Status</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 Shtable">
                                             <th>Leave ID</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 Shtable">
                                             <th>Staff ID</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 Shtable">
                                             <th>สร้างใบลาเมื่อ</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 Shtable">
                                             <th>Leaving Date</th>
                                         </div>
-                                        <div className="col-md-2">
+                                        <div className="col-md-2 Shtable">
                                             <th>Manage by</th>
                                         </div>
                                     </div>

@@ -105,7 +105,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
                 <div className="col-md-3 hoursused">
                   <th>Leave days used</th>
                 </div>
-                <div className="col-md-3 dateused">
+                <div className="col-md-3 dateused1">
                   <th>Leave days balance</th>
                 </div>
               </div>
