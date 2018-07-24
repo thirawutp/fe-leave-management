@@ -239,12 +239,12 @@ class lwpRequestForm extends Component {
         this.setState({ isOneday })
         this.setState({ showSum: this.state.timeSum })
         this.setState({
-            leaveDate: undefined,
-            leaveDateStop: undefined,
+            leaveDate: 'Invalid dat',
+            leaveDateStop: 'Invalid dat',
             leaveAmountStop: 0,
             leaveAmount: 0,
-            leaveTime: undefined,
-            leaveTimeStop: undefined
+            leaveTime: '00:00',
+            leaveTimeStop: '00:00'
         })
     }
     handleChangeOnedayForm = (id, value, id2) => {
