@@ -128,7 +128,7 @@ class LoginPage extends Component {
                 })
                 this.props.addStatistics(data)
             })
-        this.props.router.push('/home')
+        this.props.router.push('/Leave')
     }
 
 

@@ -56,7 +56,7 @@ class LeaveList extends Component {
           <div className="block">
             <div className="cover-popup">
               <div className="textpopup">
-                <p>วันลาคงเหลือ</p>
+                <p>Days Leave Balance</p>
               </div>
               <div className="popup">
                 <div className="picture">
@@ -84,7 +84,7 @@ class LeaveList extends Component {
 
             <div className="cover-popup">
               <div className="textpopup">
-                <p>วันลาคงเหลือ</p>
+                <p>Days Leave Balance</p>
               </div>
               <div className="popup">
                 <div className="">
@@ -112,7 +112,7 @@ class LeaveList extends Component {
             </div>
             <div className="cover-popup">
               <div className="textpopup">
-                <p>วันลาที่ใช้ไป</p>
+                <p>Used Days Off</p>
               </div>
               <div className="popup">
                 <div className="picture">

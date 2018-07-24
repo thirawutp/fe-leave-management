@@ -1321,7 +1321,7 @@
     }
     
     .textpopup {
-      font-family: 'SukhumvitSet-Text';
+      font-family: 'SukhumvitSet-Bold';
       font-size: 16px;
     
     }
@@ -1696,8 +1696,22 @@ text-align: center;
     font-family: 'SukhumvitSet-Bold';
 }
 
-
 .CalendarOneDay{
   cursor: pointer;
 }
+
+.tknotis{
+  background-color: #3D3D3D;
+  height: 30px;
+  width: 30px;
+  color: #FFFFFF;
+  font-family: 'SukhumvitSet-Text';
+  font-size: 16px;
+  border-radius: 50%;
+  margin-top: 11px;
+  padding-top: 4px;
+  margin-right: 20px;
+
+}
+
 

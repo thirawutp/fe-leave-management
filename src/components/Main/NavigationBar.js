@@ -26,13 +26,11 @@ class NavigationBar extends Component {
                         <Link to='/History'>history</Link>
                     </li>
                     <li className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
-                        <Link to='/SearchStatic'>Statistic</Link>
+                        <Link to='/SearchStatic'>Stat</Link>
                     </li>
                     <li className={'navigationbar-item' + this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
-                        <div>
-
-
+                        <div className='tknotis'>
 
                             {
 
