@@ -1,6 +1,8 @@
 import React from 'react';
 import TimeField from 'react-simple-timefield';
 import { Component, Component, console } from "./TimeSelect";
+import TimeInput from 'react-input-time';
+
 export class TimeSelectStart extends React.Component {
     constructor(props) {
         super(props);
@@ -17,6 +19,10 @@ export class TimeSelectStart extends React.Component {
     render() {
 
         const { timeStart } = this.state;
-        return (<TimeField value={timeStart} onChange={this.onTimeChange} input={<input className='custom-input' />} />);
+        return (<TimeInput
+            className="input-time"
+            initialTime="00:00"
+            onChange={this.onTimeChange}
+        />);
     }
 }
