@@ -42,10 +42,10 @@ class SetApproveLeaveForm extends Component {
         const id = _.last(window.location.pathname.split('/'))
 
         if (window.confirm("แน่ใจว่าจะ Approve?")) {
-            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Approved&leaveId=${id}&approverId=00006`, {
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Approved&leaveId=${id}&approverId=I00006`, {
                 "status": 'Approved',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
-                "approverId": "00006",
+                "approverId": "I00006",
             }, {
                     onUploadProgress: ProgressEvent => {
                         if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
@@ -64,10 +64,10 @@ class SetApproveLeaveForm extends Component {
         if (window.confirm("แน่ใจว่าจะ Reject?")) {
             const id = _.last(window.location.pathname.split('/'))
             console.log(parseInt(this.state.personProfile.leaveId.substring(6)))
-            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Rejected&leaveId=${id}&approverId=00006`, {
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Rejected&leaveId=${id}&approverId=I00006`, {
                 "status": 'Rejected',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
-                "approverId": "00006",
+                "approverId": "I00006",
             }, {
                     onUploadProgress: ProgressEvent => {
                         if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {

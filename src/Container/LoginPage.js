@@ -31,7 +31,7 @@ class LoginPage extends Component {
         data = mockResponse
         this.props.handleLogin(data)
         //TODO login to server
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=00002') //searchHistory
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=I00002') //searchHistory
 
             .then(res => {
                 const data = res.data.map(p => {
@@ -60,7 +60,7 @@ class LoginPage extends Component {
 
             })
 
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/History/Leaves') //searchInTable
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchInTable
             .then(res => {
                 console.log('hahahahhahhha')
                 const data = res.data.map(p => {
@@ -90,12 +90,12 @@ class LoginPage extends Component {
             })
 
 
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=00002&year=2018")
+        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=2018")
             .then(res => {
                 this.props.addpudding(res.data)
             })
 
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
+        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
             .then(res => {
 
                 const data = res.data.map(p => {
@@ -114,7 +114,7 @@ class LoginPage extends Component {
 
 
 
-        axios.get('http://appmanleavemanagement.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
             .then(res => {
                 console.log('------', res.data)
                 const data = res.data.map(p => {

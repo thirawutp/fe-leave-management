@@ -177,6 +177,7 @@ class LeaveFormDetail extends Component {
                                             </div>
 
                                             }
+
                                         </div>
                                         {isOpen && (
                                             <Lightbox
@@ -214,8 +215,8 @@ class LeaveFormDetail extends Component {
                                         <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
                                         <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                     </div>
-
                                     }
+
                                 </div>}
 
                             </div>
