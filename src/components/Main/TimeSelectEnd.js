@@ -13,7 +13,7 @@ export class TimeSelectEnd extends React.Component {
     }
     onTimeChange(timeEnd) {
         const { id, onChange } = this.props
-        onChange(id, timeEnd)
+        onChange(id, timeEnd.value)
 
     }
     render() {

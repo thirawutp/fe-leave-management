@@ -324,7 +324,17 @@ class lwpRequestForm extends Component {
     }
 
     handleSubmit = async event => {
-        if (window.confirm("Confirm ?")) {
+        let alerttext1 = `Leave date at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nConfirm ?`
+        let alerttext2 = `Leave date start at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${this.state.leaveDateStop.replace('T', '')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\n Confirm ?`
+        let confirmText = ``
+        if (this.state.leaveDate == this.state.leaveDateStop) {
+            confirmText = alerttext1
+        }
+        else {
+            confirmText = alerttext2
+            console.log("log alert", this.state.leaveTimeStop)
+        }
+        if (window.confirm(confirmText)) {
             console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
                 console.log("do did na1")
