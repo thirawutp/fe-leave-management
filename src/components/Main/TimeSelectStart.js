@@ -13,7 +13,7 @@ export class TimeSelectStart extends React.Component {
     }
     onTimeChange(timeStart) {
         const { id, onChange } = this.props
-        onChange(id, timeStart)
+        onChange(id, timeStart.value)
 
     }
     render() {
