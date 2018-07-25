@@ -29,7 +29,7 @@ class TimeSelect extends React.Component {
         return (
             <TimeInput
                 className="input-time"
-                initialTime="00:00"
+                initialTime=""
                 onChange={this.onTimeChange}
             />
         );

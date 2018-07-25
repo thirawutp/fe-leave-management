@@ -208,9 +208,9 @@ class lwpRequestForm extends Component {
             type: "Leave without Pay", // get form props :type
             isOneday: true,
             leaveDate: undefined,
-            leaveTime: undefined,
+            leaveTime: '',
             leaveDateStop: undefined,
-            leaveTimeStop: undefined,
+            leaveTimeStop: '',
             leaveAmount: 0,
             leaveAmountStop: 0,
             len: 0,

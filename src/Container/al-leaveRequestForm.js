@@ -208,10 +208,9 @@ class alRequestForm extends Component {
             type: "Annual Leave", // get form props :type
             isOneday: true,
             leaveDate: undefined,
-            leaveTime: "Invalid date",
+            leaveTime: '',
             leaveDateStop: undefined,
-            leaveTimeStop: "Invalid date",
-
+            leaveTimeStop: '',
             leaveAmount: 0,
             leaveAmountStop: 0,
             len: 0,
