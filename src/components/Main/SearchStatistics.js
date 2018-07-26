@@ -61,13 +61,41 @@ class SearchStatistics extends Component {
                                         <div className="selecttype">
                                             <select onChange={this.handleSetValue} >
 
-                                                <option value="All">Please select</option>
-                                                <option value="Software Engineer (Front-end)">Frontend</option>
-                                                <option value="Software Engineer (Backend)">Backend</option>
-                                                <option value="Business Analyst">BA</option>
-                                                <option value="Designer">Designer</option>
-                                                <option value="Software Engineer (QA)">QA</option>
+                                                <option value="All">Show All</option>
+
+                                                <option value="App Dev.">App Dev.</option>
+                                                <option value="Architect">Architect</option>
+                                                <option value="BA">BA</option>
+                                                <option value="Consultant">Consultant</option>
+                                                <option value="Consultancy">Consultancy</option>
+                                                <option value="Co Founder">Co Founder</option>
+                                                <option value="DSN">DSN</option>
+                                                <option value="Front-end">Frontend</option>
+                                                <option value="HR">HR</option>
+                                                <option value="Manager">Manager</option>
                                                 <option value="Mobile">Mobile</option>
+                                                <option value="OC">OC</option>
+                                                <option value="PM">PM</option>
+                                                <option value="PMO">PMO</option>
+                                                <option value="QA">QA</option>
+                                                <option value="Support">Support</option>
+                                                <option value="TL">TL</option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             </select>
                                         </div>
                                     </div>
@@ -109,7 +137,7 @@ class SearchStatistics extends Component {
                                         if (this.state.Save === 'All') {
                                             return true
                                         }
-                                        return people.position === this.state.Save
+                                        return people.department === this.state.Save
                                     }).map((people) =>
                                         <div className="row PPData">
                                             <div className="col-md-1 tkuserpicture">
