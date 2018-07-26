@@ -69,7 +69,7 @@ const OnedayForm = props => {
             <div className="select-onedate">
                 <React.Fragment>
                     <div className="CalendarOneDay">
-                        <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                        <Calendar2 value={value.leaveDate} onChange={onChange}  id={'leaveDate'} id2={'leaveDateStop'} />
                     </div>
                     <div className="timeselect-oneday">
                         <div className="text-time">
@@ -363,7 +363,7 @@ class alRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.");
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
 
                             }
 
@@ -404,7 +404,7 @@ class alRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
 
                         }
@@ -446,7 +446,7 @@ class alRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
 
                         }
@@ -483,7 +483,7 @@ class alRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
                         }
                     })

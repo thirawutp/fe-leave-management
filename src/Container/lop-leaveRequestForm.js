@@ -365,7 +365,7 @@ class lwpRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.");
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
                         }
                     })
@@ -404,7 +404,7 @@ class lwpRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
 
                         }
@@ -446,7 +446,7 @@ class lwpRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
 
                         }
@@ -482,7 +482,7 @@ class lwpRequestForm extends Component {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
-                                browserHistory.push('/home')
+                                browserHistory.push('/Leave')
                             }
                         }
                     })
