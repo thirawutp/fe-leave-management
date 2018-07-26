@@ -23,6 +23,7 @@ class StartDate extends React.Component {
         return (
             <div>
                 <DatePicker
+                    className="input-date"
                     selected={this.state.startDate}
                     onChange={this.handleChange}
                     showDisabledMonthNavigation

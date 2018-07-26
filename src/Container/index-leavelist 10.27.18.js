@@ -10,6 +10,12 @@ import moment from 'moment';
 
 
 class LeaveList extends Component {
+  activeClassName(pathname) {
+    if (this.props.location.pathname === pathname) {
+        return ' buttonchange'
+    }
+    return ''
+}
   constructor(props) {
     super(props)
     const { leaveData = {} } = this.props
@@ -77,7 +83,7 @@ class LeaveList extends Component {
                 </div>
 
               </div>
-              <div className="text-annualleave">
+              <div className={"text-annualleave" + this.activeClassName('/Leave')}>
                 {!this.state.timelock && <Link to='/form/AnnualLeave'><button className="button">Annual Leave</button></Link>}
               </div>
             </div>
@@ -106,7 +112,7 @@ class LeaveList extends Component {
                 </div>
               </div>
 
-              <div className="text-sickleave">
+              <div className={"text-sickleave" + this.activeClassName('/Leave')}>
                 {!this.state.timelock && <Link to='/form/SickLeave'><button className="button">Sick Leave</button></Link>}
               </div>
             </div>
@@ -131,7 +137,7 @@ class LeaveList extends Component {
                 </div>
               </div>
 
-              <div className="text-sickleave">
+              <div className={"text-sickleave" + this.activeClassName('/Leave')}>
                 {!this.state.timelock && <Link to='/form/LwpLeave'><button className="button">Leave with out pay</button></Link>}
               </div>
             </div>

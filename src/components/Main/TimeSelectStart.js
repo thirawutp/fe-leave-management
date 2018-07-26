@@ -21,7 +21,7 @@ export class TimeSelectStart extends React.Component {
         const { timeStart } = this.state;
         return (<TimeInput
             className="input-time"
-            placeholder="HH:MM"
+            placeholder="     HH:MM"
             initialTime=""
             onChange={this.onTimeChange}
         />);

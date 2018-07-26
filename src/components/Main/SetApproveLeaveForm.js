@@ -148,7 +148,7 @@ class SetApproveLeaveForm extends Component {
                                 <div className="namename">
                                     <th><b>Name : </b></th>
                                 </div>
-                                <div className="">
+                                <div className="namename1">
                                     <td>{this.state.personal.firstName}</td>
                                 </div>
                             </div>
