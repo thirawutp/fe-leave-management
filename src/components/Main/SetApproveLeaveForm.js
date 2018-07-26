@@ -116,6 +116,13 @@ class SetApproveLeaveForm extends Component {
         return true
     }
 
+    handleCheckSet = (status) => {
+        if (status === "Pending") {
+            return true
+        }
+        return false
+    }
+
 
 
     componentDidMount() {
@@ -131,8 +138,8 @@ class SetApproveLeaveForm extends Component {
         return (
             <div>
                 <div className='backbutton'>
-            <Link to='/Approve'><button className="back-button"><img src={leftarrow} />Back</button></Link>
-          </div>
+                    <Link to='/Approve'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+                </div>
                 <div className="Dory">
 
                     <div>
@@ -186,138 +193,138 @@ class SetApproveLeaveForm extends Component {
 
 
                     <div className='tktktkgun'>
-                    <div className="row rabbit">
-                        <div className="leaveidtk">
-                            <p><b>Leave ID : </b></p>
+                        <div className="row rabbit">
+                            <div className="leaveidtk">
+                                <p><b>Leave ID : </b></p>
+                            </div>
+                            <div className="leaveidtk1">
+                                <p>{this.state.personProfile.leaveId}</p>
+                            </div>
+                            <div className="leaveidtk2">
+                                <p><b>Leave Type : </b></p>
+                            </div>
+                            <div className="leaveidtk3">
+                                <p>{this.state.personProfile.type}</p>
+                            </div>
+                            <div className="leaveidtk4">
+                                <p><b>Day Requested : </b></p>
+                            </div>
+                            <div className="leaveidtk5">
+                                <p>
+                                    {moment(this.state.personProfile.requestedDateTime).format('DD-MM-YYYY')}</p>
+                            </div>
                         </div>
-                        <div className="leaveidtk1">
-                            <p>{this.state.personProfile.leaveId}</p>
-                        </div>
-                        <div className="leaveidtk2">
-                            <p><b>Leave Type : </b></p>
-                        </div>
-                        <div className="leaveidtk3">
-                            <p>{this.state.personProfile.type}</p>
-                        </div>
-                        <div className="leaveidtk4">
-                            <p><b>Day Requested : </b></p>
-                        </div>
-                        <div className="leaveidtk5">
-                            <p>
-                                {moment(this.state.personProfile.requestedDateTime).format('DD-MM-YYYY')}</p>
-                        </div>
-                    </div>
 
 
 
-                    {!this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div> <div className="row">
+                        {!this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div> <div className="row">
 
-                        <div className="leavedidtk6"><p><b>Day Start : </b></p></div>
-                        <div className="leavedidtk7"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
-                        <div className="leavedidtk8"><p><b>Time : </b></p></div>
-                        <div className="leavedidtk9"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
-                        <div className="leavedidtk10"><p><b>Time : </b></p></div>
-                        <div className="leavedidtk11"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div>
-                    </div>
+                            <div className="leavedidtk6"><p><b>Day Start : </b></p></div>
+                            <div className="leavedidtk7"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="leavedidtk8"><p><b>Time : </b></p></div>
+                            <div className="leavedidtk9"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
+                            <div className="leavedidtk10"><p><b>Time : </b></p></div>
+                            <div className="leavedidtk11"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div>
+                        </div>
+                            <div className="row">
+                                <div className="leavedidtk12"><p><b>Day End : </b></p></div>
+                                <div className="leavedidtk13"><p>{moment(this.state.personProfile.endDateTime).format('DD-MM-YYYY')}</p></div>
+                                <div className="leavedidtk14"><p><b>Time : </b></p></div>
+                                <div className="leavedidtk15"><p>{moment(this.state.personProfile.endDateTime).format('HH:mm')}</p></div>
+                                <div className="leavedidtk16"><p><b>Time : </b></p></div>
+                                <div className="leavedidtk17"><p>{this.state.personProfile.hoursEndDate} Hrs.</p></div></div>
+
+
+                        </div>}
+                        {this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div className="row">
+                            <div className="leavedidtk18"><p><b>Date : </b></p></div>
+                            <div className="leavedidtk19"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="leavedidtk20"><p><b>Time : </b></p></div>
+                            <div className="leavedidtk21"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
+                            <div className="leavedidtk22"><p><b>Time : </b></p></div>
+                            <div className="leavedidtk23"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div></div>}
                         <div className="row">
-                            <div className="leavedidtk12"><p><b>Day End : </b></p></div>
-                            <div className="leavedidtk13"><p>{moment(this.state.personProfile.endDateTime).format('DD-MM-YYYY')}</p></div>
-                            <div className="leavedidtk14"><p><b>Time : </b></p></div>
-                            <div className="leavedidtk15"><p>{moment(this.state.personProfile.endDateTime).format('HH:mm')}</p></div>
-                            <div className="leavedidtk16"><p><b>Time : </b></p></div>
-                            <div className="leavedidtk17"><p>{this.state.personProfile.hoursEndDate} Hrs.</p></div></div>
-
-
-                    </div>}
-                    {this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div className="row">
-                        <div className="leavedidtk18"><p><b>Date : </b></p></div>
-                        <div className="leavedidtk19"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
-                        <div className="leavedidtk20"><p><b>Time : </b></p></div>
-                        <div className="leavedidtk21"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
-                        <div className="leavedidtk22"><p><b>Time : </b></p></div>
-                        <div className="leavedidtk23"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div></div>}
-                    <div className="row">
-                        <div className="notetk">
-                            <p><b>Note/comments : </b></p>
+                            <div className="notetk">
+                                <p><b>Note/comments : </b></p>
+                            </div>
+                            <div className="notetk1">
+                                <p>{this.state.personProfile.comment}</p>
+                            </div>
                         </div>
-                        <div className="notetk1">
-                            <p>{this.state.personProfile.comment}</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="notetk2">
-                            <p><b>File : </b></p>
-                        </div>
+                        <div className="row">
+                            <div className="notetk2">
+                                <p><b>File : </b></p>
+                            </div>
 
-                        <div className="tkpicture">
-                            {this.handleShow(this.state.roles) &&
-                                <div className="tklink">
-                                    {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
-                                    <div className="mickeymouse">
-                                        {this.handleImg(this.state.personProfile.attachedFile1) && <div>
-                                            <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
-                                            <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                            <div className="tkpicture">
+                                {this.handleShow(this.state.roles) &&
+                                    <div className="tklink">
+                                        {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
+                                        <div className="mickeymouse">
+                                            {this.handleImg(this.state.personProfile.attachedFile1) && <div>
+                                                <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                                <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                            </div>
+
+                                            }
+                                            {this.handleImg(this.state.personProfile.attachedFile2) && <div>
+                                                <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
+                                                <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                            </div>
+
+                                            }
+                                            {this.handleImg(this.state.personProfile.attachedFile3) && <div>
+                                                <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
+                                                <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                            </div>
+
+                                            }
                                         </div>
-
-                                        }
-                                        {this.handleImg(this.state.personProfile.attachedFile2) && <div>
-                                            <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
-                                            <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                        </div>
-
-                                        }
-                                        {this.handleImg(this.state.personProfile.attachedFile3) && <div>
-                                            <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
-                                            <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                        </div>
-
-                                        }
+                                        {isOpen && (
+                                            <Lightbox
+                                                mainSrc={images[photoIndex]}
+                                                nextSrc={images[(photoIndex + 1) % images.length]}
+                                                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                                onCloseRequest={() => this.setState({ isOpen: false })}
+                                                onMovePrevRequest={() =>
+                                                    this.setState({
+                                                        photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                    })
+                                                }
+                                                onMoveNextRequest={() =>
+                                                    this.setState({
+                                                        photoIndex: (photoIndex + 1) % images.length,
+                                                    })
+                                                }
+                                            />
+                                        )}
+                                    </div>}
+                                {!this.handleShow(this.state.roles) && <div className="col-md-11">
+                                    {this.handleImg(this.state.personProfile.attachedFile1) && <div>
+                                        <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                        <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                     </div>
-                                    {isOpen && (
-                                        <Lightbox
-                                            mainSrc={images[photoIndex]}
-                                            nextSrc={images[(photoIndex + 1) % images.length]}
-                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                                            onCloseRequest={() => this.setState({ isOpen: false })}
-                                            onMovePrevRequest={() =>
-                                                this.setState({
-                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
-                                                })
-                                            }
-                                            onMoveNextRequest={() =>
-                                                this.setState({
-                                                    photoIndex: (photoIndex + 1) % images.length,
-                                                })
-                                            }
-                                        />
-                                    )}
+
+                                    }
+                                    {this.handleImg(this.state.personProfile.attachedFile2) && <div>
+                                        <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
+                                        <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                    </div>
+
+                                    }
+                                    {this.handleImg(this.state.personProfile.attachedFile3) && <div>
+                                        <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
+                                        <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                    </div>
+
+                                    }
                                 </div>}
-                            {!this.handleShow(this.state.roles) && <div className="col-md-11">
-                                {this.handleImg(this.state.personProfile.attachedFile1) && <div>
-                                    <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
-                                    <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                </div>
 
-                                }
-                                {this.handleImg(this.state.personProfile.attachedFile2) && <div>
-                                    <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
-                                    <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                </div>
-
-                                }
-                                {this.handleImg(this.state.personProfile.attachedFile3) && <div>
-                                    <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
-                                    <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                </div>
-
-                                }
-                            </div>}
-
+                            </div>
                         </div>
                     </div>
-                    </div>
 
-                    <div className="row qqq">
+                    {this.handleCheckSet(this.state.personProfile.approvalStatus) && <div className="row qqq">
                         <div className="buttonapprove">
                             <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
                         </div>
@@ -326,7 +333,7 @@ class SetApproveLeaveForm extends Component {
                         </div>
 
 
-                    </div>
+                    </div>}
 
 
 
