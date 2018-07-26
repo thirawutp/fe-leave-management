@@ -29,6 +29,7 @@ class EndDate extends React.Component {
 
     render() {
         return <DatePicker
+            className="input-date"
             selected={this.state.startDate}
             onChange={this.handleChange}
             showDisabledMonthNavigation

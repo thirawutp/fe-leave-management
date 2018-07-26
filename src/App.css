@@ -149,7 +149,7 @@
       font-size: 36px;
       color: #F3F0E2;
       font-family: 'SukhumvitSet-Bold';
-      display: inline;
+      display: inline-flex;
       width: 450px;
     
     }
@@ -363,7 +363,10 @@
     .option-time {
       height: 26px;
       margin-left: 15px;
-      background-color: #FFFFFF
+      background-color: #FFFFFF;
+      border: 1px solid #D8D8D8;
+      border-radius: 5px;
+      font-family: 'SukhumvitSet-Text';
     }
     .dropdown-custom {
       margin-left: 13px;
@@ -394,6 +397,8 @@
       width: 480px;
       height: 106px;
       background-color: #FFFFFF;
+      border: 1px solid #D8D8D8;
+      border-radius: 5px;
     }
     
     .text-area {
@@ -1596,8 +1601,8 @@ width: 400px;
 }
 
 .lastnamelastname {
-width: 250px;
-padding-left: 150px;
+width: 150px;
+padding-left: 25px;
 }
 
 .staffid1 {
@@ -1908,4 +1913,14 @@ text-align: center;
 .input-time{
   border: 1px solid #D8D8D8;
   border-radius: 5px;
+  margin-left: 31px;
+}
+
+.input-date{
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+}
+
+.namename1{
+  width: 150px;
 }

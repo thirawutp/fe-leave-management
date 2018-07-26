@@ -22,7 +22,7 @@ export class TimeSelectEnd extends React.Component {
         return (
             <TimeInput
                 className="input-time"
-                placeholder="HH:MM"
+                placeholder="     HH:MM"
                 initialTime=""
                 onChange={this.onTimeChange}
             />
