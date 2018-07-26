@@ -141,8 +141,8 @@
     
     }
 
-    .mickeymouse img{
-    
+    .mickeymouse p{
+    margin-right: 30px;
     }
     
     .username  p {
@@ -1129,8 +1129,8 @@
     
     .leave-form {
       margin: 23px auto;
-      padding-top: 60px;
       padding-left: 0px;
+      padding-top: 0px;
     
     }
     
@@ -1601,8 +1601,7 @@ width: 400px;
 }
 
 .lastnamelastname {
-width: 150px;
-padding-left: 25px;
+width: 100px;
 }
 
 .staffid1 {
@@ -1611,16 +1610,24 @@ padding-left: 15px;
 margin-bottom: 19px;
 }
 
+.staffid2 {
+  width: 150px;
+  margin-bottom: 19px;
+  }
+
 .section1 {
-width: 219px;
-padding-left: 119px;
+width: 100px;
 }
 
+.section2 {
+width: 150px;
+}
 .position1 {
-width: 245px;
-padding-left: 145px;
+width: 100px;
 }
-
+.position2 {
+  width: 250px;
+  }
 .dateused th{
 font-family: 'Sukhumvitset-Bold';
 font-size: 18px;
@@ -1851,6 +1858,8 @@ text-align: center;
 .notetk1{
   font-size: 16px;
   font-family: 'SukhumvitSet-Text';
+  width: 500px;
+  height: 80px;
 }
 
 .notetk2{

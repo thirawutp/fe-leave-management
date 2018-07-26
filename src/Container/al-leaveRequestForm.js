@@ -13,7 +13,8 @@ import '../App.css';
 import { connect } from 'react-redux';
 import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
-
+import { Link } from 'react-router';
+import leftarrow from '../../src/asset/images/left-arrow.png';
 
 const FormHeader = props => {
     return (
@@ -532,6 +533,10 @@ class alRequestForm extends Component {
     render() {
         console.log('state', this.state.selectedFile)
         return (
+            <div>
+                <div className='backbutton'>
+                    <Link to='/Leave'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+                </div>
             <div className="leave-form">
                 <div className="cover-popup-al">
                     <div className="textpopup">
@@ -588,7 +593,7 @@ class alRequestForm extends Component {
                         File :
                     </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpg" required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
@@ -598,6 +603,7 @@ class alRequestForm extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         );
     }
