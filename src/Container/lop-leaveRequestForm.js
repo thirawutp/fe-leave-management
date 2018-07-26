@@ -582,7 +582,7 @@ class lwpRequestForm extends Component {
                         File :
           </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} size="60MB" required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept=".jpg" required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
