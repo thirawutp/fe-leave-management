@@ -7,7 +7,11 @@ import { connect } from 'react-redux'
 import { addApprove, addStatistics } from '../../action'
 import LightboxExample from '../Main/LightboxExample '
 import Lightbox from 'react-image-lightbox';
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
+import { Link } from 'react-router';
+import leftarrow from '../../asset/images/left-arrow.png';
+
+
 class SetApproveLeaveForm extends Component {
     constructor(props) {
         super(props);
@@ -111,15 +115,7 @@ class SetApproveLeaveForm extends Component {
         }
         return true
     }
-    handleCheckSet = (status) => {
 
-        if (status === "Pending") {
-
-            return true
-            console.log('6666666666')
-        }
-        return false
-    }
 
 
     componentDidMount() {
@@ -134,6 +130,9 @@ class SetApproveLeaveForm extends Component {
 
         return (
             <div>
+                <div className='backbutton'>
+            <Link to='/Approve'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+          </div>
                 <div className="Dory">
 
                     <div>
@@ -149,7 +148,7 @@ class SetApproveLeaveForm extends Component {
                                 <div className="namename">
                                     <th><b>Name : </b></th>
                                 </div>
-                                <div className="">
+                                <div className="namename1">
                                     <td>{this.state.personal.firstName}</td>
                                 </div>
                             </div>
@@ -186,7 +185,7 @@ class SetApproveLeaveForm extends Component {
                     </div>
 
 
-
+                    <div className='tktktkgun'>
                     <div className="row rabbit">
                         <div className="leaveidtk">
                             <p><b>Leave ID : </b></p>
@@ -213,40 +212,40 @@ class SetApproveLeaveForm extends Component {
 
                     {!this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div> <div className="row">
 
-                        <div className="col-md-2"><p><b>Day Start : </b></p></div>
-                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
-                        <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
-                        <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div>
+                        <div className="leavedidtk6"><p><b>Day Start : </b></p></div>
+                        <div className="leavedidtk7"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
+                        <div className="leavedidtk8"><p><b>Time : </b></p></div>
+                        <div className="leavedidtk9"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
+                        <div className="leavedidtk10"><p><b>Time : </b></p></div>
+                        <div className="leavedidtk11"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div>
                     </div>
                         <div className="row">
-                            <div className="col-md-2"><p><b>Day End : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.state.personProfile.endDateTime).format('DD-MM-YYYY')}</p></div>
-                            <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.state.personProfile.endDateTime).format('HH:mm')}</p></div>
-                            <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.state.personProfile.hoursEndDate} Hrs.</p></div></div>
+                            <div className="leavedidtk12"><p><b>Day End : </b></p></div>
+                            <div className="leavedidtk13"><p>{moment(this.state.personProfile.endDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="leavedidtk14"><p><b>Time : </b></p></div>
+                            <div className="leavedidtk15"><p>{moment(this.state.personProfile.endDateTime).format('HH:mm')}</p></div>
+                            <div className="leavedidtk16"><p><b>Time : </b></p></div>
+                            <div className="leavedidtk17"><p>{this.state.personProfile.hoursEndDate} Hrs.</p></div></div>
 
 
                     </div>}
                     {this.getDayType(this.state.personProfile.startDateTime, this.state.personProfile.endDateTime) && <div className="row">
-                        <div className="col-md-2"><p><b>Date : </b></p></div>
-                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
-                        <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
-                        <div className="col-md-2"><p><b>Time : </b></p></div>
-                        <div className="col-md-2"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div></div>}
+                        <div className="leavedidtk18"><p><b>Date : </b></p></div>
+                        <div className="leavedidtk19"><p>{moment(this.state.personProfile.startDateTime).format('DD-MM-YYYY')}</p></div>
+                        <div className="leavedidtk20"><p><b>Time : </b></p></div>
+                        <div className="leavedidtk21"><p>{moment(this.state.personProfile.startDateTime).format('HH:mm')}</p></div>
+                        <div className="leavedidtk22"><p><b>Time : </b></p></div>
+                        <div className="leavedidtk23"><p>{this.state.personProfile.hoursStartDate} Hrs.</p></div></div>}
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="notetk">
                             <p><b>Note/comments : </b></p>
                         </div>
-                        <div className="col-md-9">
+                        <div className="notetk1">
                             <p>{this.state.personProfile.comment}</p>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-1">
+                        <div className="notetk2">
                             <p><b>File : </b></p>
                         </div>
 
@@ -316,18 +315,18 @@ class SetApproveLeaveForm extends Component {
 
                         </div>
                     </div>
+                    </div>
 
-
-                    {this.handleCheckSet(this.state.personProfile.approvalStatus) && <div className="row qqq">
-                        <div className="col-md-4 ">
+                    <div className="row qqq">
+                        <div className="buttonapprove">
                             <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
                         </div>
-                        <div className="col-md-4">
+                        <div className="buttonreject">
                             <button value="Reject" onClick={this.handleSetFalse}>Reject</button>
                         </div>
 
 
-                    </div>}
+                    </div>
 
 
 
