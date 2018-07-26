@@ -1904,3 +1904,8 @@ text-align: center;
 .tktktkgun{
   padding-left: 185px;
 }
+
+.input-time{
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+}

@@ -29,6 +29,7 @@ class TimeSelect extends React.Component {
         return (
             <TimeInput
                 className="input-time"
+                placeholder="HH:MM"
                 initialTime=""
                 onChange={this.onTimeChange}
             />
