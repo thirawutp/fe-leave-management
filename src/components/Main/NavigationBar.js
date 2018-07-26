@@ -19,16 +19,16 @@ class NavigationBar extends Component {
         return (
             <div>
                 <ul className='navigationbar-list '>
-                    <li className={'navigationbar-item ' + this.activeClassName('/Leave')}>
+                    <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')}>
                         <Link to='/Leave'>leave</Link>
                     </li>
-                    <li className={'navigationbar-item' + this.activeClassName('/History')}>
+                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')}>
                         <Link to='/History'>history</Link>
                     </li>
-                    <li className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
+                    <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
                         <Link to='/SearchStatic'>Stat</Link>
                     </li>
-                    <li className={'navigationbar-item' + this.activeClassName('/Approve')}>
+                    <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
                         <div className='tknotis'>
 
