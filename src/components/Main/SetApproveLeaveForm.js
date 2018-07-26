@@ -111,7 +111,15 @@ class SetApproveLeaveForm extends Component {
         }
         return true
     }
+    handleCheckSet = (status) => {
 
+        if (status === "Pending") {
+
+            return true
+            console.log('6666666666')
+        }
+        return false
+    }
 
 
     componentDidMount() {
@@ -310,7 +318,7 @@ class SetApproveLeaveForm extends Component {
                     </div>
 
 
-                    <div className="row qqq">
+                    {this.handleCheckSet(this.state.personProfile.approvalStatus) && <div className="row qqq">
                         <div className="col-md-4 ">
                             <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
                         </div>
@@ -319,7 +327,7 @@ class SetApproveLeaveForm extends Component {
                         </div>
 
 
-                    </div>
+                    </div>}
 
 
 

@@ -63,11 +63,10 @@ class SearchStatistics extends Component {
 
                                                 <option value="All">Show All</option>
 
-                                                <option value="App Dev.">App Dev.</option>
+
                                                 <option value="Architect">Architect</option>
                                                 <option value="BA">BA</option>
-                                                <option value="Consultant">Consultant</option>
-                                                <option value="Consultancy">Consultancy</option>
+                                                <option value="Back-end">Backend</option>
                                                 <option value="Co Founder">Co Founder</option>
                                                 <option value="DSN">DSN</option>
                                                 <option value="Front-end">Frontend</option>
@@ -78,7 +77,7 @@ class SearchStatistics extends Component {
                                                 <option value="PM">PM</option>
                                                 <option value="PMO">PMO</option>
                                                 <option value="QA">QA</option>
-                                                <option value="Support">Support</option>
+
                                                 <option value="TL">TL</option>
 
 
