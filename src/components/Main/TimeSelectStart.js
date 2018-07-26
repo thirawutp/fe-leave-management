@@ -13,7 +13,7 @@ export class TimeSelectStart extends React.Component {
     }
     onTimeChange(timeStart) {
         const { id, onChange } = this.props
-        onChange(id, timeStart)
+        onChange(id, timeStart.value)
 
     }
     render() {
@@ -21,7 +21,8 @@ export class TimeSelectStart extends React.Component {
         const { timeStart } = this.state;
         return (<TimeInput
             className="input-time"
-            initialTime="00:00"
+            placeholder="HH:MM"
+            initialTime=""
             onChange={this.onTimeChange}
         />);
     }

@@ -13,7 +13,7 @@ export class TimeSelectEnd extends React.Component {
     }
     onTimeChange(timeEnd) {
         const { id, onChange } = this.props
-        onChange(id, timeEnd)
+        onChange(id, timeEnd.value)
 
     }
     render() {
@@ -22,7 +22,8 @@ export class TimeSelectEnd extends React.Component {
         return (
             <TimeInput
                 className="input-time"
-                initialTime="00:00"
+                placeholder="HH:MM"
+                initialTime=""
                 onChange={this.onTimeChange}
             />
         );

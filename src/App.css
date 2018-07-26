@@ -135,8 +135,13 @@
     }
     
     .tklink {
-      width: 500px;
+      width: 700px;
       display: block;
+      margin: auto;
+    
+    }
+
+    .mickeymouse img{
     
     }
     
@@ -426,8 +431,11 @@
       color: white;
       font-weight: bold;
       font-family: 'Sukhumvitset-Text';
-      
-    
+    }
+
+    .submit-button:hover {
+      box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+      cursor: pointer;
     }
     
     .custom-button:hover {
@@ -904,6 +912,11 @@
       background-color: #FFFFFF;
     }
     
+    .back-button:hover {
+      box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+      cursor: pointer;
+    }
+
     .back-button img{
       width: 10px;
       height: 15px;
@@ -949,7 +962,7 @@
     .bird{
       font-size: 18px;
       font-family: 'Sukhumvitset-Text';
-      padding-left: 30px;
+      padding-left: 215px;
       border-bottom: 1px solid #D8D8D8;
       margin: 19px 0px;
     
@@ -1024,7 +1037,6 @@
     
     .tkstatistic {
       width: 100%;
-      margin: auto;
     
     }
     
@@ -1344,7 +1356,7 @@
     .PPData {
       padding: 20px;
       background-color: white;
-      width: 1000px;
+      width: 1100px;
       height: 80px;
       font-size : 16px;
       border-bottom: 1px solid #D8D8D8;
@@ -1364,7 +1376,7 @@
       border-style: solid;
       border-color:#C84342;
       background-color: #C84342;
-      width: 1000px;
+      width: 1100px;
       height: 33px;
       border-width: 2px;
       color : white;
@@ -1499,8 +1511,12 @@
       text-align: center;
     }
     
+    .tkposec {
+      width: 300px;
+    }
+
     .tkposec td{
-      width: 200px;
+      width: 300px;
     }
     
     .tkusername td{
@@ -1563,14 +1579,15 @@
 
     .approvetopic {
         padding-top: 29px;
-        
 
     }
 
 .approvetopic p{
 font-size: 20px;
 font-family: 'SukhumvitSet-Bold';
-padding-left: 15px;
+padding-left: 200px;
+width: 400px;
+
 }
 
 .namename {
@@ -1714,4 +1731,181 @@ text-align: center;
 
 }
 
+.leavedidtk6 {
+  width: 85px;
+  margin-left: 44px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
 
+.leaveidtk7{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk8 {
+  width: 70px;
+  margin-left: 50px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk9{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk10 {
+  width: 70px;
+  margin-left: 50px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk11{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk12{
+  width: 85px;
+  margin-left: 44px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.leaveidtk13{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk14{
+  width: 70px;
+  margin-left: 50px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk15{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk16{
+  width: 70px;
+  margin-left: 50px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk17{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk18{
+  width: 85px;
+  margin-left: 44px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk19{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk20{
+  width: 80px;
+  margin-left: 50px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.leaveidtk21{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.leavedidtk22{
+  width: 80px;
+  margin-left: 70px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+}
+
+.notetk{
+  width: 130px;
+  margin-left: 44px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.notetk1{
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Text';
+}
+
+.notetk2{
+  width: 130px;
+  margin-left: 44px;
+  font-size: 16px;
+  font-family: 'SukhumvitSet-Bold';
+
+}
+
+.buttonapprove{
+  padding-left: 343px;
+  padding-top: 52px;
+  
+}
+
+.buttonapprove button{
+  color: #FFFFFF;
+  background-color: #219653;
+  border: none;
+  width: 106px;
+  height: 35px;
+  font-family: 'SukhumvitSet-Text';
+  line-height: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttonreject{
+  padding-left: 39px;
+  padding-top: 52px;
+  
+}
+
+.buttonreject button{
+  color: #FFFFFF;
+  background-color: #C84342;
+  border: none;
+  width: 106px;
+  height: 35px;
+  font-family: 'SukhumvitSet-Text';
+  line-height: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttonapprove button:hover{
+  box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+
+}
+
+.buttonreject button:hover{
+  box-shadow: 0 6px 17px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+}
+
+.tktktkgun{
+  padding-left: 185px;
+}
+
+.input-time{
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+}

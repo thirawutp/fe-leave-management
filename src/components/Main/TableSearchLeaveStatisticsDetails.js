@@ -62,7 +62,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
       <div>
         <div className='nbbutton'>
           <div className='backbutton'>
-            <Link to='/TableLeaveStatisticsDeatils'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+            <Link to='/SearchStatic'><button className="back-button"><img src={leftarrow} />Back</button></Link>
           </div>
           <div className="row rowback">
 

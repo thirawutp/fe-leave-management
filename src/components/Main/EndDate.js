@@ -31,7 +31,6 @@ class EndDate extends React.Component {
         return <DatePicker
             selected={this.state.startDate}
             onChange={this.handleChange}
-            minDate={moment()}
             showDisabledMonthNavigation
             dateFormat="DD/MM/YY"
             placeholderText="DD/MM/YY"
