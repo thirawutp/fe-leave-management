@@ -83,8 +83,8 @@ const OnedayForm = props => {
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
                                 <option value={0}>select hour</option>
                                 <option value={2}>2 hour</option>
-                                <option value={4} >4 hour</option>
-                                <option value={6} >6 hour</option>
+                                <option value={4}>4 hour</option>
+                                <option value={6}>6 hour</option>
                                 <option value={8}>8 hour</option>
                             </select>
 
@@ -172,7 +172,7 @@ const NoteQuestion = props => {
                 </div>
                 <div className="text-area">
 
-                    <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
+                    <textarea className="textarea" maxLength="255" type="text" onChange={(event) => onChange('note', event.target.value, event.target.value.length)} />
                 </div>
 
             </div>
@@ -208,10 +208,9 @@ class alRequestForm extends Component {
             type: "Annual Leave", // get form props :type
             isOneday: true,
             leaveDate: undefined,
-            leaveTime: "Invalid date",
+            leaveTime: '',
             leaveDateStop: undefined,
-            leaveTimeStop: "Invalid date",
-
+            leaveTimeStop: '',
             leaveAmount: 0,
             leaveAmountStop: 0,
             len: 0,
@@ -251,9 +250,7 @@ class alRequestForm extends Component {
     handleChangeOnedayForm = (id, value, id2) => {
 
         this.setState({ [id]: value })
-        this.setState({
-            [id2]: value
-        }, this.CalHours1day)
+        this.setState({ [id2]: value }, this.CalHours1day)
         console.log(id, value)
     }
 
@@ -326,7 +323,17 @@ class alRequestForm extends Component {
 
     }
     handleSubmit = async event => {
-        if (window.confirm("Confirm ?")) {
+        let alerttext1 = `Leave date at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nConfirm ?`
+        let alerttext2 = `Leave date start at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${this.state.leaveDateStop.replace('T', '')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\n Confirm ?`
+        let confirmText = ``
+        if (this.state.leaveDate == this.state.leaveDateStop) {
+            confirmText = alerttext1
+        }
+        else {
+            confirmText = alerttext2
+            console.log("log alert", this.state.leaveTimeStop)
+        }
+        if (window.confirm(confirmText)) {
             if (this.state.selectedFile.length == 1) {
                 console.log("do 1 picture", this.state.leaveDate + this.state.leaveTime + ":00", this.state.leaveDateStop + this.state.leaveTimeStop + ":00")
                 let attachFileBase64 = ''
@@ -335,8 +342,8 @@ class alRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Annual Leave",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
@@ -376,8 +383,8 @@ class alRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Annual Leave",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
@@ -418,8 +425,8 @@ class alRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Annual Leave",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
@@ -449,16 +456,16 @@ class alRequestForm extends Component {
                     })
             }
             else {
-                console.log("do NO PICTURE na", this.state.leaveDate + this.state.leaveTime + ":00", this.state.leaveDateStop + this.state.leaveTimeStop + ":00")
+                console.log("do NO PICTURE na", this.state.leaveAmount, this.state.leaveAmountStop)
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
-                    "approvalStatus": "Pending",
+                    "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
@@ -468,9 +475,10 @@ class alRequestForm extends Component {
                     "attachedFileName2": "No Image.",
                     "attachedFile3": "",
                     "attachedFileName3": "No Image.",
-                    "requestedDateTime": moment().format().toString(),
+                    "requestedDateTime": "2018-07-24T11:15:18.558Z",
                     "isExisting": true,
                     "commentByAdmin": "string"
+
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {

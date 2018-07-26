@@ -208,9 +208,9 @@ class lwpRequestForm extends Component {
             type: "Leave without Pay", // get form props :type
             isOneday: true,
             leaveDate: undefined,
-            leaveTime: undefined,
+            leaveTime: '',
             leaveDateStop: undefined,
-            leaveTimeStop: undefined,
+            leaveTimeStop: '',
             leaveAmount: 0,
             leaveAmountStop: 0,
             len: 0,
@@ -324,7 +324,17 @@ class lwpRequestForm extends Component {
     }
 
     handleSubmit = async event => {
-        if (window.confirm("Confirm ?")) {
+        let alerttext1 = `Leave date at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nConfirm ?`
+        let alerttext2 = `Leave date start at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${this.state.leaveDateStop.replace('T', '')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\n Confirm ?`
+        let confirmText = ``
+        if (this.state.leaveDate == this.state.leaveDateStop) {
+            confirmText = alerttext1
+        }
+        else {
+            confirmText = alerttext2
+            console.log("log alert", this.state.leaveTimeStop)
+        }
+        if (window.confirm(confirmText)) {
             console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
                 console.log("do did na1")
@@ -334,8 +344,8 @@ class lwpRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Leave without Pay",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
@@ -373,8 +383,8 @@ class lwpRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Leave without Pay",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
@@ -415,8 +425,8 @@ class lwpRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Leave without Pay",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
@@ -451,8 +461,8 @@ class lwpRequestForm extends Component {
                     "leaveId": 0,
                     "type": "Leave without Pay",
                     "staffId": "I00002",
-                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00" + ".558Z",
-                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00" + ".558Z",
+                    "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
+                    "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
                     "approvalStatus": "Pending",
