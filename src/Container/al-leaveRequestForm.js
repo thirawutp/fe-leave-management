@@ -69,7 +69,7 @@ const OnedayForm = props => {
             <div className="select-onedate">
                 <React.Fragment>
                     <div className="CalendarOneDay">
-                        <Calendar2 value={value.leaveDate} onChange={onChange}  id={'leaveDate'} id2={'leaveDateStop'} />
+                        <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
                     </div>
                     <div className="timeselect-oneday">
                         <div className="text-time">
@@ -318,13 +318,17 @@ class alRequestForm extends Component {
         }
     }
     fileChangedHandler = (event) => {
-
-        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("aaaaaaaaaaaaaaaaaaa", this.state.selectedFile.length))
+        console.log('event-->', event.target.files)
+        if (this.state.selectedFile.length >= 0) {
+            console.log('in if')
+            this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("aaaaaaaaaaaaaaaaaaa", this.state.selectedFile))
+        }
+        console.log('state', this.state.selectedFile)
 
     }
     handleSubmit = async event => {
-        let alerttext1 = `Leave date at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nConfirm ?`
-        let alerttext2 = `Leave date start at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${this.state.leaveDateStop.replace('T', '')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\n Confirm ?`
+        let alerttext1 = `Leave date at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nTotal time : ${this.state.leaveAmount} Hours\nConfirm ?`
+        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${((this.state.amountLeft / 24) - 1) * 8 + this} Hours\n Confirm ?`
         let confirmText = ``
         if (this.state.leaveDate == this.state.leaveDateStop) {
             confirmText = alerttext1
@@ -526,6 +530,7 @@ class alRequestForm extends Component {
     }
 
     render() {
+        console.log('state', this.state.selectedFile)
         return (
             <div className="leave-form">
                 <div className="cover-popup-al">
@@ -583,7 +588,7 @@ class alRequestForm extends Component {
                         File :
                     </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} accept=".jpg" required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpg" required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
