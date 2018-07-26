@@ -131,7 +131,7 @@ class SetApproveLeaveForm extends Component {
         return (
             <div>
                 <div className='backbutton'>
-            <Link to='/TableLeaveStatisticsDeatils'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+            <Link to='/Approve'><button className="back-button"><img src={leftarrow} />Back</button></Link>
           </div>
                 <div className="Dory">
 
