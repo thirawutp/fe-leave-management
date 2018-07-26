@@ -323,8 +323,8 @@ class alRequestForm extends Component {
 
     }
     handleSubmit = async event => {
-        let alerttext1 = `Leave date at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nConfirm ?`
-        let alerttext2 = `Leave date start at ${this.state.leaveDate.replace('T', '')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${this.state.leaveDateStop.replace('T', '')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\n Confirm ?`
+        let alerttext1 = `Leave date at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nTotal time : ${this.state.leaveAmount} Hours\nConfirm ?`
+        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${this.state.amountLeft} Hours\n Confirm ?`
         let confirmText = ``
         if (this.state.leaveDate == this.state.leaveDateStop) {
             confirmText = alerttext1
