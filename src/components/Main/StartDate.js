@@ -28,7 +28,7 @@ class StartDate extends React.Component {
                     onChange={this.handleChange}
                     showDisabledMonthNavigation
                     dateFormat="DD/MM/YY"
-                    placeholderText="DD/MM/YY"
+                    placeholderText="  DD/MM/YY"
                     disabledKeyboardNavigation
                 />
             </div>
