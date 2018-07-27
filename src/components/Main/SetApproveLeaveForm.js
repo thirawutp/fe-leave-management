@@ -31,7 +31,8 @@ class SetApproveLeaveForm extends Component {
             roles: 'HR',
             photoIndex: 0,
             isOpen: false,
-            personal
+            personal,
+            staffId: ''
 
         }
 
@@ -44,9 +45,10 @@ class SetApproveLeaveForm extends Component {
     handleSetTrue = () => {
         // this.setState({check : true})
         const id = _.last(window.location.pathname.split('/'))
+        const { staffId } = this.props
 
-        if (window.confirm("แน่ใจว่าจะ Approve?")) {
-            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Approved&leaveId=${id}&approverId=I00006`, {
+        if (window.confirm("Are you sure you want to Approve?")) {
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Approved&leaveId=${id}&approverId=${staffId}`, {
                 "status": 'Approved',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
                 "approverId": "I00006",
@@ -65,10 +67,11 @@ class SetApproveLeaveForm extends Component {
         }
     }
     handleSetFalse = () => {
-        if (window.confirm("แน่ใจว่าจะ Reject?")) {
+        if (window.confirm("Are you sure you want to Reject?")) {
             const id = _.last(window.location.pathname.split('/'))
+            const { staffId } = this.props
             console.log(parseInt(this.state.personProfile.leaveId.substring(6)))
-            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Rejected&leaveId=${id}&approverId=I00006`, {
+            axios.put(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/SetStatus?status=Rejected&leaveId=${id}&approverId=${staffId}`, {
                 "status": 'Rejected',
                 "leaveId": parseInt(this.state.personProfile.leaveId.substring(6)),
                 "approverId": "I00006",
@@ -180,7 +183,7 @@ class SetApproveLeaveForm extends Component {
                                 <th><b>Section : </b></th>
                             </div>
                             <div className="section2">
-                                <td>{this.state.personal.section}</td>
+                                <td>{this.state.personal.department}</td>
                             </div>
                             <div className="position1">
                                 <th><b>Position : </b></th>
@@ -357,7 +360,8 @@ const mapStateToProps = state => {
     return {
         profile: state.approve,
         info: state.statistics,
-        number: state.history
+        staffId: state.staffId,
+
 
 
     }

@@ -41,6 +41,12 @@ export default (state = inttialState, action) => {
         ...state,
         search: action.payload.search
       }
+
+    case 'SET_STAFFID':
+      return {
+        ...state,
+        staffId: action.payload.staffId
+      }
     default:
       return state
   }

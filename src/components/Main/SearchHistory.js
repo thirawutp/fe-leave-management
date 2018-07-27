@@ -9,7 +9,7 @@ import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { addHistory } from '../../action'
+import { addHistory, setStaffId } from '../../action'
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -80,11 +80,14 @@ const people = [
 
 class SearchHistory extends Component {
     constructor(props) {
+
         super(props);
+
         this.state = {
             people: [],
             term: '',
-            SetImg: ''
+            SetImg: '',
+            staffId: ''
 
         }
         this.searchHandle = this.searchHandle.bind(this);
@@ -96,7 +99,9 @@ class SearchHistory extends Component {
 
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=I00002') //searchHistory
+        const { staffId } = this.props
+        console.log("RRRRRRRRRR", staffId)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}`) //searchHistory
 
             .then(res => {
                 const data = res.data.map(p => {
@@ -257,7 +262,7 @@ class SearchHistory extends Component {
 const mapStateToProps = state => {
     console.log(state)
     return {
-
+        staffId: state.staffId,
         people: state.history.map(row => {
             return _.reduce(row, (result, val, key) => {
                 if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
@@ -277,6 +282,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     addHistory: (history) => dispatch(addHistory(history))
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchHistory)

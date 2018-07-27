@@ -37,3 +37,11 @@ export const searchInTable = search => ({
 })
 
 
+
+export const setStaffId = staffId => ({
+  type: 'SET_STAFFID',
+  payload: { staffId }
+})
+
+
+
