@@ -9,7 +9,7 @@ import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
 import { connect } from 'react-redux'
-import { addApprove } from '../../action'
+import { searchInTable } from '../../action'
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -125,7 +125,7 @@ class SearchTable extends Component {
                         ...result,
                         [_.camelCase(key)]: val
                     }
-                    this.props.addApprove(data)
+                    this.props.searchInTable(data)
 
                 })
 
@@ -265,7 +265,7 @@ const mapStateToProps = state => {
     const staffId = _.last(window.location.pathname.split('/'))
     console.log('staffId', staffId)
     return {
-        people: state.approve.map(row => {
+        people: state.data.map(row => {
             return _.reduce(row, (result, val, key) => {
                 if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
                     return {
@@ -288,7 +288,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addApprove: (approve) => dispatch(addApprove(approve))
+    searchInTable: (data) => dispatch(searchInTable(data))
 })
 
 
