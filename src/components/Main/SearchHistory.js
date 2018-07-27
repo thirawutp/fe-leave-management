@@ -260,10 +260,11 @@ class SearchHistory extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    const { staffId = '', history = []} = state
+    console.log('mstp', state)
     return {
-        staffId: state.staffId,
-        people: state.history.map(row => {
+        staffId: staffId,
+        people: history.map(row => {
             return _.reduce(row, (result, val, key) => {
                 if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
                     return {

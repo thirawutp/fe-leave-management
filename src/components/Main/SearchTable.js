@@ -263,9 +263,9 @@ class SearchTable extends Component {
 
 const mapStateToProps = state => {
     const staffId = _.last(window.location.pathname.split('/'))
-    console.log('staffId', staffId)
+    const { data = [] } = state
     return {
-        people: state.data.map(row => {
+        people: data.map(row => {
             return _.reduce(row, (result, val, key) => {
                 if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
                     return {
