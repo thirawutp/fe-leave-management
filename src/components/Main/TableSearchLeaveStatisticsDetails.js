@@ -85,7 +85,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
                 <p><b>StaffID : </b>{this.state.personProfile.staffId}</p>
               </div>
               <div className="col-md-3">
-                <p><b>Section : </b>{this.state.personProfile.section}</p>
+                <p><b>Section : </b>{this.state.personProfile.department}</p>
               </div>
               <div className="col-md-3">
                 <p><b>Position : </b>{this.state.personProfile.position}</p>
@@ -121,13 +121,14 @@ class TableSearchLeaveStatisticsDetails extends Component {
                   <td>{parseInt(this.state.person.totalSickHours / 8)} Days {(this.state.person.totalSickHours % 8)} Hrs.</td>
                 </div>
                 <div className="col-md-3 hourstopic">
-                  <td>{parseInt(this.state.person.sickHours / 8)} Days {parseInt(this.state.person.sickHours % 8)} Hrs.</td>
-                </div>
-
-                <div className="col-md-3 hourstopic">
 
                   <td>{parseInt(this.getBalance(this.state.person.totalSickHours, this.state.person.sickHours) / 8)} Days {parseInt(this.getBalance(this.state.person.totalSickHours, this.state.person.sickHours) % 8)} Hrs.</td>
                 </div>
+                <div className="col-md-3 hourstopic">
+                  <td>{parseInt(this.state.person.sickHours / 8)} Days {parseInt(this.state.person.sickHours % 8)} Hrs.</td>
+                </div>
+
+
 
 
               </div>
@@ -141,11 +142,12 @@ class TableSearchLeaveStatisticsDetails extends Component {
                   <td>{parseInt(this.state.person.totalAnnualHours / 8)} Days {(this.state.person.totalAnnualHours % 8)} Hrs.</td>
                 </div>
                 <div className="col-md-3 hourstopic">
-                  <td>{parseInt(this.state.person.annualHours / 8)} Days {parseInt(this.state.person.annualHours % 8)} Hrs.</td>
-                </div>
-                <div className="col-md-3 hourstopic">
                   <td>{parseInt(this.getBalance(this.state.person.totalAnnualHours, this.state.person.annualHours) / 8)} Days {parseInt(this.getBalance(this.state.person.totalAnnualHours, this.state.person.annualHours) % 8)} Hrs.</td>
                 </div>
+                <div className="col-md-3 hourstopic">
+                  <td>{parseInt(this.state.person.annualHours / 8)} Days {parseInt(this.state.person.annualHours % 8)} Hrs.</td>
+                </div>
+
 
               </div>
             </div>

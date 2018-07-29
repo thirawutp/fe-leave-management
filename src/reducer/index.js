@@ -41,6 +41,11 @@ export default (state = inttialState, action) => {
         ...state,
         search: action.payload.search
       }
+    case 'SET_PROFILE':
+      return {
+        ...state,
+        person: action.payload.person
+      }
 
     case 'SET_STAFFID':
       return {

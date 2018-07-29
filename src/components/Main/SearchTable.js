@@ -98,7 +98,8 @@ class SearchTable extends Component {
 
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchApprove
+
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves')
             .then(res => {
                 console.log('PPPPPPPPP', res.data)
                 const data = _.reduce(res.data, (result, val, key) => {
@@ -125,11 +126,11 @@ class SearchTable extends Component {
                         ...result,
                         [_.camelCase(key)]: val
                     }
-                    this.props.searchInTable(data)
+
 
                 })
 
-
+                this.props.searchInTable(data)
             })
 
     }
@@ -139,6 +140,8 @@ class SearchTable extends Component {
     render() {
         const { term } = this.state;
         const { people } = this.props
+        console.log("MMMMM", people)
+
         console.log('--------people', this.state, people)
         const filtered = people.filter((curr) => {
             const test1 = curr.requestedDateTime.toLowerCase().includes(term)
@@ -262,8 +265,11 @@ class SearchTable extends Component {
 }
 
 const mapStateToProps = state => {
-    const staffId = _.last(window.location.pathname.split('/'))
+    const staffId = _.last(window.location.pathname.split('/')) //มันต้องค้นหาstaffIdที่อยู่ในsearchหน่ะมาเทียบกับconst staffId
+
     const { data = [] } = state
+    console.log("MMMMM", data, state)
+
     return {
         people: data.map(row => {
             return _.reduce(row, (result, val, key) => {
@@ -278,17 +284,18 @@ const mapStateToProps = state => {
                     [_.camelCase(key)]: val
                 }
             }, {})
+                .filter((item, i) => {
+                    return item.staffId === staffId
+                })
         })
-            .filter((item, i) => {
-                return item.staffId === staffId
-            })
+
 
     }
 
 }
 
 const mapDispatchToProps = dispatch => ({
-    searchInTable: (data) => dispatch(searchInTable(data))
+    searchInTable: (search) => dispatch(searchInTable(search))
 })
 
 

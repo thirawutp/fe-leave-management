@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
-import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, setStaffId } from '../action'
+import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, setStaffId, setProfile } from '../action'
 import _ from 'lodash'
 import moment from 'moment'
 import logologin from '../../src/asset/images/logologin.png';
@@ -37,6 +37,18 @@ class LoginPage extends Component {
                     const staffId = res.data
                     console.log("SSSSTTTAAAFFFFIIIDDD", staffId, res)
                     this.props.setStaffId(staffId)
+
+                    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetLeaveStatistic?staffId=${staffId}`)
+                        .then(res => {
+                            const person = res.data
+
+                            this.props.setProfile(person)
+                        })
+
+
+
+
+
 
                     axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}`) //searchHistory
                         .then(res => {
@@ -180,7 +192,8 @@ const mapDispatchToProps = dispatch => ({
     addStatistics: (statistics) => dispatch(addStatistics(statistics)),
     addTable: (table) => dispatch(addTable(table)),
     searchInTable: (search) => dispatch(searchInTable(search)),
-    setStaffId: (staffId) => dispatch(setStaffId(staffId))
+    setStaffId: (staffId) => dispatch(setStaffId(staffId)),
+    setProfile: (person) => dispatch(setProfile(person))
 
 
 })
