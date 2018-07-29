@@ -19,7 +19,7 @@ class Header extends Component {
   }
   render() {
     const { people } = this.props
-    console.log("CCCCCCAAATTT", people)
+    console.log(people)
     return (
       <div className="Header">
         <div className="userpicture">
@@ -27,16 +27,16 @@ class Header extends Component {
         </div>
         <div className='user'>
           <div className='username'>
-            <p><b></b>{people.firstName}</p>
+            {/* <p><b></b>{people.firstName}</p> */}
           </div>
           <div className='section'>
-            <p><b>Section: </b>{people.section}</p>
+            {/* <p><b>Section: </b>{people.section}</p> */}
           </div>
           <div className='position'>
-            <p><b>Position:</b>{people.department}</p>
+            {/* <p><b>Position:</b>{people.department}</p> */}
           </div>
           <div className='staffID'>
-            <p><b>StaffID:</b>{people.staffId}</p>
+            {/* <p><b>StaffID:</b>{people.staffId}</p> */}
           </div>
         </div>
       </div>
@@ -45,10 +45,12 @@ class Header extends Component {
 }
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = state => {
+  console.log(state)
+ return {
   people: state.person
 
-})
+}}
 
 const mapDispatchToProps = dispatch => ({
   setProfile: (person) => dispatch(setProfile(person))
