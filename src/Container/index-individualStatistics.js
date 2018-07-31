@@ -11,7 +11,7 @@ class IndexIndividualStatistics extends Component {
         return (
             <div className='staticticbox'>
                 <TableSearchLeaveStatisticsDetails />
-                {/* <SearchTable /> */}
+                <SearchTable />
             </div>
 
 
