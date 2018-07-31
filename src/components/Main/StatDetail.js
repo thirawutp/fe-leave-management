@@ -175,69 +175,50 @@ class StatDetail extends Component {
 
 
                             <div className="tkpicture">
-                                {this.handleShow(this.state.roles) &&
-                                    <div className="tklink">
-                                        {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
-                                        <div className="mickeymouse">
-                                            {this.handleImg(this.state.data.AttachedFile1) && <div>
-                                                <p>{this.state.data.AttachedFileName1}</p>
-                                                <p><img src={this.state.data.AttachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
 
-                                            }
-                                            {this.handleImg(this.state.data.AttachedFile2) && <div>
-                                                <p>{this.state.data.AttachedFileName2}</p>
-                                                <p><img src={this.state.data.AttachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
-
-                                            }
-                                            {this.handleImg(this.state.data.AttachedFile3) && <div>
-                                                <p>{this.state.data.AttachedFileName3}</p>
-                                                <p><img src={this.state.data.AttachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
-
-                                            }
-
+                                <div className="tklink">
+                                    {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
+                                    <div className="mickeymouse">
+                                        {this.handleImg(this.state.data.AttachedFile1) && <div>
+                                            <p>{this.state.data.AttachedFileName1}</p>
+                                            <p><img src={this.state.data.AttachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
-                                        {isOpen && (
-                                            <Lightbox
-                                                mainSrc={images[photoIndex]}
-                                                nextSrc={images[(photoIndex + 1) % images.length]}
-                                                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                                                onCloseRequest={() => this.setState({ isOpen: false })}
-                                                onMovePrevRequest={() =>
-                                                    this.setState({
-                                                        photoIndex: (photoIndex + images.length - 1) % images.length,
-                                                    })
-                                                }
-                                                onMoveNextRequest={() =>
-                                                    this.setState({
-                                                        photoIndex: (photoIndex + 1) % images.length,
-                                                    })
-                                                }
-                                            />
-                                        )}
-                                    </div>}
-                                {!this.handleShow(this.state.roles) && <div className="col-md-11">
-                                    {this.handleImg(this.state.personProfile.AttachedFile1) && <div>
-                                        <p>{this.state.personProfile.AttachedFileName1.substring(0, 15)}</p>
-                                        <p><img src={this.state.personProfile.AttachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                    </div>
 
-                                    }
-                                    {this.handleImg(this.state.personProfile.AttachedFile2) && <div>
-                                        <p>{this.state.personProfile.AttachedFileName2.substring(0, 15)}</p>
-                                        <p><img src={this.state.personProfile.AttachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                    </div>
+                                        }
+                                        {this.handleImg(this.state.data.AttachedFile2) && <div>
+                                            <p>{this.state.data.AttachedFileName2}</p>
+                                            <p><img src={this.state.data.AttachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        </div>
 
-                                    }
-                                    {this.handleImg(this.state.personProfile.AttachedFile3) && <div>
-                                        <p>{this.state.personProfile.AttachedFileName3.substring(0, 15)}</p>
-                                        <p><img src={this.state.personProfile.AttachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                    </div>
-                                    }
+                                        }
+                                        {this.handleImg(this.state.data.AttachedFile3) && <div>
+                                            <p>{this.state.data.AttachedFileName3}</p>
+                                            <p><img src={this.state.data.AttachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        </div>
 
-                                </div>}
+                                        }
+
+                                    </div>
+                                    {isOpen && (
+                                        <Lightbox
+                                            mainSrc={images[photoIndex]}
+                                            nextSrc={images[(photoIndex + 1) % images.length]}
+                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onMovePrevRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                })
+                                            }
+                                            onMoveNextRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + 1) % images.length,
+                                                })
+                                            }
+                                        />
+                                    )}
+                                </div>
+
 
                             </div>
                         </div>
