@@ -17,7 +17,6 @@ class TimeSelect extends React.Component {
         this.setState({ timeStart });
         onChange(id, timeStart.value.toString())
         onChange(id2, timeStart.value.toString())
-        console.log(this.state.timeStart.value)
 
     }
 

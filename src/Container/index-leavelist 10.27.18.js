@@ -12,10 +12,10 @@ import moment from 'moment';
 class LeaveList extends Component {
   activeClassName(pathname) {
     if (this.props.location.pathname === pathname) {
-        return ' buttonchange'
+      return ' buttonchange'
     }
     return ''
-}
+  }
   constructor(props) {
     super(props)
     const { leaveData = {} } = this.props
@@ -32,7 +32,7 @@ class LeaveList extends Component {
   componentDidMount() {
     let thisyear = moment().format('YYYY').toString()
     console.log(thisyear)
-    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=${thisyear}`)
+    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002`)
       .then(res => {
         console.log("data in database", res.data)
         this.setState({ timeleftal: res.data.AnnualHours })

@@ -8,9 +8,7 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
-import lwop from '../../src/asset/images/lwop.png';
-import sun from '../asset/images/sun.png'
-import money from '../asset/images/money.png'
+import sun from '../asset/images/sun1.png'
 import '../App.css';
 import { connect } from 'react-redux';
 import { Redirect, browserHistory } from "react-router";
@@ -24,7 +22,7 @@ const FormHeader = props => {
 
 
             <div className="show-header">
-                Leave without Pay
+                Leave without Pay Request
             </div>
             <div className='header1'>
 
@@ -70,7 +68,9 @@ const OnedayForm = props => {
     </div>
             <div className="select-onedate">
                 <React.Fragment>
-                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                    <div className="CalendarOneDay">
+                        <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                    </div>
                     <div className="timeselect-oneday">
                         <div className="text-time">
                             Time :
@@ -83,8 +83,8 @@ const OnedayForm = props => {
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
                                 <option value={0}>select hour</option>
                                 <option value={2}>2 hour</option>
-                                <option value={4} >4 hour</option>
-                                <option value={6} >6 hour</option>
+                                <option value={4}>4 hour</option>
+                                <option value={6}>6 hour</option>
                                 <option value={8}>8 hour</option>
                             </select>
 
@@ -172,7 +172,7 @@ const NoteQuestion = props => {
                 </div>
                 <div className="text-area">
 
-                    <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
+                    <textarea className="textarea" maxLength="255" type="text" onChange={(event) => onChange('note', event.target.value, event.target.value.length)} />
                 </div>
 
             </div>
@@ -222,17 +222,17 @@ class lwpRequestForm extends Component {
             amountLeft: '',
             timeSum: '',
             showSum: '',
-            caseID: ''
+            caseID: '',
+            CheckTypeFile: true
         };
     }
+
     componentDidMount() {
         let thisyear = moment().format('YYYY').toString()
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=${thisyear}`)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002`)
             .then(res => {
-
                 this.setState({ timeSum: res.data.LWPHours })
                 this.setState({ showSum: res.data.LWPHours })
-                console.log("data in database", res.data.LWPHours)
             })
     }
     handleOneDayQuestion = (isOneday) => {
@@ -250,9 +250,8 @@ class lwpRequestForm extends Component {
     handleChangeOnedayForm = (id, value, id2) => {
 
         this.setState({ [id]: value })
-        this.setState({
-            [id2]: value
-        }, this.CalHours1day)
+        this.setState({ [id2]: value }, this.CalHours1day)
+
     }
 
     handleChangeMoreOneDay = (id, value) => {
@@ -287,8 +286,8 @@ class lwpRequestForm extends Component {
                 this.setState({
                     showSum: this.state.timeSum,
                     caseID: -1
-
                 })
+                alert("Incorrect date time.\n Please try again.")
 
             }
             else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
@@ -300,44 +299,57 @@ class lwpRequestForm extends Component {
     }
 
     CalHours1day = () => {
-        if (this.state.leaveDate && this.state.leaveAmount) {
-            let day = parseInt(this.state.timeSum) + parseInt(this.state.leaveAmount)
+
+        if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount) {
+            let day = this.state.timeSum - this.state.leaveAmount
             this.setState({
                 showSum: day
             })
 
         }
-        console.log("log one day", this.state.showSum)
+
     }
     CalDayLeft = () => {
         if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
-            let sum = (parseInt(this.state.timeSum) + (8 * (parseInt(this.state.amountLeft) / 24))) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop) - 8
+            let sum = (this.state.timeSum - (8 * ((this.state.amountLeft / 24)))) - this.state.leaveAmount - this.state.leaveAmountStop + 8
             this.setState({
                 showSum: sum,
             })
         }
     }
-
-
     fileChangedHandler = (event) => {
-        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile))
+        this.setState({ selectedFile: Array.from(event.target.files) }, this.checkTypeofFile)
     }
-
+    checkTypeofFile = () => {
+        let i = 0
+        for (i = 0; i < (this.state.selectedFile.length); i++) {
+            var ext = this.state.selectedFile[i].type
+            if (ext != "image/jpeg") {
+                this.setState({ CheckTypeFile: false })
+                alert('You can only use .jpg file!')
+                break;
+            }
+            else {
+                this.setState({ CheckTypeFile: true })
+            }
+        }
+        console.log('number of i', i)
+        if (i > 3) {
+            alert("You can only upload up to 3 images! \n please try again")
+        }
+    }
     handleSubmit = async event => {
         let alerttext1 = `Leave date at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nTotal time : ${this.state.leaveAmount} Hours\nConfirm ?`
-        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${this.state.amountLeft} Hours\n Confirm ?`
+        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${(((this.state.amountLeft / 24) - 1) * 8) + this.state.leaveAmount + this.state.leaveAmountStop} Hours\n Confirm ?`
         let confirmText = ``
         if (this.state.leaveDate == this.state.leaveDateStop) {
             confirmText = alerttext1
         }
         else {
             confirmText = alerttext2
-            console.log("log alert", this.state.leaveTimeStop)
         }
         if (window.confirm(confirmText)) {
-            console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
-                console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
@@ -366,15 +378,15 @@ class lwpRequestForm extends Component {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.");
                                 browserHistory.push('/Leave')
+
                             }
+
                         }
                     })
                     .then(function (response) {
-                        console.log(response);
                     })
             }
             else if (this.state.selectedFile.length == 2) {
-                console.log("do did na2")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
@@ -414,7 +426,6 @@ class lwpRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 3) {
-                console.log("do did na3")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 let attachFileBase64p3 = ''
@@ -456,7 +467,6 @@ class lwpRequestForm extends Component {
                     })
             }
             else {
-                console.log("do did na")
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Leave without Pay",
@@ -465,7 +475,7 @@ class lwpRequestForm extends Component {
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
-                    "approvalStatus": "Pending",
+                    "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
@@ -475,9 +485,10 @@ class lwpRequestForm extends Component {
                     "attachedFileName2": "No Image.",
                     "attachedFile3": "",
                     "attachedFileName3": "No Image.",
-                    "requestedDateTime": moment().format().toString(),
+                    "requestedDateTime": "2018-07-24T11:15:18.558Z",
                     "isExisting": true,
                     "commentByAdmin": "string"
+
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
@@ -487,14 +498,13 @@ class lwpRequestForm extends Component {
                         }
                     })
                     .then(function (response) {
-                        console.log(response);
                     })
             }
         }
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -504,13 +514,15 @@ class lwpRequestForm extends Component {
                 alert('You can only upload up to 3 images.')
             }
             else {
-                console.log("success")
                 this.handleSubmit()
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTimeStop == '' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
+            }
+            else if (this.state.caseID <= 0) {
+                alert("Incorrect date time.\n Please try again.")
             }
             else if (this.state.showSum < 0) {
                 alert('Overtime!.')
@@ -532,20 +544,20 @@ class lwpRequestForm extends Component {
                     </div>
                     <div className="alpopup">
                         <div className="picture">
-                            <img src={lwop} />
+                            <img src={sun} />
                         </div>
                         <div className="object">
                             <div className="row text-cover1 ">
-                                <div className="col-md-6">
+                                <div className="col-md-6 ">
                                     <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-6 ">
                                     <p className="text-under1">Days</p>
                                 </div>
                             </div>
-                            <div className="row text-cover1">
+                            <div className=" row text-cover1">
                                 <div>
-                                    <p className="text-bottom1">{this.state.showSum % 8} </p>
+                                    <p className="text-bottom1">{this.state.showSum % 8}</p>
                                 </div>
                                 <div className="col-md-6 ">
                                     <p className="text-hour1">Hours</p>
@@ -580,9 +592,9 @@ class lwpRequestForm extends Component {
                 <div className="row-file">
                     <div className="text-file">
                         File :
-          </div>
+                    </div>
                     <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpg" required multiple />
+                        <input type="file" onChange={this.fileChangedHandler} required multiple />
                     </div>
                 </div>
                 <div className="cover-button">
@@ -590,16 +602,11 @@ class lwpRequestForm extends Component {
                         <div className="submit1-button">
                             <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                         </div>
-
                     </div>
                 </div>
             </div>
         );
     }
 }
-
-const mapStateToProps = state => ({
-    leaveData: state.data
-})
 
 export default lwpRequestForm;
