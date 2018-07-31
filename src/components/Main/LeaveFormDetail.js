@@ -47,18 +47,7 @@ class LeaveFormDetail extends Component {
 
     }
 
-    handleShow = (roles) => {
 
-
-        if (roles === 'HR') {
-            return true
-
-        }
-        else {
-            return false
-        }
-
-    }
 
     handleImg = (pic) => {
         if (pic === '') {
@@ -155,69 +144,50 @@ class LeaveFormDetail extends Component {
 
 
                             <div className="tkpicture">
-                                {this.handleShow(this.state.roles) &&
-                                    <div className="tklink">
-                                        {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
-                                        <div className="mickeymouse">
-                                            {this.handleImg(this.props.leaveForm.attachedFile1) && <div>
-                                                <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
-                                                <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
 
-                                            }
-                                            {this.handleImg(this.props.leaveForm.attachedFile2) && <div>
-                                                <p>{this.props.leaveForm.attachedFileName2.substring(0, 15)}</p>
-                                                <p><img src={this.props.leaveForm.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
-
-                                            }
-                                            {this.handleImg(this.props.leaveForm.attachedFile3) && <div>
-                                                <p>{this.props.leaveForm.attachedFileName3.substring(0, 15)}</p>
-                                                <p><img src={this.props.leaveForm.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                            </div>
-
-                                            }
-
+                                <div className="tklink">
+                                    {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
+                                    <div className="mickeymouse">
+                                        {this.handleImg(this.props.leaveForm.attachedFile1) && <div>
+                                            <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
+                                            <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
-                                        {isOpen && (
-                                            <Lightbox
-                                                mainSrc={images[photoIndex]}
-                                                nextSrc={images[(photoIndex + 1) % images.length]}
-                                                prevSrc={images[(photoIndex + images.length - 1) % images.length]}
-                                                onCloseRequest={() => this.setState({ isOpen: false })}
-                                                onMovePrevRequest={() =>
-                                                    this.setState({
-                                                        photoIndex: (photoIndex + images.length - 1) % images.length,
-                                                    })
-                                                }
-                                                onMoveNextRequest={() =>
-                                                    this.setState({
-                                                        photoIndex: (photoIndex + 1) % images.length,
-                                                    })
-                                                }
-                                            />
-                                        )}
-                                    </div>}
-                                {!this.handleShow(this.state.roles) && <div className="col-md-11">
-                                    {this.handleImg(this.state.personProfile.attachedFile1) && <div>
-                                        <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
-                                        <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                    </div>
 
-                                    }
-                                    {this.handleImg(this.state.personProfile.attachedFile2) && <div>
-                                        <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
-                                        <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                    </div>
+                                        }
+                                        {this.handleImg(this.props.leaveForm.attachedFile2) && <div>
+                                            <p>{this.props.leaveForm.attachedFileName2.substring(0, 15)}</p>
+                                            <p><img src={this.props.leaveForm.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        </div>
 
-                                    }
-                                    {this.handleImg(this.state.personProfile.attachedFile3) && <div>
-                                        <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
-                                        <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
-                                    </div>
-                                    }
+                                        }
+                                        {this.handleImg(this.props.leaveForm.attachedFile3) && <div>
+                                            <p>{this.props.leaveForm.attachedFileName3.substring(0, 15)}</p>
+                                            <p><img src={this.props.leaveForm.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        </div>
 
-                                </div>}
+                                        }
+
+                                    </div>
+                                    {isOpen && (
+                                        <Lightbox
+                                            mainSrc={images[photoIndex]}
+                                            nextSrc={images[(photoIndex + 1) % images.length]}
+                                            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                                            onCloseRequest={() => this.setState({ isOpen: false })}
+                                            onMovePrevRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + images.length - 1) % images.length,
+                                                })
+                                            }
+                                            onMoveNextRequest={() =>
+                                                this.setState({
+                                                    photoIndex: (photoIndex + 1) % images.length,
+                                                })
+                                            }
+                                        />
+                                    )}
+                                </div>
+
 
                             </div>
                         </div>
