@@ -3,15 +3,23 @@ import { connect } from 'react-redux'
 import _ from 'lodash'
 import kendall from '../../asset/images/kendall.jpg';
 
+import { setProfile } from '../../action';
+
+
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+
+
+    this.state = {
+      people: []
+
+    }
+  }
   render() {
-    const {
-      name,
-      section,
-      position,
-      staffID
-    } = this.props
+    const { people = {} } = this.props
+    console.log("CCCCCCAAATTT", people)
     return (
       <div className="Header">
         <div className="userpicture">
@@ -19,16 +27,16 @@ class Header extends Component {
         </div>
         <div className='user'>
           <div className='username'>
-            <p><b></b>{name}</p>
+            <p><b></b>{`${people.FirstNameTH} ${people.LastNameTH}`}</p>
           </div>
           <div className='section'>
-            <p><b>Section: </b>{section}</p>
+            <p><b>Section: </b>{people.Position}</p>
           </div>
           <div className='position'>
-            <p><b>Position:</b>{position}</p>
+            <p><b>Position:</b>{people.Department}</p>
           </div>
           <div className='staffID'>
-            <p><b>StaffID:</b>{staffID}</p>
+            <p><b>StaffID:</b>{people.StaffId}</p>
           </div>
         </div>
       </div>
@@ -38,12 +46,17 @@ class Header extends Component {
 
 
 const mapStateToProps = state => ({
-  name: _.get(state, 'profile.profileObj.name', ''),
-  section: _.get(state, 'profile.profileObj.section', ''),
-  position: _.get(state, 'profile.profileObj.position', ''),
-  staffID: _.get(state, 'profile.profileObj.staffID', '')
+  people: state.person
+
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = dispatch => ({
+  setProfile: (person) => dispatch(setProfile(person))
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header)

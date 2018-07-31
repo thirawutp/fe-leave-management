@@ -37,9 +37,21 @@ export default (state = inttialState, action) => {
       }
 
     case 'SEARCH_IN_TABLE':
+      console.log('search Reducer ', action.payload.search)
       return {
         ...state,
         search: action.payload.search
+      }
+    case 'SET_PROFILE':
+      return {
+        ...state,
+        person: action.payload.person
+      }
+
+    case 'SET_STAFFID':
+      return {
+        ...state,
+        staffId: action.payload.staffId
       }
     default:
       return state

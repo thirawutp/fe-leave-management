@@ -34,7 +34,6 @@ class LeaveList extends Component {
     console.log(thisyear)
     axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002`)
       .then(res => {
-        console.log("data in database", res.data)
         this.setState({ timeleftal: res.data.AnnualHours })
         this.setState({ timeleftsl: res.data.SickHours })
         this.setState({ timeleftlwp: res.data.LWPHours })
@@ -49,7 +48,6 @@ class LeaveList extends Component {
 
 
   render() {
-    console.log('re-render', this.state.timelock)
     return (
       <div className="leavelistbox">
         <div className='selectLeave'>

@@ -36,4 +36,17 @@ export const searchInTable = search => ({
   payload: { search }
 })
 
+export const setProfile = person => ({
+  type: 'SET_PROFILE',
+  payload: { person }
+})
+
+
+
+export const setStaffId = staffId => ({
+  type: 'SET_STAFFID',
+  payload: { staffId }
+})
+
+
 
