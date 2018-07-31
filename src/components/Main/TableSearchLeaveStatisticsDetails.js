@@ -61,6 +61,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
     console.log('people'), people
     return (
       <div>
+        
         <div className='nbbutton'>
           <div className='backbutton'>
             <Link to='/SearchStatic'><button className="back-button"><img src={leftarrow} />Back</button></Link>

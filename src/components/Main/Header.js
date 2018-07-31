@@ -27,10 +27,10 @@ class Header extends Component {
         </div>
         <div className='user'>
           <div className='username'>
-            <p><b></b>{`${people.FirstNameTH} ${people.LastNameTH}`}</p>
+            <p><b></b>{`${people.FirstNameEN} ${people.LastNameTH}`}</p>
           </div>
           <div className='section'>
-            <p><b>Section: </b>{people.Position}</p>
+            <p><b>Department: </b>{people.Position}</p>
           </div>
           <div className='position'>
             <p><b>Position:</b>{people.Department}</p>

@@ -8,6 +8,7 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import LightboxExample from '../Main/LightboxExample '
 import Lightbox from 'react-image-lightbox';
+import leftarrow from '../../asset/images/left-arrow.png';
 
 
 class StatDetail extends Component {
@@ -97,8 +98,9 @@ class StatDetail extends Component {
         let images = [this.state.data.AttachedFile1, this.state.data.AttachedFile2, this.state.data.AttachedFile3]
         return (
             <div className='leavebox'>
-
-
+                <div className='backbutton'>
+                    <Link to='/SearchStatic'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+                </div>
 
                 <div className="row">
                     <div className="col-md-1"></div>
