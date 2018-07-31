@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
-import { login, addHistory, addpudding, addStatistics, searchInTable, addTable } from '../action'
+import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, setStaffId, setProfile } from '../action'
 import _ from 'lodash'
 import moment from 'moment'
 import logologin from '../../src/asset/images/logologin.png';
@@ -27,117 +27,97 @@ class LoginPage extends Component {
         isLogedIn: false
     }
 
-    handleLoginSuccess = (data) => {
-        data = mockResponse
+    handleLoginSuccess = async (data = mockResponse) => {
+      try{
+        const email = data.profileObj.email
         this.props.handleLogin(data)
-        //TODO login to server
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=I00002') //searchHistory
 
-            .then(res => {
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-                        if (key === 'ApprovedBy') {
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: val || '-'
-                            }
-                        }
-                        if (key === 'LeaveId') {
-                            return {
-                                ...result,
-                                rawLeaveId: val,
-                                [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
-                            }
-                        }
-
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.addHistory(data)
-
-            })
-
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchInTable
-            .then(res => {
-                console.log('hahahahhahhha')
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-                        if (key === 'ApprovedBy') {
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: val || '-'
-                            }
-                        }
-                        if (key === 'LeaveId') {
-                            return {
-                                ...result,
-                                rawLeaveId: val,
-                                [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
-                            }
-                        }
-
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.searchInTable(data)
-
-            })
-
-
-        axios.get("http://appmanleavemanagement.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=2018")
-            .then(res => {
-                this.props.addpudding(res.data)
-            })
-
-        axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
-            .then(res => {
-
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.addTable(data)
-            })
-
-
-
-
-
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
-            .then(res => {
-                console.log('------', res.data)
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.addStatistics(data)
-            })
-        this.props.router.push('/Leave')
+        if (!_.isNil(email)) {
+          const employee = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/GetEmployeeId?email=${email}`)
+          const staffId = employee.data
+          this.props.setStaffId(staffId)
+          const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetLeaveStatistic?staffId=${staffId}`)
+          this.props.setProfile(preson.data)
+          const history = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}`) //searchHistory
+          const historyMapped = history.data.map(p => {
+            return _.reduce(p, (result, val, key) => {
+              if (key === 'ApprovedBy') {
+                return {
+                      ...result,
+                      [_.camelCase(key)]: val || '-'
+                  }
+              }
+              if (key === 'LeaveId') {
+                  return {
+                      ...result,
+                      rawLeaveId: val,
+                      [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
+                  }
+              }
+              return {
+                  ...result,
+                  [_.camelCase(key)]: val
+              }
+            }, {})
+          })
+          this.props.addHistory(historyMapped)
+          const searchInTable = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchInTable
+          const searchInTableMapped = searchInTable.data.map(p => {
+            return _.reduce(p, (result, val, key) => {
+              if (key === 'ApprovedBy') {
+                return {
+                  ...result,
+                  [_.camelCase(key)]: val || '-'
+                }
+              }
+              if (key === 'LeaveId') {
+                return {
+                  ...result,
+                  rawLeaveId: val,
+                    [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
+                  }
+              }
+              return {
+                  ...result,
+                  [_.camelCase(key)]: val
+              }
+            }, {})
+          })
+          this.props.searchInTable(searchInTableMapped)
+          const tableSearch = await axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
+          const tableSearchMapped = tableSearch.data.map(p => {
+            return _.reduce(p, (result, val, key) => {
+              return {
+                  ...result,
+                  [_.camelCase(key)]: val
+              }
+            }, {})
+          })
+          this.props.addTable(tableSearchMapped)
+          const searchStatistics = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+          const searchStatisticsMapped =  searchStatistics.data.map(p => {
+            return _.reduce(p, (result, val, key) => {
+              return {
+                ...result,
+                [_.camelCase(key)]: val
+              }
+            }, {})
+          })
+          this.props.addStatistics(searchStatisticsMapped)
+          this.props.router.push('/Leave')
+        }
+      }catch(error) {
+        console.log(error);
+      }
     }
 
 
 
-    handleLoginFailure = () => {
-        if (this.state.isLogedIn) {
-            this.handleLoginSuccess(mockResponse)
-        }
-        this.setState({ isLogedIn: true })
+    handleLoginFailure = (data) => {
+        // if (this.state.isLogedIn) {
+        //     this.handleLoginSuccess(mockResponse)
+        // }
+        // this.setState({ isLogedIn: true })
         // TODO : handle fail case
     }
 
@@ -147,7 +127,7 @@ class LoginPage extends Component {
             <div className="login">
                 <img src={logologin} />
                 <GoogleLogin
-                    clientId="641800244467-7rc34tcaa2bh0mu7i109blv72n8ilnse.apps.googleusercontent.com"
+                    clientId="614031307987-bq58dtnv7denm1gqp6vbdgh0cp7dat9v.apps.googleusercontent.com"
                     hostedDomain="appman.co.th"
                     img src={googlelogo}
                     buttonText="Sign in with Google"
@@ -170,7 +150,9 @@ const mapDispatchToProps = dispatch => ({
 
     addStatistics: (statistics) => dispatch(addStatistics(statistics)),
     addTable: (table) => dispatch(addTable(table)),
-    searchInTable: (search) => dispatch(searchInTable(search))
+    searchInTable: (search) => dispatch(searchInTable(search)),
+    setStaffId: (staffId) => dispatch(setStaffId(staffId)),
+    setProfile: (person) => dispatch(setProfile(person))
 
 
 })

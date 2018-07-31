@@ -8,8 +8,7 @@ import { Link } from "react-router";
 import axios from 'axios';
 import _ from 'lodash'
 import moment from 'moment'
-import { connect } from 'react-redux'
-import { addApprove } from '../../action'
+
 
 const getLeaveTypePicture = leaveType => {
     if (leaveType === 'Sick Leave') {
@@ -98,67 +97,41 @@ class SearchTable extends Component {
 
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Leaves') //searchApprove
+        const staffId = _.last(window.location.pathname.split('/'))
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}`)
             .then(res => {
-                console.log('PPPPPPPPP', res.data)
-                const data = _.reduce(res.data, (result, val, key) => {
-                    if (key === 'ApprovedBy') {
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val || '-'
-                        }
-                    }
-                    if (key === 'LeaveId') {
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
-                        }
-                    }
-                    if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
-                        console.log('do this sus', moment(val).format('DD-MM-YYYY'))
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                        }
-                    }
-                    return {
-                        ...result,
-                        [_.camelCase(key)]: val
-                    }
-                    this.props.addApprove(data)
-
-                })
-
-
+                this.setState({ people: res.data });
+                console.log("8888888", this.state.people)
             })
-
     }
+
 
 
 
     render() {
         const { term } = this.state;
-        const { people } = this.props
-        console.log('--------people', this.state, people)
+        console.log("RRRRRR", this.state.people)
+
+        console.log('--------people', this.state.people)
         const filtered = people.filter((curr) => {
-            const test1 = curr.requestedDateTime.toLowerCase().includes(term)
-            const test2 = curr.approvalStatus.toLowerCase().includes(term)
-            const test3 = curr.leaveId.toString().toLowerCase().includes(term)
-            const test4 = curr.type.toLowerCase().includes(term)
-            const test5 = curr.staffId.toLowerCase().includes(term)
-            const test6 = curr.startDateTime.toLowerCase().includes(term)
-            const test7 = curr.approvedBy.toLowerCase().includes(term)
-            const test8 = curr.approvalStatus.includes(term)
-            const test9 = curr.type.includes(term)
-            const test10 = curr.approvedBy.includes(term)
-            const test11 = curr.leaveId.toString().includes(term)
-            const test12 = curr.requestedDateTime.toUpperCase().includes(term)
-            const test13 = curr.approvalStatus.toUpperCase().includes(term)
-            const test14 = curr.leaveId.toString().toUpperCase().includes(term)
-            const test15 = curr.type.toUpperCase().includes(term)
-            const test16 = curr.staffId.toUpperCase().includes(term)
-            const test17 = curr.startDateTime.toUpperCase().includes(term)
-            const test18 = curr.approvedBy.toUpperCase().includes(term)
+            const test1 = curr.RequestedDateTime.toLowerCase().includes(term)
+            const test2 = curr.ApprovalStatus.toLowerCase().includes(term)
+            const test3 = curr.LeaveId.toString().toLowerCase().includes(term)
+            const test4 = curr.Type.toLowerCase().includes(term)
+            const test5 = curr.StaffId.toLowerCase().includes(term)
+            const test6 = curr.StartDateTime.toLowerCase().includes(term)
+            const test7 = curr.ApprovedBy.toLowerCase().includes(term)
+            const test8 = curr.ApprovalStatus.includes(term)
+            const test9 = curr.Type.includes(term)
+            const test10 = curr.ApprovedBy.includes(term)
+            const test11 = curr.LeaveId.toString().includes(term)
+            const test12 = curr.RequestedDateTime.toUpperCase().includes(term)
+            const test13 = curr.ApprovalStatus.toUpperCase().includes(term)
+            const test14 = curr.LeaveId.toString().toUpperCase().includes(term)
+            const test15 = curr.Type.toUpperCase().includes(term)
+            const test16 = curr.StaffId.toUpperCase().includes(term)
+            const test17 = curr.StartDateTime.toUpperCase().includes(term)
+            const test18 = curr.ApprovedBy.toUpperCase().includes(term)
             return test1 || test2 || test3 || test4 || test5 || test6 || test7 || test8 || test9 || test10 || test11 || test12 || test13 || test14 || test15 || test16 || test17 || test18
         })
         return (
@@ -213,34 +186,34 @@ class SearchTable extends Component {
                                                 <div className="row ">
                                                     <div className="col-md-2">
                                                         <div className="ooo">
-                                                            <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
-                                                        <div className={`${people.approvalStatus == 'Approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
+                                                            <img src={getLeaveTypePicture(people.Type)} height="25" width="25" /></div>
+                                                        <div className={`${people.ApprovalStatus == 'Approved' ? 'SApprove' : people.ApprovalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
 
-                                                            <td><b>{people.approvalStatus}</b></td>
+                                                            <td><b>{people.ApprovalStatus}</b></td>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-2">
                                                         <div>
-                                                            <Link to={`/leaveDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
+                                                            <Link to={`/leaveDetail/${people.RawLeaveId}`} ><td><b>{people.LeaveId}</b></td></Link>
                                                         </div>
                                                         <div>
 
-                                                            <td>{people.type}</td>
+                                                            <td>{people.Type}</td>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-2">
-                                                        <td>{people.staffId}</td>
+                                                        <td>{people.StaffId}</td>
                                                     </div>
                                                     <div className="col-md-2">
 
-                                                        <td>{people.requestedDateTime}</td>
+                                                        <td>{people.RequestedDateTime}</td>
 
                                                     </div>
                                                     <div className="col-md-2">
-                                                        <td>{people.startDateTime}</td>
+                                                        <td>{people.StartDateTime}</td>
                                                     </div>
                                                     <div className="col-md-2">
-                                                        <td>{people.approvedBy}</td>
+                                                        <td>{people.ApprovedBy}</td>
                                                     </div>
                                                 </div>
                                             </div>
@@ -261,40 +234,10 @@ class SearchTable extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    const staffId = _.last(window.location.pathname.split('/'))
-    console.log('staffId', staffId)
-    return {
-        people: state.approve.map(row => {
-            return _.reduce(row, (result, val, key) => {
-                if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
-                    return {
-                        ...result,
-                        [_.camelCase(key)]: moment(val).format('DD-MM-YYYY')
-                    }
-                }
-                return {
-                    ...result,
-                    [_.camelCase(key)]: val
-                }
-            }, {})
-        })
-            .filter((item, i) => {
-                return item.staffId === staffId
-            })
-
-    }
-
-}
-
-const mapDispatchToProps = dispatch => ({
-    addApprove: (approve) => dispatch(addApprove(approve))
-})
 
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(SearchTable)
+
+export default SearchTable
+
 
 

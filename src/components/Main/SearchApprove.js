@@ -38,7 +38,8 @@ class SearchApprove extends Component {
             people: [],
             term: '',
             SetImg: '',
-            count: 0
+            count: 0,
+            staffId: ''
 
 
         }
@@ -58,7 +59,10 @@ class SearchApprove extends Component {
 
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=I00003') // searchApprove
+        const { staffId } = this.props
+        console.log('TTTTTTT', staffId)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`) //searchApprove
+
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -216,7 +220,7 @@ class SearchApprove extends Component {
 const mapStateToProps = state => {
     console.log(state)
     return {
-
+        staffId: state.staffId,
         people: _.get(state, 'approve', []).map(row => {
             return _.reduce(row, (result, val, key) => {
                 if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
