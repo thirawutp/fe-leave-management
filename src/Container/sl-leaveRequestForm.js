@@ -201,7 +201,7 @@ const getBase64 = (file) => {
         }
     })
 }
-class alRequestForm extends Component {
+class slRequestForm extends Component {
 
     constructor(props) {
         super(props);
@@ -231,7 +231,8 @@ class alRequestForm extends Component {
 
     componentDidMount() {
         let thisyear = moment().format('YYYY').toString()
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002`)
+        const staffId = this.props
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=${staffId}`)
             .then(res => {
                 this.setState({ timeSum: res.data.SickHours })
                 this.setState({ showSum: res.data.SickHours })
@@ -544,77 +545,84 @@ class alRequestForm extends Component {
                 <div className='backbutton'>
                     <Link to='/Leave'><button className="back-button"><img src={leftarrow} />Back</button></Link>
                 </div>
-            <div className="leave-form">
-                <div className="cover-popup-al">
-                    <div className="textpopup">
-                    </div>
-                    <div className="alpopup">
-                        <div className="picture">
-                            <img src={sun} />
+                <div className="leave-form">
+                    <div className="cover-popup-al">
+                        <div className="textpopup">
                         </div>
-                        <div className="object">
-                            <div className="row text-cover1 ">
-                                <div className="col-md-6 ">
-                                    <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
+                        <div className="alpopup">
+                            <div className="picture">
+                                <img src={sun} />
+                            </div>
+                            <div className="object">
+                                <div className="row text-cover1 ">
+                                    <div className="col-md-6 ">
+                                        <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
+                                    </div>
+                                    <div className="col-md-6 ">
+                                        <p className="text-under1">Days</p>
+                                    </div>
                                 </div>
-                                <div className="col-md-6 ">
-                                    <p className="text-under1">Days</p>
+                                <div className=" row text-cover1">
+                                    <div>
+                                        <p className="text-bottom1">{this.state.showSum % 8}</p>
+                                    </div>
+                                    <div className="col-md-6 ">
+                                        <p className="text-hour1">Hours</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className=" row text-cover1">
-                                <div>
-                                    <p className="text-bottom1">{this.state.showSum % 8}</p>
-                                </div>
-                                <div className="col-md-6 ">
-                                    <p className="text-hour1">Hours</p>
-                                </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <FormHeader />
+                    </div>
+                    <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
+                    {this.state.isOneday && <OnedayForm
+                        value={{
+                            leaveDate: undefined,
+                            leaveDateStop: undefined,
+                            leaveTime: undefined,
+                            leaveTimeStop: undefined,
+                            leaveAmount: 0,
+                            leaveAmountStop: 0,
+                        }}
+                        onChange={this.handleChangeOnedayForm}
+                    />}
+                    {this.state.isOneday === false && <ManyDayForm
+                        onChange={this.handleChangeMoreOneDay}
+                        Calculate={this.Calculate}
+                        begin={this.state.leaveDateBegin}
+                        end={this.state.leaveDateEnd}
+                    />}
+                    <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
+                    <div className="row-file">
+                        <div className="text-file">
+                            File :
+                    </div>
+                        <div className="input-file">
+
+                            <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
+                        </div>
+                    </div>
+                    <div className="cover-button">
+                        <div className="row-button">
+                            <div className="submit1-button">
+                                <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div>
-                    <FormHeader />
-                </div>
-                <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
-                {this.state.isOneday && <OnedayForm
-                    value={{
-                        leaveDate: undefined,
-                        leaveDateStop: undefined,
-                        leaveTime: undefined,
-                        leaveTimeStop: undefined,
-                        leaveAmount: 0,
-                        leaveAmountStop: 0,
-                    }}
-                    onChange={this.handleChangeOnedayForm}
-                />}
-                {this.state.isOneday === false && <ManyDayForm
-                    onChange={this.handleChangeMoreOneDay}
-                    Calculate={this.Calculate}
-                    begin={this.state.leaveDateBegin}
-                    end={this.state.leaveDateEnd}
-                />}
-                <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
-                <div className="row-file">
-                    <div className="text-file">
-                        File :
-                    </div>
-                    <div className="input-file">
-
-                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
-                    </div>
-                </div>
-                <div className="cover-button">
-                    <div className="row-button">
-                        <div className="submit1-button">
-                            <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div>
         );
     }
 }
 
-export default alRequestForm;
+const mapStateToProps = state => {
+    const { staffId = '' } = state
+    return {
+        staffId: staffId
+    }
+}
+
+export default connect(mapStateToProps)(slRequestForm);
