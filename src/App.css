@@ -142,7 +142,7 @@
     }
 
     .mickeymouse p{
-    margin-right: 30px;
+    margin-right: 100px;
     }
     
     .username  p {
@@ -155,8 +155,7 @@
     }
     
     .section {
-      width: 320px;
-      text-align: center;
+      width: 250px;
     
     }
     
@@ -169,8 +168,7 @@
     }
     
     .position {
-      width: 300px;
-      text-align: center;
+      width: 250px;
     
     }
     
@@ -182,8 +180,8 @@
     }
     
     .staffID  {
-      width: 300px;
-      text-align: center;
+      width: 150px;
+      margin-right: 100px;
     
     }
     
@@ -960,8 +958,8 @@
     }
     
     .qqq {
-      margin-left: 300px;
       margin-top: 50px;
+      
     }
     
     .bird{
@@ -1871,9 +1869,7 @@ text-align: center;
 }
 
 .buttonapprove{
-  padding-left: 343px;
-  padding-top: 52px;
-  
+
 }
 
 .buttonapprove button{
@@ -1889,9 +1885,7 @@ text-align: center;
 }
 
 .buttonreject{
-  padding-left: 39px;
-  padding-top: 52px;
-  
+  margin-left: 39px;
 }
 
 .buttonreject button{
@@ -1932,4 +1926,13 @@ text-align: center;
 
 .namename1{
   width: 150px;
+}
+
+.tkbuttontk{
+  padding-top: 70px;
+  width: 100px;
+  display: flex;
+  margin: auto;
+  padding-bottom: 30px;
+
 }

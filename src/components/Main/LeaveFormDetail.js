@@ -8,6 +8,7 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import LightboxExample from '../Main/LightboxExample '
 import Lightbox from 'react-image-lightbox';
+import leftarrow from '../../asset/images/left-arrow.png';
 
 
 class LeaveFormDetail extends Component {
@@ -80,7 +81,9 @@ class LeaveFormDetail extends Component {
         return (
             <div className='leavebox'>
 
-
+            <div className='backbutton'>
+                <Link to='/History'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+            </div>
 
                 <div className="row">
                     <div className="col-md-1"></div>

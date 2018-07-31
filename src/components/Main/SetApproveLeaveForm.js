@@ -325,23 +325,26 @@ class SetApproveLeaveForm extends Component {
                     </div>
 
                     {this.handleCheckSet(this.state.personProfile.approvalStatus) && <div className="row qqq">
+                    
+
+
+                    </div>}
+                    
+
+
+
+                </div>
+                
+                <div className="col-md-2">
+                </div>
+                <div className='tkbuttontk'>
                         <div className="buttonapprove">
                             <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
                         </div>
                         <div className="buttonreject">
                             <button value="Reject" onClick={this.handleSetFalse}>Reject</button>
                         </div>
-
-
-                    </div>}
-
-
-
-
-                </div>
-
-                <div className="col-md-2">
-                </div>
+                    </div>
             </div>
 
 
