@@ -9,14 +9,9 @@ import TableSearchLeaveStatisticsDetails from '../components/Main/TableSearchLea
 class IndexIndividualStatistics extends Component {
     render() {
         return (
-
             <div className='staticticbox'>
-
                 <TableSearchLeaveStatisticsDetails />
-                <SearchTable />
-
-
-
+                {/* <SearchTable /> */}
             </div>
 
 

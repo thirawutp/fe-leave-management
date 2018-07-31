@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import _ from 'lodash';
 import '../../App.css';
 import axios from 'axios';
@@ -57,6 +57,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
   render() {
     const { people } = this.props
+    const { personProfile, person } = this.state
     console.log('people'), people
     return (
       <div>
@@ -65,33 +66,35 @@ class TableSearchLeaveStatisticsDetails extends Component {
             <Link to='/SearchStatic'><button className="back-button"><img src={leftarrow} />Back</button></Link>
           </div>
           <div className="row rowback">
-
             <div className="gun">
               <p><b>Leave Statistic</b></p>
             </div>
           </div>
           <div className='tktabledetails'>
-
-            <div className="row">
-              <div className="col-md-3">
-                <p><b>Name : </b>{this.state.personProfile.firstName}</p>
-              </div>
-              <div className="col-md-3">
-                <p><b>Surname : </b>{this.state.personProfile.lastName}</p>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-3">
-                <p><b>StaffID : </b>{this.state.personProfile.staffId}</p>
-              </div>
-              <div className="col-md-3">
-                <p><b>Section : </b>{this.state.personProfile.department}</p>
-              </div>
-              <div className="col-md-3">
-                <p><b>Position : </b>{this.state.personProfile.position}</p>
-
-              </div>
-            </div>
+            {personProfile &&
+              <Fragment>
+                <div className="row">
+                  <div className="col-md-3">
+                    {console.log('personProfile-->', personProfile)}
+                    <p><b>Name : </b>{personProfile.firstName}</p>
+                  </div>
+                  <div className="col-md-3">
+                    <p><b>Surname : </b>{personProfile.lastName}</p>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-md-3">
+                    <p><b>StaffID : </b>{personProfile.staffId}</p>
+                  </div>
+                  <div className="col-md-3">
+                    <p><b>Section : </b>{personProfile.department}</p>
+                  </div>
+                  <div className="col-md-3">
+                    <p><b>Position : </b>{personProfile.position}</p>
+                  </div>
+                </div>
+              </Fragment>
+            }
           </div>
           <div className="tkboth">
             <div className="Table">
@@ -111,72 +114,61 @@ class TableSearchLeaveStatisticsDetails extends Component {
               </div>
 
             </div>
-            <div className="Data">
-              <div className="row">
+            {person &&
+              <Fragment>
+                <div className="Data">
+                  <div className="row">
+                    <div className="col-md-3 topic">
+                      <td>Sick Leave</td>
+                    </div>
+                    <div className="col-md-3 daytopic">
+                      <td>{parseInt(person.totalSickHours / 8)} Days {(person.totalSickHours % 8)} Hrs.</td>
+                    </div>
+                    <div className="col-md-3 hourstopic">
 
-                <div className="col-md-3 topic">
-                  <td>Sick Leave</td>
+                      <td>{parseInt(this.getBalance(person.totalSickHours, person.sickHours) / 8)} Days {parseInt(this.getBalance(person.totalSickHours, person.sickHours) % 8)} Hrs.</td>
+                    </div>
+                    <div className="col-md-3 hourstopic">
+                      <td>{parseInt(person.sickHours / 8)} Days {parseInt(person.sickHours % 8)} Hrs.</td>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-md-3 daytopic">
-                  <td>{parseInt(this.state.person.totalSickHours / 8)} Days {(this.state.person.totalSickHours % 8)} Hrs.</td>
+                <div className="Data">
+                  <div className="row">
+                    <div className="col-md-3 topic">
+                      <td>Annual Leave</td>
+                    </div>
+                    <div className="col-md-3 daytopic">
+                      <td>{parseInt(person.totalAnnualHours / 8)} Days {(person.totalAnnualHours % 8)} Hrs.</td>
+                    </div>
+                    <div className="col-md-3 hourstopic">
+                      <td>{parseInt(this.getBalance(person.totalAnnualHours, person.annualHours) / 8)} Days {parseInt(this.getBalance(person.totalAnnualHours, person.annualHours) % 8)} Hrs.</td>
+                    </div>
+                    <div className="col-md-3 hourstopic">
+                      <td>{parseInt(person.annualHours / 8)} Days {parseInt(person.annualHours % 8)} Hrs.</td>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-md-3 hourstopic">
-
-                  <td>{parseInt(this.getBalance(this.state.person.totalSickHours, this.state.person.sickHours) / 8)} Days {parseInt(this.getBalance(this.state.person.totalSickHours, this.state.person.sickHours) % 8)} Hrs.</td>
+                <div className="Data">
+                  <div className="row">
+                    <div className="col-md-3 topic">
+                      <td>Leave without pay</td>
+                    </div>
+                    <div className="col-md-3 daytopic">
+                      <td>-</td>
+                    </div>
+                    <div className="col-md-3 hourstopic">
+                      <td>{parseInt(person.lwpHours / 8)} Days {parseInt(person.lwpHours % 8)} Hrs.</td>
+                    </div>
+                    <div className="col-md-3 hourstopic">
+                      <td>-</td>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-md-3 hourstopic">
-                  <td>{parseInt(this.state.person.sickHours / 8)} Days {parseInt(this.state.person.sickHours % 8)} Hrs.</td>
-                </div>
-
-
-
-
-              </div>
-            </div>
-            <div className="Data">
-              <div className="row">
-                <div className="col-md-3 topic">
-                  <td>Annual Leave</td>
-                </div>
-                <div className="col-md-3 daytopic">
-                  <td>{parseInt(this.state.person.totalAnnualHours / 8)} Days {(this.state.person.totalAnnualHours % 8)} Hrs.</td>
-                </div>
-                <div className="col-md-3 hourstopic">
-                  <td>{parseInt(this.getBalance(this.state.person.totalAnnualHours, this.state.person.annualHours) / 8)} Days {parseInt(this.getBalance(this.state.person.totalAnnualHours, this.state.person.annualHours) % 8)} Hrs.</td>
-                </div>
-                <div className="col-md-3 hourstopic">
-                  <td>{parseInt(this.state.person.annualHours / 8)} Days {parseInt(this.state.person.annualHours % 8)} Hrs.</td>
-                </div>
-
-
-              </div>
-            </div>
-            <div className="Data">
-              <div className="row">
-                <div className="col-md-3 topic">
-                  <td>Leave without pay</td>
-                </div>
-                <div className="col-md-3 daytopic">
-                  <td>-</td>
-                </div>
-                <div className="col-md-3 hourstopic">
-                  <td>{parseInt(this.state.person.lwpHours / 8)} Days {parseInt(this.state.person.lwpHours % 8)} Hrs.</td>
-                </div>
-                <div className="col-md-3 hourstopic">
-                  <td>-</td>
-                </div>
-              </div>
-            </div>
-
-
-
+              </Fragment>
+            }
           </div>
         </div>
-        <div>
-
-
-        </div>
-
       </div>
     );
   }
