@@ -119,7 +119,8 @@ class SearchTable extends Component {
                         if (key === 'LeaveId') {
                             return {
                                 ...result,
-                                [_.camelCase(key)]: `LEAVE${_.padStart(val, 3, '0')}`
+                                rawLeaveId: val,
+                                [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
                             }
                         }
                         if (['RequestedDateTime', 'ApprovedTime', 'StartDateTime', 'EndDateTime'].includes(key)) {
@@ -218,9 +219,7 @@ class SearchTable extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="col-md-2">
-                                                        <div>
-                                                            <Link to='/leaveForm'><td><b>{people.leaveId}</b></td></Link>
-                                                        </div>
+                                                        <Link to={`/statDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         <div>
 
                                                             <td>{people.type}</td>
