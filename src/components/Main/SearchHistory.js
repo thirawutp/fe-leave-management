@@ -128,6 +128,7 @@ class SearchHistory extends Component {
                 })
                 this.props.addHistory(data)
 
+
             })
 
     }
@@ -260,7 +261,7 @@ class SearchHistory extends Component {
 }
 
 const mapStateToProps = state => {
-    const { staffId = '', history = []} = state
+    const { staffId = '', history = [] } = state
     console.log('mstp', state)
     return {
         staffId: staffId,
@@ -282,7 +283,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addHistory: (history) => dispatch(addHistory(history))
+    addHistory: (history) => dispatch(addHistory(history)),
 
 })
 
