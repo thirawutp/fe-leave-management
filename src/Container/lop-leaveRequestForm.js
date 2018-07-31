@@ -313,7 +313,7 @@ class lwpRequestForm extends Component {
     }
     CalDayLeft = () => {
         if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
-            let sum = (parseInt(this.state.timeSum) + (8 * ((parseInt(this.state.amountLeft) / 24)))) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop) + 8
+            let sum = (parseInt(this.state.timeSum) + (8 * ((parseInt(this.state.amountLeft) / 24)))) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop) - 8
             this.setState({
                 showSum: sum,
             })
@@ -368,7 +368,7 @@ class lwpRequestForm extends Component {
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName1": this.state.selectedFile[0].name.substring(0, 15),
                     "attachedFile2": "",
                     "attachedFileName2": "No Image.",
                     "attachedFile3": "",
@@ -407,9 +407,9 @@ class lwpRequestForm extends Component {
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName1": this.state.selectedFile[0].name.substring(0, 15),
                     "attachedFile2": attachFileBase64p2,
-                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName2": this.state.selectedFile[1].name.substring(0, 15),
                     "attachedFile3": "",
                     "attachedFileName3": "No Image.",
                     "requestedDateTime": moment().format().toString(),
@@ -448,11 +448,11 @@ class lwpRequestForm extends Component {
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName1": this.state.selectedFile[0].name.substring(0, 15),
                     "attachedFile2": attachFileBase64p2,
-                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName2": this.state.selectedFile[1].name.substring(0, 15),
                     "attachedFile3": attachFileBase64p3,
-                    "attachedFileName3": this.state.selectedFile[2].name,
+                    "attachedFileName3": this.state.selectedFile[2].name.substring(0, 15),
                     "requestedDateTime": moment().format().toString(),
                     "isExisting": true,
                     "commentByAdmin": "string"
