@@ -37,6 +37,7 @@ export default (state = inttialState, action) => {
       }
 
     case 'SEARCH_IN_TABLE':
+      console.log('search Reducer ', action.payload.search)
       return {
         ...state,
         search: action.payload.search
