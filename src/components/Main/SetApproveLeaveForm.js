@@ -24,7 +24,7 @@ class SetApproveLeaveForm extends Component {
 
         const personal = _.find(props.info, info => info.staffId === staffId)
 
-        console.log('TANGKAAAA', personProfile, props.profile, LeaveId)
+        console.log('TANGKAAAA', personal)
         this.state = {
             person: [],
             personProfile,
@@ -135,6 +135,7 @@ class SetApproveLeaveForm extends Component {
     render() {
         const { photoIndex, isOpen } = this.state;
 
+
         let images = [this.state.personProfile.attachedFile1, this.state.personProfile.attachedFile2, this.state.personProfile.attachedFile3]
 
 
@@ -159,7 +160,7 @@ class SetApproveLeaveForm extends Component {
                                     <th><b>Name : </b></th>
                                 </div>
                                 <div className="namename1">
-                                    <td>{this.state.personal.firstName}</td>
+                                    <td>{this.state.personal.firstNameEn}</td>
                                 </div>
                             </div>
                             <div className="tklastnametk">
@@ -167,7 +168,7 @@ class SetApproveLeaveForm extends Component {
                                     <th><b>Lastname : </b></th>
                                 </div>
                                 <div className="">
-                                    <td>{this.state.personal.lastName}</td>
+                                    <td>{this.state.personal.lastNameEn}</td>
                                 </div>
                             </div>
 
@@ -328,26 +329,26 @@ class SetApproveLeaveForm extends Component {
                     </div>
 
                     {this.handleCheckSet(this.state.personProfile.approvalStatus) && <div className="row qqq">
-                    
+
 
 
                     </div>}
-                    
+
 
 
 
                 </div>
-                
+
                 <div className="col-md-2">
                 </div>
                 <div className='tkbuttontk'>
-                        <div className="buttonapprove">
-                            <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
-                        </div>
-                        <div className="buttonreject">
-                            <button value="Reject" onClick={this.handleSetFalse}>Reject</button>
-                        </div>
+                    <div className="buttonapprove">
+                        <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
                     </div>
+                    <div className="buttonreject">
+                        <button value="Reject" onClick={this.handleSetFalse}>Reject</button>
+                    </div>
+                </div>
             </div>
 
 
