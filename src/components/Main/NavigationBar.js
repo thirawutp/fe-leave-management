@@ -24,7 +24,7 @@ class NavigationBar extends Component {
         }
     }
     checkStatusRoleAdmin(role) {
-        if (role == 'Admin') {
+        if (role == 'admin') {
             return true
         }
         else {
