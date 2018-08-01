@@ -23,8 +23,6 @@ class Calendar2 extends React.Component {
       startDate: date
     });
 
-    console.log('date is ', date)
-
     onChange(id, moment(date).format().toString().substring(0, 11));
     onChange(id2, moment(date).format().toString().substring(0, 11));
   }

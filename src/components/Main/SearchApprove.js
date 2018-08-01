@@ -62,6 +62,7 @@ class SearchApprove extends Component {
         const { staffId } = this.props
         console.log('TTTTTTT', staffId)
         axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`) //searchApprove
+
             .then(res => {
                 const data = res.data.map(p => {
                     return _.reduce(p, (result, val, key) => {

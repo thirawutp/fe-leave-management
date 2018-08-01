@@ -12,10 +12,10 @@ import moment from 'moment';
 class LeaveList extends Component {
   activeClassName(pathname) {
     if (this.props.location.pathname === pathname) {
-        return ' buttonchange'
+      return ' buttonchange'
     }
     return ''
-}
+  }
   constructor(props) {
     super(props)
     const { leaveData = {} } = this.props
@@ -25,14 +25,16 @@ class LeaveList extends Component {
       timeleftlwp: '',
       timelock: '',
       lockMoment: '',
-      date: moment().format('DD-MM').toString()
+      date: moment().format('DD-MM').toString(),
+
     };
 
   };
   componentDidMount() {
     let thisyear = moment().format('YYYY').toString()
-    console.log(thisyear)
-    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=${thisyear}`)
+    const { staffId } = this.props
+    console.log("lllllllllll", staffId)
+    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=${staffId}`)
       .then(res => {
         this.setState({ timeleftal: res.data.AnnualHours })
         this.setState({ timeleftsl: res.data.SickHours })
@@ -146,5 +148,11 @@ class LeaveList extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { staffId = '' } = state
+  return {
+    staffId: staffId
+  }
+}
 
-export default LeaveList;
+export default connect(mapStateToProps)(LeaveList);
