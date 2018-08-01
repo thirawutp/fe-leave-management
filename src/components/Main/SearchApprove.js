@@ -23,14 +23,6 @@ const getLeaveTypePicture = leaveType => {
     }
     return ''
 }
-
-
-
-
-
-
-
-
 class SearchApprove extends Component {
     constructor(props) {
         super(props);
