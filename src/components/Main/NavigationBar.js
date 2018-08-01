@@ -44,7 +44,7 @@ class NavigationBar extends Component {
                     <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')}>
                         <Link to='/History'>history</Link>
                     </li>
-                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
+                    {this.checkStatusRoleAdmin(role.data) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
                         <Link to='/SearchStatic'>Stat</Link>
                     </li>}
                     {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')}>
