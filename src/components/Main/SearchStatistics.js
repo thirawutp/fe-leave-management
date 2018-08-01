@@ -124,6 +124,7 @@ class SearchStatistics extends Component {
 
                                                 <div className='tkusername'>
                                                     <td>{`${people.firstNameEn} ${people.lastNameEn}`}</td>
+
                                                 </div>
 
                                             </div>
