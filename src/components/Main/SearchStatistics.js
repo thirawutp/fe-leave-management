@@ -43,7 +43,7 @@ class SearchStatistics extends Component {
 
     render() {
         const { people } = this.props
-        console.log(people, 'nav props', this.props)
+        console.log("people56665555666", people)
         return (
             <div>
                 <div className="tkbubble">
@@ -79,40 +79,15 @@ class SearchStatistics extends Component {
                                                 <option value="QA">QA</option>
 
                                                 <option value="TL">TL</option>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                             </select>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
-
-
-
                                 <div className="row bubble">
 
                                     <div className="col-md-1">
                                         <th></th>
                                     </div>
-
-
                                     <div className="col-md-3">
                                         <th></th>
                                     </div>
@@ -148,7 +123,8 @@ class SearchStatistics extends Component {
                                                 </div>
 
                                                 <div className='tkusername'>
-                                                    <td>{people.firstName} {people.lastName}</td>
+                                                    <td>{`${people.firstNameEn} ${people.lastNameEn}`}</td>
+
                                                 </div>
 
                                             </div>
