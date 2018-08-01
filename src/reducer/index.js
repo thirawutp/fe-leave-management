@@ -47,6 +47,11 @@ export default (state = inttialState, action) => {
         ...state,
         person: action.payload.person
       }
+    case 'SET_ROLE':
+      return {
+        ...state,
+        role: action.payload.role
+      }
 
     case 'SET_STAFFID':
       return {

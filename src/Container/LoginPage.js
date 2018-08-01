@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
-import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, setStaffId, setProfile } from '../action'
+import { login, addHistory, addpudding, addStatistics, searchInTable, addTable, setStaffId, setProfile, setRole } from '../action'
 import _ from 'lodash'
 import moment from 'moment'
 import logologin from '../../src/asset/images/logologin.png';
@@ -38,7 +38,7 @@ class LoginPage extends Component {
                 this.props.setStaffId(staffId)
                 const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Header?email=${email}`)
                 this.props.setProfile(preson.data)
-                //const history = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}`) //searchHistory
+                //const history = await axios.get(https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}) //searchHistory
                 //const historyMapped = history.data.map(p => {
                 //  return _.reduce(p, (result, val, key) => {
                 //    if (key === 'ApprovedBy') {
@@ -51,7 +51,7 @@ class LoginPage extends Component {
                 //   return {
                 //     ...result,
                 //   rawLeaveId: val,
-                // [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
+                // [_.camelCase(key)]: LEV${_.padStart(val, 5, '0')}
                 //}
                 // }
                 //return {
@@ -75,7 +75,7 @@ class LoginPage extends Component {
                 //  return {
                 //    ...result,
                 //  rawLeaveId: val,
-                //[_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
+                //[_.camelCase(key)]: LEV${_.padStart(val, 5, '0')}
                 //}
                 // }
                 //return {
@@ -86,6 +86,9 @@ class LoginPage extends Component {
                 // })
 
                 // this.props.searchInTable(searchInTableMapped)
+                const role = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Role?staffId=${staffId}`)
+                this.props.setRole(role)
+                console.log("dsdsdssdsd", role)
                 const tableSearch = await axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
                 const tableSearchMapped = tableSearch.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
@@ -98,7 +101,7 @@ class LoginPage extends Component {
                 this.props.addTable(tableSearchMapped)
 
 
-                // const approveSearch = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`)
+                // const approveSearch = await axios.get(https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId})
                 // const approveSearchMapped = approveSearch.data.map(p => {
                 //   return _.reduce(p, (result, val, key) => {
                 //     if (key === 'ApprovedBy') {
@@ -111,7 +114,7 @@ class LoginPage extends Component {
                 //  return {
                 //    ...result,
                 //  rawLeaveId: val,
-                //[_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
+                //[_.camelCase(key)]: LEV${_.padStart(val, 5, '0')}
                 //}
                 // }
 
@@ -175,10 +178,7 @@ const mapStateToProps = null
 const mapDispatchToProps = dispatch => ({
     handleLogin: (profile) => dispatch(login(profile)),
     addHistory: (history) => dispatch(addHistory(history)),
-
-    addpudding: (data) => dispatch(addpudding(data)),
-
-
+    setRole: (role) => dispatch(setRole(role)),
     addStatistics: (statistics) => dispatch(addStatistics(statistics)),
     addTable: (table) => dispatch(addTable(table)),
     searchInTable: (search) => dispatch(searchInTable(search)),
@@ -192,4 +192,4 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
 )(LoginPage)
-// 
+//
