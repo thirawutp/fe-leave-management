@@ -59,6 +59,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
     const { people } = this.props
     const { personProfile, person } = this.state
     console.log('people'), people
+    console.log("DDDDD", person)
     return (
       <div>
 
