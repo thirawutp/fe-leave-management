@@ -8,11 +8,9 @@ import TimeSelect from '../components/Main/TimeSelect';
 import TimeSelectEnd from '../components/Main/TimeSelectEnd.js';
 import axios from 'axios';
 import moment from 'moment';
-import sun from '../asset/images/sun.png'
-import bandage from '../asset/images/bandage.png'
+import sun from '../asset/images/sun1.png'
 import '../App.css';
 import { connect } from 'react-redux';
-import patient from '../asset/images/patient.png'
 import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
 import { Link } from 'react-router';
@@ -26,7 +24,7 @@ const FormHeader = props => {
 
 
             <div className="show-header">
-                Sick Leave
+                Sick Leave Request
             </div>
             <div className='header1'>
 
@@ -72,7 +70,9 @@ const OnedayForm = props => {
     </div>
             <div className="select-onedate">
                 <React.Fragment>
-                    <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                    <div className="CalendarOneDay">
+                        <Calendar2 value={value.leaveDate} onChange={onChange} id={'leaveDate'} id2={'leaveDateStop'} />
+                    </div>
                     <div className="timeselect-oneday">
                         <div className="text-time">
                             Time :
@@ -85,8 +85,8 @@ const OnedayForm = props => {
                             <select className="option-time" onChange={(e) => onChange('leaveAmount', e.target.value, 'leaveAmountStop')}>
                                 <option value={0}>select hour</option>
                                 <option value={2}>2 hour</option>
-                                <option value={4} >4 hour</option>
-                                <option value={6} >6 hour</option>
+                                <option value={4}>4 hour</option>
+                                <option value={6}>6 hour</option>
                                 <option value={8}>8 hour</option>
                             </select>
 
@@ -174,7 +174,7 @@ const NoteQuestion = props => {
                 </div>
                 <div className="text-area">
 
-                    <textarea className="textarea" maxLength="255" type="text" onChange={(e) => onChange('note', e.target.value, e.target.value.length)} />
+                    <textarea className="textarea" maxLength="255" type="text" onChange={(event) => onChange('note', event.target.value, event.target.value.length)} />
                 </div>
 
             </div>
@@ -207,7 +207,7 @@ class slRequestForm extends Component {
         super(props);
         const { leaveData = {} } = this.props
         this.state = {
-            type: "Leave without Pay", // get form props :type
+            type: "Sick Leave", // get form props :type
             isOneday: true,
             leaveDate: undefined,
             leaveTime: '',
@@ -219,21 +219,21 @@ class slRequestForm extends Component {
             note: '',
             timeleftal: undefined,
             selectedFile: [],
-            imagePreviewUrl: '',
             leaveDateBegin: '',
             leaveDateEnd: '',
             amountLeft: '',
             timeSum: '',
             showSum: '',
-            caseID: ''
+            caseID: '',
+            CheckTypeFile: true
         };
-        this.fileChangedHandler = this.fileChangedHandler.bind(this);
     }
+
     componentDidMount() {
         let thisyear = moment().format('YYYY').toString()
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=I00002&year=${thisyear}`)
+        const { staffId } = this.props
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHour?staffId=${staffId}`)
             .then(res => {
-                console.log("data in database", res.data)
                 this.setState({ timeSum: res.data.SickHours })
                 this.setState({ showSum: res.data.SickHours })
             })
@@ -253,10 +253,8 @@ class slRequestForm extends Component {
     handleChangeOnedayForm = (id, value, id2) => {
 
         this.setState({ [id]: value })
-        this.setState({
-            [id2]: value
-        }, this.CalHours1day)
-        console.log('VALUE : ' + this.state.leaveDate)
+        this.setState({ [id2]: value }, this.CalHours1day)
+
     }
 
     handleChangeMoreOneDay = (id, value) => {
@@ -291,8 +289,8 @@ class slRequestForm extends Component {
                 this.setState({
                     showSum: this.state.timeSum,
                     caseID: -1
-
                 })
+                alert("Incorrect date time.\n Please try again.")
 
             }
             else if (this.state.leaveDate && this.state.leaveDateStop && this.state.leaveAmount && this.state.leaveAmountStop) {
@@ -322,31 +320,45 @@ class slRequestForm extends Component {
             })
         }
     }
-
     fileChangedHandler = (event) => {
-        this.setState({ selectedFile: Array.from(event.target.files) }, () => console.log("update file,", this.state.selectedFile[0]))
+        this.setState({ selectedFile: Array.from(event.target.files) }, this.checkTypeofFile)
     }
-
+    checkTypeofFile = () => {
+        let i = 0
+        for (i = 0; i < (this.state.selectedFile.length); i++) {
+            var ext = this.state.selectedFile[i].type
+            if (ext != "image/jpeg") {
+                this.setState({ CheckTypeFile: false })
+                alert('You can only use .jpg file!')
+                break;
+            }
+            else {
+                this.setState({ CheckTypeFile: true })
+            }
+        }
+        console.log('number of i', i)
+        if (i > 3) {
+            alert("You can only upload up to 3 images! \n please try again")
+        }
+    }
     handleSubmit = async event => {
+        const { staffId } = this.props
         let alerttext1 = `Leave date at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nTotal time : ${this.state.leaveAmount} Hours\nConfirm ?`
-        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${this.state.amountLeft} Hours\n Confirm ?`
+        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${(((this.state.amountLeft / 24) - 1) * 8) + this.state.leaveAmount + this.state.leaveAmountStop} Hours\n Confirm ?`
         let confirmText = ``
         if (this.state.leaveDate == this.state.leaveDateStop) {
             confirmText = alerttext1
         }
         else {
             confirmText = alerttext2
-            console.log("log alert", this.state.leaveTimeStop)
         }
         if (window.confirm(confirmText)) {
-            console.log(this.state.selectedFile)
             if (this.state.selectedFile.length == 1) {
-                console.log("do did na1")
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": "Sick Leave",
+                    "type": `${staffId}`,
                     "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
@@ -357,7 +369,7 @@ class slRequestForm extends Component {
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName1": this.state.selectedFile[0].name.substring(0, 15),
                     "attachedFile2": "",
                     "attachedFileName2": "No Image.",
                     "attachedFile3": "",
@@ -376,18 +388,16 @@ class slRequestForm extends Component {
                         }
                     })
                     .then(function (response) {
-                        console.log(response);
                     })
             }
             else if (this.state.selectedFile.length == 2) {
-                console.log("do did na2")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": "Sick Leave",
+                    "type": `${staffId}`,
                     "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
@@ -398,9 +408,9 @@ class slRequestForm extends Component {
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName1": this.state.selectedFile[0].name.substring(0, 15),
                     "attachedFile2": attachFileBase64p2,
-                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName2": this.state.selectedFile[1].name.substring(0, 15),
                     "attachedFile3": "",
                     "attachedFileName3": "No Image.",
                     "requestedDateTime": moment().format().toString(),
@@ -420,7 +430,6 @@ class slRequestForm extends Component {
                     })
             }
             else if (this.state.selectedFile.length == 3) {
-                console.log("do did na3")
                 let attachFileBase64 = ''
                 let attachFileBase64p2 = ''
                 let attachFileBase64p3 = ''
@@ -429,7 +438,7 @@ class slRequestForm extends Component {
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": "Sick Leave",
+                    "type": `${staffId}`,
                     "staffId": "I00002",
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
@@ -440,11 +449,11 @@ class slRequestForm extends Component {
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
                     "attachedFile1": attachFileBase64,
-                    "attachedFileName1": this.state.selectedFile[0].name,
+                    "attachedFileName1": this.state.selectedFile[0].name.substring(0, 15),
                     "attachedFile2": attachFileBase64p2,
-                    "attachedFileName2": this.state.selectedFile[1].name,
+                    "attachedFileName2": this.state.selectedFile[1].name.substring(0, 15),
                     "attachedFile3": attachFileBase64p3,
-                    "attachedFileName3": this.state.selectedFile[2].name,
+                    "attachedFileName3": this.state.selectedFile[2].name.substring(0, 15),
                     "requestedDateTime": moment().format().toString(),
                     "isExisting": true,
                     "commentByAdmin": "string"
@@ -462,16 +471,15 @@ class slRequestForm extends Component {
                     })
             }
             else {
-                console.log("do NO PICTURE na", this.state.leaveDate + this.state.leaveTime + ":00", this.state.leaveDateStop + this.state.leaveTimeStop + ":00")
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Sick Leave",
-                    "staffId": "I00002",
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
                     "hoursEndDate": this.state.leaveAmountStop,
-                    "approvalStatus": "Pending",
+                    "approvalStatus": "string",
                     "comment": this.state.note,
                     "approvedTime": "2018-07-24T11:15:18.558Z",
                     "approvedBy": "string",
@@ -481,27 +489,26 @@ class slRequestForm extends Component {
                     "attachedFileName2": "No Image.",
                     "attachedFile3": "",
                     "attachedFileName3": "No Image.",
-                    "requestedDateTime": moment().format().toString(),
+                    "requestedDateTime": "2018-07-24T11:15:18.558Z",
                     "isExisting": true,
                     "commentByAdmin": "string"
+
                 }, {
                         onUploadProgress: ProgressEvent => {
                             if ((ProgressEvent.loaded / ProgressEvent.total * 100) === 100) {
                                 alert("Data has been sent!.")
                                 browserHistory.push('/Leave')
                             }
-
                         }
                     })
                     .then(function (response) {
-                        console.log(response);
                     })
             }
         }
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -511,13 +518,15 @@ class slRequestForm extends Component {
                 alert('You can only upload up to 3 images.')
             }
             else {
-                console.log("success")
                 this.handleSubmit()
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.caseID <= 0) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTimeStop == '' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
+            }
+            else if (this.state.caseID <= 0) {
+                alert("Incorrect date time.\n Please try again.")
             }
             else if (this.state.showSum < 0) {
                 alert('Overtime!.')
@@ -537,81 +546,84 @@ class slRequestForm extends Component {
                 <div className='backbutton'>
                     <Link to='/Leave'><button className="back-button"><img src={leftarrow} />Back</button></Link>
                 </div>
-            <div className="leave-form">
-                <div className="cover-popup-al">
-                    <div className="textpopup">
-                    </div>
-                    <div className="alpopup">
-                        <div className="picture">
-                            <img src={patient} />
+                <div className="leave-form">
+                    <div className="cover-popup-al">
+                        <div className="textpopup">
                         </div>
-                        <div className="object">
-                            <div className="text-cover1 row">
-                                <div className="col-md-6">
-                                    <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
+                        <div className="alpopup">
+                            <div className="picture">
+                                <img src={sun} />
+                            </div>
+                            <div className="object">
+                                <div className="row text-cover1 ">
+                                    <div className="col-md-6 ">
+                                        <p className="text-fill1" >{parseInt(this.state.showSum / 8)}</p>
+                                    </div>
+                                    <div className="col-md-6 ">
+                                        <p className="text-under1">Days</p>
+                                    </div>
                                 </div>
-                                <div className="col-md-6">
-                                    <p className="text-under1">Days</p>
+                                <div className=" row text-cover1">
+                                    <div>
+                                        <p className="text-bottom1">{this.state.showSum % 8}</p>
+                                    </div>
+                                    <div className="col-md-6 ">
+                                        <p className="text-hour1">Hours</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="row text-cover1">
-                                <div>
-                                    <p className="text-bottom1">{this.state.showSum % 8} </p>
-                                </div>
-                                <div className="col-md-6 ">
-                                    <p className="text-hour1">Hours</p>
-                                </div>
+
+                        </div>
+                    </div>
+                    <div>
+                        <FormHeader />
+                    </div>
+                    <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
+                    {this.state.isOneday && <OnedayForm
+                        value={{
+                            leaveDate: undefined,
+                            leaveDateStop: undefined,
+                            leaveTime: undefined,
+                            leaveTimeStop: undefined,
+                            leaveAmount: 0,
+                            leaveAmountStop: 0,
+                        }}
+                        onChange={this.handleChangeOnedayForm}
+                    />}
+                    {this.state.isOneday === false && <ManyDayForm
+                        onChange={this.handleChangeMoreOneDay}
+                        Calculate={this.Calculate}
+                        begin={this.state.leaveDateBegin}
+                        end={this.state.leaveDateEnd}
+                    />}
+                    <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
+                    <div className="row-file">
+                        <div className="text-file">
+                            File :
+                    </div>
+                        <div className="input-file">
+
+                            <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
+                        </div>
+                    </div>
+                    <div className="cover-button">
+                        <div className="row-button">
+                            <div className="submit1-button">
+                                <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div>
-                    <FormHeader />
-                </div>
-                <IsOneDayQuestion onChange={this.handleOneDayQuestion} value={this.state.isOneday} />
-                {this.state.isOneday && <OnedayForm
-                    value={{
-                        leaveDate: undefined,
-                        leaveDateStop: undefined,
-                        leaveTime: undefined,
-                        leaveTimeStop: undefined,
-                        leaveAmount: 0,
-                        leaveAmountStop: 0,
-                    }}
-                    onChange={this.handleChangeOnedayForm}
-                />}
-                {this.state.isOneday === false && <ManyDayForm
-                    onChange={this.handleChangeMoreOneDay}
-                    Calculate={this.Calculate}
-                    begin={this.state.leaveDateBegin}
-                    end={this.state.leaveDateEnd}
-                />}
-                <NoteQuestion value={this.state.note} onChange={this.handleChangeComment} textlimit={this.state.len} />
-                <div className="row-file">
-                    <div className="text-file">
-                        File :
-                    </div>
-                    <div className="input-file">
-                        <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
-                    </div>
-                </div>
-                <div className="cover-button">
-                    <div className="row-button">
-                        <div className="submit1-button">
-                            <button className="submit-button" onClick={this.handleCheckSubmit}>Send</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({
-    leaveData: state.data
-})
+const mapStateToProps = state => {
+    const { staffId = '' } = state
+    return {
+        staffId: staffId
+    }
+}
 
-export default slRequestForm;
+export default connect(mapStateToProps)(slRequestForm);

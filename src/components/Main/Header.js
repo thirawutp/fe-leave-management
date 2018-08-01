@@ -27,10 +27,12 @@ class Header extends Component {
         </div>
         <div className='user'>
           <div className='username'>
+
             <p><b></b>{people.Name}</p>
           </div>
           <div className='section'>
             <p><b>Section: </b>{people.Department}</p>
+
           </div>
           <div className='position'>
             <p><b>Position:</b>{people.Position}</p>
