@@ -167,10 +167,10 @@ class SearchTable extends Component {
                     <div className="row ">
 
 
-
+                    <div className='tkboth'>
                         <form>
                             <div className="bbr">
-                                <input type="text" onChange={this.searchHandle} value={term} /> <img src={pic} width="19" height="19" />
+                                <input type="text" onChange={this.searchHandle} placeholder="   Search by..." value={term} /> <img src={pic} width="19" height="19" />
                             </div>
                         </form>
 
@@ -248,7 +248,7 @@ class SearchTable extends Component {
 
                             </div>
                         </div>
-
+                    </div>
                     </div>
                 </div>
             </div>
