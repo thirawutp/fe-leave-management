@@ -128,16 +128,16 @@ class LoginPage extends Component {
 
 
 
-                //     const searchStatistics = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
-                //   const searchStatisticsMapped = searchStatistics.data.map(p => {
-                //     return _.reduce(p, (result, val, key) => {
-                //       return {
-                //         ...result,
-                //       [_.camelCase(key)]: val
-                // }
-                //}, {})
-                //})
-                //this.props.addStatistics(searchStatisticsMapped)
+                const searchStatistics = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+                const searchStatisticsMapped = searchStatistics.data.map(p => {
+                    return _.reduce(p, (result, val, key) => {
+                        return {
+                            ...result,
+                            [_.camelCase(key)]: val
+                        }
+                    }, {})
+                })
+                this.props.addStatistics(searchStatisticsMapped)
                 this.props.router.push('/Leave')
             }
         } catch (error) {
