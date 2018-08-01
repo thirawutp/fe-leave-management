@@ -89,6 +89,7 @@ class LoginPage extends Component {
 
                 const ssearch = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`)
                 this.props.searchInTable(ssearch.data)
+
                 const role = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Role?staffId=${staffId}`)
                 this.props.setRole(role)
                 console.log("dsdsdssdsd", role)
