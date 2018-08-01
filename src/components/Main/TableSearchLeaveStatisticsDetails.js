@@ -61,7 +61,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
     console.log('people'), people
     return (
       <div>
-        
+
         <div className='nbbutton'>
           <div className='backbutton'>
             <Link to='/SearchStatic'><button className="back-button"><img src={leftarrow} />Back</button></Link>
@@ -77,10 +77,10 @@ class TableSearchLeaveStatisticsDetails extends Component {
                 <div className="row">
                   <div className="col-md-3">
                     {console.log('personProfile-->', personProfile)}
-                    <p><b>Name : </b>{personProfile.firstName}</p>
+                    <p><b>Name : </b>{personProfile.firstNameEn}</p>
                   </div>
                   <div className="col-md-3">
-                    <p><b>Surname : </b>{personProfile.lastName}</p>
+                    <p><b>Surname : </b>{personProfile.lastNameEn}</p>
                   </div>
                 </div>
                 <div className="row">
