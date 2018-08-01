@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import logout from '../../asset/images/logout.png';
 
 
+
 class NavigationBar extends Component {
     activeClassName(pathname) {
         if (this.props.location.pathname === pathname) {
@@ -14,8 +15,26 @@ class NavigationBar extends Component {
         }
         return ''
     }
+    checkStatusRoleApp(role) {
+        if (role == 'Approver') {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    checkStatusRoleAdmin(role) {
+        if (role == 'Admin') {
+            return true
+        }
+        else {
+            return false
+        }
+
+    }
     render() {
-        console.log('nav props', this.props)
+        let { role } = this.props
+        console.log('role props', role.data)
         return (
             <div>
                 <ul className='navigationbar-list '>
@@ -25,10 +44,10 @@ class NavigationBar extends Component {
                     <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')}>
                         <Link to='/History'>history</Link>
                     </li>
-                    <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
+                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
                         <Link to='/SearchStatic'>Stat</Link>
-                    </li>
-                    <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')}>
+                    </li>}
+                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
                         <div className='tknotis'>
 
@@ -43,7 +62,7 @@ class NavigationBar extends Component {
                                 }, 0)
                             }
                         </div>
-                    </li>
+                    </li>}
                     <li className='logoutbutton'>
                         <Link to='/logout'><img src={logout} />Logout</Link>
                     </li>
@@ -57,9 +76,10 @@ class NavigationBar extends Component {
 
 
 const mapStateToProps = state => {
+    const { role = '' } = state
     console.log(state)
     return {
-
+        role: role,
         people: _.get(state, 'approve', []).map(row => {
             return _.reduce(row, (result, val, key) => {
                 if (['requestedDateTime', 'approvedTime', 'startDateTime', 'endDateTime'].includes(key)) {
@@ -77,10 +97,5 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => ({})
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(NavigationBar)
+export default connect(mapStateToProps)(NavigationBar)
 
