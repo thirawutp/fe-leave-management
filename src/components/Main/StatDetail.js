@@ -11,7 +11,7 @@ import Lightbox from 'react-image-lightbox';
 import leftarrow from '../../asset/images/left-arrow.png';
 
 
-class LeaveFormDetail extends Component {
+class StatDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,6 +19,8 @@ class LeaveFormDetail extends Component {
             roles: 'HR',
             photoIndex: 0,
             isOpen: false,
+            people: '',
+            data: '',
         }
 
 
@@ -48,7 +50,18 @@ class LeaveFormDetail extends Component {
 
     }
 
+    handleShow = (roles) => {
 
+
+        if (roles === 'HR') {
+            return true
+
+        }
+        else {
+            return false
+        }
+
+    }
 
     handleImg = (pic) => {
         if (pic === '') {
@@ -58,21 +71,36 @@ class LeaveFormDetail extends Component {
     }
     handleonClickpic = () => {
 
-        <LightboxExample images={this.props.leaveForm.attachedFile} />
+        <LightboxExample images={this.state.data.attachedFile} />
         console.log("fdfdfdfd")
     }
 
 
+    componentDidMount = () => {
+        console.log('Didmount')
+        const AAA = _.last(window.location.pathname.split('/'))
+        console.log("good girl", AAA)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Info?leaveId=${AAA}`)
+            .then(res => {
+                console.log('------', res.data)
+                this.setState({ data: res.data })
+
+                console.log("goodboyyyy", this.state.data)
+
+            })
+    }
+
+
     render() {
-        console.log('5555555555', this.props.leaveForm)
-        const { photoIndex, isOpen } = this.state;
-        let images = [this.props.leaveForm.attachedFile1, this.props.leaveForm.attachedFile2, this.props.leaveForm.attachedFile3]
+        console.log('5555555555', this.state.data)
+        const { photoIndex, isOpen, data } = this.state;
+
+        let images = [this.state.data.AttachedFile1, this.state.data.AttachedFile2, this.state.data.AttachedFile3]
         return (
             <div className='leavebox'>
-
-            <div className='backbutton'>
-                <Link to='/History'><button className="back-button"><img src={leftarrow} />Back</button></Link>
-            </div>
+                <div className='backbutton'>
+                    <Link to='/SearchStatic'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+                </div>
 
                 <div className="row">
                     <div className="col-md-1"></div>
@@ -93,51 +121,51 @@ class LeaveFormDetail extends Component {
                                 <p><b>Leave Type : </b></p>
                             </div>
                             <div className="col-md-2">
-                                <p>{this.props.leaveForm.type}</p>
+                                <p>{this.state.data.Type}</p>
                             </div>
                             <div className="col-md-2">
                                 <p><b>Day Requested : </b></p>
                             </div>
                             <div className="col-md-2">
-                                <p>{this.getType(this.props.leaveForm.startDateTime, this.props.leaveForm.endDateTime)}</p>
+                                <p>{this.getType(this.state.data.StartDateTime, this.state.data.EndDateTime)}</p>
                             </div>
                         </div>
 
 
 
-                        {!this.getDayType(this.props.leaveForm.startDateTime, this.props.leaveForm.endDateTime) && <div> <div className="row">
+                        {!this.getDayType(this.state.data.StartDateTime, this.state.data.EndDateTime) && <div> <div className="row">
 
                             <div className="col-md-2"><p><b>Day Start : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.state.data.StartDateTime).format('DD-MM-YYYY')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('HH:mm')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.state.data.StartDateTime).format('HH:mm')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.props.leaveForm.hoursStartDate} Hrs.</p></div>
+                            <div className="col-md-2"><p>{this.state.data.HoursStartDate} Hrs.</p></div>
                         </div>
                             <div className="row">
                                 <div className="col-md-2"><p><b>Day End : </b></p></div>
-                                <div className="col-md-2"><p>{moment(this.props.leaveForm.endDateTime).format('DD-MM-YYYY')}</p></div>
+                                <div className="col-md-2"><p>{moment(this.state.data.EndDateTime).format('DD-MM-YYYY')}</p></div>
                                 <div className="col-md-2"><p><b>Time : </b></p></div>
-                                <div className="col-md-2"><p>{moment(this.props.leaveForm.endDateTime).format('HH:mm')}</p></div>
+                                <div className="col-md-2"><p>{moment(this.state.data.EndDateTime).format('HH:mm')}</p></div>
                                 <div className="col-md-2"><p><b>Time : </b></p></div>
-                                <div className="col-md-2"><p>{this.props.leaveForm.hoursEndDate} Hrs.</p></div></div>
+                                <div className="col-md-2"><p>{this.state.data.HoursEndDate} Hrs.</p></div></div>
 
 
                         </div>}
-                        {this.getDayType(this.props.leaveForm.startDateTime, this.props.leaveForm.endDateTime) && <div className="row">
+                        {this.getDayType(this.state.data.StartDateTime, this.state.data.EndDateTime) && <div className="row">
                             <div className="col-md-2"><p><b>Date : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('DD-MM-YYYY')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.state.data.StartDateTime).format('DD-MM-YYYY')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{moment(this.props.leaveForm.startDateTime).format('HH:mm')}</p></div>
+                            <div className="col-md-2"><p>{moment(this.state.data.StartDateTime).format('HH:mm')}</p></div>
                             <div className="col-md-2"><p><b>Time : </b></p></div>
-                            <div className="col-md-2"><p>{this.props.leaveForm.hoursStartDate} Hrs.</p></div></div>}
+                            <div className="col-md-2"><p>{this.state.data.HoursStartDate} Hrs.</p></div></div>}
 
                         <div className="row">
                             <div className="col-md-2">
                                 <p><b>Note/comments : </b></p>
                             </div>
                             <div className="col-md-9">
-                                <p>{this.props.leaveForm.comment}</p>
+                                <p>{this.state.data.Comment}</p>
                             </div>
                         </div>
                         <div className="row">
@@ -151,21 +179,21 @@ class LeaveFormDetail extends Component {
                                 <div className="tklink">
                                     {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
                                     <div className="mickeymouse">
-                                        {this.handleImg(this.props.leaveForm.attachedFile1) && <div>
-                                            <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
-                                            <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        {this.handleImg(this.state.data.AttachedFile1) && <div>
+                                            <p>{this.state.data.AttachedFileName1}</p>
+                                            <p><img src={this.state.data.AttachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
 
                                         }
-                                        {this.handleImg(this.props.leaveForm.attachedFile2) && <div>
-                                            <p>{this.props.leaveForm.attachedFileName2.substring(0, 15)}</p>
-                                            <p><img src={this.props.leaveForm.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        {this.handleImg(this.state.data.AttachedFile2) && <div>
+                                            <p>{this.state.data.AttachedFileName2}</p>
+                                            <p><img src={this.state.data.AttachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
 
                                         }
-                                        {this.handleImg(this.props.leaveForm.attachedFile3) && <div>
-                                            <p>{this.props.leaveForm.attachedFileName3.substring(0, 15)}</p>
-                                            <p><img src={this.props.leaveForm.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                        {this.handleImg(this.state.data.AttachedFile3) && <div>
+                                            <p>{this.state.data.AttachedFileName3}</p>
+                                            <p><img src={this.state.data.AttachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
 
                                         }
@@ -200,18 +228,11 @@ class LeaveFormDetail extends Component {
 
                 </div>
             </div>
+
         );
     }
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        leaveForm: _.find(state.history, { rawLeaveId: Number(props.params.formId) }) || {}
-    }
-}
 
-export default connect(
-    mapStateToProps,
-    {},
-)(LeaveFormDetail);
+export default StatDetail
 

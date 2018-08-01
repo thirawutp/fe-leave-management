@@ -24,6 +24,7 @@ import IndexindividualStatistic from '../src/Container/index-individualStatistic
 import SearchStatistics from './components/Main/SearchStatistics.js';
 import SearchStatisticsback from '../src/components/Main/SearchStatistics';
 import SearchApprove from './components/Main/SearchApprove.js';
+import StatDetail from '../src/components/Main/StatDetail';
 
 
 
@@ -68,6 +69,7 @@ class App extends Component {
           <Route path='form/LwpLeave' component={lwpRequestForm} />
           <Route path='history' component={IndexSearchHistory} />
           <Route path='leaveDetail/:formId' component={LeaveFormDetail} />
+          <Route path='statDetail/:formId' component={StatDetail} />
           <Route path='SearchStatic' component={IndexSearchStatistics} />
           <Route path='setApprove/:formId' component={SetApproveLeaveForm} />
           <Route path='indexindividualStatistic/:personId' component={IndexindividualStatistic} />
