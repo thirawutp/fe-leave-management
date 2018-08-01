@@ -36,7 +36,7 @@ class LoginPage extends Component {
                 const employee = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/GetEmployeeId?email=${email}`)
                 const staffId = employee.data
                 this.props.setStaffId(staffId)
-                const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetLeaveStatistic?staffId=${staffId}`)
+                const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Header?email=${email}`)
                 this.props.setProfile(preson.data)
                 const history = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}`) //searchHistory
                 const historyMapped = history.data.map(p => {
@@ -84,6 +84,7 @@ class LoginPage extends Component {
                         }
                     }, {})
                 })
+
                 this.props.searchInTable(searchInTableMapped)
                 const tableSearch = await axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
                 const tableSearchMapped = tableSearch.data.map(p => {
@@ -95,6 +96,33 @@ class LoginPage extends Component {
                     }, {})
                 })
                 this.props.addTable(tableSearchMapped)
+
+
+                // const approveSearch = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`)
+                // const approveSearchMapped = approveSearch.data.map(p => {
+                //     return _.reduce(p, (result, val, key) => {
+                //         if (key === 'ApprovedBy') {
+                //             return {
+                //                 ...result,
+                //                 [_.camelCase(key)]: val || '-'
+                //             }
+                //         }
+                //         if (key === 'LeaveId') {
+                //             return {
+                //                 ...result,
+                //                 rawLeaveId: val,
+                //                 [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
+                //             }
+                //         }
+
+                //         return {
+                //             ...result,
+                //             [_.camelCase(key)]: val
+                //         }
+                //     }, {})
+                // })
+                // this.props.addApprove(approveSearchMapped)
+
                 const searchStatistics = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
                 const searchStatisticsMapped = searchStatistics.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
