@@ -114,7 +114,11 @@ class SearchTable extends Component {
         console.log('Didmount')
         const AAA = _.last(window.location.pathname.split('/'))
         console.log("good game", AAA)
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${AAA}`)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${AAA}`, {
+            headers: {
+                Authorization: 'Bearer 123456'
+            }
+        })
             .then(res => {
                 console.log('------', res.data)
                 const data = res.data.map(p => {

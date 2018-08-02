@@ -80,7 +80,11 @@ class StatDetail extends Component {
         console.log('Didmount')
         const AAA = _.last(window.location.pathname.split('/'))
         console.log("good girl", AAA)
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Info?leaveId=${AAA}`)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/Info?leaveId=${AAA}`, {
+            headers: {
+                Authorization: 'Bearer 123456'
+            }
+        })
             .then(res => {
                 console.log('------', res.data)
                 this.setState({ data: res.data })

@@ -33,10 +33,18 @@ class LoginPage extends Component {
             this.props.handleLogin(data)
 
             if (!_.isNil(email)) {
-                const employee = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/GetEmployeeId?email=${email}`)
+                const employee = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/GetEmployeeId?email=${email}`, {
+                    headers: {
+                        Authorization: 'Bearer 123456'
+                    }
+                })
                 const staffId = employee.data
                 this.props.setStaffId(staffId)
-                const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Header?email=${email}`)
+                const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Header?email=${email}`, {
+                    headers: {
+                        Authorization: 'Bearer 123456'
+                    }
+                })
                 this.props.setProfile(preson.data)
                 console.log("preson.data", preson.data)
                 //const history = await axios.get(https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}) //searchHistory
@@ -91,10 +99,18 @@ class LoginPage extends Component {
                 //const ssearch = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`)
                 //this.props.searchInTable(ssearch.data)
 
-                const role = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Role?staffId=${staffId}`)
+                const role = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Role?staffId=${staffId}`, {
+                    headers: {
+                        Authorization: 'Bearer 123456'
+                    }
+                })
                 this.props.setRole(role)
                 console.log("dsdsdssdsd", role)
-                const tableSearch = await axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearch...
+                const tableSearch = await axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours", {
+                    headers: {
+                        Authorization: 'Bearer 123456'
+                    }
+                }) //TableSearch...
                 const tableSearchMapped = tableSearch.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
                         return {
@@ -134,7 +150,11 @@ class LoginPage extends Component {
 
 
 
-                const searchStatistics = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+                const searchStatistics = await axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics', {
+                    headers: {
+                        Authorization: 'Bearer 123456'
+                    }
+                })  //SearchStatistics
                 const searchStatisticsMapped = searchStatistics.data.map(p => {
                     return _.reduce(p, (result, val, key) => {
                         return {

@@ -28,7 +28,11 @@ class TableSearchLeaveStatisticsDetails extends Component {
 
 
   componentDidMount() {
-    axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours") //TableSearchLeaveStatisticsDetails
+    axios.get("https://appmanleavemanagement20180718055046.azurewebsites.net/api/RemainingHour/RemainingHours", {
+      headers: {
+        Authorization: 'Bearer 123456'
+      }
+    }) //TableSearchLeaveStatisticsDetails
       .then(res => {
         console.log('sdvbdf drgfbdrgfbdrgf', res.data)
         const data = res.data.map(p => {

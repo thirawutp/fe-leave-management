@@ -14,6 +14,7 @@ class NavigationBar extends Component {
         super(props);
         this.state = {
             data: '',
+            yaya: ''
         }
 
 
@@ -54,16 +55,36 @@ class NavigationBar extends Component {
             })
     }
 
-    checkAcc(status) {
-        []
+    handleRefresh = () => {
+        const { staffId } = this.props
+
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`, {
+            headers: {
+                Authorization: 'Bearer 123456'
+            }
+        })
+            .then(res => {
+
+                this.setState({ data: res.data })
+
+                console.log("nuLoma", res.data)
+
+            })
+
 
     }
+
+
 
     componentDidMount = () => {
         console.log('Didmount')
         const { staffId } = this.props
 
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`)
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`, {
+            headers: {
+                Authorization: 'Bearer 123456'
+            }
+        })
             .then(res => {
 
                 this.setState({ data: res.data })
@@ -90,17 +111,17 @@ class NavigationBar extends Component {
         return (
             <div>
                 <ul className='navigationbar-list '>
-                    <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')}>
+                    <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')} onClick={this.handleRefresh}>
                         <Link to='/Leave'>leave</Link>
                     </li>
                     <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
                         <Link to='/History'>history</Link>
                         {this.state.data && <div><p>ก</p></div>}
                     </li>
-                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
+                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')} onClick={this.handleRefresh}>
                         <Link to='/SearchStatic'>Stat</Link>
                     </li>}
-                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')}>
+                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')} onClick={this.handleRefresh}>
                         <Link to='/Approve'>Approve</Link>
                         {sumApprovalStatus !== 0 && <div className='tknotis'>
                             {sumApprovalStatus}
