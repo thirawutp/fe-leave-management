@@ -187,13 +187,13 @@ class StatDetail extends Component {
                                         }
                                         {this.handleImg(this.state.data.AttachedFile2) && <div>
                                             <p>{this.state.data.AttachedFileName2}</p>
-                                            <p><img src={this.state.data.AttachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                            <p><img src={this.state.data.AttachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 1 })} /></p>
                                         </div>
 
                                         }
                                         {this.handleImg(this.state.data.AttachedFile3) && <div>
                                             <p>{this.state.data.AttachedFileName3}</p>
-                                            <p><img src={this.state.data.AttachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                            <p><img src={this.state.data.AttachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 2 })} /></p>
                                         </div>
 
                                         }
