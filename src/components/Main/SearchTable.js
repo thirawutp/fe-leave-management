@@ -238,26 +238,26 @@ class SearchTable extends Component {
                                                         <div>
 
 
-                                                                <td>{people.type}</td>
-                                                            </div>
+                                                            <td>{people.type}</td>
                                                         </div>
-                                                        <div className="col-md-2">
-                                                            <td>{people.staffId}</td>
-                                                        </div>
-                                                        <div className="col-md-2">
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <td>{people.staffId}</td>
+                                                    </div>
+                                                    <div className="col-md-2">
 
-                                                            <td>{people.requestedDateTime}</td>
+                                                        <td>{people.requestedDateTime}</td>
 
-                                                        </div>
-                                                        <div className="col-md-2">
-                                                            <td>{people.startDateTime}</td>
-                                                        </div>
-                                                        <div className="col-md-2">
-                                                            <td>{people.approvedBy}</td>
-                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <td>{people.startDateTime}</td>
+                                                    </div>
+                                                    <div className="col-md-2">
+                                                        <td>{people.approvedBy}</td>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         )
                                     }
 

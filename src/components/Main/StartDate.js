@@ -16,6 +16,7 @@ class StartDate extends React.Component {
         this.setState({
             startDate: date
         });
+        console.log('this is a book', date.getDay)
         onChange(id, moment(date).format().toString().substring(0, 11));
         // Calculate(date, '');
     }
