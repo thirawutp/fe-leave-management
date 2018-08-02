@@ -103,7 +103,7 @@ class StatDetail extends Component {
         return (
             <div className='leavebox'>
                 <div className='backbutton'>
-                    <Link to='/indexindividualStatistic'><button className="back-button"><img src={leftarrow} />Back</button></Link>
+                    <Link to='/indexindividualStatistic/:personId'><button className="back-button"><img src={leftarrow} />Back</button></Link>
                 </div>
 
                 <div className="row">
