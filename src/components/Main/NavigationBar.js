@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import '../../App.css';
 import { Link } from 'react-router';
 import logout from '../../asset/images/logout.png';
+import bell from '../../asset/images/bell6.gif';
 
 
 
@@ -95,7 +96,7 @@ class NavigationBar extends Component {
                     </li>
                     <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
                         <Link to='/History'>history</Link>
-                        {this.state.data && <div><p>ก</p></div>}
+                        {this.state.data && <div className='tknotis1'> <img src={bell} /></div>}
                     </li>
                     {this.checkStatusRoleAdmin(role.data) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
                         <Link to='/SearchStatic'>Stat</Link>
