@@ -53,7 +53,7 @@ class SearchStatistics extends Component {
                 <div className="tkbubble">
                     <div className='tkstatistic'>
 
-                        <div className="row">
+                        <div className="row" >
                             <div className="col-md-11 tktktables">
 
                                 <div className="tkboth"></div>
@@ -109,6 +109,8 @@ class SearchStatistics extends Component {
                                     </div>
 
                                 </div>
+
+                                <div className='tkkt'>
                                 {
 
                                     people.filter((people) => {
@@ -155,6 +157,7 @@ class SearchStatistics extends Component {
                                         </div>
                                     )
                                 }
+                                </div>
                             </div>
 
 

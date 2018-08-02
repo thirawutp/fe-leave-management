@@ -132,7 +132,7 @@ class SearchApprove extends Component {
                             </div>
 
 
-                            <div>
+                            <div className='tkkt'>
                                 {
 
                                     filtered.map((people, index) =>
