@@ -355,7 +355,8 @@ class alRequestForm extends Component {
         if (window.confirm(confirmText)) {
             if (this.state.selectedFile.length == 1) {
                 let attachFileBase64 = ''
-                attachFileBase64 = await getBase64(this.state.selectedFile[0])
+                attachFileBase64 = await getBase64(this.state.selectedFile[0]);
+                <img src={attachFileBase64} />
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -395,6 +396,7 @@ class alRequestForm extends Component {
                 let attachFileBase64p2 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
