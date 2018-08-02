@@ -509,7 +509,7 @@ class slRequestForm extends Component {
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate == 'Invalid dat' || this.state.leaveDate == '' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -523,7 +523,7 @@ class slRequestForm extends Component {
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop == '00:00' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate == 'Invalid dat' || this.state.leaveDate == '' || this.state.leaveDateStop == '' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop == '00:00' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.caseID <= 0) {
