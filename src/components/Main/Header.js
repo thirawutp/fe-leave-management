@@ -47,7 +47,7 @@ class Header extends Component {
             }
           }, {})
         })
-        this.props.addApprove(data)
+
       })
   }
 
@@ -89,7 +89,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setProfile: (person) => dispatch(setProfile(person)),
-  addApprove: (approve) => dispatch(addApprove(approve))
+
 })
 
 
