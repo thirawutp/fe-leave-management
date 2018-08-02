@@ -5,7 +5,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { addStatistics } from '../../action'
-import kendall from '../../asset/images/kendall.jpg'
+import user from '../../asset/images/user.png'
 
 
 class SearchStatistics extends Component {
@@ -115,7 +115,7 @@ class SearchStatistics extends Component {
                                     }).map((people) =>
                                         <div className="row PPData">
                                             <div className="col-md-1 tkuserpicture">
-                                                <img src={kendall} />
+                                                <img src={user} />
                                             </div>
                                             <div className="col-md-3">
                                                 <div className='tktkstaffid'>

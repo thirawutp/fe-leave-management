@@ -227,7 +227,7 @@ class SearchTable extends Component {
                                                             <td><b>{this.editShow(people.approvalStatus)}</b></td>
                                                         </div>
                                                     </div>
-                                                    <div className="col-md-2">
+                                                    <div className="col-md-2 tktkleave">
                                                         <Link to={`/statDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         <div>
 
