@@ -25,7 +25,11 @@ class SearchStatistics extends Component {
     }
 
     componentDidMount() {
-        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics')  //SearchStatistics
+        axios.get('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Statistic/GetStatistics', {
+            headers: {
+                Authorization: 'Bearer 123456'
+            }
+        })  //SearchStatistics
             .then(res => {
                 console.log('------', res.data)
                 const data = res.data.map(p => {
