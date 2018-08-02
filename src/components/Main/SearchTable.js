@@ -239,7 +239,7 @@ class SearchTable extends Component {
                                                             </div>
                                                         </div>
                                                         <div className="col-md-2">
-                                                            <td>{people.staffId}55</td>
+                                                            <td>{people.staffId}</td>
                                                         </div>
                                                         <div className="col-md-2">
 
