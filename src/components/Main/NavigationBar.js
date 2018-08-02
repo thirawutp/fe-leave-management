@@ -54,6 +54,11 @@ class NavigationBar extends Component {
             })
     }
 
+    checkAcc(status) {
+        []
+
+    }
+
     componentDidMount = () => {
         console.log('Didmount')
         const { staffId } = this.props
@@ -72,6 +77,16 @@ class NavigationBar extends Component {
         console.log("gunngo", this.state.data)
         let { role } = this.props
         console.log('role props', role.data)
+        const { people } = this.props
+
+        const sumApprovalStatus = !_.isEmpty(people) && !_.isNil(people) ? people.reduce((acc, curr) => {
+            if (curr.approvalStatus === "Pending") {
+                return acc + 1;
+            } else {
+                return acc;
+            }
+        }, 0) : 0
+
         return (
             <div>
                 <ul className='navigationbar-list '>
@@ -87,19 +102,10 @@ class NavigationBar extends Component {
                     </li>}
                     {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')}>
                         <Link to='/Approve'>Approve</Link>
-                        <div className='tknotis'>
-
-                            {
-
-                                this.props.people.reduce((acc, curr) => {
-                                    if (curr.approvalStatus === "Pending") {
-                                        return acc + 1;
-                                    } else {
-                                        return acc;
-                                    }
-                                }, 0)
-                            }
+                        {sumApprovalStatus !== 0 && <div className='tknotis'>
+                            {sumApprovalStatus}
                         </div>
+                        }
                     </li>}
                     <li className='logoutbutton'>
                         <Link to='/logout'><img src={logout} />Logout</Link>
