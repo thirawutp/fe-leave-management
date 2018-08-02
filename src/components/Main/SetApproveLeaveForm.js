@@ -266,19 +266,19 @@ class SetApproveLeaveForm extends Component {
                                         {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
                                         <div className="mickeymouse">
                                             {this.handleImg(this.state.personProfile.attachedFile1) && <div>
-                                                <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                                <p>{this.state.personProfile.attachedFileName1}</p>
                                                 <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                             </div>
 
                                             }
                                             {this.handleImg(this.state.personProfile.attachedFile2) && <div>
-                                                <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
+                                                <p>{this.state.personProfile.attachedFileName2}</p>
                                                 <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                             </div>
 
                                             }
                                             {this.handleImg(this.state.personProfile.attachedFile3) && <div>
-                                                <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
+                                                <p>{this.state.personProfile.attachedFileName3}</p>
                                                 <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                             </div>
 
@@ -305,19 +305,19 @@ class SetApproveLeaveForm extends Component {
                                     </div>}
                                 {!this.handleShow(this.state.roles) && <div className="col-md-11">
                                     {this.handleImg(this.state.personProfile.attachedFile1) && <div>
-                                        <p>{this.state.personProfile.attachedFileName1.substring(0, 15)}</p>
+                                        <p>{this.state.personProfile.attachedFileName1}</p>
                                         <p><img src={this.state.personProfile.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                     </div>
 
                                     }
                                     {this.handleImg(this.state.personProfile.attachedFile2) && <div>
-                                        <p>{this.state.personProfile.attachedFileName2.substring(0, 15)}</p>
+                                        <p>{this.state.personProfile.attachedFileName2}</p>
                                         <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                     </div>
 
                                     }
                                     {this.handleImg(this.state.personProfile.attachedFile3) && <div>
-                                        <p>{this.state.personProfile.attachedFileName3.substring(0, 15)}</p>
+                                        <p>{this.state.personProfile.attachedFileName3}</p>
                                         <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                     </div>
 
@@ -341,14 +341,14 @@ class SetApproveLeaveForm extends Component {
 
                 <div className="col-md-2">
                 </div>
-                <div className='tkbuttontk'>
+                {this.handleCheckSet(this.state.personProfile.approvalStatus) && <div className='tkbuttontk'>
                     <div className="buttonapprove">
                         <button value="Approve" onClick={this.handleSetTrue}>Approve</button>
                     </div>
                     <div className="buttonreject">
                         <button value="Reject" onClick={this.handleSetFalse}>Reject</button>
                     </div>
-                </div>
+                </div>}
             </div>
 
 

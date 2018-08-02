@@ -152,19 +152,19 @@ class LeaveFormDetail extends Component {
                                     {/* <LightboxExample images={this.state.leaveForm.attachedFile1} /> */}
                                     <div className="mickeymouse">
                                         {this.handleImg(this.props.leaveForm.attachedFile1) && <div>
-                                            <p>{this.props.leaveForm.attachedFileName1.substring(0, 15)}</p>
+                                            <p>{this.props.leaveForm.attachedFileName1}</p>
                                             <p><img src={this.props.leaveForm.attachedFile1} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
 
                                         }
                                         {this.handleImg(this.props.leaveForm.attachedFile2) && <div>
-                                            <p>{this.props.leaveForm.attachedFileName2.substring(0, 15)}</p>
+                                            <p>{this.props.leaveForm.attachedFileName2}</p>
                                             <p><img src={this.props.leaveForm.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
 
                                         }
                                         {this.handleImg(this.props.leaveForm.attachedFile3) && <div>
-                                            <p>{this.props.leaveForm.attachedFileName3.substring(0, 15)}</p>
+                                            <p>{this.props.leaveForm.attachedFileName3}</p>
                                             <p><img src={this.props.leaveForm.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
                                         </div>
 
