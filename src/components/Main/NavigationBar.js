@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import axios from 'axios';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import '../../App.css';
@@ -9,6 +10,15 @@ import logout from '../../asset/images/logout.png';
 
 
 class NavigationBar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: '',
+        }
+
+
+    }
+
     activeClassName(pathname) {
         if (this.props.location.pathname === pathname) {
             return ' buttonchange'
@@ -32,7 +42,34 @@ class NavigationBar extends Component {
         }
 
     }
+    setNoti = () => {
+        const { staffId } = this.props
+        axios.delete(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`)
+            .then(res => {
+
+                this.setState({ data: res.data })
+
+                console.log("nuDolphinnnnnnnn", res.data)
+
+            })
+    }
+
+    componentDidMount = () => {
+        console.log('Didmount')
+        const { staffId } = this.props
+
+        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`)
+            .then(res => {
+
+                this.setState({ data: res.data })
+
+                console.log("nuDolphin", res.data)
+
+            })
+    }
+
     render() {
+        console.log("gunngo", this.state.data)
         let { role } = this.props
         console.log('role props', role.data)
         return (
@@ -41,8 +78,9 @@ class NavigationBar extends Component {
                     <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')}>
                         <Link to='/Leave'>leave</Link>
                     </li>
-                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')}>
+                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
                         <Link to='/History'>history</Link>
+                        {this.state.data && <div><p>ก</p></div>}
                     </li>
                     {this.checkStatusRoleAdmin(role.data) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')}>
                         <Link to='/SearchStatic'>Stat</Link>
@@ -77,8 +115,9 @@ class NavigationBar extends Component {
 
 const mapStateToProps = state => {
     const { role = '' } = state
-    console.log(state)
+
     return {
+        staffId: state.staffId,
         role: role,
         people: _.get(state, 'approve', []).map(row => {
             return _.reduce(row, (result, val, key) => {
