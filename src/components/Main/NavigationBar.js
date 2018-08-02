@@ -26,7 +26,7 @@ class NavigationBar extends Component {
         return ''
     }
     checkStatusRoleApp(role) {
-        if (role == 'Approver') {
+        if (role == 'approver') {
             return true
         }
         else {
