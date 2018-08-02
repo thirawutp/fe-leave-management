@@ -1761,11 +1761,12 @@ text-align: center;
   width: 30px;
   color: #FFFFFF;
   font-family: 'SukhumvitSet-Text';
-  font-size: 16px;
+  font-size: 17px;
   border-radius: 50%;
   margin-top: 11px;
   padding-top: 4px;
   margin-right: 20px;
+  text-align: center;
 
 }
 
