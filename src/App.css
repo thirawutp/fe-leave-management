@@ -62,7 +62,6 @@
       list-style: none;
       height: 57px;
       width: 15%;
-      text-align: center;
       background-color: #C84342;
       font-size: 20px;
       font-weight: bold;
@@ -91,7 +90,6 @@
       list-style: none;
       height: 57px;
       width: 15%;
-      text-align: center;
       background-color: #C84342;
       font-size: 20px;
       font-weight: bold;
@@ -183,7 +181,7 @@
     }
     
     .section {
-      width: 200px;
+      
     
     }
     
@@ -196,7 +194,8 @@
     }
     
     .position {
-      width: 300px;
+      
+      
     
     }
     
@@ -204,12 +203,12 @@
       font-size: 18px;
       margin-top: 19px;
       color: white;
-      display:inline-flex;
+      display: inline-flex;
+
     }
     
     .staffID  {
-      width: 150px;
-      margin-right: 100px;
+      
     
     }
     
@@ -1770,6 +1769,14 @@ text-align: center;
 
 }
 
+.tknotis1 img{
+  height: 30px;
+  width: 30px;
+  margin-top: 12px;
+  margin-right: 20px;
+
+}
+
 .leavedidtk6 {
   width: 85px;
   margin-left: 44px;
@@ -1969,3 +1976,4 @@ text-align: center;
 #pathapprove{
   margin-right: 0px;
 }
+
