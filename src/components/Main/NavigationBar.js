@@ -30,7 +30,7 @@ class NavigationBar extends Component {
     }
     checkStatusRoleApp(role) {
 
-        if (role == 'Approver') {
+        if (role == 'approver') {
 
             return true
         }
@@ -39,7 +39,7 @@ class NavigationBar extends Component {
         }
     }
     checkStatusRoleAdmin(role) {
-        if (role == 'Admin') {
+        if (role == 'admin') {
             return true
         }
         else {
