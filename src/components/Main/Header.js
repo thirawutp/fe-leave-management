@@ -61,7 +61,7 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className="userpicture">
-          <img src={user} width="50" height="50" />
+          <img src={user}  />
         </div>
         <div className='user'>
           <div className='username'>

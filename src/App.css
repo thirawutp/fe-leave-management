@@ -30,6 +30,7 @@
       background-color: #3D3D3D;
       height: 100%;
       width: 100%;
+      overflow-x: hidden;
     }
     
     .AppBar {
@@ -41,9 +42,7 @@
       margin: 57px auto;
       background-color: #FFFFFF;
     }
-    
-    
-    
+
     .navigationbar-list {
       width: 100%;
       display: table;
@@ -151,6 +150,8 @@
     
     .userpicture img {
       border-radius: 50%;
+      width: 60px;
+      height: 60px;
     }
     
     .user {
@@ -176,12 +177,13 @@
       color: #F3F0E2;
       font-family: 'SukhumvitSet-Bold';
       display: inline-flex;
-      width: 450px;
+      width: 550px;
     
     }
     
     .section {
-      
+      width: 250px;
+      float: right;
     
     }
     
@@ -194,8 +196,8 @@
     }
     
     .position {
-      
-      
+      width: 300px;
+      float: right;
     
     }
     
@@ -208,7 +210,8 @@
     }
     
     .staffID  {
-      
+      width: 30vh;
+      text-align: right;
     
     }
     
@@ -1552,8 +1555,8 @@
     }
     
     .tkuserpicture img{
-      width: 35px;
-      height: 35px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
     }
     
@@ -1975,3 +1978,14 @@ text-align: center;
   margin-right: 0px;
 }
 
+.tkkt{
+  overflow: a;
+  height: 500px;
+  overflow-x: hidden;
+
+}
+
+.tkkt::-webkit-scrollbar-thumb{
+  background: red; 
+  border-radius: 10px;
+}

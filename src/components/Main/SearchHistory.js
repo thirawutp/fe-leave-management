@@ -177,7 +177,7 @@ class SearchHistory extends Component {
         return (
             <div className="All">
                 <div className="headtable">
-                    <div className="row ">
+                    <div className="row">
 
 
                         <div className='tkboth'>
@@ -216,7 +216,7 @@ class SearchHistory extends Component {
                             </div>
 
 
-                            <div>
+                            <div className='tkkt'>
                                 {
 
                                     filtered.map((people, index) =>
