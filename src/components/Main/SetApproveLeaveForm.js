@@ -120,7 +120,7 @@ class SetApproveLeaveForm extends Component {
     }
 
     handleCheckSet = (status) => {
-        if (status === "Pending") {
+        if (status === "pending") {
             return true
         }
         return false
