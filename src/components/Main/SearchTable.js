@@ -237,7 +237,6 @@ class SearchTable extends Component {
                                                         <Link to={`/statDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         <div>
 
-
                                                             <td>{people.type}</td>
                                                         </div>
                                                     </div>
@@ -258,7 +257,7 @@ class SearchTable extends Component {
                                                 </div>
                                             </div>
 
-                                        )
+                      )
                                     }
 
 
