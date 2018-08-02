@@ -18,7 +18,11 @@ class StartDate extends React.Component {
             startDate: date
         });
         console.log('this is a book', date.Day)
-        if (!business.isWeekDay(date)) {
+        if (date == null) {
+            onChange(id, 'Invalid dat');
+            onChange(id2, 'Invalid dat');
+        }
+        else if (!business.isWeekDay(date)) {
             alert("You can choose only weekday \n Please try again.")
             onChange(id, 'Invalid dat');
         }

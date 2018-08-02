@@ -226,7 +226,10 @@ class alRequestForm extends Component {
             timeSum: '',
             showSum: '',
             caseID: '',
-            CheckTypeFile: true
+            CheckTypeFile: true,
+            showpic1: '',
+            showpic2: '',
+            showpic3: ''
         };
     }
 
@@ -322,6 +325,7 @@ class alRequestForm extends Component {
     }
     fileChangedHandler = (event) => {
         this.setState({ selectedFile: Array.from(event.target.files) }, this.checkTypeofFile)
+
     }
     checkTypeofFile = () => {
         let i = 0
@@ -356,7 +360,7 @@ class alRequestForm extends Component {
             if (this.state.selectedFile.length == 1) {
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0]);
-                <img src={attachFileBase64} />
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -438,6 +442,7 @@ class alRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -473,6 +478,7 @@ class alRequestForm extends Component {
                     })
             }
             else {
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -604,7 +610,6 @@ class alRequestForm extends Component {
                             File :
                     </div>
                         <div className="input-file">
-
                             <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
 
                         </div>
