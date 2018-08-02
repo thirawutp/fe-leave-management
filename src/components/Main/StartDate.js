@@ -2,6 +2,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import business from 'moment-business';
 
 class StartDate extends React.Component {
 
@@ -16,8 +17,15 @@ class StartDate extends React.Component {
         this.setState({
             startDate: date
         });
-        onChange(id, moment(date).format().toString().substring(0, 11));
-        // Calculate(date, '');
+        console.log('this is a book', date.Day)
+        if (!business.isWeekDay(date)) {
+            alert("You can choose only weekday \n Please try again.")
+            onChange(id, 'Invalid dat');
+        }
+        else {
+            onChange(id, moment(date).format().toString().substring(0, 11));
+            // Calculate(date, '');
+        }
     }
     render() {
         return (
