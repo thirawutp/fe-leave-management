@@ -62,7 +62,6 @@
       list-style: none;
       height: 57px;
       width: 15%;
-      text-align: center;
       background-color: #C84342;
       font-size: 20px;
       font-weight: bold;
@@ -79,6 +78,33 @@
     }
     
     .navigationbar-item a:hover {
+      list-style: none;
+      text-decoration: none;
+      color: #F3F0E2;
+    
+    }
+
+    .navigationbar-item1 {
+      text-transform: uppercase;
+      font-family: 'SukhumvitSet-Bold';
+      list-style: none;
+      height: 57px;
+      width: 15%;
+      background-color: #C84342;
+      font-size: 20px;
+      font-weight: bold;
+      display: inline-flex;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    
+    .navigationbar-item1 a {
+      color: #F3F0E2;
+      font-family: 'Sukhumvitset-Text';
+    
+    }
+    
+    .navigationbar-item1 a:hover {
       list-style: none;
       text-decoration: none;
       color: #F3F0E2;
@@ -155,7 +181,7 @@
     }
     
     .section {
-      width: 250px;
+      
     
     }
     
@@ -168,7 +194,8 @@
     }
     
     .position {
-      width: 250px;
+      
+      
     
     }
     
@@ -176,12 +203,12 @@
       font-size: 18px;
       margin-top: 19px;
       color: white;
-      display:inline-flex;
+      display: inline-flex;
+
     }
     
     .staffID  {
-      width: 150px;
-      margin-right: 100px;
+      
     
     }
     
@@ -1039,14 +1066,15 @@
     
     
     .tkstatistic {
-      width: 100%;
+      width: 1200px;
+      margin: auto;
     
     }
     
     .tkselecttype {
       display: flex;
-      width: 1000px;
-      padding-left: 737px;
+      width: 1070px;
+      padding-left: 820px;
     
     }
     
@@ -1074,7 +1102,7 @@
     
     .tkbubble {
       margin: auto;
-      width: 1000px;
+      width: 1070px;
     
     }
     
@@ -1523,7 +1551,7 @@
     }
     
     .tkusername td{
-      width: 200px;
+      width: 280px;
     }
     
     .tkuserpicture img{
@@ -1733,10 +1761,19 @@ text-align: center;
   width: 30px;
   color: #FFFFFF;
   font-family: 'SukhumvitSet-Text';
-  font-size: 16px;
+  font-size: 17px;
   border-radius: 50%;
   margin-top: 11px;
   padding-top: 4px;
+  margin-right: 20px;
+  text-align: center;
+
+}
+
+.tknotis1 img{
+  height: 30px;
+  width: 30px;
+  margin-top: 12px;
   margin-right: 20px;
 
 }
@@ -1936,3 +1973,8 @@ text-align: center;
   padding-bottom: 30px;
 
 }
+
+#pathapprove{
+  margin-right: 0px;
+}
+
