@@ -71,7 +71,7 @@ class SearchStatistics extends Component {
                                                 <option value="Architect">Architect</option>
                                                 <option value="BA">BA</option>
                                                 <option value="Back-end">Backend</option>
-                                                <option value="Co Founder">Co Founder</option>
+                                                <option value="Co-Founder">Co-Founder</option>
                                                 <option value="DSN">DSN</option>
                                                 <option value="Front-end">Frontend</option>
                                                 <option value="HR">HR</option>
