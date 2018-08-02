@@ -358,8 +358,8 @@ class slRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": `${staffId}`,
-                    "staffId": "I00002",
+                    "type": 'Sick Leave',
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
@@ -397,8 +397,8 @@ class slRequestForm extends Component {
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": `${staffId}`,
-                    "staffId": "I00002",
+                    "type": 'Sick Leave',
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
@@ -438,8 +438,8 @@ class slRequestForm extends Component {
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": `${staffId}`,
-                    "staffId": "I00002",
+                    "type": 'Sick Leave',
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
