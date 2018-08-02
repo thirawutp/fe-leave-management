@@ -25,7 +25,6 @@ class EndDate extends React.Component {
         end = this.startDate;
         if (date == null) {
             onChange(id, 'Invalid dat');
-            onChange(id2, 'Invalid dat');
         }
         else if (!business.isWeekDay(date)) {
             alert("You can choose only weekday \n Please try again.")
