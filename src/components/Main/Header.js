@@ -65,7 +65,7 @@ class Header extends Component {
             <p><b></b>{people.Name}</p>
           </div>
           <div className='section'>
-            <p><b>Section: </b>{people.Department}</p>
+            <p><b>Department: </b>{people.Department}</p>
 
           </div>
           <div className='position'>
