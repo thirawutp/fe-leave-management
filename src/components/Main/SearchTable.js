@@ -236,6 +236,7 @@ class SearchTable extends Component {
                                                     <div className="col-md-2 tktkleave">
                                                         <Link to={`/statDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
                                                         <div>
+
                                                             <td>{people.type}</td>
                                                         </div>
                                                     </div>
@@ -256,9 +257,7 @@ class SearchTable extends Component {
                                                 </div>
                                             </div>
 
-
-
-                                        )
+                      )
                                     }
 
 
