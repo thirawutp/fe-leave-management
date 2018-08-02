@@ -7,6 +7,7 @@ import '../../App.css';
 import { Link } from 'react-router';
 import logout from '../../asset/images/logout.png';
 import bell from '../../asset/images/bell6.gif';
+import { addApprove } from '../../action'
 
 
 
@@ -45,6 +46,7 @@ class NavigationBar extends Component {
 
     }
     setNoti = () => {
+        console.log("2")
         const { staffId } = this.props
         axios.delete(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`)
             .then(res => {
@@ -57,6 +59,13 @@ class NavigationBar extends Component {
     }
 
     handleRefresh = () => {
+        console.log("handleRefresh")
+        this.handleHistory()
+        this.setNoti()
+        //this.handleApprove()
+    }
+    handleHistory = () => {
+        console.log("1")
         const { staffId } = this.props
 
         axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Notification/Notification?staffId=${staffId}`, {
@@ -74,7 +83,10 @@ class NavigationBar extends Component {
 
 
     }
-
+    handleApprove = () => {
+        console.log("3")
+        this.componentDidMount()
+    }
 
 
     componentDidMount = () => {
@@ -102,12 +114,13 @@ class NavigationBar extends Component {
         const { people } = this.props
 
         const sumApprovalStatus = !_.isEmpty(people) && !_.isNil(people) ? people.reduce((acc, curr) => {
-            if (curr.approvalStatus === "Pending") {
+            if (curr.approvalStatus === "pending") {
                 return acc + 1;
             } else {
                 return acc;
             }
         }, 0) : 0
+        console.log("acc", sumApprovalStatus)
 
         return (
             <div>
@@ -115,7 +128,7 @@ class NavigationBar extends Component {
                     <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')} onClick={this.handleRefresh}>
                         <Link to='/Leave'>leave</Link>
                     </li>
-                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
+                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.handleRefresh}>
                         <Link to='/History'>history</Link>
                         {this.state.data && <div className='tknotis1'> <img src={bell} /></div>}
                     </li>
@@ -165,6 +178,11 @@ const mapStateToProps = state => {
         })
     }
 }
-
-export default connect(mapStateToProps)(NavigationBar)
+const mapDispatchToProps = dispatch => ({
+    addApprove: (approve) => dispatch(addApprove(approve))
+})
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(NavigationBar)
 

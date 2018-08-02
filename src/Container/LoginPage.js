@@ -39,6 +39,9 @@ class LoginPage extends Component {
                     }
                 })
                 const staffId = employee.data
+                if (staffId == '') {
+                    this.handleLoginFailure()
+                }
                 this.props.setStaffId(staffId)
                 const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Header?email=${email}`, {
                     headers: {
@@ -174,12 +177,8 @@ class LoginPage extends Component {
 
 
 
-    handleLoginFailure = (data) => {
-        // if (this.state.isLogedIn) {
-        //     this.handleLoginSuccess(mockResponse)
-        // }
-        // this.setState({ isLogedIn: true })
-        // TODO : handle fail case
+    handleLoginFailure = () => {
+        alert("New employee can't login")
     }
 
     render() {

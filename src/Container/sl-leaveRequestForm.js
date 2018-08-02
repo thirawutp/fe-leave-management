@@ -15,6 +15,7 @@ import { Redirect, browserHistory } from "react-router";
 import { addpudding } from '../action';
 import { Link } from 'react-router';
 import leftarrow from '../../src/asset/images/left-arrow.png';
+import business from 'moment-business';
 
 
 const FormHeader = props => {
@@ -284,7 +285,7 @@ class slRequestForm extends Component {
             const end = this.state.leaveDateStop.replace('T', '')
             const momentStart = moment(start, 'YYYY-MM-DD')
             const momentEnd = moment(end, 'YYYY-MM-DD')
-            var hours = momentEnd.diff(momentStart, 'hours')
+            var hours = business.weekDays(momentStart, momentEnd) * 24
             if (hours <= 0) {
                 this.setState({
                     showSum: this.state.timeSum,
@@ -358,8 +359,8 @@ class slRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": `${staffId}`,
-                    "staffId": "I00002",
+                    "type": 'Sick Leave',
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
@@ -397,8 +398,8 @@ class slRequestForm extends Component {
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": `${staffId}`,
-                    "staffId": "I00002",
+                    "type": 'Sick Leave',
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTime + ":00",
                     "hoursStartDate": this.state.leaveAmount,
@@ -438,8 +439,8 @@ class slRequestForm extends Component {
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
-                    "type": `${staffId}`,
-                    "staffId": "I00002",
+                    "type": 'Sick Leave',
+                    "staffId": `${staffId}`,
                     "startDateTime": this.state.leaveDate + this.state.leaveTime + ":00",
                     "endDateTime": this.state.leaveDateStop + this.state.leaveTimeStop + ":00",
                     "hoursStartDate": this.state.leaveAmount,
@@ -508,7 +509,7 @@ class slRequestForm extends Component {
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -522,7 +523,7 @@ class slRequestForm extends Component {
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTimeStop == '' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop == '00:00' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.caseID <= 0) {

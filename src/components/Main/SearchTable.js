@@ -180,56 +180,58 @@ class SearchTable extends Component {
                     <div className="row ">
 
 
-                    <div className='tkboth'>
-                        <form>
-                            <div className="bbr">
-                                <input type="text" onChange={this.searchHandle} placeholder="   Search by..." value={term} /> <img src={pic} width="19" height="19" />
-                            </div>
-                        </form>
-
-
-
                         <div className='tkboth'>
-                            <div className='TangKwatable'>
-                                <div className="STable">
-                                    <div className="row">
-                                        <div className="col-md-2 tktopic">
-                                            <th>Status</th>
-                                        </div>
-                                        <div className="col-md-2 tktopic">
-                                            <th>Leave ID</th>
-                                        </div>
-                                        <div className="col-md-2 tktopic">
-                                            <th>Staff ID</th>
-                                        </div>
-                                        <div className="col-md-2 tktopic">
-                                            <th>สร้างใบลาเมื่อ</th>
-                                        </div>
-                                        <div className="col-md-2 tktopic">
-                                            <th>Leaving Date</th>
-                                        </div>
-                                        <div className="col-md-2 tktopic">
-                                            <th>Manage by</th>
+                            <form>
+                                <div className="bbr">
+                                    <input type="text" onChange={this.searchHandle} placeholder="   Search by..." value={term} /> <img src={pic} width="19" height="19" />
+                                </div>
+                            </form>
+
+
+
+                            <div className='tkboth'>
+                                <div className='TangKwatable'>
+                                    <div className="STable">
+                                        <div className="row">
+                                            <div className="col-md-2 tktopic">
+                                                <th>Status</th>
+                                            </div>
+                                            <div className="col-md-2 tktopic">
+                                                <th>Leave ID</th>
+                                            </div>
+                                            <div className="col-md-2 tktopic">
+                                                <th>Staff ID</th>
+                                            </div>
+                                            <div className="col-md-2 tktopic">
+                                                <th>สร้างใบลาเมื่อ</th>
+                                            </div>
+                                            <div className="col-md-2 tktopic">
+                                                <th>Leaving Date</th>
+                                            </div>
+                                            <div className="col-md-2 tktopic">
+                                                <th>Manage by</th>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
 
-                            <div>
-                                {
+                                <div>
+                                    {
 
-                                    filtered.map((people, index) =>
-                                        <div>
-                                            <div className="SData">
-                                                <div className="row ">
-                                                    <div className="col-md-2">
-                                                        <div className="ooo">
-                                                            <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
-                                                        <div className={`${people.approvalStatus == 'approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
+                                        filtered.map((people, index) =>
+                                            <div>
+                                                <div className="SData">
+                                                    <div className="row ">
+                                                        <div className="col-md-2">
+                                                            <div className="ooo">
+                                                                <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
+                                                            <div className={`${people.approvalStatus == 'approved' ? 'SApprove' : people.approvalStatus == 'pending' ? 'SPending' : 'SReject'}`}>
 
-                                                            <td><b>{this.editShow(people.approvalStatus)}</b></td>
+                                                                <td><b>{this.editShow(people.approvalStatus)}</b></td>
+                                                            </div>
                                                         </div>
+
                                                     </div>
                                                     <div className="col-md-2 tktkleave">
                                                         <Link to={`/statDetail/${people.rawLeaveId}`} ><td><b>{people.leaveId}</b></td></Link>
@@ -254,14 +256,14 @@ class SearchTable extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )
-                                }
+
+                      )
+                                    }
 
 
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
