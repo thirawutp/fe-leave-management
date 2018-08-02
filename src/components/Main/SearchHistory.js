@@ -227,7 +227,7 @@ class SearchHistory extends Component {
                                                     <div className="col-md-2">
                                                         <div className="ooo">
                                                             <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
-                                                        <div className={`${people.approvalStatus == 'approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
+                                                        <div className={`${people.approvalStatus == 'approved' ? 'SApprove' : people.approvalStatus == 'pending' ? 'SPending' : 'SReject'}`}>
 
                                                             <td><b>{this.editShow(people.approvalStatus)}</b></td>
                                                         </div>
