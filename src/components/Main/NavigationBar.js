@@ -29,7 +29,9 @@ class NavigationBar extends Component {
         return ''
     }
     checkStatusRoleApp(role) {
+
         if (role == 'Approver') {
+
             return true
         }
         else {
@@ -132,7 +134,7 @@ class NavigationBar extends Component {
                         {this.state.data && <div className='tknotis1'> <img src={bell} /></div>}
                     </li>
 
-                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')} onClick={this.handleRefresh}>
+                    {(this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')} onClick={this.handleRefresh}>
                         <Link to='/SearchStatic'>Stat</Link>
                     </li>}
                     {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')} onClick={this.handleRefresh}>
