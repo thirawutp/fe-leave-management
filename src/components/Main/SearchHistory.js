@@ -96,6 +96,15 @@ class SearchHistory extends Component {
     searchHandle(event) {
         this.setState({ term: event.target.value })
     }
+    editShow(status) {
+        if (status === 'approved') {
+            return "Approved"
+        }
+        else if (status === 'rejected') {
+            return "Rejected"
+        }
+        return "Pending"
+    }
 
 
     componentDidMount() {
@@ -214,9 +223,9 @@ class SearchHistory extends Component {
                                                     <div className="col-md-2">
                                                         <div className="ooo">
                                                             <img src={getLeaveTypePicture(people.type)} height="25" width="25" /></div>
-                                                        <div className={`${people.approvalStatus == 'Approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
+                                                        <div className={`${people.approvalStatus == 'approved' ? 'SApprove' : people.approvalStatus == 'Pending' ? 'SPending' : 'SReject'}`}>
 
-                                                            <td><b>{people.approvalStatus}</b></td>
+                                                            <td><b>{this.editShow(people.approvalStatus)}</b></td>
                                                         </div>
                                                     </div>
                                                     <div className="col-md-2 tktkleave">
