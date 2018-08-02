@@ -25,6 +25,7 @@ export default (state = inttialState, action) => {
       }
 
     case 'ADD_APPROVE':
+      console.log("aa", action.payload)
       return {
         ...state,
         approve: action.payload.approve

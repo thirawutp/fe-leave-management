@@ -59,35 +59,7 @@ class SearchApprove extends Component {
 
 
     componentDidMount() {
-        const { staffId } = this.props
-        console.log('TTTTTTT', staffId)
-        axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`) //searchApprove
 
-            .then(res => {
-                const data = res.data.map(p => {
-                    return _.reduce(p, (result, val, key) => {
-                        if (key === 'ApprovedBy') {
-                            return {
-                                ...result,
-                                [_.camelCase(key)]: val || '-'
-                            }
-                        }
-                        if (key === 'LeaveId') {
-                            return {
-                                ...result,
-                                rawLeaveId: val,
-                                [_.camelCase(key)]: `LEV${_.padStart(val, 5, '0')}`
-                            }
-                        }
-
-                        return {
-                            ...result,
-                            [_.camelCase(key)]: val
-                        }
-                    }, {})
-                })
-                this.props.addApprove(data)
-            })
     }
 
 
@@ -218,7 +190,7 @@ class SearchApprove extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    console.log("tet", state)
     return {
         staffId: state.staffId,
         people: _.get(state, 'approve', []).map(row => {
@@ -246,5 +218,6 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps,
 )(SearchApprove)
+
 
 

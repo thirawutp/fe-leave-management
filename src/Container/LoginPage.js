@@ -38,6 +38,7 @@ class LoginPage extends Component {
                 this.props.setStaffId(staffId)
                 const preson = await axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Employee/Header?email=${email}`)
                 this.props.setProfile(preson.data)
+                console.log("preson.data", preson.data)
                 //const history = await axios.get(https://appmanleavemanagement20180718055046.azurewebsites.net/api/History/History?staffId=${staffId}) //searchHistory
                 //const historyMapped = history.data.map(p => {
                 //  return _.reduce(p, (result, val, key) => {
@@ -102,6 +103,7 @@ class LoginPage extends Component {
                         }
                     }, {})
                 })
+                console.log("tableSearchMapped", tableSearchMapped)
                 this.props.addTable(tableSearchMapped)
 
 
@@ -141,6 +143,7 @@ class LoginPage extends Component {
                         }
                     }, {})
                 })
+                console.log("searchStatisticsMapped", searchStatisticsMapped)
                 this.props.addStatistics(searchStatisticsMapped)
                 this.props.router.push('/Leave')
             }
