@@ -64,7 +64,7 @@ class NavigationBar extends Component {
         console.log("handleRefresh")
         this.handleHistory()
         this.setNoti()
-        //this.handleApprove()
+        this.handleApprove()
     }
     handleHistory = () => {
         console.log("1")
