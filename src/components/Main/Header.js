@@ -22,8 +22,8 @@ class Header extends Component {
   componentDidMount() {
     const { staffId } = this.props
     console.log('TTTTTTT', staffId)
-    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`) //searchApprove
 
+    axios.get(`https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/RemainingLeaveInfo?staffId=${staffId}`) //searchApprove
       .then(res => {
         const data = res.data.map(p => {
           return _.reduce(p, (result, val, key) => {
@@ -47,7 +47,7 @@ class Header extends Component {
             }
           }, {})
         })
-
+        this.props.addApprove(data)
       })
   }
 
@@ -81,15 +81,18 @@ class Header extends Component {
 }
 
 
-const mapStateToProps = state => ({
-  staffId: state.staffId,
-  people: state.person
+const mapStateToProps = state => {
+  console.log("1", state)
+  return {
+    staffId: state.staffId,
+    people: state.person
 
-})
+  }
+}
 
 const mapDispatchToProps = dispatch => ({
   setProfile: (person) => dispatch(setProfile(person)),
-
+  addApprove: (approve) => dispatch(addApprove(approve))
 })
 
 
