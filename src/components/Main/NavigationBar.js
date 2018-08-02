@@ -62,7 +62,7 @@ class NavigationBar extends Component {
         console.log("handleRefresh")
         this.handleHistory()
         this.setNoti()
-        this.handleApprove()
+        //this.handleApprove()
     }
     handleHistory = () => {
         console.log("1")
@@ -114,12 +114,13 @@ class NavigationBar extends Component {
         const { people } = this.props
 
         const sumApprovalStatus = !_.isEmpty(people) && !_.isNil(people) ? people.reduce((acc, curr) => {
-            if (curr.approvalStatus === "Pending") {
+            if (curr.approvalStatus === "pending") {
                 return acc + 1;
             } else {
                 return acc;
             }
         }, 0) : 0
+        console.log("acc", sumApprovalStatus)
 
         return (
             <div>
