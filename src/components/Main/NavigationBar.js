@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import '../../App.css';
 import { Link } from 'react-router';
 import logout from '../../asset/images/logout.png';
+import bell from '../../asset/images/bell6.gif';
 
 
 
@@ -116,12 +117,14 @@ class NavigationBar extends Component {
                     </li>
                     <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
                         <Link to='/History'>history</Link>
-                        {this.state.data && <div><p>ก</p></div>}
+                        {this.state.data && <div className='tknotis1'> <img src={bell} /></div>}
                     </li>
+
                     {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')} onClick={this.handleRefresh}>
                         <Link to='/SearchStatic'>Stat</Link>
                     </li>}
                     {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')} onClick={this.handleRefresh}>
+
                         <Link to='/Approve'>Approve</Link>
                         {sumApprovalStatus !== 0 && <div className='tknotis'>
                             {sumApprovalStatus}
