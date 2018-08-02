@@ -348,7 +348,7 @@ class alRequestForm extends Component {
     handleSubmit = async event => {
         const { staffId } = this.props
         let alerttext1 = `Leave date at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nTotal time : ${this.state.leaveAmount} Hours\nConfirm ?`
-        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${(((this.state.amountLeft / 24) - 1) * 8) + this.state.leaveAmount + this.state.leaveAmountStop} Hours\n Confirm ?`
+        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${(((parseInt(this.state.amountLeft) / 24) - 1) * 8) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop)} Hours\n Confirm ?`
         let confirmText = ``
         if (this.state.leaveDate == this.state.leaveDateStop) {
             confirmText = alerttext1
