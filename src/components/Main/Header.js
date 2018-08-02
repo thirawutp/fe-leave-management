@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import _ from 'lodash'
-import kendall from '../../asset/images/kendall.jpg';
+import user from '../../asset/images/user.png';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { setProfile, addApprove } from '../../action';
@@ -61,7 +61,7 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className="userpicture">
-          <img src={kendall} width="50" height="50" />
+          <img src={user} width="50" height="50" />
         </div>
         <div className='user'>
           <div className='username'>
@@ -69,7 +69,7 @@ class Header extends Component {
             <p><b></b>{people.Name}</p>
           </div>
           <div className='section'>
-            <p><b>Section: </b>{people.Department}</p>
+            <p><b>Department: </b>{people.Department}</p>
 
           </div>
           <div className='position'>
