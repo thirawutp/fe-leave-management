@@ -273,13 +273,13 @@ class SetApproveLeaveForm extends Component {
                                             }
                                             {this.handleImg(this.state.personProfile.attachedFile2) && <div>
                                                 <p>{this.state.personProfile.attachedFileName2}</p>
-                                                <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                                <p><img src={this.state.personProfile.attachedFile2} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 1 })} /></p>
                                             </div>
 
                                             }
                                             {this.handleImg(this.state.personProfile.attachedFile3) && <div>
                                                 <p>{this.state.personProfile.attachedFileName3}</p>
-                                                <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 0 })} /></p>
+                                                <p><img src={this.state.personProfile.attachedFile3} width="75" height="52" onClick={() => this.setState({ isOpen: true, photoIndex: 2 })} /></p>
                                             </div>
 
                                             }
