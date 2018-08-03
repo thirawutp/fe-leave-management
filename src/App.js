@@ -25,6 +25,7 @@ import SearchStatistics from './components/Main/SearchStatistics.js';
 import SearchStatisticsback from '../src/components/Main/SearchStatistics';
 import SearchApprove from './components/Main/SearchApprove.js';
 import StatDetail from '../src/components/Main/StatDetail';
+import indexSearchStatistics from '../src/components/Main/SearchStatistics';
 
 
 
@@ -75,6 +76,7 @@ class App extends Component {
           <Route path='indexindividualStatistic/:personId' component={IndexindividualStatistic} />
           <Route path='TableLeaveStatisticsDeatils' component={SearchStatisticsback} />
           <Route path='Approve' component={SearchApprove} />
+          <Route path='indexSearchStatic' component={SearchStatistics} />
         </Route>
       </Router>
     )
