@@ -29,7 +29,9 @@ class NavigationBar extends Component {
         return ''
     }
     checkStatusRoleApp(role) {
+
         if (role == 'approver') {
+
             return true
         }
         else {
@@ -108,7 +110,6 @@ class NavigationBar extends Component {
     }
 
     render() {
-        console.log("gunngo", this.state.data)
         let { role } = this.props
         console.log('role props', role.data)
         const { people } = this.props

@@ -210,9 +210,9 @@ class alRequestForm extends Component {
         this.state = {
             type: "Annual Leave", // get form props :type
             isOneday: true,
-            leaveDate: undefined,
+            leaveDate: '',
             leaveTime: '',
-            leaveDateStop: undefined,
+            leaveDateStop: '',
             leaveTimeStop: '',
             leaveAmount: 0,
             leaveAmountStop: 0,
@@ -226,7 +226,10 @@ class alRequestForm extends Component {
             timeSum: '',
             showSum: '',
             caseID: '',
-            CheckTypeFile: true
+            CheckTypeFile: true,
+            showpic1: '',
+            showpic2: '',
+            showpic3: ''
         };
     }
 
@@ -322,6 +325,7 @@ class alRequestForm extends Component {
     }
     fileChangedHandler = (event) => {
         this.setState({ selectedFile: Array.from(event.target.files) }, this.checkTypeofFile)
+
     }
     checkTypeofFile = () => {
         let i = 0
@@ -344,7 +348,7 @@ class alRequestForm extends Component {
     handleSubmit = async event => {
         const { staffId } = this.props
         let alerttext1 = `Leave date at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nTotal time : ${this.state.leaveAmount} Hours\nConfirm ?`
-        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${(((this.state.amountLeft / 24) - 1) * 8) + this.state.leaveAmount + this.state.leaveAmountStop} Hours\n Confirm ?`
+        let alerttext2 = `Leave date start at ${moment(this.state.leaveDate.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTime} O'Clock Time : ${this.state.leaveAmount} Hours\nLeave date end at ${moment(this.state.leaveDateStop.replace('T', '')).format('DD-MM-YYYY')} Time : ${this.state.leaveTimeStop} O'Clock Time : ${this.state.leaveAmountStop} Hours\nTotal time : ${(((parseInt(this.state.amountLeft) / 24) - 1) * 8) + parseInt(this.state.leaveAmount) + parseInt(this.state.leaveAmountStop)} Hours\n Confirm ?`
         let confirmText = ``
         if (this.state.leaveDate == this.state.leaveDateStop) {
             confirmText = alerttext1
@@ -356,7 +360,7 @@ class alRequestForm extends Component {
             if (this.state.selectedFile.length == 1) {
                 let attachFileBase64 = ''
                 attachFileBase64 = await getBase64(this.state.selectedFile[0]);
-                <img src={attachFileBase64} />
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -438,6 +442,7 @@ class alRequestForm extends Component {
                 attachFileBase64 = await getBase64(this.state.selectedFile[0])
                 attachFileBase64p2 = await getBase64(this.state.selectedFile[1])
                 attachFileBase64p3 = await getBase64(this.state.selectedFile[2])
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -473,6 +478,7 @@ class alRequestForm extends Component {
                     })
             }
             else {
+
                 axios.post('https://appmanleavemanagement20180718055046.azurewebsites.net/api/Leaves/Leave', {
                     "leaveId": 0,
                     "type": "Annual Leave",
@@ -510,7 +516,7 @@ class alRequestForm extends Component {
     }
     handleCheckSubmit = () => {
         if (this.state.isOneday == true) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '00:00' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveDate === '' || this.state.leaveTime == '00:00' || this.state.leaveTime == '' || this.state.leaveTime.length < 5 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.showSum < 0) {
@@ -524,7 +530,7 @@ class alRequestForm extends Component {
             }
         }
         else if (this.state.isOneday == false) {
-            if (this.state.leaveAmount == 0 || this.state.leaveDate === 'Invalid dat' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop == '00:00' || this.state.leaveTime.length < 5 || this.state.leaveDateStop === 'Invalid dat' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
+            if (this.state.leaveAmount == 0 || this.state.leaveDate == 'Invalid dat' || this.state.leaveDate == '' || this.state.leaveTime == '' || this.state.leaveTime == '00:00' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop == '00:00' || this.state.leaveTime.length < 5 || this.state.leaveDateStop == 'Invalid dat' || this.state.leaveDateStop == '' || this.state.leaveTimeStop == '' || this.state.leaveTimeStop.length < 5 || this.state.leaveAmountStop == 0 || this.state.CheckTypeFile == false) {
                 alert('Incorrect or incomplete information!.')
             }
             else if (this.state.caseID <= 0) {
@@ -604,7 +610,6 @@ class alRequestForm extends Component {
                             File :
                     </div>
                         <div className="input-file">
-
                             <input type="file" onChange={this.fileChangedHandler} size="2MB" accept="image/jpeg" required multiple />
 
                         </div>
