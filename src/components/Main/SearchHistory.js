@@ -217,6 +217,7 @@ class SearchHistory extends Component {
 
 
                             <div className='tkkt'>
+
                                 {
 
                                     filtered.map((people, index) =>
@@ -263,7 +264,9 @@ class SearchHistory extends Component {
 
 
                             </div>
+
                         </div>
+
 
                     </div>
                 </div>

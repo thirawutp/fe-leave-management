@@ -29,7 +29,9 @@ class NavigationBar extends Component {
         return ''
     }
     checkStatusRoleApp(role) {
+
         if (role == 'approver') {
+
             return true
         }
         else {
@@ -61,8 +63,8 @@ class NavigationBar extends Component {
     handleRefresh = () => {
         console.log("handleRefresh")
         this.handleHistory()
-        this.setNoti()
-        //this.handleApprove()
+
+        this.handleApprove()
     }
     handleHistory = () => {
         console.log("1")
@@ -108,7 +110,6 @@ class NavigationBar extends Component {
     }
 
     render() {
-        console.log("gunngo", this.state.data)
         let { role } = this.props
         console.log('role props', role.data)
         const { people } = this.props
@@ -128,12 +129,12 @@ class NavigationBar extends Component {
                     <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')} onClick={this.handleRefresh}>
                         <Link to='/Leave'>leave</Link>
                     </li>
-                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.handleRefresh}>
+                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
                         <Link to='/History'>history</Link>
                         {this.state.data && <div className='tknotis1'> <img src={bell} /></div>}
                     </li>
 
-                    {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')} onClick={this.handleRefresh}>
+                    {(this.checkStatusRoleAdmin(role.data)) && <li id="pathsearch" className={'navigationbar-item' + this.activeClassName('/SearchStatic')} onClick={this.handleRefresh}>
                         <Link to='/SearchStatic'>Stat</Link>
                     </li>}
                     {(this.checkStatusRoleApp(role.data) || this.checkStatusRoleAdmin(role.data)) && <li id="pathapprove" className={'navigationbar-item' + this.activeClassName('/Approve')} onClick={this.handleRefresh}>
