@@ -146,7 +146,8 @@ class NavigationBar extends Component {
                         }
                     </li>}
                     <li className='logoutbutton'>
-                        <Link to='/logout'><img src={logout} />Logout</Link>
+                        {role.data && <Link to='/login'><img src={logout} />Logout</Link>}
+                        {(role.data === undefined) && <Link to='/login'><img src={logout} />Login</Link>}
                     </li>
                 </ul>
 
@@ -182,6 +183,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     addApprove: (approve) => dispatch(addApprove(approve))
 })
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps,

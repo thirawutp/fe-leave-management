@@ -178,7 +178,7 @@ class LoginPage extends Component {
 
 
     handleLoginFailure = () => {
-        alert("New employee can't login")
+        alert("New employee can't login \n Please contact Human resorce Officer.")
     }
 
     render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { connect } from 'react-redux'
 import _ from 'lodash'
 import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
