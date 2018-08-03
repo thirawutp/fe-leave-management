@@ -176,48 +176,42 @@
       font-size: 36px;
       color: #F3F0E2;
       font-family: 'SukhumvitSet-Bold';
-      display: inline-flex;
-      width: 550px;
+      display: cell;
+      margin-right: 80px;
     
     }
     
     .section {
-      width: 250px;
-      float: right;
-    
+      margin-right: 60px;
     }
     
     .section p {
       font-size: 18px;
-      margin-top: 18px;
+      margin-top: 20px;
       color: white;
       display: inline-flex;
     
     }
     
     .position {
-      width: 300px;
-      float: right;
-    
+      margin-right: 60px;
     }
     
     .position p {
       font-size: 18px;
-      margin-top: 19px;
+      margin-top: 20px;
       color: white;
-      display: inline-flex;
+      display: table;
 
     }
     
     .staffID  {
-      width: 30vh;
-      text-align: right;
-    
+      margin-right: 60px;
     }
     
     .staffID p {
       font-size: 18px;
-      margin-top: 19px;
+      margin-top: 20px;
       color: white;
       display:inline-flex;
     }
