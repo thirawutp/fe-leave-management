@@ -61,7 +61,7 @@ class NavigationBar extends Component {
     handleRefresh = () => {
         console.log("handleRefresh")
         this.handleHistory()
-        this.setNoti()
+
         this.handleApprove()
     }
     handleHistory = () => {
@@ -128,7 +128,7 @@ class NavigationBar extends Component {
                     <li id="pathleave" className={'navigationbar-item' + this.activeClassName('/Leave')} onClick={this.handleRefresh}>
                         <Link to='/Leave'>leave</Link>
                     </li>
-                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.handleRefresh}>
+                    <li id="pathhistory" className={'navigationbar-item' + this.activeClassName('/History')} onClick={this.setNoti}>
                         <Link to='/History'>history</Link>
                         {this.state.data && <div className='tknotis1'> <img src={bell} /></div>}
                     </li>

@@ -44,6 +44,7 @@ class TableSearchLeaveStatisticsDetails extends Component {
             }
           }, {})
         })
+
         this.props.addTable(data)
       })
 
