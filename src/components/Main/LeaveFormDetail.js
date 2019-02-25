@@ -12,6 +12,7 @@ import leftarrow from '../../asset/images/left-arrow.png';
 
 
 class LeaveFormDetail extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,7 +24,6 @@ class LeaveFormDetail extends Component {
 
 
     }
-
 
     getDayType = (start, end) => {
 

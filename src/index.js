@@ -7,6 +7,7 @@ import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
 import storage from 'redux-persist/lib/storage';
 import { createStore } from 'redux';
 import App from './App';
+import SearchHistory from './components/Main/SearchHistory'
 import rootReducer from './reducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -26,7 +27,7 @@ const persistor = persistStore(store)
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <App />
+      <App/>
     </PersistGate>
   </Provider>,
   document.getElementById('root')

@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { connect } from 'react-redux'
@@ -5,12 +6,12 @@ import _ from 'lodash'
 import NavigationBar from '../src/components/Main/NavigationBar.js';
 import Header from '../src/components/Main/Header.js';
 import LeaveList from './Container/index-leavelist 10.27.18.js';
-import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
+// import SearchLeaveStatisticsList from '../src/components/Main/SearchLeaveStatisticsList';
 import SearchApproveList from '../src/components/Main/SearchApproveList';
 import alRequestForm from '../src/Container/al-leaveRequestForm';
 import slRequestForm from '../src/Container/sl-leaveRequestForm';
 import lwpRequestForm from '../src/Container/lop-leaveRequestForm';
-import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
+//import LeaveRequestReport from '../src/components/Main/LeaveRequestReport';
 import LeaveStatisticsDetails from '../src/Container/index-LeaveStatisticsDetails';
 import LeaveFormDetail from '../src/components/Main/LeaveFormDetail';
 import IndexSearchStatistics from '../src/Container/index-SearchStatistics.js';
@@ -19,7 +20,7 @@ import IndexSearchApprove from '../src/Container/index-SearchApprove.js';
 import SetApproveLeaveForm from '../src/components/Main/SetApproveLeaveForm';
 import './App.css';
 import Doctors from './components/Main/Doctors.js';
-import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
+// import SeeApproveDetails from '../src/components/Main/SeeApproveDetails';
 import LoginPage from '../src/Container/LoginPage';
 import IndexindividualStatistic from '../src/Container/index-individualStatistics.js';
 import SearchStatistics from './components/Main/SearchStatistics.js';
@@ -60,12 +61,12 @@ class App extends Component {
         <Route path='/' component={MainLayout}>
           <Route path='leave' component={LeaveList} />
           <Route path='home' component={LeaveList} />
-          <Route path='static' component={SearchLeaveStatisticsList} />
+          {/* <Route path='static' component={SearchLeaveStatisticsList} /> */}
           <Route path='Approve' component={IndexSearchApprove} />
-          <Route path='leaveReport' component={LeaveRequestReport} />
+          {/* <Route path='leaveReport' component={LeaveRequestReport} /> */}
           <Route path='pic' component={Doctors} />
           <Route path='staticlist' component={LeaveStatisticsDetails} />
-          <Route path='aaa' component={SeeApproveDetails} />
+          {/* <Route path='aaa' component={SeeApproveDetails} /> */}
           <Route path='form/AnnualLeave' component={alRequestForm} />
           <Route path='form/SickLeave' component={slRequestForm} />
           <Route path='form/LwpLeave' component={lwpRequestForm} />
